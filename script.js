@@ -205,15 +205,6 @@ function installApp() {
 ///////////////////////////////
 ///sistam de anticopia
 
-/**
- * =========================================================
- * PAINEL DE CONTROLE DA PROTEÇÃO
- * =========================================================
- * Aqui você decide o que fica ligado ou desligado.
- * TRUE  = Ativado (Bloqueado)
- * FALSE = Desativado (Liberado)
- */
-
 const CONFIG_PROTECAO = {
     bloquearCliqueDireito: true,   // <-- Mude para false para liberar o mouse
     bloquearTeclado:       true,   // <-- Mude para false para liberar F12, Ctrl+U, etc
@@ -286,7 +277,7 @@ const CONFIG_PROTECAO = {
 ///bloqueio de botão 
 (function() {
     // --- CONFIGURAÇÃO: ADICIONE OS IDS DOS BOTÕES AQUI ---
-    const idsBloqueados = ['tabFav', 'favBtn','ID AQUI'];
+    const idsBloqueados = ['ID AQUI'];
 
     // 1. Criar o CSS da Mensagem Customizada via JS (Adaptado para classes)
     const style = document.createElement('style');
@@ -354,7 +345,7 @@ const CONFIG_PROTECAO = {
         `;
         
         document.body.appendChild(overlay);
-        document.getElementById('fecharMsg').onclick = () => overlay.remove();
+document.getElementById('fecharMsg').onclick = () => overlay.remove();
     };
 
     // 3. Aplicar o bloqueio em todos os botões da lista
