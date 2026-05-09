@@ -164,3 +164,39 @@
             width: 45px; height: 45px; border-radius: 12px; cursor: pointer;
             display: flex; align-items: center; justify-content: center;
         }
+/* Estilo do botão de informação */
+.info-card-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    min-height: 48px; /* Acessibilidade 100: Hit Target */
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.info-card-btn i {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.info-card-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.info-card-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Ajuste para o tema claro */
+.light-theme .info-card-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
