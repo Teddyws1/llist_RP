@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>llist_RP</title>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-----arquivo adicionar na telas---->
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6200ee">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ <!-----fim arquivo adicionar na telas---->
+</head>
+<!-------tela de login-------->
+
+
+
+<!----fim tela de login---->
+    <header>
+        <button class="icon-btn" id="menuBtn" onclick="event.stopPropagation(); toggleSidebar();"><i class="fas fa-bars"></i></button>
+        <div class="search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Buscar comando...">
+            <i class="fas fa-times-circle clear-search" id="clearBtn" onclick="clearSearch()"></i>
+        </div>
+        <button class="icon-btn" onclick="toggleTheme()" id="themeIcon"><i class="fas fa-moon"></i></button>
+    </header>
+
+    <aside id="sidebar" class="sidebar">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px;">
+            <h3 style="font-weight: 900; letter-spacing: 1px;">llist_RP</h3>
+            <button class="icon-btn" onclick="toggleSidebar()">&times;</button>
+        </div>
+        
+        <div class="sidebar-section">
+            <h4><i class="fas fa-info-circle"></i> Informações</h4>
+            <div class="info-card" onclick="openTextModal('Sobre o Sistema', 'Este é o llist_RP, desenvolvido para facilitar a gestão de comandos RP. \n\nCom este sistema você pode buscar comandos rapidamente, favoritar os que mais usa e copiar com apenas um clique. \n\nInstruções: \n1. Use a barra de busca no topo para encontrar um comando. \n2. Clique em qualquer card para ver os detalhes. \n3. Use a aba Favoritos para salvar seus comandos prediletos. \n\nA interface foi pensada para ser rápida e funcional, com suporte a temas claro e escuro e entre outros sistemas.')">
+                <p>Versão: <b>1.3.4 Beta</b></p>
+                <p>Status: <b style="color:var(--success)">Conexão Segura </b></p>
+                <small style="color: var(--accent); font-size: 0.7rem;">Clique para ler tudo</small>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h4><i class="fas fa-envelope"></i> Novidades</h4>
+            <div class="info-card system-msg" onclick="openTextModal('Guia de Uso', 'Agora os cards mostram uma pequena dica visual ao passar o mouse para indicar que são clicáveis. Além disso, se o texto explicativo for muito grande, você pode rolar o modal para ler tudo confortavelmente.')">
+                <b style="color:var(--primary); font-size:0.75rem;">novidades</b>
+                <p>Modais com scroll e dicas visuais.</p>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h4><i class="fas fa-headset"></i> Suporte</h4>
+            <a href="https://www.instagram.com/teddy_machado007?igsh=MmtjdTF4ZGlqdjVl" target="_blank" style="text-decoration:none">
+                <div class="info-card" style="border-color: var(--accent)">
+                    <p style="color: var(--text); font-weight: 700;"><i class="fab fa-instagram"></i> @teddymachado07</p>
+                </div>
+            </a>
+        </div>
+    </aside>
+
+    <nav class="nav-tabs">
+        <button class="tab-btn active" id="tabAll" onclick="switchTab('all')">Início</button>
+        <button class="tab-btn" id="tabFav" onclick="switchTab('fav')">Favoritos</button>
+        
+        <div class="sort-wrapper">
+            <select id="sortOption" class="sort-select" onchange="renderItems()">
+                <option value="alpha">A - Z</option>
+                <option value="recent">Recentes</option>
+            </select>
+        </div>
+
+        <button id="clearAllBtn" class="clear-all-btn" onclick="clearAllFavorites()"><i class="fas fa-trash-alt"></i></button>
+    </nav>
+
+    <main class="container">
+        <div id="gridItems" class="main-grid"></div>
+    </main>
+
+    <div id="itemModal" class="modal-overlay">
+        <div class="modal-card">
+            <h2 id="modalTitle" style="margin-bottom: 5px;">Comando</h2>
+            <span id="modalID" style="color: var(--accent); font-weight: 900; margin-bottom: 15px;">#0</span>
+            <div class="btn-group">
+                <button class="btn btn-fav" id="favBtn">Favoritar</button>
+                <button class="btn btn-copy" onclick="copyCommand()"><i class="fas fa-copy"></i> Copiar</button>
+                <button class="btn btn-close" onclick="closeModal('itemModal')">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="textModal" class="modal-overlay">
+        <div class="modal-card">
+            <h2 id="textModalTitle" style="color: var(--primary);">Título</h2>
+            <div class="modal-body-scroll">
+                <p id="textModalBody" style="color: var(--text-dim); line-height: 1.6; font-size: 0.95rem; white-space: pre-line;"></p>
+            </div>
+            <button class="btn btn-close" onclick="closeModal('textModal')" style="width:100%">Entendido</button>
+        </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
