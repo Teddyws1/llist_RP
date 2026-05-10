@@ -30,6 +30,8 @@
         </div>
         <button class="icon-btn" onclick="toggleTheme()" id="themeIcon"><i class="fas fa-moon"></i></button>
     </header>
+    
+<span id="totalContador">0</span> 
 
     <aside id="sidebar" class="sidebar">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px;">
@@ -39,11 +41,11 @@
         
         <div class="sidebar-section">
             
-            <h4><i class="fas fa-info-circle"></i> Informações</h4>
+            <h4><i class=""></i> Informações</h4>
             
             <div class="info-card" onclick="openTextModal('Sobre o Sistema', 'Este é o llist_RP, desenvolvido para facilitar a gestão de comandos RP. \n\nCom este sistema você pode buscar comandos rapidamente, favoritar os que mais usa e copiar com apenas um clique. \n\nInstruções: \n1. Use a barra de busca no topo para encontrar um comando. \n2. Clique em qualquer card para ver os detalhes. \n3. Use a aba Favoritos para salvar seus comandos prediletos. \n\nA interface foi pensada para ser rápida e funcional, com suporte a temas claro e escuro e entre outros sistemas.')">
 
-                <p>Versão: <b>1.4.5 Beta</b></p>
+                <p>Versão: <b>2.5.6 Beta</b></p>
                 <p>Status: <b style="color:var(--success)">Conexão Segura </b></p>
                 <small style="color: var(--accent); font-size: 0.7rem;">Clique para ler tudo</small>
             </div>
@@ -53,15 +55,7 @@
         </div>
 
         <div class="sidebar-section">
-            <h4><i class="fas fa-envelope"></i> Novidades</h4>
-            <div class="info-card system-msg" onclick="openTextModal('ATUALIZÇÃO', 'novos comando de animação nova interface Melhoria otimização.')">
-                <p>
-                    caso falta comando entra em contato pelo Instagram, se quiser mais novidades entra en contato.
-                </p>
-                <b style="color:var(--primary); font-size:0.75rem;">novidades</b>
-                <p>Modais com scroll e dicas visuais.</p>
-            </div>
-        </div>
+      
 
         <div class="sidebar-section">
             <h4><i class="fas fa-headset"></i> Suporte</h4>
@@ -71,6 +65,50 @@
                     <p style="color: var(--text); font-weight: 700;"><i class="fab fa-instagram"></i> @teddymachado07</p>
                 </div>
             </a>
+            <!-----sobre atualização---->
+   <button id="un-btn-trigger" class="un-open-trigger">Ver Novidades</button>
+
+<div id="un-modal-container" class="un-modal-overlay">
+    
+    <div class="un-modal-card">
+        
+        <button id="un-close-x" class="un-modal-x-btn">&times;</button>
+        
+        <header class="un-modal-header">
+            <div class="un-header-icon">🚀</div>
+            <h2 class="un-header-title">Novidades</h2>
+            <p class="un-header-subtitle">2.5.6 versão atual</p>
+        </header>
+        
+        <div class="un-modal-body">
+            <ul class="un-changelog-list">
+                <li class="un-list-item un-type-new">
+                    <strong class="un-item-title">Nova sistema</strong>
+                    <span class="un-item-desc">novo sistema que mostra que venho na atualização atual</span>
+                </li>
+                            <li class="un-list-item un-type-new">
+                    <strong class="un-item-title">Nova sistema</strong>
+                    <span class="un-item-desc">novo sistema que mostra quantos comando tem na aba de navegação</span>
+                </li>
+                                            <li class="un-list-item un-type-new">
+                    <strong class="un-item-title">Nova IU</strong>
+                    <span class="un-item-desc">novo layout com e ajuste na interfaces</span>
+                </li>
+                         <li class="un-list-item un-type-new">
+                    <strong class="un-item-title">Nova COMANDO</strong>
+                    <span class="un-item-desc">mais de 20+ comandos novos </span>
+                </li>
+                </ul>
+        </div>
+
+        <footer class="un-modal-footer">
+            <button id="un-btn-confirm" class="un-btn-action">Entendido!</button>
+        </footer>
+    </div>
+</div>
+
+
+          <!---fim sobre atualização---->
         </div>
     </aside>
 
