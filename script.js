@@ -1,7 +1,5 @@
 /* =========================================================
    [INÍCIO] - PROCESSAMENTO DE DADOS E VARIÁVEIS GLOBAIS
-   Descrição: Trata a string 'listText', cria os itens e
-   gerencia o estado dos favoritos e aba atual.
    ========================================================= */
 const animations = [...new Set(listText.split(',')
     .map(item => item.trim())
@@ -13,31 +11,53 @@ let items = rawItems.map((name, i) => ({ name, id: i + 1 }));
 let favorites = JSON.parse(localStorage.getItem('teddyFavs')) || [];
 let currentTab = 'all';
 let currentItem = null;
+
+// Variável de controle para ativação/desativação do modal automático
+let autoOpenModal = JSON.parse(localStorage.getItem('autoOpenModal')) ?? true;
 /* =========================================================
-   [FIM] - PROCESSAMENTO DE DADOS
+   [FIM] - PROCESSAMENTO DE DADOS E VARIÁVEIS GLOBAIS
    ========================================================= */
 
 
 /* =========================================================
    [INÍCIO] - FUNÇÃO DE RENDERIZAÇÃO (NÚCLEO DO SISTEMA)
-   Descrição: Filtra, ordena, conta e desenha os cards na tela.
    ========================================================= */
 function renderItems() {
     const grid = document.getElementById('gridItems');
     const search = document.getElementById('searchInput').value.toLowerCase();
     const sort = document.getElementById('sortOption').value;
     const clearAllBtn = document.getElementById('clearAllBtn');
+    let searchTimer
     
-    // Elemento do contador (certifique-se de ter o id="totalContador" no HTML)
-    const contador = document.getElementById('totalContador');
+    /* SISTEMA DE BUSCA COM ABERTURA AUTOMÁTICA DE MODAL */
+    document.getElementById('searchInput').oninput = function() {
+        const valorDigitado = this.value.trim();
+        
+        if (valorDigitado === "") {
+            clearTimeout(searchTimer);
+            renderItems();
+            return;
+        }
 
-    // Botão de limpar busca individual
+        clearTimeout(searchTimer);
+
+        searchTimer = setTimeout(() => {
+            renderItems();
+            
+            if (autoOpenModal) {
+                const itemEncontrado = items.find(i => i.id.toString() === valorDigitado);
+                if (itemEncontrado) {
+                    openModal(itemEncontrado.id);
+                }
+            }
+        }, 200); 
+    };
+
+    const contador = document.getElementById('totalContador');
     document.getElementById('clearBtn').style.display = search ? 'block' : 'none';
     
-    // Escolha entre todos os itens ou favoritos
     let data = currentTab === 'all' ? [...items] : [...favorites];
 
-    // Filtro de busca por nome ou ID
     if(search) {
         data = data.filter(i => 
             i.name.toLowerCase().includes(search) ||   
@@ -46,22 +66,18 @@ function renderItems() {
         );
     }
 
-    // Ordenação
     if(sort === 'alpha') {
         data.sort((a, b) => a.name.localeCompare(b.name));
     } else {
         data.sort((a, b) => b.id - a.id);
     }
 
-    // ATUALIZAÇÃO DO CONTADOR
     if (contador) {
         contador.innerText = data.length;
     }
 
-    // Botão de limpar todos os favoritos
     clearAllBtn.style.display = (currentTab === 'fav' && favorites.length > 0) ? 'block' : 'none';
 
-    // Criação dos cards HTML
     grid.innerHTML = data.map(item => `
         <div class="card" onclick="openModal(${item.id})">
             ${currentTab === 'fav' ? `<i class="fas fa-trash-can delete-fav" onclick="event.stopPropagation(); removeFavorite(${item.id})"></i>` : ''}
@@ -76,8 +92,62 @@ function renderItems() {
 
 
 /* =========================================================
-   [INÍCIO] - GERENCIAMENTO DE FAVORITOS
-   Descrição: Funções para excluir um ou todos os favoritos.
+   [INÍCIO] - ALTERNAR MODAL AUTOMÁTICO E ALERTA CUSTOMIZADO
+   ========================================================= */
+function toggleAutoModal() {
+    const confirmBox = document.createElement('div');
+    confirmBox.className = 'custom-alert-overlay';
+    confirmBox.id = 'confirmAutoModal';
+    
+    const acao = autoOpenModal ? 'DESATIVAR' : 'ATIVAR';
+
+    confirmBox.innerHTML = `
+        <div class="custom-alert-card">
+            <div class="custom-alert-content">
+                <span class="custom-alert-title">Sistema</span>
+                <span class="custom-alert-text">Quer mesmo <b>${acao}</b> o modal de resultado automático?</span>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:15px;">
+                <button class="custom-alert-btn" style="background:var(--success, #28a745); flex:1;" onclick="executarTrocaModal()">Sim</button>
+                <button class="custom-alert-btn" style="background:var(--danger, #dc3545); flex:1;" onclick="document.getElementById('confirmAutoModal').remove()">Não</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(confirmBox);
+}
+
+// CORREÇÃO AQUI: Mudado de "ejecutar" para "executar" para bater com o botão acima
+function executarTrocaModal() {
+    const modalAntigo = document.getElementById('confirmAutoModal');
+    if(modalAntigo) modalAntigo.remove();
+
+    autoOpenModal = !autoOpenModal;
+    localStorage.setItem('autoOpenModal', autoOpenModal);
+
+    const alertBox = document.createElement('div');
+    alertBox.className = 'custom-alert-overlay';
+    alertBox.id = 'alertAutoModal';
+    
+    alertBox.innerHTML = `
+        <div class="custom-alert-card">
+            <div class="custom-alert-content">
+                <span class="custom-alert-title">Sistema</span>
+                <span class="custom-alert-text">Abertura automática:<br><b>${autoOpenModal ? 'ATIVADA' : 'DESATIVADA'}</b></span>
+            </div>
+            <button class="custom-alert-btn" onclick="document.getElementById('alertAutoModal').remove()">OK</button>
+        </div>
+    `;
+    
+    document.body.appendChild(alertBox);
+}
+/* =========================================================
+   [FIM] - ALTERNAR MODAL AUTOMÁTICO
+   ========================================================= */
+
+
+/* =========================================================
+   [INÍCIO] - GERENCIAMENTO DE FAVORITOS E MODAIS
    ========================================================= */
 function clearAllFavorites() {
     if(confirm("Deseja limpar todos os favoritos?")) {
@@ -92,15 +162,7 @@ function removeFavorite(id) {
     localStorage.setItem('teddyFavs', JSON.stringify(favorites));
     renderItems();
 }
-/* =========================================================
-   [FIM] - GERENCIAMENTO DE FAVORITOS
-   ========================================================= */
 
-
-/* =========================================================
-   [INÍCIO] - CONTROLE DE MODAIS E SIDEBAR
-   Descrição: Abre/fecha modais de detalhes e a barra lateral.
-   ========================================================= */
 function openTextModal(title, body) {
     document.getElementById('textModalTitle').innerText = title;
     document.getElementById('textModalBody').innerText = body;
@@ -135,13 +197,12 @@ document.getElementById('favBtn').onclick = () => {
     renderItems();
 };
 /* =========================================================
-   [FIM] - CONTROLE DE MODAIS
+   [FIM] - GERENCIAMENTO DE FAVORITOS
    ========================================================= */
 
 
 /* =========================================================
    [INÍCIO] - UTILITÁRIOS E ESTÉTICA
-   Descrição: Troca de abas, cópia de texto e temas.
    ========================================================= */
 function switchTab(tab) {
     currentTab = tab;
@@ -165,7 +226,6 @@ function toggleTheme() { document.body.classList.toggle('light-theme'); }
 
 /* =========================================================
    [INÍCIO] - EVENTOS DE JANELA E INSTALAÇÃO (PWA)
-   Descrição: Cliques fora do modal e registro de Service Worker.
    ========================================================= */
 window.onclick = (e) => {
     const sidebar = document.getElementById('sidebar');
@@ -181,13 +241,12 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').then(() => console.log("SW registrado!"));
 }
 /* =========================================================
-   [FIM] - EVENTOS E INSTALAÇÃO
+   [FIM] - EVENTOS DE JANELA E INSTALAÇÃO (PWA)
    ========================================================= */
 
 
 /* =========================================================
    [INÍCIO] - SEGURANÇA E PROTEÇÃO
-   Descrição: Bloqueios de clique direito, teclado, cópia e zoom.
    ========================================================= */
 const CONFIG_PROTECAO = {
     bloquearCliqueDireito: false,
@@ -200,7 +259,6 @@ const CONFIG_PROTECAO = {
     document.onselectstart = () => !CONFIG_PROTECAO.bloquearSelecao;
 })();
 
-// Bloqueio de Zoom Pinça e Ctrl+Scroll
 document.addEventListener('touchstart', (e) => {
     if (e.touches.length > 1) e.preventDefault();
 }, { passive: false });
@@ -213,75 +271,100 @@ document.addEventListener('wheel', (e) => {
    ========================================================= */
 
 
-// Inicialização imediata ao carregar o script
+/* =========================================================
+   [INÍCIO] - INICIALIZAÇÃO E ANIMAÇÕES
+   ========================================================= */
 renderItems();
-// Faz o contador pulsar
-const contador = document.getElementById('totalContador');
-contador.classList.remove('bump');
-void contador.offsetWidth; // Truque para resetar a animação
-contador.classList.add('bump');
+const contBump = document.getElementById('totalContador');
+if(contBump) {
+    contBump.classList.remove('bump');
+    void contBump.offsetWidth;
+    contBump.classList.add('bump');
+}
+/* =========================================================
+   [FIM] - INICIALIZAÇÃO E ANIMAÇÕES
+   ========================================================= */
+
 
 /* =========================================================
-sobre atualização do sistema 
+   [INÍCIO] - ATUALIZAÇÃO DO SISTEMA (MODAIS EXTRAS)
    ========================================================= */
-  
-   (function() {
+(function() {
     const startModal = () => {
-        // Seletores por ID exclusivo
         const overlay = document.getElementById('un-modal-container');
         const openBtn = document.getElementById('un-btn-trigger');
         const closeBtn = document.getElementById('un-btn-confirm');
         const closeX = document.getElementById('un-close-x');
 
         if (!overlay || !openBtn) return;
-
         const open = () => { overlay.style.display = 'flex'; };
         const close = () => { overlay.style.display = 'none'; };
-
         openBtn.addEventListener('click', open);
         if (closeBtn) closeBtn.addEventListener('click', close);
         if (closeX) closeX.addEventListener('click', close);
-
-        // Fecha se clicar fora do card
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) close();
-        });
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
     };
 
-    // Executa sem conflitos
-    if (document.readyState === 'complete') {
-        startModal();
-    } else {
-        window.addEventListener('load', startModal);
-    }
+    if (document.readyState === 'complete') { startModal(); } 
+    else { window.addEventListener('load', startModal); }
 })();
+
 const modal = document.getElementById('un-modal-container');
 const btnOpen = document.getElementById('un-btn-trigger');
 const btnClose = document.getElementById('un-close-x');
 
-// Abrir Modal
-btnOpen.addEventListener('click', () => {
-    modal.style.display = 'flex';
-});
+if(btnOpen) btnOpen.addEventListener('click', () => { modal.style.display = 'flex'; });
+if(btnClose) btnClose.addEventListener('click', () => { modal.style.display = 'none'; });
 
-// Fechar ao clicar no X
-btnClose.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-// Fechar ao clicar fora do card (no fundo cinza)
 window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
+    if (event.target === modal) { modal.style.display = 'none'; }
 });
+
+document.querySelectorAll('*').forEach(el => {
+    el.style.outline = 'none';
+    el.style.webkitTapHighlightColor = 'transparent';
+});
+/* =========================================================
+   [FIM] - ATUALIZAÇÃO DO SISTEMA (MODAIS EXTRAS)
+   ========================================================= */
+
 
 /* =========================================================
- sistema de bloqueio de Scroll 
+   [INÍCIO] - SISTEMA DE BLOQUEIO DE SCROLL
    ========================================================= */
-   
-  
-   
-   /* =========================================================
-fim sobre atualização do sisitema 
+function gerenciarScrollBody() {
+    const elementosBloqueadores = [
+        document.querySelector('.sidebar.active'),
+        document.querySelector('.modal-open'),
+        document.querySelector('#itemModal[style*="flex"]'), 
+        document.querySelector('.card-ativo')
+    ];
+
+    const deveBloquear = elementosBloqueadores.some(el => el !== null);
+    if (deveBloquear) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.touchAction = 'none';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+    } else {
+        document.body.style.overflow = '';
+        document.body.style.touchAction = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    }
+}
+
+const observerBody = new MutationObserver(() => { gerenciarScrollBody(); });
+observerBody.observe(document.body, { attributes: true, subtree: true, childList: true });
+gerenciarScrollBody();
+
+/* =========================================================
+  novo aqui 
+   ========================================================= */
+
+
+
+
+/* =========================================================
+   [FIM] - SISTEMA DE BLOQUEIO DE SCROLL
    ========================================================= */

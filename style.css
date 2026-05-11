@@ -1,3 +1,5 @@
+
+
 /* ============================================================
    01. VARIÁVEIS E TEMAS (Design /* ============================================================
    01. VARIÁVEIS E TEMAS (Design System)
@@ -5,6 +7,14 @@
    /*tema escuro*/
 :root {
     /* Cores Gerais */
+    --perguntaa: #D3FF49;
+    --pergunta: #C0F713;
+    ---mellhorias: #00e5ff;
+    ---custom-alert-btn:#1A1E2F;
+    ---ion-icontrigger:#ff9800;
+    --accentAV: #FFFFFF;
+    ---modalfundo:#000000B3;
+    --un-surfface:#0F111A;
     --bg: #0f111a; 
     --surface: #1a1d29;
     --primary:linear-gradient(to right, #000000, #07201F); 
@@ -14,15 +24,17 @@
     --colorbtn-fav: #fff;
     --text-dim: #FFFFFF;
     --color-dim: #fff;
-    --border: rgba(255, 255, 255, 0.05);
+    --border: #FFFFFF0D;
     --text-dim-texbot: linear-gradient(to right, #000000, #07201F);
     --text-dim-texbtex: #FF1818;
     --danger: #FF0031;
     --success: #34E600C9;
-    --glass: rgba(15, 17, 26, 0.9);
-    --contagen: #72727226;
+    --glass: #0F111AE6;
+    --contagen: #1A1E2F;
     --cortextocontagen: #fff;
-
+---border-bottom: #FFFFFF0D;
+    /*outros root*/
+    
     /* Variáveis de Layout (O sistema) */
     --radius-sm: 6px;
     --radius-md: 10px;
@@ -35,31 +47,37 @@
     --transition-standard: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Variáveis isoladas modal ul/li */
-:root {
-    --un-bg: #0f111a; 
+/*tema claro*/
+.light-theme {
+       --perguntaa: #000000;
+        --pergunta: #000000;
+      ---mellhorias: #000000;
+        --un-bg: #0f111a;
     --un-surface: #1a1d29;
     --un-primary: linear-gradient(to right, #000000, #07201F);
-    --un-accent: #00e5ff;
+    --un-accent: #ff9800;
     --un-text: #FFFFFF;
     --un-text-dim: #9499b0;
     --un-border: rgba(255, 255, 255, 0.08);
-}
-/*tema claro*/
-.light-theme {
+    ---border-bottom: #00000036;
+    ---ion-icontrigger:#ff9800;
+    --un-surfface:#E1E1E1;
     --bg: #f4f4f9;
     --surface: #FFFFFF;
     --primary: linear-gradient(to right, #FFFFFF, #00000063);
-    --accent: #00b8d4;
+    --accent: #000000;
+    --btnbtnfav:#FFFFFF;
     --text: #121214;
     --text-dim: #636366;
+    --colorbtn:#FFFFFF;
     --border: rgba(0, 0, 0, 0.1);
     --glass: rgba(255, 255, 255, 0.9);
     --contagen: #C7C7C7C9;
     --un-surface: #fff;
     --un-text: #000000;
-    --un-accent: #000000;
+    --un-accent: #ff9800;
     --text-dim-texbot: linear-gradient(to right, #000000, #07201F);
+      ---custom-alert-btn:#000000;
 }
 
 /* ============================================================
@@ -178,7 +196,7 @@ header {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-.card::after { content: 'Clique para abrir'; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; color: var(--accent); opacity: 0; font-weight: 800; text-transform: uppercase; }
+
 .card:hover::after { opacity: 0.7; bottom: 12px; }
 
 .card strong { font-size: 0.95rem; letter-spacing: 0.5px; text-transform: capitalize; color: var(--text); }
@@ -220,7 +238,7 @@ header {
 #profileModal input {
     background-color: #fff !important;
     color: #333 !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid #FF0000 !important;
 }
 
 /* ============================================================
@@ -228,8 +246,8 @@ header {
    ============================================================ */
 .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
 .btn { padding: 14px; border-radius: 14px; border: none; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; }
-.btn-fav { background: var(--primary); color: var(--colorbtn-fav); }
-.btn-copy { background: var(--success); color: white; }
+.btn-fav { background: var(--primary); color: var(--colorbtn); }
+.btn-copy { background: var(--success); color: var(--btnbtnfav); }
 .btn-close { background: var(--text-dim-texbot);
 color: var( --color-dim); 
 grid-column: span 2;
@@ -321,19 +339,6 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 .form-footer a:hover { text-decoration: underline; opacity: 0.8; }
 .form-footer p { margin-top: 15px; color: var(--text-dim); }
 
-/* ============================================================
-   11. UTILITÁRIOS E ZONAS ESPECIAIS
-   ============================================================ */
-.danger-zone {
-    margin-top: 20px; padding: 15px;
-    border: 1px solid rgba(255,0,0,0.2); border-radius: 8px;
-    background: rgba(255,0,0,0.05);
-}
-
-/* Ajustes Finais Tema Claro */
-.light-theme .info-card-btn:hover {
-    background: rgba(0, 0, 0, 0.03);
-}
 
 /* ============================================================
    12. css da contagens de divs
@@ -365,7 +370,7 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
     display: none; /* JS muda para flex */
     position: fixed;
     inset: 0;
-    background: #D7D7D72B;
+    background: var(---modalfundo);
     backdrop-filter: blur(7px);
     z-index: 99999;
     align-items: center;
@@ -375,17 +380,17 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 
 /* Card Principal */
 .un-modal-card {
-    background: var(--un-surface);
-    border: 1px solid var(--un-border); /* Corrigido de 'border-radius' para 'border' */
-    border-radius: 16px; /* Ajuste este valor para mais ou menos arredondamento */
+    background: var(--un-surfface);
+    border: 1px solid var(--un-border);
+    border-radius: 16px;
     width: 100%;
     max-width: 400px;
     max-height: 85vh;
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden; /* Garante que o conteúdo interno não "escape" pelas bordas redondas */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Opcional: dá profundidade ao modal */
+    overflow: hidden; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 1); 
 }
 
 /* Cabeçalho */
@@ -505,6 +510,330 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 
 #un-btn-trigger:hover::after {
     left: 100%;
+}
+
+/* ============================================================
+   ESTILO DO BOTÃO DE ALTERNAR (ESTILO NAV-TABS)
+   ============================================================ */
+
+button[onclick="toggleAutoModal()"] {
+    /* Cores baseadas na imagem */
+    background: var(--surface); /* Fundo #1a1d29 */
+    color: var(--text);        /* Texto Branco */
+    
+    /* Espaçamento e Tamanho */
+    padding: 10px 18px;
+    min-height: 44px;
+    width: auto;               /* Largura automática para caber o texto */
+    margin: 5px;
+    
+    /* Bordas e Tipografia (Igual à imagem) */
+    border: 1px solid var(--border);
+    border-radius: 10px;       /* Arredondamento suave da imagem */
+    font-size: 0.85rem;
+    font-weight: 600;          /* Texto levemente em negrito */
+    white-space: nowrap;
+    
+    /* Interação */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+/* Efeito de Hover (Destaque ao passar o mouse) */
+button[onclick="toggleAutoModal()"]:hover {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Estado "Ativo" (Igual ao botão Início da imagem) */
+/* Se você quiser que ele mude de cor quando estiver ativado, use esta lógica: */
+button[onclick="toggleAutoModal()"].active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Ajuste para o Tema Claro */
+.light-theme button[onclick="toggleAutoModal()"] {
+    background: #FFFFFF;
+    color: #121214;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* ============================================================
+   ESTILO DO ALERTA (CORREÇÃO ANTI-BUG / ANTI-PISCADA)
+   ============================================================ */
+
+/* Overlay com fade-in suave para não dar choque visual */
+.custom-alert-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(---modalfundo);
+    backdrop-filter: blur(9px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    animation: alertFadeIn 0.2s ease-out forwards !important;
+}
+
+/* Card com escala reduzida para evitar "pulo" de renderização */
+.custom-alert-card {
+    background: var(--surface);
+    width: 85%;
+    max-width: 310px; /* Um pouco menor para mobile */
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-heavy);
+    
+    /* O segredo: forçamos o transform-origin no centro */
+    transform-origin: center;
+    animation: alertPopClean 0.25s cubic-bezier(0.17, 0.89, 0.32, 1.1) forwards !important;
+}
+
+/* Animações otimizadas para evitar o "flicker" */
+@keyframes alertFadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes alertPopClean {
+    0% { 
+        opacity: 0; 
+        transform: scale(0.96); /* Escala inicial próxima de 1 evita piscadas */
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+}
+
+/* Área de Texto */
+.custom-alert-content {
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.custom-alert-title {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+    opacity: 0.7;
+}
+
+.custom-alert-text {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+/* Botão sem delay de clique */
+.custom-alert-btn {
+    border: none;
+    border-top: 1px solid var(--border);
+    background: transparent;
+    color: var(--accentAV);
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    /* Remove o cinza de toque do mobile */
+    -webkit-tap-highlight-color: transparent; 
+    transition: background 0.2s !important;
+}
+
+.custom-alert-btn:active {
+    background: rgba(0, 0, 0, 1);
+}
+
+
+/* =========================================================
+   [INÍCIO] - ESTILO DO BOTÃO DE ATUALIZAÇÕES
+   ========================================================= */
+
+button[onclick="openUpdateModal()"] {
+    background: linear-gradient(135deg, #6200ee, #9c27b0); /* Degradê roxo profissional */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(98, 0, 238, 0.3);
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efeito de Hover (Passar o mouse) */
+button[onclick="openUpdateModal()"]:hover {
+    transform: translateY(-3px); /* Sobe levemente */
+    box-shadow: 0 8px 25px rgba(98, 0, 238, 0.5); /* Brilho aumenta */
+    filter: brightness(1.1);
+}
+
+/* Efeito de Clique */
+button[onclick="openUpdateModal()"]:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(98, 0, 238, 0.3);
+}
+
+/* Adicionando um ícone de foguete via CSS (opcional se você não usar FontAwesome) */
+button[onclick="openUpdateModal()"]::before {
+    content: '🚀'; 
+    font-size: 1.1rem;
+}
+
+/* Brilho que passa pelo botão (Efeito Glass) */
+button[onclick="openUpdateModal()"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+button[onclick="openUpdateModal()"]:hover::after {
+    left: 100%;
+}
+/* =========================================================
+   [INÍCIO] - ESTILO DO BOTÃO COM ÍCONE À DIREITA
+   ========================================================= */
+
+.un-open-trigger {
+    display: inline-flex;     /* Ativa o flexbox */
+    align-items: center;      /* Alinha verticalmente no centro */
+    justify-content: center;  /* Centraliza o conteúdo */
+    gap: 10px;                /* Espaço fixo entre o texto e o ícone */
+    
+    background: #1e1e1e;      /* Cor de fundo */
+    color: #ffffff;           /* Cor do texto */
+    border: 1px solid #444;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Estilo específico do Ion-Icon */
+.un-open-trigger ion-icon {
+    font-size: 20px;         
+    font-size: 1.55rem;
+    color: var(---ion-icontrigger);
+}
+
+/* Efeito Hover */
+.un-open-trigger:hover {
+    background: #252525;
+    border-color: var(---triggerhover);
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.2);
+}
+
+.un-open-trigger:hover ion-icon {
+    transform: scale(1.2);    /* O ícone cresce um pouco no hover */
+}
+
+/* =========================================================
+instagram do ul li
+   ========================================================= */
+/* ============================================================
+   CARD DE REDE SOCIAL (INSTAGRAM)
+   ============================================================ */
+
+.un-social-link {
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+}
+
+.un-social-card {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    /* Cor neon no dark / sotaque no light */
+    padding: 15px 20px;
+    border-radius: var(--radius-md);
+    transition: var(--transition-standard);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Efeito Hover - Dá um leve brilho e levanta o card */
+.un-social-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px var(--accent);
+    border-color: var(--text);
+}
+
+.un-social-text {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo para o ícone do Instagram */
+.un-social-text i {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+/* Ajuste específico para o Tema Claro */
+.light-theme .un-social-card:hover {
+    background: #f0f0f0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+/*melhorias nas ul/lis */
+.mellhorias{
+    color: var(---mellhorias);
+      font-size: .92rem;
+        font-weight: 700;
+        }
+.pergunta{
+    color: var(--pergunta);
+      font-size: .94rem;
+        font-weight: 600;
+}
+.perguntaa{
+    color: var(--perguntaa);
+    font-size: .78rem;
+        font-weight: 600;
+}
+
+.obs{
+    color: var(---mellhorias) ;
+      font-size: .94rem;
+        font-weight: 600;
 }
 
 /* FIM DO ARQUIVO CSS */

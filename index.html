@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>llist_RP</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="atualização.css">
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <link rel="icon" href="img/favicon.png" type="image/png">
-
+    
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6200ee">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,10 +50,10 @@
         <div class="sidebar-section">
             <h4>Informações</h4>
 
-            <div class="info-card" onclick="openTextModal('Sobre o Sistema', 'Este é o llist_RP, desenvolvido para facilitar a gestão de comandos RP. \n\nCom este sistema você pode buscar comandos rapidamente, favoritar os que mais usa e copiar com apenas um clique. \n\nInstruções: \n1. Use a barra de busca no topo para encontrar um comando. \n2. Clique em qualquer card para ver os detalhes. \n3. Use a aba Favoritos para salvar seus comandos prediletos. \n\nA interface foi pensada para ser rápida e funcional, com suporte a temas claro e escuro e entre outros sistemas.')">
-                <p>Versão: <b>2.5.6 Beta</b></p>
+            <div class="info-card" onclick>
+                <p>Versão: <b>2.6.7 Beta</b></p>
                 <p>Status: <b style="color:var(--success)">Conexão Segura</b></p>
-                <small style="color:var(--accent); font-size:0.7rem;">Clique para ler tudo</small>
+  
             </div>
 
             <p class="aaviso">
@@ -59,7 +62,7 @@
         </div>
 
         <div class="sidebar-section">
-            <h4><i class="fas fa-headset"></i> Suporte</h4>
+            <h4><i class="fas fa-headset"></i> desenvolvedor</h4>
 
             <a href="https://www.instagram.com/teddy_machado007?igsh=MmtjdTF4ZGlqdjVl" target="_blank" style="text-decoration:none">
                 <div class="info-card" style="border-color:var(--accent)">
@@ -69,38 +72,53 @@
                 </div>
             </a>
 
-            <button id="un-btn-trigger" class="un-open-trigger">Ver Novidades</button>
+    <button id="un-btn-trigger" class="un-open-trigger">
+    <span>sobre sistema</span>
+    <ion-icon name="alert-circle-outline"></ion-icon>
+</button>
 
             <div id="un-modal-container" class="un-modal-overlay">
                 <div class="un-modal-card">
                     <button id="un-close-x" class="un-modal-x-btn">&times;</button>
 
                     <div class="un-modal-header">
-                        <div class="un-header-icon">🚀</div>
-                        <h2 class="un-header-title">Novidades</h2>
-                        <p class="un-header-subtitle">2.5.6 versão atual</p>
+
+                        <h2 class="un-header-title">sobre sistema</h2>
+    
                     </div>
 
                     <div class="un-modal-body">
                         <ul class="un-changelog-list">
                             <li class="un-list-item un-type-new">
-                                <strong class="un-item-title">Novo sistema</strong>
-                                <span class="un-item-desc">Novo sistema que mostra o que veio na atualização atual</span>
-                            </li>
+                                <strong class="un-item-title">ajustes</strong>
+                 <span class="un-item-desc">
+<p class="pergunta">— por que o site foi criado?</p><p class="mellhorias">obs:</p>  para facilitar as buscas dos comandos das animação do GTA V RP.
+                            <br />
+                     <p class="pergunta">— qual tipo de mecanismos no site ? </p>  
+                        <br />
+                        • tem sistema de Claro/escuro 
+                        <br />
+                        • sistema de buscar por ID ou por nomes
+                        <br />
+                        •Sistema de copiar já configurado com comando pronto. Exemplo: ao copiar “deitar”, será colado automaticamente “/e deitar”.
+                      <p class="pergunta"> <br />— o que é AT</p>   <br />
+                     
+             <p class="mellhorias">obs:</p>É parte do mecanismo da barra de pesquisa: ao pesquisar pelo nome ou ID, a resposta é exibida automaticamente em um modal. Se o AT estiver ativado, o modal abre com o resultado da pesquisa.
+                        <br />
+                        •ainda tem mais por vim futuramente.
+                        
+                        <p class="mellhorias"><br>#EM_BUSCA_DA_MELHORIA &#128516</p>
+                        <br />
+                     <p class="pergunta">espero que gosta, da sua opinião no Instagram abaixo &#128071 &#128071</p>   
+                        <br />
+                        <a href="https://www.instagram.com/teddy_machado007?igsh=MmtjdTF4ZGlqdjVl" target="_blank" class="un-social-link">
+    <div class="un-social-card">
+        <p class="un-social-text">
+            <i class="fab fa-instagram"></i> @teddymachado07
+        </p>
+    </div>
+</a>
 
-                            <li class="un-list-item un-type-new">
-                                <strong class="un-item-title">Novo contador</strong>
-                                <span class="un-item-desc">Novo sistema que mostra quantos comandos existem na aba de navegação</span>
-                            </li>
-
-                            <li class="un-list-item un-type-new">
-                                <strong class="un-item-title">Nova UI</strong>
-                                <span class="un-item-desc">Novo layout com ajustes na interface</span>
-                            </li>
-
-                            <li class="un-list-item un-type-new">
-                                <strong class="un-item-title">Novos comandos</strong>
-                                <span class="un-item-desc">Mais de 20 comandos novos</span>
                             </li>
                         </ul>
                     </div>
@@ -111,6 +129,8 @@
                 </div>
             </div>
         </div>
+        <button onclick="openUpdateModal()">Ver Atualizações</button>
+
     </aside>
 
     <nav class="nav-tabs">
@@ -122,6 +142,8 @@
                 <option value="alpha">A - Z</option>
                 <option value="recent">Recentes</option>
             </select>
+            <button onclick="toggleAutoModal()">AT</button>
+
         </div>
 
         <button id="clearAllBtn" class="clear-all-btn" onclick="clearAllFavorites()">
@@ -161,9 +183,9 @@
             </button>
         </div>
     </div>
-
+<!---configuração de scc---->
+<script src="atualizacao.js"></script>
     <script src="bancodedado.js"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
