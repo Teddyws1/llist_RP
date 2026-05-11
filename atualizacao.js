@@ -35,7 +35,7 @@ function openUpdateModal() {
             </ul>
 
             <button class="update-btn-ok" onclick="document.getElementById('updateModal').remove()">OK</button>
-                        <p class="un-header-subtitle">2.6.7 versão atual</p>
+                        <p class="un-header-subtitle">3.7.8 versão atual</p>
         </div>
         
     `;
