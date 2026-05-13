@@ -254,7 +254,7 @@ const CONFIG_PROTECAO = {
     bloquearCliqueDireito: false,
     bloquearTeclado: false,
     //seleção com dedo✓
-    bloquearSelecao: false,1
+    bloquearSelecao: false,
 };
 
 (function() {
