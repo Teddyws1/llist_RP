@@ -263,7 +263,7 @@ const CONFIG_PROTECAO = {
 })();
 
 document.addEventListener('touchstart', (e) => {
-    if (e.touches.length > 1) e.preventDefault();
+    if (e.touches.length > ) e.preventDefault();
 }, { passive: false });
 
 document.addEventListener('wheel', (e) => {
