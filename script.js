@@ -246,12 +246,15 @@ if ('serviceWorker' in navigator) {
 
 
 /* =========================================================
-   [INÍCIO] - SEGURANÇA E PROTEÇÃO
-   ========================================================= */
+   [INÍCIO] -SRP SEGURANÇA E PROTEÇÃO
+   ================================
+   falso:false : verdadeiro: true 
+   ========================= */
 const CONFIG_PROTECAO = {
     bloquearCliqueDireito: false,
     bloquearTeclado: false,
-    bloquearSelecao: false
+    //seleção com dedo✓
+    bloquearSelecao: false,
 };
 
 (function() {
@@ -324,10 +327,6 @@ document.querySelectorAll('*').forEach(el => {
     el.style.outline = 'none';
     el.style.webkitTapHighlightColor = 'transparent';
 });
-/* =========================================================
-   [FIM] - ATUALIZAÇÃO DO SISTEMA (MODAIS EXTRAS)
-   ========================================================= */
-
 
 /* =========================================================
    [INÍCIO] - SISTEMA DE BLOQUEIO DE SCROLL
@@ -361,8 +360,20 @@ gerenciarScrollBody();
 /* =========================================================
   novo aqui 
    ========================================================= */
+const meuCard = document.getElementById('card-info-versao');
+const conteudo = document.getElementById('conteudo-extra');
+const btnTexto = document.getElementById('btn-toggle');
 
-
+meuCard.addEventListener('click', function() {
+    // Verifica se o conteúdo está escondido
+    if (conteudo.style.display === "none") {
+        conteudo.style.display = "block";
+        btnTexto.textContent = "FECHAR";
+    } else {
+        conteudo.style.display = "none";
+        btnTexto.textContent = "VER MAIS";
+    }
+});
 
 
 /* =========================================================

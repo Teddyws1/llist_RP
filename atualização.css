@@ -4,22 +4,24 @@
 /*root geral*/
 :root{
     ---unheadersubtitle:#05FF07;
-    ---title:#FFFFFF;
-    ---liss:#fff;
-   ---update-btn-ok:linear-gradient(to right, #000000, #07201F);
+    ---title:#C0F713;
+   ---texodolis:#fff;
+   ---update-btn-ok:#C0F713;
+   ---update-btn-ok-text: #000000;
+   ---border-btn-ok:#fff;
    ---update-listlii:#28A745;
   ---update-cardfundo: #1a1d29;
 ---ovveerlay:#000000AD;
 }
    /*root claro */
    .light-theme {
-          ---custom-alert-btn:#000000;
+       ---border-btn-ok:#FFFFFF;
+      ---custom-alert-btn:#000000;
    ---custom-alert-btn:#000000;
-   ---title:#000000;
-     ---liss:#000000;
-   ---update-btn-ok:#FFFFFF;
+   ---title:#C1FF00;
+     ---texodolis:#000000;
       ---update-listlii:#08A02A;
-        ---update-cardfundo:linear-gradient(to right, #CECECE, #CECECE);
+        ---update-cardfundo:linear-gradient(to right, #979797, #979797);
             ---unheadersubtitle:#000000;
         ---ovveerlay:#000000D4;
    }
@@ -69,7 +71,7 @@
     gap: 12px;
     padding: 12px 0;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    color: var(---liss);
+    color: var(---texodolis);
     font-size: .95rem;
     font-weight: 600;
 }
@@ -82,13 +84,14 @@
 .update-btn-ok {
     width: 100%;
     background: var(---update-btn-ok);
-    color: var(---text);
+    color: var(---update-btn-ok-text);
     border: none;
     padding: 14px;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
     transition: filter 0.2s;
+    border: 1px solid var(---border-btn-ok);
 }
 
 .update-btn-ok:hover {

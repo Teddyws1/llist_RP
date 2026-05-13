@@ -3,13 +3,12 @@
    ========================================================= */
 function openUpdateModal() {
     const updates = [
-        "ajustes nos botões e interface",
-        "Sistema de busca otimizado",
-        "sistema de modal automático que mostra resultado de busca",
-        "sistema de desativar/ativar AT",
-        "novas aba de sobre atualização",
-        
-    ];
+        "ajustes nos botões",
+"melhorias nas cores da interface",
+"otimização dos temas claro e escuro",
+"ativação do sistema anti-cópia e anti-seleção",
+"novo sistema que mostra a data da próximas atualização.","Com sistema “acordeão” de “ver mais”."
+        ];
 
     const upModal = document.createElement('div');
     upModal.className = 'custom-alert-overlay'; // Este é o fundo escuro
@@ -35,7 +34,7 @@ function openUpdateModal() {
             </ul>
 
             <button class="update-btn-ok" onclick="document.getElementById('updateModal').remove()">OK</button>
-                        <p class="un-header-subtitle">3.7.8 versão atual</p>
+              
         </div>
         
     `;
