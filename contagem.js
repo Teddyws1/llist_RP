@@ -3,7 +3,7 @@
    ========================================================= */
 
 // CONTROLE DO SISTEMA: para desativar usa:"false" e para ativar usa: "true",
-let sistemaContagemAtivo = true; 
+let sistemaContagemAtivo = false; 
 
 let atualizacaoInterval;
 
