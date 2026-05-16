@@ -3,14 +3,14 @@
    ========================================================= */
 
 // CONTROLE DO SISTEMA: para desativar usa:"false" e para ativar usa: "true",
-let sistemaContagemAtivo = false; 
+let sistemaContagemAtivo = true; 
 
 let atualizacaoInterval;
 
 document.addEventListener("DOMContentLoaded", () => {
     const progressPercentage = document.getElementById("progress-percentage");
     let progress = 0;
-    const tempoPorPercentual = 130; // 13 segundos no total
+    const tempoPorPercentual = 13000; // 13 segundos no total
 
     // Se o sistema estiver definido como false logo de início, o código nem começa a contar
     if (!sistemaContagemAtivo) {
