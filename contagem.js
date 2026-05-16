@@ -10,8 +10,8 @@ let atualizacaoInterval;
 document.addEventListener("DOMContentLoaded", () => {
     const progressPercentage = document.getElementById("progress-percentage");
     
-    // Ajustado para exatamente 5 minutos no total (5 minutos * 60 segundos * 1000ms = 120000ms)
-    const tempoTotalContagem = 150000; 
+    // Ajustado para exatamente 7 minutos no total (7 * 60 * 1000 = 420000ms)
+    const tempoTotalContagem = 420000; 
 
     // Se o sistema estiver definido como false logo de início, o código nem começa a contar
     if (!sistemaContagemAtivo) {
