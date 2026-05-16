@@ -10,8 +10,8 @@ let atualizacaoInterval;
 document.addEventListener("DOMContentLoaded", () => {
     const progressPercentage = document.getElementById("progress-percentage");
     
-    // Ajustado para 29 segundos no total (29000 milissegundos)
-    const tempoTotalContagem = 29000; 
+    // Ajustado para exatamente 5 minutos no total (5 minutos * 60 segundos * 1000ms = 120000ms)
+    const tempoTotalContagem = 150000; 
 
     // Se o sistema estiver definido como false logo de início, o código nem começa a contar
     if (!sistemaContagemAtivo) {
@@ -19,12 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return; 
     }
 
-    // SISTEMA DE MEMÓRIA (localStorage): Salva o momento inicial para não resetar ao reiniciar a página
+    // SISTEMA DE MEMÓRIA: Recupera o início exato. Se não existir, aí sim cria um novo.
     let inicioContagem = localStorage.getItem("inicioContagemRegressiva");
     const agora = Date.now();
 
     if (!inicioContagem) {
-        // Se for a primeira vez carregando, define o início como AGORA
         localStorage.setItem("inicioContagemRegressiva", agora);
         inicioContagem = agora;
     }
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const tempoPassado = Date.now() - parseInt(inicioContagem);
         
-        // INVERTIDO AQUI: Calcula a porcentagem que já passou (Crescente: de 0% até 100%)
+        // Calcula a porcentagem que já passou com base no relógio do sistema
         let porcentagemPassada = Math.floor((tempoPassado / tempoTotalContagem) * 100);
 
         // Garante que a porcentagem fique entre 0 e 100
@@ -59,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Roda a primeira checagem imediatamente ao carregar a página
+    // Roda a primeira checagem imediatamente ao carregar a página para o número não iniciar em 0% por erro visual
     atualizarContagemCrescente();
 
-    // Atualiza a cada 100ms para uma subida fluida e precisa
+    // Atualiza a cada 100ms para manter o número subindo de onde parou de forma fluida
     atualizacaoInterval = setInterval(atualizarContagemCrescente, 100);
 });
