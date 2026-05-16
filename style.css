@@ -1,121 +1,5 @@
-/* ============================================================
-   01. VARIÁVEIS E TEMAS (Design /* ============================================================
-   01. VARIÁVEIS E TEMAS (Design System)
-   ============================================================ */
-   /*tema escuro*/
-:root {
-    /* Cores Gerais */
-    --vermais: #0074FF;
-    --data:#0074FF;
-    --horas: #0074FF;
-    ---rp-title: linear-gradient(180deg, #FFFFFF 0%, #0074FF 100%);
-        --glow-color: #3b82f6;
-   --bg-glasstitulo: rgba(15, 23, 42, 0.8);
----border-btn-fav:#FFFFFF;
-    --perguntaa: #D3FF49;
-    --pergunta: #C0F713;
-    ---obs: #00e5ff;
-    ---custom-alert-btn:#1A1E2F;
-    ---ion-icontrigger:#ff9800;
-      ---triggeafter:linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 229, 255, 1),
-        transparent
-    );
-    --accentAV: #FFFFFF;
-    ---modalfundo:#000000B3;
-    --un-surfface:#0F111A;
-    ---un-modal-footer: #C0F713;
-    ---un-hover:#FFFFFF;
-    --un-accent: #C0F71382;
-    ---un-modal-footer-color: #000000;
-    ---border-btn-footer: #fff;
-    --bg: #0f111a; 
-    --surface: #1a1d29;
-    --primary: #00ABFF;
-    --accent: #00e5ff;
-    --text: #ffffff;
-    --colorbtn-fav: #fff;
-    --text-dim: #FFFFFF;
-    --color-dim: #fff;
-    --border: #FFFFFF0D;
-    --text-dim-texbot: linear-gradient(to right, #00ABFF , #00ABFF);
-    --text-dim-texbtex: #FF1818;
-    --danger: #FF0000;
-    --success: #23B107;
-    --glass: #0F111AE6;
-    --contagen: #1A1E2F;
-    --cortextocontagen: #fff;
----border-bottom: #FFFFFF0D;
-    /*outros root*/
-    
-    /* Variáveis de Layout (O sistema) */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 15px;
-    --radius-xl: 25px;
-    --gap-main: 20px;
-    --shadow-soft: 0 4px 15px rgba(0,0,0,0.1);
-    --shadow-heavy: 0 10px 25px rgba(0,0,0,0.1);
-    --transition-fast: 0.2s ease;
-    --transition-standard: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
-/*tema claro*/
-.light-theme {
-       --vermais: #000000;
-      --data:#000000;
-       --horas: #000000;
-   --bg-glasstitulo: rgba(213, 213, 213, 0.44);
-      ---rp-title: linear-gradient(180deg, #FFFFFF 0%, #008CFF99 50%);
-    ---border-btn-fav:#000000;
-       --perguntaa: #000000;
-        --pergunta: #ff9800;
-      ---obs: #000000;
-        --un-bg: #FFFFFF;
-    --un-surface: #1a1d29;
-    --un-primary: linear-gradient(to right, #000000, #07201F);
-    --un-accent: #ff9800;
-    --un-text: #FFFFFF;
-    ---un-poscorlor:#000000;
-    --un-text-dim: #7C8198;
-    --un-border: rgba(255, 255, 255, 0.08);
-    ---border-bottom: #00000036;
-    ---ion-icontrigger:#ff9800;
-    --un-surfface:#E1E1E1;
-    --bg: #f4f4f9;
-    --surface: #FFFFFF;
-    --primary: #009AFF;
-    --accent: #000000;
-    --btnbtnfav:#FFFFFF;
-    --text: #121214;
-    --text-dim: #636366;
-    --colorbtn:#FFFFFF;
-    --border: #9C9C9C85;
-    --glass: rgba(255, 255, 255, 0.9);
-    --contagen: #009AFF;
-    --un-surface: #fff;
-    --un-text: #000000;
-    --un-accent: #B56E05;
-       ---un-hover:#FFFFFF;
-    ---un-modal-footer: #ff9800;
-    ---border-btn-footer:#000000;
-    --text-dim-texbot: #000000;
-      ---custom-alert-btn:#000000;
-  ---triggeafter:linear-gradient(
-        90deg,
-        transparent,
-        rgba(0, 0, 0, 1),
-        transparent
-    );
-    
- --cortextocontagen: #000000;
-}
 
-/* ============================================================
-   02. RESET E ESTILOS GERAIS
-   ============================================================ */
 * { 
     margin: 0; 
     padding: 0; 
@@ -185,7 +69,6 @@ header {
 .system-msg { border-left: 3px solid var(--primary); background: rgba(61, 90, 254, 0.05); }
 
 
-
 .vermais{
   font-size: 0.7rem;
   color: var(--vermais);
@@ -206,20 +89,41 @@ header {
 }
 .tab-btn.active { background: var(--primary); border-color: var(--primary); }
 
-.sort-wrapper { position: relative; display: flex; align-items: center; margin-left: 5px; }
-.sort-select { 
-    appearance: none; -webkit-appearance: none;
-    background: var(--surface); color: var(--text); border: 1px solid var(--border); 
-    padding: 10px 32px 10px 15px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; 
-    outline: none; cursor: pointer; min-height: 44px;
-}
-.sort-wrapper::after {
-    content: '\f0dc'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
-    position: absolute; right: 12px; font-size: 0.7rem; color: var(--primary); pointer-events: none;
+.clear-all-btn {
+    background: var(--surface);
+    color: var(--text);
+    padding: 10px 18px;
+    min-height: 44px;
+    width: auto;
+    
+    /* Força o botão a colar no anterior anulando o gap do container pai */
+    margin: 5px 5px 5px -10px;
+    
+    /* Mantém o design idêntico: todas as bordas e cantos arredondados normais */
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    display: none;
+    /* Mude para inline-flex no JS */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-.clear-all-btn { background: var(--danger); color: white; border: none; padding: 10px 15px; border-radius: 10px; font-weight: 700; cursor: pointer; display: none; font-size: 0.8rem; margin-left: auto; white-space: nowrap; }
+/* Ícone Azul */
+.clear-all-btn i {
+    color: var(--primary);
+    font-size: 1rem;
+}
 
+/* Efeito Hover original */
+.clear-all-btn:hover {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
 /* ============================================================
    06. GRID DE CONTEÚDO E CARDS
    ============================================================ */
@@ -444,7 +348,7 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 
 /* Card Principal */
 .un-modal-card {
-    background: var(--un-surfface);
+    background: var(---modal-card);
     border: 1px solid var(--un-border);
     border-radius: 16px;
     width: 100%;
@@ -727,8 +631,8 @@ button[onclick="toggleAutoModal()"].active {
    ========================================================= */
 
 button[onclick="openUpdateModal()"] {
-    background: linear-gradient(135deg, #6200ee, #9c27b0); /* Degradê roxo profissional */
-    color: #fff;
+    background: var(---openUpdateModal);
+    color: var(---openUpdateModalcolor);
     border: none;
     padding: 12px 24px;
     font-size: 0.9rem;
@@ -738,10 +642,10 @@ button[onclick="openUpdateModal()"] {
     border-radius: 8px;
     cursor: pointer;
     display: flex;
-    align-items: center;                               
+    align-items: center;          box-shadow: 0 8px 25px var(--sobradoopenmodal);                      
     gap: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(98, 0, 238, 0.3);
+ 
     outline: none;
     position: relative;
     overflow: hidden;
@@ -750,14 +654,14 @@ button[onclick="openUpdateModal()"] {
 /* Efeito de Hover (Passar o mouse) */
 button[onclick="openUpdateModal()"]:hover {
     transform: translateY(-3px); /* Sobe levemente */
-    box-shadow: 0 8px 25px rgba(98, 0, 238, 0.5); /* Brilho aumenta */
+    box-shadow: 0 8px 25px var(--openUpdateModalboxshodow); /* Brilho aumenta */
     filter: brightness(1.1);
 }
 
 /* Efeito de Clique */
 button[onclick="openUpdateModal()"]:active {
     transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(98, 0, 238, 0.3);
+    box-shadow: 0 2px 10px var(---openUpdateModalshadow);
 }
 
 /* Adicionando um ícone de foguete via CSS (opcional se você não usar FontAwesome) */
@@ -830,9 +734,6 @@ button[onclick="openUpdateModal()"]:hover::after {
     transform: scale(1.2);    
 }
 
-/* =========================================================
-instagram do ul li
-   ========================================================= */
 /* ============================================================
    CARD DE REDE SOCIAL (INSTAGRAM)
    ============================================================ */
@@ -859,7 +760,7 @@ instagram do ul li
 /* Efeito Hover - Dá um leve brilho e levanta o card */
 .un-social-card:hover {
     transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(23, 23, 23, 0.04);
     box-shadow: 0 0 15px var(--accent);
     border-color: var(--text);
 }
@@ -950,6 +851,350 @@ background: var(---rp-title);
     background: var(--glow-color);
     box-shadow: 0 0 12px var(--glow-color);
     border-radius: 2px;
+}
+
+.rodape {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 12px;
+    color: #797979;
+    font-weight: 800;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+}
+.card:hover span {
+    color: var(--pergunta);         /* O texto assume a cor cítrica */
+    border-left-width: 5px;         /* Aumenta a espessura da borda lateral */
+    background-color: var(--un-surfface); 
+
+}
+/*título das divs*/
+.item{
+color: var(--itemdivs);
+}
+/* Estilizando o SPAN (O ID) */
+.card span {
+    display: inline-flex;          /* Melhor alinhamento vertical de texto */
+    align-items: center;
+    gap: 6px;                      /* Espaço caso você adicione um mini ícone depois */
+    
+    /* Cores e Fundo */
+    color: var(--textID);
+    background-color: var(--FundoID) ;
+    background-image: var(--cordodefundoid); /* Leve gradiente para não ficar "chapado" */
+    
+    /* Dimensões e Bordas */
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
+    font-family: 'Inter', 'Courier New', monospace; /* Fonte mais limpa com fallback code */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;        /* Melhora a leitura em textos pequenos */
+    
+    /* Borda e Efeito Glow */
+    border: 1px solid rgba(255, 255, 255, 0.08); 
+    border-left: 3px solid var( --borda-ID);
+    box-shadow: 
+        2px 2px 10px rgba(0, 0, 0, 0.2),            /* Sombra externa */
+        inset 0 0 8px rgba(192, 247, 19, 0.1);    /* Glow interno sutil da cor cítrica */
+
+    /* Interação */
+    transition: var(--transition-standard);
+    cursor: help;                  /* Indica que é uma informação técnica */
+    user-select: none;             /* Evita selecionar o ID sem querer ao clicar no card */
+}
+
+/* Estado de Destaque quando o Card recebe Hover */
+.card:hover span {
+    color: var(--borda-hover-ID);         /* O texto assume a cor cítrica */
+    border-left-width: 5px;         /* Aumenta a espessura da borda lateral */
+    background-color: var(--un-surfface); 
+
+}
+
+
+/* Seleciona o span que vem exatamente após o strong dentro do card */
+.card strong.item + span {
+    color: var(--primary); /* Usa o azul #00ABFF do seu */
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: block;        /* Faz o ID ficar na linha de baixo */
+    margin-top: 5px;
+    background: var(--FundoID); /* Usa aquele fundo azul translúcido */
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--borda-ID); /* Borda azul definida no root */
+    width: fit-content;    /* Ajusta o fundo ao tamanho do texto */
+    margin-left: auto;     /* Centraliza se o card for flex/center */
+    margin-right: auto;
+    transition: all var(--transition-fast);
+}
+
+/* Efeito de destaque quando passa o mouse no card */
+.card:hover strong.item + span {
+    color: var(--text);
+    border-color: var(--borda-hover-ID);
+    box-shadow: 0 0 8px var(--glow-color);
+    background: var(--primary);
+}
+
+
+/* =========================================================
+icones de navegação 
+   ========================================================= */
+   
+   /* Estilo base do botão de aba */
+.tab-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all var(--transition-standard);
+    font-weight: 600;
+}
+
+/* Estilização específica do ícone */
+.tab-btn ion-icon {
+    font-size: 1.2rem;
+    color: var(--primary); /* Azul #00ABFF */
+    transition: transform var(--transition-fast);
+}
+
+/* Efeito quando a aba está ativa ou com mouse em cima */
+.tab-btn:hover, 
+.tab-btn.active {
+    background: var(--glass);
+    border-color: var(--primary);
+}
+
+/* Animação suave no ícone ao passar o mouse */
+.tab-btn:hover ion-icon {
+    transform: scale(1.1);
+    color: var(--accent); /* Muda para ciano */
+}
+
+/* Se o botão for o de favoritos específico, podemos usar a cor trigger */
+#tabFav:hover ion-icon {
+    color: var(---ion-icon-favorito); /* Cor laranja/âmbar se preferir destaque */
+}
+
+/*select opções*/
+/* Container do botão */
+.sort-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px; /* Deixa quadrado como os outros botões */
+}
+
+/* Ícone de Funil centralizado */
+.sort-icon {
+    position: absolute;
+    font-size: 1.2rem;
+    color: var(--accent); /* Cor ciana brilhante */
+    pointer-events: none; /* Crucial: o clique passa pelo ícone */
+    z-index: 5;
+}
+
+.sort-select {
+    width: 100%;
+    height: 100%;
+    background-color: var(--surface);
+    border: 1px solid var(--border); 
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    outline: none;
+    transition: all var(--transition-standard);
+    
+    /* SOLUÇÃO PARA O BUG: */
+    color: transparent; /* Faz o texto "A-Z" sumir do botão */
+    text-indent: -999px; /* Empurra o texto para fora da visão */
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+/* Garante que o texto volte a aparecer apenas dentro do menu quando abrir */
+.sort-select option {
+    color: white !important;
+    background-color: #121418;
+    text-indent: 0; /* Reseta o recuo para o texto aparecer na lista */
+    font-weight: 600;
+    
+}
+
+/* Efeito de Hover */
+.sort-wrapper:hover .sort-select {
+    background-color: var(--glass);
+    }
+/* =========================================================
+css do modal de limpa  histórico 
+   ========================================================= */
+   /* --- MODAL DE AVISO (LIMPAR TUDO) --- */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.custom-modal-box {
+    background: var(---modal-box);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    color: var(---titulo-medio);
+    max-width: 320px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.custom-modal-icon { font-size: 2.5rem; color: #ff9800; margin-bottom: 10px; }
+.custom-modal-title { margin-bottom: 10px;
+color: var(---apagafavorito);
+font-weight: bold; }
+.custom-modal-text { color: var(---titulo); 
+font-size: 14px; margin-bottom: 20px; 
+}
+
+.custom-modal-buttons { display: flex; gap: 10px; }
+.custom-modal-buttons button {
+    flex: 1; padding: 10px; border: none; border-radius: 8px;
+    font-weight: bold; cursor: pointer; transition: 0.2s;
+}
+
+.btn-modal-cancel { background: #eee; 
+color: #E41313; }
+.btn-modal-confirm { background: var(--danger,); color: #FFFFFF; }
+
+/* --- BOTÃO DE EXCLUIR INDIVIDUAL (DENTRO DAS DIVS) --- */
+.delete-single-btn {
+    background: transparent;
+    color: #ccc;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-single-btn:hover {
+    color: var(--danger,);
+    transform: scale(1.2);
+}
+
+/* --- ANIMAÇÃO DE EXCLUSÃO DA DIV --- */
+.item-exit-active {
+    opacity: 0 !important;
+    transform: translateX(30px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Estilo para garantir que o conteúdo e o botão fiquem alinhados */
+.favorite-item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Adicione aqui o seu estilo de card já existente */
+}
+
+/* ============================================================
+   ESTILO DO BOTÃO AUTO-LIMPAR (PADRÃO NAV-TABS / CLEAR-ALL)
+   ============================================================ */
+
+button[onclick="toggleAutoClear()"] {
+    /* Cores baseadas no design do sistema (Tema Escuro Padrão) */
+    background: var(--surface); /* Fundo #1a1d29 */
+    color: var(--text);        /* Texto Branco */
+    
+    /* Espaçamento e Dimensionamento */
+    padding: 10px 18px;
+    min-height: 44px;
+    width: auto;               /* Garante que se adapte ao tamanho do texto */
+    margin: 5px;
+    
+    /* Bordas e Tipografia (Idêntico ao padrão das abas) */
+    border: 1px solid var(--border);
+    border-radius: 10px;       /* Arredondamento suave idêntico ao modelo */
+    font-size: 0.85rem;
+    font-weight: 600;          /* Texto levemente em negrito */
+    white-space: nowrap;
+    
+    /* Alinhamento e Interação */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    
+    /* Respeita o reset global de transição */
+    transition: none !important; 
+}
+
+/* Efeito de Hover (Destaque ao passar o mouse) */
+button[onclick="toggleAutoClear()"]:hover {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Estado "Ativo" (Para quando a função estiver ligada/selecionada via JS se necessário) */
+button[onclick="toggleAutoClear()"].active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Ajuste e Compatibilidade para o Tema Claro (.light-theme) */
+.light-theme button[onclick="toggleAutoClear()"] {
+    background: #FFFFFF;
+    color: #121214;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-theme button[onclick="toggleAutoClear()"]:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: var(--accent);
+}
+
+/* ============================================================
+sistema de contagem regressiva
+   ============================================================ */
+#progress-percentage {
+    color: var(---estaveltext);
+   font-weight: 600;
+    font-size: 0.90rem;
+    margin-left: 6px;
+    display: inline-block;
+    vertical-align: middle
+    
+}
+
+/* Esconde suavemente após os 13 segundos */
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+}
+.status-estavel{
+    color: var(---estaveltext);
+   font-weight: 600;
+   
 }
 
 /* FIM DO ARQUIVO CSS */

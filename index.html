@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>llist_RP 2026</title>
+    <title>llist_RP Beta</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="atualização.css">
-
+    <link rel="stylesheet" href="roots.css">
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -50,8 +49,6 @@
     <span>llist_RP</span>
   </h3>
 </div>
-
-          
             <button class="icon-btn" onclick="toggleSidebar()">&times;</button>
         </div>
 
@@ -60,22 +57,22 @@
 
 <div id="card-info-versao" class="info-card system-msg">
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <p>Versão: <b>3.8.0 Beta</b></p>
+        <p>Versão: <b>3.9.0 Beta</b></p>
         <span class="vermais">VER MAIS</span>
     </div>
     
     <!-- Este grupo começa escondido -->
     <div id="conteudo-extra" style="display: none; margin-top: 10px;">
         <br />
-        <p>Status: <b style="color:var(--success)">processo de atualização agora</b></p>
+Status: <span class="status-estavel">estável</span> <span id="progress-percentage">0%</span>
+
         <br/>
-        <p>Data prevista para atualização: <b style="color:var(--data)" class="data">16/05/2026</b></p>
+        <p>Data prevista para atualização: <b style="color:var(--data)" class="data">N/N</b></p>
         <br />
         <p>Última atualização: 
-        <b style="color:var(--horas)" class="horas">13/05/2026 às 10:52</b></p>
+        <b style="color:var(--horas)" class="horas">16/05/2026 às 15:50</b></p>
     </div>
 </div>
-
 
             <p class="aaviso">
                 OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
@@ -150,21 +147,28 @@
             </div>
         </div>
         <button onclick="openUpdateModal()">Ver Atualizações</button>
+
+<!----roda pé ---->
+<footer class="rodape">
+&copy;2026 Desenvolvido por Teddy Machado
+</footer>
     </aside>
 
     <nav class="nav-tabs">
-        <button class="tab-btn active" id="tabAll" onclick="switchTab('all')">Início</button>
-        <button class="tab-btn" id="tabFav" onclick="switchTab('fav')">Favoritos</button>
+        <button class="tab-btn active" id="tabAll" onclick="switchTab('all')"><ion-icon name="home-outline"></ion-icon></button>
+        <button class="tab-btn" id="tabFav" onclick="switchTab('fav')"><ion-icon name="bookmarks-outline"></ion-icon></button>
+<div class="sort-wrapper">
+    <ion-icon name="funnel-outline" class="sort-icon"></ion-icon>
+    <select id="sortOption" class="sort-select" onchange="renderItems()">
+        <option value="alpha">A - Z</option>
+        <option value="recent">Recentes</option>
+    </select>
+</div>
 
-        <div class="sort-wrapper">
-            <select id="sortOption" class="sort-select" onchange="renderItems()">
-                <option value="alpha">A - Z</option>
-                <option value="recent">Recentes</option>
-            </select>
-            <button onclick="toggleAutoModal()">AT</button>
-
+      <button class="tab-btn auto-modal-btn" onclick="toggleAutoModal()">
+    <ion-icon name="browsers-outline"></ion-icon>
+</button>
         </div>
-
         <button id="clearAllBtn" class="clear-all-btn" onclick="clearAllFavorites()">
             <i class="fas fa-trash-alt"></i>
         </button>
@@ -206,5 +210,6 @@
 <script src="atualizacao.js"></script>
     <script src="bancodedado.js"></script>
     <script src="script.js"></script>
+    <script src="contagem.js"></script>
 </body>
 </html>

@@ -22,17 +22,23 @@ let autoOpenModal = JSON.parse(localStorage.getItem('autoOpenModal')) ?? true;
 /* =========================================================
    [INÍCIO] - FUNÇÃO DE RENDERIZAÇÃO (NÚCLEO DO SISTEMA)
    ========================================================= */
+let searchTimer; // Mantido fora para evitar bugs no temporizador de digitação
+let clearSearchTimer; // APRIMORAMENTO: Controla o timer fixo de inatividade (10 segundos)
+
 function renderItems() {
     const grid = document.getElementById('gridItems');
-    const search = document.getElementById('searchInput').value.toLowerCase();
+    const searchInput = document.getElementById('searchInput'); // Captura a referência do elemento
+    const search = searchInput.value.toLowerCase();
     const sort = document.getElementById('sortOption').value;
     const clearAllBtn = document.getElementById('clearAllBtn');
-    let searchTimer
     
     /* SISTEMA DE BUSCA COM ABERTURA AUTOMÁTICA DE MODAL */
     document.getElementById('searchInput').oninput = function() {
         const valorDigitado = this.value.trim();
         
+        // APRIMORAMENTO: Zera o cronômetro de 10s sempre que o usuário digitar uma nova letra
+        clearTimeout(clearSearchTimer);
+
         if (valorDigitado === "") {
             clearTimeout(searchTimer);
             renderItems();
@@ -44,26 +50,47 @@ function renderItems() {
         searchTimer = setTimeout(() => {
             renderItems();
             
-            if (autoOpenModal) {
+            if (typeof autoOpenModal !== 'undefined' && autoOpenModal) {
                 const itemEncontrado = items.find(i => i.id.toString() === valorDigitado);
                 if (itemEncontrado) {
                     openModal(itemEncontrado.id);
                 }
             }
         }, 200); 
+
+        // APRIMORAMENTO: Agenda a limpeza automática e obrigatória após 10 segundos parado
+        clearSearchTimer = setTimeout(() => {
+            searchInput.value = "";
+            renderItems();
+        }, 10000); // 10000ms = 10 segundos
     };
 
     const contador = document.getElementById('totalContador');
     document.getElementById('clearBtn').style.display = search ? 'block' : 'none';
     
-    let data = currentTab === 'all' ? [...items] : [...favorites];
+    let data = typeof currentTab !== 'undefined' && currentTab === 'fav' ? [...favorites] : [...items];
 
     if(search) {
-        data = data.filter(i => 
-            i.name.toLowerCase().includes(search) ||   
-            i.id.toString() === search ||              
-            i.id.toString().includes(search)           
-        );
+        // NOVO SISTEMA: Se a pesquisa for apenas números, filtra o ID exato
+        const isOnlyNumber = /^\d+$/.test(search); 
+        
+        if (isOnlyNumber) {
+            data = data.filter(i => i.id.toString() === search);
+        } else {
+            // Tratamento do comando /e se o usuário utilizar
+            let searchPattern = search;
+            if (search.startsWith('/e ')) {
+                searchPattern = search.substring(3).trim();
+            } else if (search.startsWith('/e')) {
+                searchPattern = search.substring(2).trim();
+            }
+
+            // Filtra trazendo APENAS os itens cujos nomes começam com o termo pesquisado
+            data = data.filter(i => 
+                i.name.toLowerCase().startsWith(searchPattern) ||   
+                i.id.toString().includes(search)           
+            );
+        }
     }
 
     if(sort === 'alpha') {
@@ -76,16 +103,19 @@ function renderItems() {
         contador.innerText = data.length;
     }
 
-    clearAllBtn.style.display = (currentTab === 'fav' && favorites.length > 0) ? 'block' : 'none';
+    if (clearAllBtn) {
+        clearAllBtn.style.display = (typeof currentTab !== 'undefined' && currentTab === 'fav' && favorites.length > 0) ? 'block' : 'none';
+    }
 
+    // Renderiza os cards exibindo o NOME COMPLETO normalmente (Sem cards extras de controle)
     grid.innerHTML = data.map(item => `
         <div class="card" onclick="openModal(${item.id})">
-            ${currentTab === 'fav' ? `<i class="fas fa-trash-can delete-fav" onclick="event.stopPropagation(); removeFavorite(${item.id})"></i>` : ''}
-            <strong>${item.name}</strong>
-            <span>ID: ${item.id}</span>
+            <strong class="item">${item.name}</strong>
+            <span>id: ${item.id}</span>
         </div>
     `).join('');
 }
+
 /* =========================================================
    [FIM] - FUNÇÃO DE RENDERIZAÇÃO
    ========================================================= */
@@ -149,18 +179,41 @@ function executarTrocaModal() {
 /* =========================================================
    [INÍCIO] - GERENCIAMENTO DE FAVORITOS E MODAIS
    ========================================================= */
+/* --- SEU JS ORIGINAL APRIMORADO --- */
+
 function clearAllFavorites() {
-    if(confirm("Deseja limpar todos os favoritos?")) {
-        favorites = [];
-        localStorage.setItem('teddyFavs', JSON.stringify(favorites));
-        renderItems();
+    // Aprimorado para abrir o modal estilizado em vez do confirm() nativo
+    const modal = document.getElementById('confirmModal');
+    if (modal) {
+        modal.style.display = 'flex';
+    } else {
+        // Fallback caso o modal não tenha sido carregado
+        if(confirm("Deseja limpar todos os favoritos?")) {
+            executeClearAll();
+        }
     }
 }
 
-function removeFavorite(id) {
-    favorites = favorites.filter(f => f.id !== id);
+// Função auxiliar para executar a limpeza (usada pelo botão "Sim" do modal)
+function executeClearAll() {
+    favorites = [];
     localStorage.setItem('teddyFavs', JSON.stringify(favorites));
     renderItems();
+    closeModal('confirmModal');
+}
+
+function removeFavorite(id) {
+    // Aprimorado com animação antes de remover
+    const element = document.querySelector(`[data-id="${id}"]`);
+    if (element) {
+        element.classList.add('item-exit-active');
+    }
+
+    setTimeout(() => {
+        favorites = favorites.filter(f => f.id !== id);
+        localStorage.setItem('teddyFavs', JSON.stringify(favorites));
+        renderItems();
+    }, 300);
 }
 
 function openTextModal(title, body) {
@@ -177,7 +230,7 @@ function openModal(id) {
     if (document.getElementById('sidebar').classList.contains('active')) return;
     currentItem = items.find(i => i.id === id);
     document.getElementById('modalTitle').innerText = currentItem.name;
-    document.getElementById('modalID').innerText = `#${currentItem.id}`;
+    document.getElementById('modalID').innerText = `ID: ${currentItem.id}`;
     document.getElementById('itemModal').style.display = 'flex';
     updateFavBtn();
 }
@@ -196,6 +249,28 @@ document.getElementById('favBtn').onclick = () => {
     updateFavBtn();
     renderItems();
 };
+
+/* --- INJEÇÃO AUTOMÁTICA DO MODAL DE AVISO --- */
+(function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!document.getElementById('confirmModal')) {
+            const modalHTML = `
+                <div id="confirmModal" class="custom-modal-overlay" style="display:none;">
+                    <div class="custom-modal-box">
+                        <div class="custom-modal-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h3 class="custom-modal-title">Limpar Tudo?</h3>
+                        <p class="custom-modal-text">Deseja remover todos os favoritos da sua lista?</p>
+                        <div class="custom-modal-buttons">
+                            <button class="btn-modal-cancel" onclick="closeModal('confirmModal')">Cancelar</button>
+                            <button class="btn-modal-confirm" onclick="executeClearAll()">Sim, limpar</button>
+                        </div>
+                    </div>
+                </div>`;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+        }
+    });
+})();
+
 /* =========================================================
    [FIM] - GERENCIAMENTO DE FAVORITOS
    ========================================================= */
@@ -251,8 +326,8 @@ if ('serviceWorker' in navigator) {
    falso:false : verdadeiro: true 
    ========================= */
 const CONFIG_PROTECAO = {
-    bloquearCliqueDireito: false,
-    bloquearTeclado: false,
+    bloquearCliqueDireito: true,
+    bloquearTeclado: true,
     //seleção com dedo✓
     bloquearSelecao: true,
 };
@@ -374,7 +449,6 @@ meuCard.addEventListener('click', function() {
         btnTexto.textContent = "VER MAIS";
     }
 });
-
 
 /* =========================================================
    [FIM] - SISTEMA DE BLOQUEIO DE SCROLL

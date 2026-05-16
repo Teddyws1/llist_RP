@@ -5,7 +5,7 @@
 :root{
     ---unheadersubtitle:#05FF07;
     ---title:#C0F713;
-   ---texodolis:#fff;
+   ---texodolis:#FFFFFF;
    ---update-btn-ok:#C0F713;
    ---update-btn-ok-text: #000000;
    ---border-btn-ok:#fff;
@@ -19,9 +19,9 @@
       ---custom-alert-btn:#000000;
    ---custom-alert-btn:#000000;
    ---title:#C1FF00;
-     ---texodolis:#000000;
+     ---texodolis:#FFFFFF;
       ---update-listlii:#08A02A;
-        ---update-cardfundo:linear-gradient(to right, #979797, #979797);
+        ---update-cardfundo:linear-gradient(to right, #000000D4, #000000D4);
             ---unheadersubtitle:#000000;
         ---ovveerlay:#000000D4;
    }
@@ -151,6 +151,9 @@
 .un-header-subtitle{
     color: var(---unheadersubtitle);
 }
+/* vezes do divs*/
+
+
 /* =========================================================
    [FIM] - ESTILO DO MODAL DE ATUALIZAÇÃO
    ========================================================= */

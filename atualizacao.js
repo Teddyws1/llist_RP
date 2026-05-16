@@ -3,11 +3,7 @@
    ========================================================= */
 function openUpdateModal() {
     const updates = [
-        "ajustes nos botões",
-"melhorias nas cores da interface",
-"otimização dos temas claro e escuro",
-"ativação do sistema anti-cópia e anti-seleção",
-"novo sistema que mostra a data da próximas atualização.","Com sistema “acordeão” de “ver mais”."
+  "melhorias no sistema de pesquisa ", "+20 comando novo ","Otimização de layout","melhoria na interface","melhorias no visual na navegação", "sistema de modal de aviso na parte dos favoritos","Barra de autoexclusão na barra de pesquisa após 20 segundos, caso a pesquisa permaneça na barra.",
         ];
 
     const upModal = document.createElement('div');
