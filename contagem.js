@@ -38,14 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const tempoPassado = Date.now() - parseInt(inicioContagem);
         
-        // Calcula a porcentagem que já passou com base no relógio do sistema
-        let porcentagemPassada = Math.floor((tempoPassado / tempoTotalContagem) * 100);
+        // MELHORIA AQUI: Removido o Math.floor para calcular o valor real com decimais
+        let porcentagemPassada = (tempoPassado / tempoTotalContagem) * 100;
 
         // Garante que a porcentagem fique entre 0 e 100
         if (porcentagemPassada < 0) porcentagemPassada = 0;
         if (porcentagemPassada > 100) porcentagemPassada = 100;
 
-        progressPercentage.textContent = `${porcentagemPassada}%`;
+        // .toFixed(1) adiciona uma casa decimal (ex: 12.4%), deixando o movimento contínuo e suave
+        progressPercentage.textContent = `${porcentagemPassada.toFixed(1)}%`;
 
         // Se o tempo acabou (chegou a 100%), encerra o sistema e limpa a memória
         if (porcentagemPassada >= 100) {
@@ -58,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Roda a primeira checagem imediatamente ao carregar a página para o número não iniciar em 0% por erro visual
+    // Roda a primeira checagem imediatamente ao carregar a página
     atualizarContagemCrescente();
 
-    // Atualiza a cada 100ms para manter o número subindo de onde parou de forma fluida
+    // Mantido em 100ms para que a transição dos décimos de porcentagem seja perfeitamente suave
     atualizacaoInterval = setInterval(atualizarContagemCrescente, 100);
 });
