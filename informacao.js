@@ -1,9 +1,9 @@
 const app = document.getElementById("app");
 
 const systemInfo = {
-  nome: "Ilist_RP Beta",
+  nome: "Ilist_RP Beta 2.0",
   versao: "4.0.0",
-  compilacao: "10/05/2026",
+  compilacao: "22/05/2026",
   plataforma: "Android • Windows • iPhone",
   desenvolvedor: "Teddy Machado",
   tecnologias: "HTML5, CSS3, JavaScript e Ionicons",
