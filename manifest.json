@@ -3,11 +3,11 @@
   "short_name": "llest_RP 2.0",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#04070C",
+  "background_color": "#0000000",
   "theme_color": "#6200ee",
   "icons": [
-    {
-      "src": "https://i.postimg.cc/9FJNrW8M/Picsart-26-05-22-17-41-39-442.png",
+    { 
+      "src": "https://i.postimg.cc/8Pj8LK7H/Picsart-26-05-22-18-13-17-806.jpg",
       "sizes": "512x512",
       "type": "image/png"
     }
