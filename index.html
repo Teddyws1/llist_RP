@@ -1,215 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
+<!-- ========================= INÍCIO HEAD ========================= -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>llist_RP Beta</title>
+    <title>llist_RP</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="atualização.css">
     <link rel="stylesheet" href="roots.css">
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="icon" href="img/favicon.png" type="">
     
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6200ee">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
+<!-- ========================= FIM HEAD ========================= -->
 
 <body>
 
-    <header>
-        <button class="icon-btn" id="menuBtn" onclick="event.stopPropagation(); toggleSidebar();">
-            <i class="fas fa-bars"></i>
-        </button>
+<!-- ========================= INÍCIO HEADER ========================= -->
+<header>
 
-        <div class="search-wrapper">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Buscar comando...">
-            <i class="fas fa-times-circle clear-search" id="clearBtn" onclick="clearSearch()"></i>
-        </div>
+    <!-- Botão abrir menu -->
+    <button class="icon-btn"
+        aria-label="Abrir menu lateral"
+        id="menuBtn"
+        onclick="event.stopPropagation(); toggleSidebar();">
 
-        <button class="icon-btn" onclick="toggleTheme()" id="themeIcon">
-            <i class="fas fa-moon"></i>
-        </button>
-    </header>
+        <i class="fas fa-bars"></i>
+    </button>
 
-    <span id="totalContador">0</span>
+    <!-- Barra pesquisa -->
+    <div class="search-wrapper">
+        <i class="fas fa-search"></i>
 
-    <aside id="sidebar" class="sidebar">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+        <input type="text" id="searchInput" placeholder="Buscar comando...">
+
+        <i class="fas fa-times-circle clear-search" id="clearBtn" onclick="clearSearch()"></i>
+    </div>
+    <!-- Ordenação -->
+    <div class="sort-wrapper">
+
+        <ion-icon name="funnel-outline" class="sort-icon"></ion-icon>
+
+        <select id="sortOption"
+            class="sort-select"
+            aria-label="Ordenar itens"
+            onchange="renderItems()">
+
+            <option value="alpha">A - Z</option>
+            <option value="recent">Recentes</option>
+
+        </select>
+</header>
+<!-- ========================= FIM HEADER ========================= -->
+
+<!-- Contador -->
+<span id="totalContador">0</span>
+
+<!-- ========================= INÍCIO SIDEBAR ========================= -->
+<aside id="sidebar" class="sidebar">
+
+    <!-- Topo sidebar -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
           
-          <div class="rp-badge">
-  <h3 class="rp-title">
-    <span>llist_RP</span>
-  </h3>
-</div>
-            <button class="icon-btn" onclick="toggleSidebar()">&times;</button>
+        <div class="rp-badge">
+            <h3 class="rp-title">
+                <span>llist_RP</span>
+            </h3>
         </div>
 
-        <div class="sidebar-section">
-            <h4>Informações</h4>
+        <!-- Botão fechar sidebar -->
+        <button class="icon-btn"
+            aria-label="Fechar aba lateral"
+            onclick="toggleSidebar()">
 
-<div id="card-info-versao" class="info-card system-msg">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <p>Versão: <b>3.9.1 Beta</b></p>
-        <span class="vermais">VER MAIS</span>
-    </div>
-    
-    <!-- Este grupo começa escondido -->
-    <div id="conteudo-extra" style="display: none; margin-top: 10px;">
-        <br />
-Status: <span class="status-estavel">estável</span> <span id="progress-percentage">0%</span>
-
-        <br/>
-        <p>Data prevista para atualização: <b style="color:var(--data)" class="data">N/N</b></p>
-        <br />
-        <p>Última atualização: 
-        <b style="color:var(--horas)" class="horas">16/05/2026 às 14:23</b></p>
-    </div>
-</div>
-
-            <p class="aaviso">
-                OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
-            </p>
-        </div>
-
-        <div class="sidebar-section">
-            <h4><i class="fas fa-headset"></i> desenvolvedor</h4>
-
-            <a href="https://www.instagram.com/teddy_machado007?igsh=MmtjdTF4ZGlqdjVl" target="_blank" style="text-decoration:none">
-                <div class="info-card" style="border-color:var(--accent)">
-                    <p style="color:var(--text); font-weight:700;">
-                        <i class="fab fa-instagram"></i> @teddymachado07
-                    </p>
-                </div>
-            </a>
-
-    <button id="un-btn-trigger" class="un-open-trigger">
-    <span>sobre sistema</span>
-    <ion-icon name="alert-circle-outline"></ion-icon>
-</button>
-
-            <div id="un-modal-container" class="un-modal-overlay">
-                <div class="un-modal-card">
-                    <button id="un-close-x" class="un-modal-x-btn">&times;</button>
-
-                    <div class="un-modal-header">
-
-                        <h2 class="un-header-title">sobre sistema</h2>
-                    </div>
-
-                    <div class="un-modal-body">
-                        <ul class="un-changelog-list">
-                            <li class="un-list-item un-type-new">
-                                <strong class="un-item-title"></strong>
-                 <span class="un-item-desc">
-<p class="pergunta">— por que o site foi criado?</p><p class="obs">obs:</p>  para facilitar as buscas dos comandos das animação do GTA V RP.
-                            <br />
-                     <p class="pergunta">— qual tipo de mecanismos no site ? </p>  
-                        <br />
-                        • tem sistema de Claro/escuro 
-                        <br />
-                        • sistema de buscar por ID ou por nomes
-                        <br />
-                        •Sistema de copiar já configurado com comando pronto. Exemplo: ao copiar “deitar”, será colado automaticamente “/e deitar”.
-                      <p class="pergunta"> <br />— o que é AT</p>   <br />
-                     
-             <p class="mellhorias">obs:</p>É parte do mecanismo da barra de pesquisa: ao pesquisar pelo nome ou ID, a resposta é exibida automaticamente em um modal. Se o AT estiver ativado, o modal abre com o resultado da pesquisa.
-                        <br />
-                        •ainda tem mais por vim futuramente.
-                        
-                        <p class="mellhorias"><br>#EM_BUSCA_DA_MELHORIA &#128516</p>
-                        <br />
-                     <p class="pergunta">espero que gosta, da sua opinião no Instagram abaixo &#128071 &#128071</p>   
-                        <br />
-                        <a href="https://www.instagram.com/teddy_machado007?igsh=MmtjdTF4ZGlqdjVl" target="_blank" class="un-social-link">
-    <div class="un-social-card">
-        <p class="un-social-text">
-            <i class="fab fa-instagram"></i> @teddymachado07
-        </p>
-    </div>
-</a>
-
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="un-modal-footer">
-                        <button id="un-btn-confirm" class="un-btn-action">Entendido!</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button onclick="openUpdateModal()">Ver Atualizações</button>
-
-<!----roda pé ---->
-<footer class="rodape">
-&copy;2026 Desenvolvido por Teddy Machado
-</footer>
-    </aside>
-
-    <nav class="nav-tabs">
-        <button class="tab-btn active" id="tabAll" onclick="switchTab('all')"><ion-icon name="home-outline"></ion-icon></button>
-        <button class="tab-btn" id="tabFav" onclick="switchTab('fav')"><ion-icon name="bookmarks-outline"></ion-icon></button>
-<div class="sort-wrapper">
-    <ion-icon name="funnel-outline" class="sort-icon"></ion-icon>
-    <select id="sortOption" class="sort-select" onchange="renderItems()">
-        <option value="alpha">A - Z</option>
-        <option value="recent">Recentes</option>
-    </select>
-</div>
-
-      <button class="tab-btn auto-modal-btn" onclick="toggleAutoModal()">
-    <ion-icon name="browsers-outline"></ion-icon>
-</button>
-        </div>
-        <button id="clearAllBtn" class="clear-all-btn" onclick="clearAllFavorites()">
-            <i class="fas fa-trash-alt"></i>
+            &times;
         </button>
-    </nav>
-
-    <main class="container">
-        <div id="gridItems" class="main-grid"></div>
-    </main>
-
-    <div id="itemModal" class="modal-overlay">
-        <div class="modal-card">
-            <h2 id="modalTitle" style="margin-bottom:5px;">Comando</h2>
-            <span id="modalID" style="color:var(--accent); font-weight:900; margin-bottom:15px;">#0</span>
-
-            <div class="btn-group">
-                <button class="btn btn-fav" id="favBtn">Favoritar</button>
-                <button class="btn btn-copy" onclick="copyCommand()">
-                    <i class="fas fa-copy"></i> Copiar
-                </button>
-                <button class="btn btn-close" onclick="closeModal('itemModal')">Fechar</button>
-            </div>
-        </div>
     </div>
 
-    <div id="textModal" class="modal-overlay">
-        <div class="modal-card">
-            <h2 id="textModalTitle" style="color:var(--primary);">Título</h2>
+        <p class="aaviso">
+            OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
+        </p>
 
-            <div class="modal-body-scroll">
-                <p id="textModalBody" style="color:var(--text-dim); line-height:1.6; font-size:0.95rem; white-space:pre-line;"></p>
-            </div>
+    </div>
+    <!-- ========================= 
+   sobre  atualização
+    ========================= -->
+    <!-- Botão atualizações -->
+    <button onclick="openUpdateModal()"
+        aria-label="Ver atualizações do sistema">
 
-            <button class="btn btn-close" onclick="closeModal('textModal')" style="width:100%">
-                Entendido
+        Ver Atualizações
+    </button>
+    <br />
+<a href="informação.html" style="text-decoration: none;">
+    <button class="sobre-sistema-btn">
+        <span style="display: flex; align-items: center;">
+            <ion-icon name="desktop-outline"></ion-icon>
+            SOBRE O SISTEMA
+        </span>
+        <span class="seta">></span>
+    </button>
+</a>
+<br />
+
+  <!-- Botão trocar tema -->
+<div class="theme-box">
+
+    <div class="theme-left">
+
+        <div class="theme-icon">
+            <i class="fas fa-moon"></i>
+        </div>
+
+        <span>Modo escuro</span>
+
+    </div>
+
+    <label class="switch">
+
+        <input type="checkbox" checked onclick="toggleTheme()">
+
+        <span class="slider"></span>
+
+    </label>
+
+</div>
+<!----- [ linha horizontal ] ----->
+<hr class="linha-grudada">
+
+<!-- Rodapé -->
+<footer class="rodape">
+    &copy; Desenvolvido por Teddy Machado 2026
+</footer>
+
+</aside>
+<!-- ========================= FIM SIDEBAR ========================= -->
+
+<!-- ========================= INÍCIO NAV ========================= -->
+<nav class="nav-tabs">
+
+    <!-- Botão todos -->
+    <button class="tab-btn active"
+        id="tabAll"
+        type="button"
+        aria-label="Mostrar todos"
+        onclick="switchTab('all')">
+
+        <ion-icon name="home-outline"></ion-icon>
+    </button>
+
+    <!-- Botão favoritos -->
+    <button class="tab-btn"
+        id="tabFav"
+        type="button"
+        aria-label="Mostrar favoritos"
+        onclick="switchTab('fav')">
+
+        <ion-icon name="bookmarks-outline"></ion-icon>
+    </button>
+    </div>
+
+    <!-- Modal automático -->
+    <button class="tab-btn auto-modal-btn"
+        type="button"
+        aria-label="Abrir modal automático"
+        onclick="toggleAutoModal()">
+
+        <ion-icon name="browsers-outline"></ion-icon>
+
+    </button>
+
+    <!-- Limpar favoritos -->
+    <button id="clearAllBtn"
+        class="clear-all-btn"
+        type="button"
+        aria-label="Limpar favoritos"
+        onclick="clearAllFavorites()">
+
+        <i class="fas fa-trash-alt"></i>
+    </button>
+
+</nav>
+<!-- ========================= FIM NAV ========================= -->
+
+<!-- ========================= INÍCIO MAIN ========================= -->
+<main class="container">
+
+    <div id="gridItems" class="main-grid"></div>
+
+</main>
+<!-- ========================= FIM MAIN ========================= -->
+
+<!-- ========================= INÍCIO MODAL ITEM ========================= -->
+<div id="itemModal" class="modal-overlay">
+
+    <div class="modal-card">
+
+        <h2 id="modalTitle" style="margin-bottom:5px;">Comando</h2>
+
+        <span id="modalID"
+            style="color:var(--accent); font-weight:900; margin-bottom:15px;"># </span>
+
+        <div class="btn-group">
+
+            <!-- Favoritar -->
+            <button class="btn btn-fav"
+                id="favBtn"
+                aria-label="Adicionar aos favoritos">
+
+                Favoritar
+            </button>
+
+            <!-- Copiar -->
+            <button class="btn btn-copy"
+                aria-label="Copiar comando"
+                onclick="copyCommand()">
+
+                <i class="fas fa-copy"></i>
+                Copiar
+            </button>
+
+            <!-- Fechar -->
+            <button class="btn btn-close"
+                aria-label="Fechar modal"
+                onclick="closeModal('itemModal')">
+
+                Fechar
             </button>
         </div>
     </div>
-<!---configuração de scc---->
+</div>
+<!-- ========================= FIM MODAL ITEM ========================= -->
+
+<!-- ========================= INÍCIO MODAL TEXTO ========================= -->
+<div id="textModal" class="modal-overlay">
+
+    <div class="modal-card">
+
+        <h2 id="textModalTitle"
+            style="color:var(--primary);">
+
+            Título
+        </h2>
+
+        <div class="modal-body-scroll">
+
+            <p id="textModalBody"
+                style="color:var(--text-dim); line-height:1.6; font-size:0.95rem; white-space:pre-line;">
+
+            </p>
+
+        </div>
+
+        <!-- Botão fechar -->
+        <button class="btn btn-close"
+            aria-label="Fechar mensagem"
+            onclick="closeModal('textModal')"
+            style="width:100%">
+
+            Entendido
+        </button>
+
+    </div>
+
+</div>
+<!-- ========================= FIM MODAL TEXTO ========================= -->
+
+<!-- ========================= INÍCIO SCRIPTS ========================= -->
 <script src="atualizacao.js"></script>
-    <script src="bancodedado.js"></script>
-    <script src="script.js"></script>
-    <script src="contagem.js"></script>
+<script src="bancodedado.js"></script>
+<script src="script.js"></script>
+<script src="anticopia.js">anticopia</script>
+<!-- ========================= FIM SCRIPTS ========================= -->
+
 </body>
 </html>

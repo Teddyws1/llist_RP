@@ -36,53 +36,245 @@ header {
     position: sticky; top: 0; z-index: 1000; height: 75px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 20px; background: var(--glass); backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border_padrao);
 }
-
+/* ============================================================
+   4qp = barra de search
+   ============================================================ */
 .search-wrapper { flex: 1; margin: 0 15px; position: relative; max-width: 500px; }
 .search-wrapper input {
     width: 100%; padding: 12px 45px; border-radius: 12px;
-    background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text);
+    background: var(--fundo_search); border: 1px solid var(--border_padrao); color: var(--ponteiro_search);
     font-size: 1rem; outline: none; 
 }
-.search-wrapper i.fa-search { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-dim); }
-.clear-search { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-dim); cursor: pointer; display: none; }
-
+.search-wrapper i.fa-search { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--icone_lupa_search); }
+.clear-search { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--botao_x_search); cursor: pointer; display: none; }
+/* ============================================================
+13fw  so dentro sidebar
+   ============================================================ */
 /* ============================================================
    04. NAVEGAÇÃO LATERAL (Sidebar)
    ============================================================ */
+
 .sidebar {
-    position: fixed; left: -320px; top: 0; width: 300px; height: 100%;
-    background: var(--surface); z-index: 1100; transition: none;
-    border-right: 1px solid var(--border); padding: 25px; display: flex; flex-direction: column; overflow-y: auto;
+    position: fixed;
+    left: -320px;
+    top: 0;
+
+    width: 300px;
+    height: 100vh;
+
+    background: var(--fundo_aba);
+
+    z-index: 1100;
+
+    border-right: 1px solid var(--border_padrao);
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+
+    transition: none;
+
+    padding-bottom: 20px;
 }
-.sidebar.active { left: 0; box-shadow: 20px 0 50px rgba(0,0,0,0.5); }
 
-.sidebar-section { margin-bottom: 30px; }
-.sidebar-section h4 { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+.sidebar.active { left: 0; box-shadow: 20px 0 50px var(--shadow_sidebar); }
 
-/*div dos status*/
+/* ============================================================
+ 13fw sidebar 
+   ============================================================ */
+   .icon-btn{
+    width:48px;
+    height:48px;
 
-.info-card { background: var(--rgba(61, 90, 254, 1)bg); border: 1px solid var(--border); padding: 12px; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
-.info-card p { font-size: 0.85rem; color: var(--text-dim); }
+    border:none;
+    outline:none;
 
-.system-msg { border-left: 3px solid var(--primary); background: rgba(61, 90, 254, 0.05); }
+    border-radius:14px;
 
+    background: var(--fundo_fecha_aba);
+    border:1px solid var(--border_padrao);
 
-.vermais{
-  font-size: 0.7rem;
-  color: var(--vermais);
-  font-weight: bold;
+    color: var(--color_icone_fecha);
+    font-size:28px;
+    font-weight:300;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+/* Hover */
+
+.icon-btn:hover{
+    background: var(--hover_btn_);
+    box-shadow:0 0 15px var(--shadow_hover);
+
+    transform:scale(1.05);
+}
+
+/* Clique */
+
+.icon-btn:active{
+    transform:scale(0.95);
 }
 
 /* ============================================================
+      linha Horizontal
+   ============================================================ */
+
+.linha-grudada {
+    border: none;
+    border-top: 2px solid var(--border_padrao);
+
+    width: 100%;
+
+    display: block;
+
+    position: absolute;
+
+    bottom: 53px; /* Ajuste a distância do rodapé aqui */
+
+    left: 0;
+}
+/* ============================================================
+    14fp botão de sobre sistema 
+   ============================================================ */
+.sobre-sistema-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    /* Cores */
+    background-color: var(--fundo_botao_sobre) !important; 
+    border: 1.5px solid var(--border_padrao) !important; 
+    color: var(--color_sobre) !important;
+    
+    /* ALTURA MENOR (Padding reduzido de 18px para 12px) */
+    padding: 12px 18px !important; 
+    border-radius: 10px !important;
+    
+    /* LETRA MENOR (Tamanho reduzido) */
+    font-size: 0.9rem !important; 
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Ajuste do ícone para o tamanho da letra */
+.sobre-sistema-btn ion-icon {
+    font-size: 18px !important;
+    color: var(--icone_sobre) !important;
+    margin-right: 10px;
+}
+
+/* Ajuste da seta para o tamanho da letra */
+.sobre-sistema-btn .seta {
+    color: var(--icone_flecha) !important;
+    font-size: 1rem !important;
+    font-weight: bold;
+}
+
+.sobre-sistema-btn:hover {
+    border-color: var(--border_) !important;
+}
+
+/* =========================================================
+     2jw do modal de limpa histórico 
+   ========================================================= */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--overlay_historico);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.custom-modal-box {
+    background: var(--fundo_modal_his) ;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    color: var(--text_h2);
+    max-width: 320px;
+    box-shadow: 0 10px 30px var(--shadow_his);
+}
+
+.custom-modal-icon { font-size: 2.5rem; color: var(--icone_color_his); margin-bottom: 10px; }
+.custom-modal-title { margin-bottom: 10px;
+color: var(--color_h2_his);
+font-weight: bold; }
+.custom-modal-text { color: var(--text_p); 
+font-size: 14px; margin-bottom: 20px; 
+}
+
+.custom-modal-buttons { display: flex; gap: 10px; }
+.custom-modal-buttons button {
+    flex: 1; padding: 10px; border: none; border-radius: 8px;
+    font-weight: bold; cursor: pointer; transition: 0.2s;
+}
+
+.btn-modal-cancel { background: var(--cancelar_fundo_his); 
+color: var(--color_cancelar_his); }
+.btn-modal-confirm { background: var(--fundo_limpar_his) ; color: var(--color_limpar_his); }
+
+/* --- BOTÃO DE EXCLUIR INDIVIDUAL (DENTRO DAS DIVS) --- */
+.delete-single-btn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-single-btn:hover {
+    transform: scale(1.2);
+}
+
+/* --- ANIMAÇÃO DE EXCLUSÃO DA DIV --- */
+.item-exit-active {
+    opacity: 0 !important;
+    transform: translateX(30px) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Estilo para garantir que o conteúdo e o botão fiquem alinhados */
+.favorite-item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Adicione aqui o seu estilo de card já existente */
+}
+
+/* ============================================================
+     fim so dentro sidebar
+   ============================================================ */
+/* ============================================================
    05. TABS E FILTROS
    ============================================================ */
-.nav-tabs { display: flex; align-items: center; gap: 10px; padding: 20px; overflow-x: auto; border-bottom: 1px solid var(--border); scrollbar-width: none; }
+.nav-tabs { display: flex; align-items: center; gap: 10px; padding: 20px; overflow-x: auto; border-bottom: 1px solid var(--border_padrao); scrollbar-width: none; }
 .nav-tabs::-webkit-scrollbar { display: none; }
 
 .tab-btn { 
-    padding: 10px 18px; border-radius: 10px; border: 1px solid var(--border); 
+    padding: 10px 18px; border-radius: 10px; border: 1px solid var(--border_padrao); 
     background: var(--surface); color: var(--text); cursor: pointer; 
     white-space: nowrap; font-weight: 600; font-size: 0.85rem;
     min-height: 44px;
@@ -100,7 +292,7 @@ header {
     margin: 5px 5px 5px -10px;
     
     /* Mantém o design idêntico: todas as bordas e cantos arredondados normais */
-    border: 1px solid var(--border);
+    border: 1px solid var(--border_padrao);
     border-radius: 10px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -133,16 +325,16 @@ header {
 /* principal*/
 .card { 
     background: var(--surface); 
-    border: 1px solid var(--border); 
+    border: 1px solid var(--border_padrao); 
     padding: 15px 15px; 
-    border-radius: 18px; 
+    border-radius: 14px; 
     text-align: center; 
     cursor: pointer; 
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px var(--shadow_cards);
 }
 
 
@@ -169,7 +361,7 @@ header {
     max-width: 400px; 
     max-height: calc(85vh - 10px); 
     text-align: center; 
-    border: 1px solid var(--border); 
+    border: 1px solid var(--border_padrao); 
     display: flex;
     flex-direction: column;
 }
@@ -203,39 +395,113 @@ header {
 color: var( --color-dim); 
 grid-column: span 2;
 margin-top: 5px; }
+/* ============================================================
+   12t  tem claro/escuro
+   ============================================================ */
+.theme-box{
+    width:100%;
+    height:72px;
+    background: var(--fundo_tema);
+    border:1px solid var(--border_padrao);
+    border-radius:18px;
+box-shadow:0 0 15px var(--shadow_tema);
+    padding:0 14px;
 
-.icon-btn { 
-    background: var(--surface); border: 1px solid var(--border); color: var(--text); 
-    width: 45px; height: 45px; border-radius: 12px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
- 
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.info-card-btn {
-    display: flex; align-items: center; gap: 10px;
-    background: var(--surface); color: var(--text); border: 1px solid var(--border);
-    padding: 0 20px; border-radius: 12px; cursor: pointer;
-    min-height: 48px; font-weight: 600; font-size: 0.9rem;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+/* LADO ESQUERDO */
+
+.theme-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.theme-left span{
+    color:var(--color_tema);
+
+    font-size:18px;
+    font-weight:500;
+
+    font-family:Arial;
+}
+
+/* ÍCONE */
+
+.theme-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:14px;
+
+    background: var(--icone_tema);
+    border:1px solid var(--border_padrao);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.theme-icon i{
+    color: var(--icone_lua_tema);
+    font-size:20px;
+}
+
+/* SWITCH */
+
+.switch{
+    position:relative;
+
+    width:54px;
+    height:30px;
+}
+
+.switch input{
+    display:none;
+}
+
+.slider{
+    position:absolute;
+    inset:0;
+
+    background: var(--slider_tema);
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.slider::before{
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+    height:24px;
+
+    right:3px;
+    top:3px;
+
+    background: var(--before_tema);
+
+    border-radius:50%;
+
+    transition:0.3s;
+}
+
+.switch input:not(:checked) + .slider{
     
-}
-.info-card-btn i { color: var(--Accent); font-size: 1.1rem; }
-.info-card-btn:hover { background:#FF0000 rgba(255, 255, 255, 0.05); border-color: var(--primary); transform: translateY(-2px); }
-.info-card-btn:active { transform: translateY(0) scale(0.98); }
-
-/*status*/
-.data{
-    color: var(--data);
- font-weight: 600;
-text-align: center;
-}
-.horas{
-        color: var(--horas);
- font-weight: 600;
- text-align: center;
+    background: var(--checked_tema);
 }
 
-
+.switch input:not(:checked) + .slider::before{
+    transform:translateX(-24px);
+}
 
 /* ============================================================
    09. ALERTAS E AVISOS (AAVISO)
@@ -243,7 +509,7 @@ text-align: center;
 .aaviso {
     display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 16px;
     background: var(--surface); color: var(--text);
-    padding: 14px 18px; margin: 1rem 0; border-radius: 10px; border: 1px solid var(--border);
+    padding: 14px 18px; margin: 1rem 0; border-radius: 10px; border: 1px solid var(--border_padrao);
     position: relative; overflow: hidden;
     inline-size: 100%; max-inline-size: 100%; box-sizing: border-box;
     overflow-wrap: anywhere; line-height: 1.6;
@@ -288,7 +554,7 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 .input-group label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px; }
 .input-group input {
     width: 100%; padding: 12px 16px; background: var(--bg);
-    border: 1px solid var(--border); border-radius: 8px; color: var(--text);
+    border: 1px solid var(--border_padrao); border-radius: 8px; color: var(--text);
     outline: none; transition: border-color 0.3s;
 }
 .input-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(61, 90, 254, 0.2); }
@@ -363,7 +629,7 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 
 /* Cabeçalho */
 .un-modal-header {
-    padding: 30px 20px 10px;
+    padding: 30px 290px 10px;
     text-align: center;
     
 }
@@ -373,115 +639,6 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 .un-header-title { color: var(--un-text); font-size: 22px; text-transform: uppercase; }
 .un-header-subtitle { color: var(--un-accent); font-size: 12px; font-weight: bold; margin-top: 5px; }
 
-/* Corpo com Scroll */
-.un-modal-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    
-}
-
-/* Scrollbar Customizado */
-.un-modal-body::-webkit-scrollbar { width: 4px; }
-.un-modal-body::-webkit-scrollbar-thumb { background: var(--un-primary); }
-
-/* Itens da Lista */
-.un-changelog-list { list-style: none; padding: 0; margin: 0;
-border: 1px solid var(---border-un-changelog-list);
- 
-}
-.un-list-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid var(--un-border);
-    padding: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-    border-radius: 15px; /* Cantos Retos */
-}
-
-.un-item-desc { color: var(--un-text-dim); font-size: 13px; line-height: 1.5; 
-
-}
-
-/* Rodapé e Botão */
-.un-modal-footer { padding: 20px; }
-.un-btn-action {
-    width: 100%;
-    background: var(---un-modal-footer);
-    color: var(---un-modal-footer-color);
-    border: none;
-    padding: 16px;
-    border: 1px solid var(---border-btn-footer);
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 15px ; /* Cantos Retos */
-    transition: 0.3s;
-}
-.un-btn-action:hover { background: var(--un-accent); color: var(---un-hover); }
-
-/* Botão X */
-.un-modal-x-btn {
-    position: absolute; top: 15px; right: 15px;
-    background: none; border: none; color: var(--un-text-dim);
-    font-size: 24px; cursor: pointer;
-}
-
-/* Estilo do Botão de Gatilho (Trigger) */
-#un-btn-trigger {
-    /* Cores e Fundo */
-    background-color: var(--un-surface);
-    color: var( ---un-poscorlor);
-    
-    /* Bordas e Formato */
-    border: 1px solid var(--un-primary);
-    border-radius: 0; /* Totalmente quadrado */
-    
-    /* Espaçamento e Tipografia */
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    border-radius: 15px;
-    /* Comportamento */
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    
-    /* Sombras sutil */
-    box-shadow: 0 4px 0px var(--un-primary);
-}
-
-/* Efeito ao passar o mouse (Hover) */
-#un-btn-trigger:hover {
-    background-color: var(--un-primary);
-    color: var(--poscorlor);
-    transform: translateY(-2px); /* Leve levantada */
-    box-shadow: 0 6px 15px rgba(40, 119, 130, 0.4);
-}
-
-/* Efeito ao clicar (Active) */
-#un-btn-trigger:active {
-    transform: translateY(2px); /* Efeito de apertar o botão */
-    box-shadow: 0 1px 0px var(--un-primary);
-}
-
-/* Detalhe opcional: Brilho de "Neon" sutil */
-#un-btn-trigger::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: var(---triggeafter);
-    transition: 0.5s;
-}
-
-#un-btn-trigger:hover::after {
-    left: 100%;
-}
 
 /* ============================================================
    ESTILO DO BOTÃO DE ALTERNAR (ESTILO NAV-TABS)
@@ -499,7 +656,7 @@ button[onclick="toggleAutoModal()"] {
     margin: 5px;
     
     /* Bordas e Tipografia (Igual à imagem) */
-    border: 1px solid var(--border);
+    border: 1px solid var(--border_padrao);
     border-radius: 10px;       /* Arredondamento suave da imagem */
     font-size: 0.85rem;
     font-weight: 600;          /* Texto levemente em negrito */
@@ -557,7 +714,7 @@ button[onclick="toggleAutoModal()"].active {
     width: 85%;
     max-width: 310px; /* Um pouco menor para mobile */
     border-radius: var(--radius-xl);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border_padrao);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -608,7 +765,7 @@ button[onclick="toggleAutoModal()"].active {
 /* Botão sem delay de clique */
 .custom-alert-btn {
     border: none;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border_padrao);
     background: transparent;
     color: var(--accentAV);
     padding: 14px;
@@ -633,22 +790,36 @@ button[onclick="toggleAutoModal()"].active {
 button[onclick="openUpdateModal()"] {
     background: var(---openUpdateModal);
     color: var(---openUpdateModalcolor);
-    border: none;
-    padding: 12px 24px;
-    font-size: 0.9rem;
+    border: 1px solid var(---border-btn-footer);
+
+    width: 100%;
+    min-height: 40px;
+
+    padding: 8px 12px;
+    border-radius: 8px;
+
+    font-size: 0.85rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: 8px;
+
     cursor: pointer;
+
     display: flex;
-    align-items: center;          box-shadow: 0 8px 25px var(--sobradoopenmodal);                      
-    gap: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
- 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    text-align: center;
+    line-height: 1.1;
+    white-space: normal;
+
+    box-shadow: 0 8px 25px var(--sobradoopenmodal);
+
     outline: none;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* Efeito de Hover (Passar o mouse) */
@@ -691,243 +862,43 @@ button[onclick="openUpdateModal()"]::after {
 button[onclick="openUpdateModal()"]:hover::after {
     left: 100%;
 }
-/* =========================================================
-   [INÍCIO] - ESTILO DO BOTÃO COM ÍCONE À DIREITA
-   ========================================================= */
 
-.un-open-trigger {
-    
-    display: inline-flex;     /* Ativa o flexbox */
-    align-items: center;      /* Alinha verticalmente no centro */
-    justify-content: center;  /* Centraliza o conteúdo */
-    gap: 10px;                /* Espaço fixo entre o texto e o ícone */
-    
-    background: #1e1e1e;      /* Cor de fundo */
-    color: #ffffff;           /* Cor do texto */
-    border: 1px solid #444;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
 
-/* Estilo específico do Ion-Icon */
-.un-open-trigger ion-icon {
-    font-size: 20px;         
-    font-size: 1.55rem;
-    color: var(---ion-icontrigger);
-
-    
-}
-
-/* Efeito Hover */
-.un-open-trigger:hover {
-    background: #252525;
-    border-color: var(---triggerhover);
-    box-shadow: 0 0 10px rgba(255, 152, 0, 0.2);
-}
-
-.un-open-trigger:hover ion-icon {
-    transform: scale(1.2);    
-}
-
-/* ============================================================
-   CARD DE REDE SOCIAL (INSTAGRAM)
-   ============================================================ */
-
-.un-social-link {
-    text-decoration: none;
-    display: block;
-    margin: 10px 0;
-}
-
-.un-social-card {
-    background: var(--surface);
-    border: 1px solid var(--accent);
-    /* Cor neon no dark / sotaque no light */
-    padding: 15px 20px;
-    border-radius: var(--radius-md);
-    transition: var(--transition-standard);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-soft);
-}
-
-/* Efeito Hover - Dá um leve brilho e levanta o card */
-.un-social-card:hover {
-    transform: translateY(-3px);
-    background: rgba(23, 23, 23, 0.04);
-    box-shadow: 0 0 15px var(--accent);
-    border-color: var(--text);
-}
-
-.un-social-text {
-    color: var(--text);
-    font-weight: 700;
-    font-size: 1rem;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Estilo para o ícone do Instagram */
-.un-social-text i {
-    font-size: 1.2rem;
-    color: var(--accent);
-}
-
-/* Ajuste específico para o Tema Claro */
-.light-theme .un-social-card:hover {
-    background: #f0f0f0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-/*melhorias nas ul/lis */
-.mellhorias{
-    color: var(---obs);
-      font-size: .92rem;
-        font-weight: 700;
-        }
-.pergunta{
-    color: var(--pergunta);
-      font-size: .94rem;
-        font-weight: 600;
-}
-.perguntaa{
-    color: var(--perguntaa);
-    font-size: .78rem;
-        font-weight: 600;
-}
-
-.obs{
-    color: var(---obs) ;
-      font-size: .94rem;
-        font-weight: 600;
-}
-
-/*titulo*/
-.rp-badge {
-    display: inline-flex;
-    align-items: center;
-    background: var(--bg-glasstitulo);
-    padding: 8px 16px;
-    border-radius: 4px 16px 4px 16px;
-    /* Bordas assimétricas ficam mais modernas */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-}
-
-.rp-title {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    
-    /* Gradiente Metálico */
-background: var(---rp-title);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    
-    /* Camada de brilho (Glow) */
-    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.6));
-    
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* O detalhe "RP" ganha um traço antes dele */
-.rp-title::before {
-    content: '';
-    width: 4px;
-    height: 18px;
-    background: var(--glow-color);
-    box-shadow: 0 0 12px var(--glow-color);
-    border-radius: 2px;
-}
 
 .rodape {
-    position: absolute;
-    bottom: 6px;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: auto;
+
     text-align: center;
+
     font-size: 12px;
-    color: #797979;
     font-weight: 800;
     font-family: Arial, sans-serif;
-    white-space: nowrap;
-}
-.card:hover span {
-    color: var(--pergunta);         /* O texto assume a cor cítrica */
-    border-left-width: 5px;         /* Aumenta a espessura da borda lateral */
-    background-color: var(--un-surfface); 
 
+    color: #797979;
+
+    white-space: nowrap;
+
+    padding-top: 20px;
 }
+/* =========================================================
+      3le divs e IDS
+   ========================================================= */
 /*título das divs*/
 .item{
-color: var(--itemdivs);
+color: var(--text_titulo_cards);
 }
-/* Estilizando o SPAN (O ID) */
-.card span {
-    display: inline-flex;          /* Melhor alinhamento vertical de texto */
-    align-items: center;
-    gap: 6px;                      /* Espaço caso você adicione um mini ícone depois */
-    
-    /* Cores e Fundo */
-    color: var(--textID);
-    background-color: var(--FundoID) ;
-    background-image: var(--cordodefundoid); /* Leve gradiente para não ficar "chapado" */
-    
-    /* Dimensões e Bordas */
-    padding: 5px 12px;
-    border-radius: var(--radius-sm);
-    font-size: 0.72rem;
-    font-family: 'Inter', 'Courier New', monospace; /* Fonte mais limpa com fallback code */
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;        /* Melhora a leitura em textos pequenos */
-    
-    /* Borda e Efeito Glow */
-    border: 1px solid rgba(255, 255, 255, 0.08); 
-    border-left: 3px solid var( --borda-ID);
-    box-shadow: 
-        2px 2px 10px rgba(0, 0, 0, 0.2),            /* Sombra externa */
-        inset 0 0 8px rgba(192, 247, 19, 0.1);    /* Glow interno sutil da cor cítrica */
-
-    /* Interação */
-    transition: var(--transition-standard);
-    cursor: help;                  /* Indica que é uma informação técnica */
-    user-select: none;             /* Evita selecionar o ID sem querer ao clicar no card */
-}
-
-/* Estado de Destaque quando o Card recebe Hover */
-.card:hover span {
-    color: var(--borda-hover-ID);         /* O texto assume a cor cítrica */
-    border-left-width: 5px;         /* Aumenta a espessura da borda lateral */
-    background-color: var(--un-surfface); 
-
-}
-
 
 /* Seleciona o span que vem exatamente após o strong dentro do card */
 .card strong.item + span {
-    color: var(--primary); /* Usa o azul #00ABFF do seu */
+    color: var(--color_ID); /* Usa o azul #00ABFF do seu */
     font-size: 0.8rem;
     font-weight: 700;
     display: block;        /* Faz o ID ficar na linha de baixo */
     margin-top: 5px;
-    background: var(--FundoID); /* Usa aquele fundo azul translúcido */
+    background: var(--fundo_ID); /* Usa aquele fundo azul translúcido */
     padding: 2px 8px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--borda-ID); /* Borda azul definida no root */
+    border-radius: 8px;
+    border: 1px solid var(--border_padrao); /* Borda azul definida no root */
     width: fit-content;    /* Ajusta o fundo ao tamanho do texto */
     margin-left: auto;     /* Centraliza se o card for flex/center */
     margin-right: auto;
@@ -936,57 +907,75 @@ color: var(--itemdivs);
 
 /* Efeito de destaque quando passa o mouse no card */
 .card:hover strong.item + span {
-    color: var(--text);
-    border-color: var(--borda-hover-ID);
-    box-shadow: 0 0 8px var(--glow-color);
-    background: var(--primary);
+    color: var(--hover_color_ID);
+    border-color: #FFFFFF;
+    box-shadow: 0 0 8px var(--shadow_ID);
+    background: var(--fundo_hover_ID);
 }
-
 
 /* =========================================================
 icones de navegação 
    ========================================================= */
    
-   /* Estilo base do botão de aba */
-.tab-btn {
+   .tab-btn {
+    /* Layout */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; /* Espaço entre ícone e texto */
+    gap: 8px;
+    
+    /* Box Model & Estilo */
     padding: 10px 20px;
     border-radius: var(--radius-md);
     background: var(--surface);
     color: var(--text);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border_padrao);
+    
+    /* Interação */
     cursor: pointer;
-    transition: all var(--transition-standard);
+    user-select: none; /* Impede seleção de texto ao clicar rápido */
     font-weight: 600;
+    
+    /* Performance & Transição */
+    transition: background-color var(--transition-standard), 
+                border-color var(--transition-standard), 
+                color var(--transition-standard);
+    
+    /* Reset de foco para acessibilidade */
+    outline: none;
 }
 
-/* Estilização específica do ícone */
+/* Foco de acessibilidade (importante!) */
+.tab-btn:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 30%, transparent);
+}
+
 .tab-btn ion-icon {
     font-size: 1.2rem;
-    color: var(--primary); /* Azul #00ABFF */
-    transition: transform var(--transition-fast);
+    color: var(--primary);
+    transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-/* Efeito quando a aba está ativa ou com mouse em cima */
+/* Efeito Hover/Active consolidado */
 .tab-btn:hover, 
 .tab-btn.active {
     background: var(--glass);
     border-color: var(--primary);
+    color: var(--primary); /* Dica: mudar a cor do texto também ajuda na hierarquia */
 }
 
-/* Animação suave no ícone ao passar o mouse */
 .tab-btn:hover ion-icon {
     transform: scale(1.1);
-    color: var(--accent); /* Muda para ciano */
+    color: var(--accent);
 }
 
-/* Se o botão for o de favoritos específico, podemos usar a cor trigger */
+/* Caso específico de favoritos (sem o erro de sintaxe) */
 #tabFav:hover ion-icon {
-    color: var(---ion-icon-favorito); /* Cor laranja/âmbar se preferir destaque */
+    color: var(--ion-icon-favorito); 
 }
+
+   
+   /* Estilo base do botão de aba */
 
 /*select opções*/
 /* Container do botão */
@@ -1012,7 +1001,7 @@ icones de navegação
     width: 100%;
     height: 100%;
     background-color: var(--surface);
-    border: 1px solid var(--border); 
+    border: 1px solid var(--border_padrao); 
     border-radius: var(--radius-md);
     cursor: pointer;
     outline: none;
@@ -1038,82 +1027,7 @@ icones de navegação
 .sort-wrapper:hover .sort-select {
     background-color: var(--glass);
     }
-/* =========================================================
-css do modal de limpa  histórico 
-   ========================================================= */
-   /* --- MODAL DE AVISO (LIMPAR TUDO) --- */
-.custom-modal-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-}
 
-.custom-modal-box {
-    background: var(---modal-box);
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    color: var(---titulo-medio);
-    max-width: 320px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.custom-modal-icon { font-size: 2.5rem; color: #ff9800; margin-bottom: 10px; }
-.custom-modal-title { margin-bottom: 10px;
-color: var(---apagafavorito);
-font-weight: bold; }
-.custom-modal-text { color: var(---titulo); 
-font-size: 14px; margin-bottom: 20px; 
-}
-
-.custom-modal-buttons { display: flex; gap: 10px; }
-.custom-modal-buttons button {
-    flex: 1; padding: 10px; border: none; border-radius: 8px;
-    font-weight: bold; cursor: pointer; transition: 0.2s;
-}
-
-.btn-modal-cancel { background: #eee; 
-color: #E41313; }
-.btn-modal-confirm { background: var(--danger,); color: #FFFFFF; }
-
-/* --- BOTÃO DE EXCLUIR INDIVIDUAL (DENTRO DAS DIVS) --- */
-.delete-single-btn {
-    background: transparent;
-    color: #ccc;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.delete-single-btn:hover {
-    color: var(--danger,);
-    transform: scale(1.2);
-}
-
-/* --- ANIMAÇÃO DE EXCLUSÃO DA DIV --- */
-.item-exit-active {
-    opacity: 0 !important;
-    transform: translateX(30px) !important;
-    transition: all 0.3s ease !important;
-}
-
-/* Estilo para garantir que o conteúdo e o botão fiquem alinhados */
-.favorite-item-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* Adicione aqui o seu estilo de card já existente */
-}
 
 /* ============================================================
    ESTILO DO BOTÃO AUTO-LIMPAR (PADRÃO NAV-TABS / CLEAR-ALL)
@@ -1131,7 +1045,7 @@ button[onclick="toggleAutoClear()"] {
     margin: 5px;
     
     /* Bordas e Tipografia (Idêntico ao padrão das abas) */
-    border: 1px solid var(--border);
+    border: 1px solid var(--border_padrao);
     border-radius: 10px;       /* Arredondamento suave idêntico ao modelo */
     font-size: 0.85rem;
     font-weight: 600;          /* Texto levemente em negrito */
@@ -1172,29 +1086,5 @@ button[onclick="toggleAutoClear()"].active {
     border-color: var(--accent);
 }
 
-/* ============================================================
-sistema de contagem regressiva
-   ============================================================ */
-#progress-percentage {
-    color: var(---estaveltext);
-   font-weight: 600;
-    font-size: 0.90rem;
-    margin-left: 6px;
-    display: inline-block;
-    vertical-align: middle
-    
-}
-
-/* Esconde suavemente após os 13 segundos */
-.loader-hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease;
-}
-.status-estavel{
-    color: var(---estaveltext);
-   font-weight: 600;
-   
-}
 
 /* FIM DO ARQUIVO CSS */

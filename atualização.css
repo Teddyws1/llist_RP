@@ -1,159 +1,104 @@
 /* =========================================================
    [INÍCIO] - ESTILO DO MODAL DE ATUALIZAÇÃO
    ========================================================= */
-/*root geral*/
-:root{
-    ---unheadersubtitle:#05FF07;
-    ---title:#C0F713;
-   ---texodolis:#FFFFFF;
-   ---update-btn-ok:#C0F713;
-   ---update-btn-ok-text: #000000;
-   ---border-btn-ok:#fff;
-   ---update-listlii:#28A745;
-  ---update-cardfundo: #1a1d29;
----ovveerlay:#000000AD;
+:root {
+    /* Cores Principais */
+    --update-title-color: #C0F713;
+    --update-text-color: #FFFFFF;
+    --update-list-icon: #28A745;
+    
+    /* Botões */
+    --btn-ok-bg: #C0F713;
+    --btn-ok-text: #000000;
+    --btn-ver-bg: #C0F713;
+    --btn-ver-text: #000000;
+    --hover_mais:#C0F713;
+    /* Estrutura */
+    --card-bg: #1a1d29;
+    --overlay-bg: #000000AD;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --scrollbar-color: #C0F713;
 }
-   /*root claro */
-   .light-theme {
-       ---border-btn-ok:#FFFFFF;
-      ---custom-alert-btn:#000000;
-   ---custom-alert-btn:#000000;
-   ---title:#C1FF00;
-     ---texodolis:#FFFFFF;
-      ---update-listlii:#08A02A;
-        ---update-cardfundo:linear-gradient(to right, #000000D4, #000000D4);
-            ---unheadersubtitle:#000000;
-        ---ovveerlay:#000000D4;
-   }
-   
+
+.custom-alert-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--overlay-bg);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000; backdrop-filter: blur(6px);
+}
 
 .update-card {
-    background: var(--bg-card, #121212);
-    width: 90%;
-    max-width: 380px;
-    padding: 25px;
-    border-radius: 20px;
-    border-left: 5px solid var(--primary, #6200ee); /* Barra lateral estilosa */
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    background: var(--card-bg);
+    padding: 25px; border-radius: 20px;
+    width: 90%; max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     animation: slideUp 0.3s ease-out;
 }
 
-.update-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.update-header i {
-    color: var(--primary, #6200ee);
-    font-size: 1.5rem;
-}
-
 .update-title {
-    font-size: 1.3rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: var(---title);
+    font-size: 1.5rem; font-weight: 800;
+    text-transform: uppercase; color: var(--update-title-color);
+    display: block; margin-bottom: 20px;
 }
 
-.update-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-    max-height: 300px; /* Se tiver muita coisa, ele cria scroll */
-    overflow-y: auto;
+.update-list { 
+    list-style: none; padding: 0; margin: 0 0 20px 0; 
+    max-height: 240px; overflow-y: auto;
 }
+
+/* Scrollbar estilizada */
+.update-list::-webkit-scrollbar { width: 6px; }
+.update-list::-webkit-scrollbar-thumb { background: var(--scrollbar-color); border-radius: 10px; }
 
 .update-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    color: var(---texodolis);
-    font-size: .95rem;
-    font-weight: 600;
+    display: flex; align-items: center;
+    gap: 12px; padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--update-text-color); font-size: 1rem;
 }
 
-.update-list li i {
-    color: var(---update-listlii); /* Cor verde para o check */
-    margin-top: 3px;
+.update-list li i { color: var(--update-list-icon); }
+
+/* --- BOTÃO VER MAIS --- */
+.update-btn-ver-mais {
+    display: flex; align-items: center; justify-content: center;
+    gap: 4px;
+    background: var(--btn-ver-bg);
+    color: var(--btn-ver-text);
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem; cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.3s;
 }
 
+.update-btn-ver-mais:hover { 
+    background: rgba(255, 255, 255, 0.1); 
+  
+    color: var(--hover_mais);
+}
+/* Bloqueia o scroll do body */
+.modal-aberto {
+    overflow: hidden;
+    height: 100vh; /* Garante que o corpo não tente rolar */
+}
+
+/* --- BOTÃO OK --- */
 .update-btn-ok {
-    width: 100%;
-    background: var(---update-btn-ok);
-    color: var(---update-btn-ok-text);
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: filter 0.2s;
-    border: 1px solid var(---border-btn-ok);
+    width: 100%; 
+    background: var(--btn-ok-bg);
+    color: var(--btn-ok-text);
+    border: none; padding: 15px; border-radius: 12px;
+    font-weight: bold; cursor: pointer;
 }
 
-.update-btn-ok:hover {
-    filter: brightness(1.2);
-}
+.item-lista.escondido { display: none; }
 
-/* Animação suave de entrada */
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-/* Fundo do Modal (Overlay) */
-.custom-alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(---ovveerlay);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    backdrop-filter: blur(4px);
-}
-
-.custom-alert-btn{
-    background: var(---custom-alert-btn);
-}
-
-/* Conteúdo do Modal */
-.update-card {
-    background: var(---update-cardfundo);
-    padding: 25px;
-    border-radius: 15px;
-    width: 85%;
-    max-width: 350px;
-    border: 1px solid var( --border);
-    /* Impede que o clique dentro do card feche o modal */
-    position: relative; 
-}
-
-.update-list {
-    list-style: none;
-    padding: 10px 0;
-    color: #eee;
-}
-
-.update-list li {
-    padding: 8px 0;
-    border-bottom: 1px solid var(---border-bottom);
-    display: flex;
-    gap: 10px;
-}
-
-.un-header-subtitle{
-    color: var(---unheadersubtitle);
-}
-/* vezes do divs*/
-
-
 /* =========================================================
    [FIM] - ESTILO DO MODAL DE ATUALIZAÇÃO
    ========================================================= */

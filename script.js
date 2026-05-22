@@ -319,19 +319,6 @@ if ('serviceWorker' in navigator) {
    [FIM] - EVENTOS DE JANELA E INSTALAÇÃO (PWA)
    ========================================================= */
 
-
-/* =========================================================
-   [INÍCIO] -SRP SEGURANÇA E PROTEÇÃO
-   ================================
-   falso:false : verdadeiro: true 
-   ========================= */
-const CONFIG_PROTECAO = {
-    bloquearCliqueDireito: true,
-    bloquearTeclado: true,
-    //seleção com dedo✓
-    bloquearSelecao: true,
-};
-
 (function() {
     document.addEventListener('contextmenu', (e) => CONFIG_PROTECAO.bloquearCliqueDireito && e.preventDefault());
     document.onselectstart = () => !CONFIG_PROTECAO.bloquearSelecao;
