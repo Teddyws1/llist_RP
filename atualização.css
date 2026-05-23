@@ -1,0 +1,104 @@
+/* =========================================================
+   [INÍCIO] - ESTILO DO MODAL DE ATUALIZAÇÃO
+   ========================================================= */
+:root {
+    /* Cores Principais */
+    --update-title-color: #C0F713;
+    --update-text-color: #FFFFFF;
+    --update-list-icon: #28A745;
+    
+    /* Botões */
+    --btn-ok-bg: #C0F713;
+    --btn-ok-text: #000000;
+    --btn-ver-bg: #C0F713;
+    --btn-ver-text: #000000;
+    --hover_mais:#C0F713;
+    /* Estrutura */
+    --card-bg: #1a1d29;
+    --overlay-bg: #000000AD;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --scrollbar-color: #C0F713;
+}
+
+.custom-alert-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--overlay-bg);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 10000; backdrop-filter: blur(6px);
+}
+
+.update-card {
+    background: var(--card-bg);
+    padding: 25px; border-radius: 20px;
+    width: 90%; max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: slideUp 0.3s ease-out;
+}
+
+.update-title {
+    font-size: 1.5rem; font-weight: 800;
+    text-transform: uppercase; color: var(--update-title-color);
+    display: block; margin-bottom: 20px;
+}
+
+.update-list { 
+    list-style: none; padding: 0; margin: 0 0 20px 0; 
+    max-height: 240px; overflow-y: auto;
+}
+
+/* Scrollbar estilizada */
+.update-list::-webkit-scrollbar { width: 6px; }
+.update-list::-webkit-scrollbar-thumb { background: var(--scrollbar-color); border-radius: 10px; }
+
+.update-list li {
+    display: flex; align-items: center;
+    gap: 12px; padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--update-text-color); font-size: 1rem;
+}
+
+.update-list li i { color: var(--update-list-icon); }
+
+/* --- BOTÃO VER MAIS --- */
+.update-btn-ver-mais {
+    display: flex; align-items: center; justify-content: center;
+    gap: 4px;
+    background: var(--btn-ver-bg);
+    color: var(--btn-ver-text);
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem; cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.update-btn-ver-mais:hover { 
+    background: rgba(255, 255, 255, 0.1); 
+  
+    color: var(--hover_mais);
+}
+/* Bloqueia o scroll do body */
+.modal-aberto {
+    overflow: hidden;
+    height: 100vh; /* Garante que o corpo não tente rolar */
+}
+
+/* --- BOTÃO OK --- */
+.update-btn-ok {
+    width: 100%; 
+    background: var(--btn-ok-bg);
+    color: var(--btn-ok-text);
+    border: none; padding: 15px; border-radius: 12px;
+    font-weight: bold; cursor: pointer;
+}
+
+.item-lista.escondido { display: none; }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* =========================================================
+   [FIM] - ESTILO DO MODAL DE ATUALIZAÇÃO
+   ========================================================= */
