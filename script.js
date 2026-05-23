@@ -287,7 +287,7 @@ function switchTab(tab) {
 }
 
 function copyCommand() {
-    navigator.clipboard.writeText(`/e ${currentItem.name}`);
+    navigator.clipboard.writeText(`e ${currentItem.name}`);
     const btn = document.querySelector('.btn-copy');
     btn.innerHTML = '<i class="fas fa-check"></i> Pronto!';
     setTimeout(() => btn.innerHTML = '<i class="fas fa-copy"></i> Copiar', 1000);
@@ -340,11 +340,19 @@ document.addEventListener('wheel', (e) => {
    [INÍCIO] - INICIALIZAÇÃO E ANIMAÇÕES
    ========================================================= */
 renderItems();
+
 const contBump = document.getElementById('totalContador');
-if(contBump) {
+
+if (contBump) {
+    
     contBump.classList.remove('bump');
-    void contBump.offsetWidth;
-    contBump.classList.add('bump');
+    
+    requestAnimationFrame(() => {
+        
+        contBump.classList.add('bump');
+        
+    });
+    
 }
 /* =========================================================
    [FIM] - INICIALIZAÇÃO E ANIMAÇÕES
@@ -426,17 +434,21 @@ const meuCard = document.getElementById('card-info-versao');
 const conteudo = document.getElementById('conteudo-extra');
 const btnTexto = document.getElementById('btn-toggle');
 
-meuCard.addEventListener('click', function() {
-    // Verifica se o conteúdo está escondido
-    if (conteudo.style.display === "none") {
-        conteudo.style.display = "block";
-        btnTexto.textContent = "FECHAR";
-    } else {
-        conteudo.style.display = "none";
-        btnTexto.textContent = "VER MAIS";
-    }
-});
+const cards = document.querySelectorAll('.card');
 
+if (cards.length > 0) {
+    
+    cards.forEach(card => {
+        
+        card.addEventListener('click', () => {
+            
+            console.log('clicou');
+            
+        });
+        
+    });
+    
+}
 /* =========================================================
    [FIM] - SISTEMA DE BLOQUEIO DE SCROLL
    ========================================================= */

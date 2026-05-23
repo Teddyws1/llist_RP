@@ -1,5 +1,3 @@
-
-
 * { 
     margin: 0; 
     padding: 0; 
@@ -18,11 +16,6 @@ body {
     flex-direction: column; 
 }
 
-:focus-visible {
-    
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-}
 
 :focus-visible {
     outline: 2px solid var(--accent);
@@ -30,12 +23,12 @@ body {
 }
 
 /* ============================================================
-   03. CABEÇALHO (Header & Search)
+          21gj header
    ============================================================ */
 header {
     position: sticky; top: 0; z-index: 1000; height: 75px;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 20px; background: var(--glass); backdrop-filter: blur(15px);
+    padding: 0 20px; background: var(--glass);
     border-bottom: 1px solid var(--border_padrao);
 }
 /* ============================================================
@@ -52,37 +45,28 @@ header {
 /* ============================================================
 13fw  so dentro sidebar
    ============================================================ */
-/* ============================================================
-   04. NAVEGAÇÃO LATERAL (Sidebar)
-   ============================================================ */
 
 .sidebar {
     position: fixed;
     left: -320px;
     top: 0;
-
     width: 300px;
     height: 100vh;
-
     background: var(--fundo_aba);
-
     z-index: 1100;
-
     border-right: 1px solid var(--border_padrao);
-
     padding: 25px;
-
     display: flex;
     flex-direction: column;
-
     overflow-y: auto;
-
     transition: none;
-
     padding-bottom: 20px;
 }
 
-.sidebar.active { left: 0; box-shadow: 20px 0 50px var(--shadow_sidebar); }
+.sidebar.active {
+    left: 0;
+    box-shadow: 0 0 15px var(--shadow_sidebar);
+}
 
 /* ============================================================
  13fw sidebar 
@@ -90,26 +74,20 @@ header {
    .icon-btn{
     width:48px;
     height:48px;
-
     border:none;
     outline:none;
-
     border-radius:14px;
-
     background: var(--fundo_fecha_aba);
     border:1px solid var(--border_padrao);
-
     color: var(--color_icone_fecha);
     font-size:28px;
     font-weight:300;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     cursor:pointer;
-
     transition:0.3s;
+  
 }
 
 /* Hover */
@@ -198,7 +176,7 @@ header {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: var(--overlay_historico);
-    backdrop-filter: blur(4px);
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -268,19 +246,74 @@ color: var(--color_cancelar_his); }
      fim so dentro sidebar
    ============================================================ */
 /* ============================================================
-   05. TABS E FILTROS
+    9gk barra de navegação 
    ============================================================ */
-.nav-tabs { display: flex; align-items: center; gap: 10px; padding: 20px; overflow-x: auto; border-bottom: 1px solid var(--border_padrao); scrollbar-width: none; }
-.nav-tabs::-webkit-scrollbar { display: none; }
+.nav-tabs {
+    /* Posicionamento */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    
+    /* Transparência e Efeito Glassmorphism */
+    /* Ajuste o último número (0.2) para mais ou menos opacidade */
+    background: var(--nav_fundo);
 
-.tab-btn { 
-    padding: 10px 18px; border-radius: 10px; border: 1px solid var(--border_padrao); 
-    background: var(--surface); color: var(--text); cursor: pointer; 
-    white-space: nowrap; font-weight: 600; font-size: 0.85rem;
-    min-height: 44px;
+    /* Suporte para Safari */
+    
+    /* Layout */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    /* Acabamento */
+    border-top: 1px solid var(--border_padrao);
+    box-shadow: 0 -5px 20px var(--shadow_nav);
+    
+    /* Camada */
+    z-index: 1000;
+    padding: 0 10px;
+}
+
+/* Opcional: Estilo para os itens dentro da nav (se houver) */
+.nav-tabs a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+.nav-tabs a:hover {
+    opacity: 0.7;
 }
 .tab-btn.active { background: var(--primary); border-color: var(--primary); }
+/* Espaçamento necessário no corpo */
+/* Configuração para telas grandes (acima de 768px - Desktops/Tablets) */
+@media (min-width: 769px) {
+    .nav-tabs {
+        position: fixed; 
+        top: 0;          /* Move para o topo */
+        bottom: auto;    /* Remove o posicionamento inferior */
+        left: 0;
+        right: 0;
+        height: 60px;    /* Altura ajustada para desktop */
+        flex-direction: row;
+        justify-content: center; /* Centraliza os botões */
+        gap: 40px;       /* Espaçamento maior entre botões */
+        padding: 0 20px;
+    }
 
+    /* Remove o padding do body que era usado para o mobile */
+    body {
+        padding-bottom: 0;
+        padding-top: 70px; 
+    }
+
+    /* Oculta ou altera elementos que não fazem sentido no desktop */
+    .tab-btn {
+        max-width: none; /* Deixa o botão livre para seu tamanho real */
+    }
+}
 .clear-all-btn {
     background: var(--surface);
     color: var(--text);
@@ -322,24 +355,45 @@ color: var(--color_cancelar_his); }
 .container { padding: 20px; flex: 1; }
 .main-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
 
-/* principal*/
-.card { 
-    background: var(--surface); 
-    border: 1px solid var(--border_padrao); 
-    padding: 15px 15px; 
-    border-radius: 14px; 
-    text-align: center; 
-    cursor: pointer; 
+/* ============================================================
+   21pw cards principal 
+   ============================================================ */
+.card {
+    background: var(--fundo_cards);
+    
+    border: 1px solid var(--border_padrao);
+    
+    padding: 15px;
+    
+    border-radius: 14px;
+    
+    text-align: center;
+    
+    cursor: pointer;
+    
     position: relative;
+    
     display: flex;
     flex-direction: column;
+    
     gap: 8px;
-    box-shadow: 0 4px 15px var(--shadow_cards);
+    
+    box-shadow: 0 2px 8px var(--shadow_cards);
+    
+    content-visibility: auto;
+    
+    contain-intrinsic-size: 120px;
 }
 
-
-.card:hover::after { opacity: 0.7; bottom: 12px; }
-
+.card:hover strong.item+span {
+    color: var(--hover_color_ID);
+    
+    border-color: #FFFFFF;
+    
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    
+    background: var(--fundo_hover_ID);
+}
 
 .card span { font-size: 0.7rem; color: var(--text-dim); font-weight: 800; background: rgba(255,255,255,0.03); padding: 4px 8px; border-radius: 6px; width: fit-content; margin: 0 auto; }
 .card:hover { border-color: var(--primary); background: rgba(61, 90, 254, 0.02); }
@@ -350,11 +404,11 @@ color: var(--color_cancelar_his); }
 /* ============================================================
    07. MODAIS E POPUPS
    ============================================================ */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.62); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(6px); padding: 20px; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.62); z-index: 2000; align-items: center; justify-content: center;  padding: 20px; }
 .modal-overlay.active { display: flex !important; visibility: visible !important; opacity: 1 !important; z-index: 9999; }
 
 .modal-card { 
-    background: var(--surface); 
+    background: var(--fundo_modais); 
     padding: 30px; 
     border-radius: 25px; 
     width: 100%; 
@@ -375,12 +429,6 @@ color: var(--color_cancelar_his); }
 .modal-body-scroll::-webkit-scrollbar { width: 4px; }
 .modal-body-scroll::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-/* Estilos específicos para inputs dentro de modais de perfil */
-#profileModal input {
-    background-color: #fff !important;
-    color: #333 !important;
-    border: 1px solid #FF0000 !important;
-}
 
 /* ============================================================
    08. BOTÕES E COMPONENTES DE INTERAÇÃO
@@ -522,7 +570,8 @@ box-shadow:0 0 15px var(--shadow_tema);
 .aaviso::before {
     content: ""; width: 8px; height: 8px; background: var(--danger);
     border-radius: 50%; display: inline-block;
-    box-shadow: 0 0 10px var(--danger); animation: pulse-danger 2s infinite;
+    box-shadow: 0 0 10px var(--danger);
+    animation: none;
 }
 
 .aaviso::after {
@@ -545,54 +594,24 @@ box-shadow:0 0 15px var(--shadow_tema);
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
-h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
-
-.subtitle { color: var(--text-dim); font-size: 0.9rem; text-align: center; margin-bottom: 30px; }
-
-.input-group { margin-bottom: 20px; }
-.input-group label { display: block; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 8px; }
-.input-group input {
-    width: 100%; padding: 12px 16px; background: var(--bg);
-    border: 1px solid var(--border_padrao); border-radius: 8px; color: var(--text);
-    outline: none; transition: border-color 0.3s;
-}
-.input-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(61, 90, 254, 0.2); }
-
-.btn-primary {
-    width: 100%; padding: 14px; background: var(--primary); border: none;
-    border-radius: 8px; color: white; font-weight: 600; cursor: pointer;
-    transition: filter 0.3s, transform 0.1s; margin-top: 10px;
-}
-.btn-primary:hover { filter: brightness(1.2); }
-.btn-primary:active { transform: scale(0.98); }
-
-.form-footer { margin-top: 25px; text-align: center; font-size: 0.9rem; }
-.form-footer a { color: var(--accent); text-decoration: none; transition: opacity 0.3s; }
-.form-footer a:hover { text-decoration: underline; opacity: 0.8; }
-.form-footer p { margin-top: 15px; color: var(--text-dim); }
-
-
 /* ============================================================
-   12. css da contagens de divs
+    22jj  contagens divs
    ============================================================ */
    #totalContador {
   /* O pulo do gato: sem isso, a largura não funciona em <span> */
   display: inline-flex; 
   align-items: center;
   justify-content: center;
-
-  /* Largura fixa ou dinâmica */
-  width: 50px;            /* Tente um valor fixo primeiro para testar */
+  width: 50px;
   height: 22px;         
-  /* Estilo visual da imagem */
-  background-color: var( --contagen);
-  border: 1px solid var();
+  background-color: var(--fundo_contagens) ;
+  border: 1px solid var(--border_padrao);
   color: var(--cortextocontagen);
   font-weight: bold;
-  border-radius: 0 0 6px;     /* Bordas pouco arredondadas como na print */
+  border-radius: 0 0 6px;     
   font-size: 13px;
 }
+
 /* ============================================================
    13. sobre atualização sistema 
    ============================================================ */
@@ -604,8 +623,8 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
     display: none; /* JS muda para flex */
     position: fixed;
     inset: 0;
-    background: var(---modalfundo);
-    backdrop-filter: blur(7px);
+    background: var(--modalfundo);
+    
     z-index: 99999;
     align-items: center;
     justify-content: center;
@@ -614,7 +633,7 @@ h2 { font-size: 1.8rem; margin-bottom: 8px; text-align: center; }
 
 /* Card Principal */
 .un-modal-card {
-    background: var(---modal-card);
+    background: var(--modal-card);
     border: 1px solid var(--un-border);
     border-radius: 16px;
     width: 100%;
@@ -698,7 +717,7 @@ button[onclick="toggleAutoModal()"].active {
     position: fixed;
     inset: 0;
     background: var(---modalfundo);
-    backdrop-filter: blur(9px);
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -890,16 +909,16 @@ color: var(--text_titulo_cards);
 
 /* Seleciona o span que vem exatamente após o strong dentro do card */
 .card strong.item + span {
-    color: var(--color_ID); /* Usa o azul #00ABFF do seu */
+    color: var(--color_ID); 
     font-size: 0.8rem;
     font-weight: 700;
-    display: block;        /* Faz o ID ficar na linha de baixo */
+    display: block;    
     margin-top: 5px;
-    background: var(--fundo_ID); /* Usa aquele fundo azul translúcido */
+    background: var(--fundo_ID); 
     padding: 2px 8px;
     border-radius: 8px;
-    border: 1px solid var(--border_padrao); /* Borda azul definida no root */
-    width: fit-content;    /* Ajusta o fundo ao tamanho do texto */
+    border: 1px solid var(--border_padrao); 
+    width: fit-content;
     margin-left: auto;     /* Centraliza se o card for flex/center */
     margin-right: auto;
     transition: all var(--transition-fast);
@@ -909,7 +928,7 @@ color: var(--text_titulo_cards);
 .card:hover strong.item + span {
     color: var(--hover_color_ID);
     border-color: #FFFFFF;
-    box-shadow: 0 0 8px var(--shadow_ID);
+box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     background: var(--fundo_hover_ID);
 }
 
@@ -1027,64 +1046,6 @@ icones de navegação
 .sort-wrapper:hover .sort-select {
     background-color: var(--glass);
     }
-
-
-/* ============================================================
-   ESTILO DO BOTÃO AUTO-LIMPAR (PADRÃO NAV-TABS / CLEAR-ALL)
-   ============================================================ */
-
-button[onclick="toggleAutoClear()"] {
-    /* Cores baseadas no design do sistema (Tema Escuro Padrão) */
-    background: var(--surface); /* Fundo #1a1d29 */
-    color: var(--text);        /* Texto Branco */
-    
-    /* Espaçamento e Dimensionamento */
-    padding: 10px 18px;
-    min-height: 44px;
-    width: auto;               /* Garante que se adapte ao tamanho do texto */
-    margin: 5px;
-    
-    /* Bordas e Tipografia (Idêntico ao padrão das abas) */
-    border: 1px solid var(--border_padrao);
-    border-radius: 10px;       /* Arredondamento suave idêntico ao modelo */
-    font-size: 0.85rem;
-    font-weight: 600;          /* Texto levemente em negrito */
-    white-space: nowrap;
-    
-    /* Alinhamento e Interação */
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    
-    /* Respeita o reset global de transição */
-    transition: none !important; 
-}
-
-/* Efeito de Hover (Destaque ao passar o mouse) */
-button[onclick="toggleAutoClear()"]:hover {
-    border-color: var(--accent);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Estado "Ativo" (Para quando a função estiver ligada/selecionada via JS se necessário) */
-button[onclick="toggleAutoClear()"].active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-/* Ajuste e Compatibilidade para o Tema Claro (.light-theme) */
-.light-theme button[onclick="toggleAutoClear()"] {
-    background: #FFFFFF;
-    color: #121214;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.light-theme button[onclick="toggleAutoClear()"]:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: var(--accent);
-}
 
 
 /* FIM DO ARQUIVO CSS */

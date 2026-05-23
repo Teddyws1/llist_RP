@@ -6,7 +6,17 @@
     --bg: #0F111A; 
    --border_padrao: #2861AB21;
       /*==================*/ 
-      
+            
+    /* === [21gj = header] === */
+    --glass: #0F111A;
+     /*==================*/ 
+     
+/*===[9gk barra de navegação]=== */
+   --nav_fundo:#0F111A;
+   --shadow_nav:#0000006B;
+
+         /*==================*/ 
+         
  /*===[ 4qp barra de search ]=== */
       --fundo_search:#0F111A;
      --ponteiro_search:#FFFFFF;
@@ -15,22 +25,23 @@
      /*==================*/ 
      
    /* ===[3le divs e IDS]=== */ 
-      --surface: #0B0D1A;
-      --text_titulo_cards:#FFFFFF;
-    --shadow_cards:#000000C4;
-      --color_ID:#FFFFFF;
+
+      --text_titulo_cards:#E7E7E7;
+  
+      --color_ID:#C8C8C8;
       --fundo_ID:#0B0D1A;
       --hover_color_ID:#FFFFFF;
       --shadow_ID:#FFFFFF;
       --fundo_hover_ID:#0F111A;
       /*==================*/
-      
-      /* === [ header] === */
-    --glass: #0F111AE6;
-     /*==================*/ 
+
+   /*===[21pw cards principal]===*/
+     --fundo_cards:#0B0D1A;
+     --shadow_cards:#0000002E;
+     --fundo_modais:#0B0D1A;
+   /*==================*/ 
     --bg-glasstitulo: #0F172ACC;
     ---modalfundo: #000000B3;
-    ---modal-card: #000000;
     --un-surfface: #0F111A;
     ---border-bottom: #FFFFFF0D;
 
@@ -61,15 +72,16 @@
     --icone_sobre:#0074FF;
     --icone_flecha:#0074FF;
        /*==================*/ 
+       
   /*===[2jw modal histórico ]===*/
   --overlay_historico:#00000096;
     --text_h2:#ff9800;
     --fundo_modal_his:#0F111A;
-      --shadow_his:#FF9800E0;
+      --shadow_his:#FF980045;
     --icone_color_his:#ff9800;
     --text_p:#FFFFFF;
-   --cancelar_fundo_his:#FFFFFF;
-   --color_cancelar_his:#0F111A;
+   --cancelar_fundo_his:#FF0B0B;
+   --color_cancelar_his:#FFFFFF;
    --fundo_limpar_his:#1B7F21;
    --color_limpar_his:#FFFFFF;
      /*==================*/ 
@@ -101,7 +113,7 @@
     --un-accent: #C0F71382;
     ---border-btn-footer: #fff;
     --text-dim-texbot: linear-gradient(to right, #00ABFF , #00ABFF);
-    --text-dim-texbtex: #FF1818;
+
 
   /* === [ 13fw sidebar ] === */
   --fundo_fecha_aba:#0b1327;
@@ -112,13 +124,17 @@
    --fundo_aba:#0B0D1A;
    /*==================*/ 
 
+  /*===[22jj contagens divs]===*/
+   --fundo_contagens:#2861AB21;
+  
+   /*==================*/ 
     /* --- Sistema de Atualização e Contador --- */
     ---openUpdateModal: linear-gradient(135deg, #0074FF, #00ABFF3B);
     ---openUpdateModalcolor: #FFFFFF;
     --openUpdateModalboxshodow: #00e5ff;
     ---openUpdateModalshadow: #00e5ff;
-    --contagen: #1A1E2F;
-    --cortextocontagen: #fff;
+    
+
 
     /* --- Variáveis de Layout --- */
     --radius-sm: 6px;
@@ -138,20 +154,41 @@
 .light-theme {
     /* --- Cores de Fundo e Estrutura --- */
     --bg: #f4f4f9;
-    --surface: #FFFFFF;
     --glass: rgba(255, 255, 255, 0.9);
     --bg-glasstitulo: rgba(213, 213, 213, 0.44);
     --un-surfface: #000000D4;
    --border_padrao: #9C9C9C78;
     ---border-bottom: #C1FF00;
     --un-border: rgba(255, 255, 255, 0.08);
-     /*===[ 4qp barra de search ]=== */
+    
+  /*===[21pw cards principal]===*/
+     --fundo_cards:#FFFFFF;
+     --fundo_modais:#AAAAAA;
+      --shadow_cards:#E3E3E3C4;
+   /*==================*/
+   
+  /*===[ 4qp barra de search ]=== */
     --fundo_search:#FFFFFF;
      --ponteiro_search:#000000;
     --icone_lupa_search:#000000;
     --botao_x_search:#000000;
      /*==================*/ 
   
+   /* === [21gj = header] === */
+     --glass: #FFFFFF;
+     /*==================*/
+  
+    /*===[9gk barra de navegação]=== */
+      --nav_fundo:#FFFFFF;
+      --shadow_nav:#0000005E;
+      
+         /*==================*/ 
+    
+    /*===[22jj contagens divs]===*/
+    --fundo_contagens: #3F516921;
+  
+     /*==================*/ 
+    
     /* --- Identidade e Destaques --- */
     --primary: #000000;
     --accent: #000000;
@@ -163,7 +200,7 @@
     /* --- Textos e Tipografia --- */
     ---estaveltext:#009AFF;
     --text: #121214;
-    --text-dim: #636366;
+
     --itemdivs: #000000;
     --vermais: #000000;
     --data: #000000;
@@ -191,7 +228,7 @@
     ---un-poscorlor: #000000;
     --un-bg: #FFFFFF;
     --un-surface: #fff;
-    --text-dim-texbot: #000000;
+ 
   ---apagafavorito:#000000;
     /* --- Sistema de Atualização e Contador --- */
     
@@ -206,7 +243,7 @@
     --shadow_tema:#000000AB;
    /*==================*/ 
   /* === [3le divs e IDS ] === */   --text_titulo_cards:#000000;
-      --shadow_cards:#00000078;
+  
       --color_ID:#000000;
       --fundo_ID:#FFFFFF;
       --hover_color_ID:#FFFFFF;
@@ -233,12 +270,12 @@
    /*===[2jw modal histórico ]===*/
   --overlay_historico:#000000D1;
   --fundo_modal_his:#0F111A;
-  --shadow_his:#FF98006E;
+  --shadow_his:#FF980045;
    --icone_color_his:#ff9800;
    --text_h2:#ff9800;
      --text_p:#FFFFFF;
-    --cancelar_fundo_his:#FFFFFF;
-   --color_cancelar_his:#0F111A;
+    --cancelar_fundo_his:#FF0B0B;
+   --color_cancelar_his:#FFFFFF;
    --fundo_limpar_his:#1B7F21;
   --color_limpar_his:#FFFFFF;
      /*==================*/ 
@@ -247,9 +284,8 @@
     ---openUpdateModalcolor: #000000;
     ---openUpdateModalshadow: #000000;
     --openUpdateModalboxshodow: #B4B4B4;
-    --sobradoopenmodal: #9C9C9C85;
-    --contagen: #009AFF;
-    --cortextocontagen: #FFFFFF;
+
+
 }
 
 

@@ -6,12 +6,8 @@ function openUpdateModal() {
     if (document.getElementById('updateModal')) return;
 
     const updates = [
-        "Melhorias internas",
-        "Melhorias visuais",
-        "Organização da aba lateral",
-        "Nova aba sobre o sistema",
-        "Correção de bugs de performance",
-        "Otimização de carregamento","melhorias no modal de atualização "
+   "melhoria na posição da navegação ", "ajuste no visual",
+   "ajuste internos"
     ];
 
     const limite = 3;

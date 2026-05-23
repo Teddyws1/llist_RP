@@ -1,9 +1,9 @@
 const app = document.getElementById("app");
 
 const systemInfo = {
-  nome: "Ilist_RP Beta 2.0",
-  versao: "4.0.0",
-  compilacao: "22/05/2026",
+  nome: "Ilist_RP Beta",
+  versao: "4.1.0",
+  compilacao: "23/05/2026",
   plataforma: "Android • Windows • iPhone",
   desenvolvedor: "Teddy Machado",
   tecnologias: "HTML5, CSS3, JavaScript e Ionicons",
@@ -12,15 +12,15 @@ const systemInfo = {
 
 const tabs = [
   {
-    small: "BL: 01",
+    small: "etapa: 01",
     title: "Informações"
   },
   {
-    small: "BL: 02",
+    small: "etapa: 02",
     title: "Sobre o sistema"
   },
   {
-    small: "BL: 03",
+    small: "etapa: 03",
     title: "Desenvolvedor"
   }
 ];
@@ -49,15 +49,17 @@ app.innerHTML = `
     <!-- TOPO -->
     <header class="topbar">
 
-      <button 
-        class="back-btn"
-        onclick="window.location.href='index.html'"
-      >
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </button>
+<button 
+    class="back-btn"
+    aria-label="Voltar para página principal"
+    onclick="window.location.href='index.html'">
+
+    <ion-icon name="chevron-back-outline"></ion-icon>
+
+</button>
 
       <div class="header-text">
-        <span>Ilist_RP</span>
+        <span>Ilist_RP 2026 </span>
         <h1>Sobre o Sistema</h1>
       </div>
 
@@ -226,14 +228,9 @@ Tecnologias utilizadas:
 
 ${systemInfo.tecnologias}
 
-#EM_BUSCA_DA_MELHORIA 😄
-
 Espero que goste,
 deixe sua opinião no Instagram abaixo 👇👇
-
-        </p>
-
-        <div class="instagram-btn">
+   <div class="instagram-btn">
 
           <a
             href="${systemInfo.instagram}"
