@@ -368,52 +368,101 @@ color: var(--color_cancelar_his); }
 /* ============================================================
    06. GRID DE CONTEÚDO E CARDS
    ============================================================ */
-.container { padding: 20px; flex: 1; }
-.main-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+.container {
+    padding: 20px;
+    padding-bottom: 95px;
+    flex: 1;
+}
 
-/* ============================================================
-   21pw cards principal 
-   ============================================================ */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    align-content: start;
+    width: 100%;
+}
+
+.main-grid>div {
+    margin: 0;
+}
+
 .card {
     background: var(--fundo_cards);
-    
     border: 1px solid var(--border_padrao);
-    
-    padding: 15px;
-    
+    padding: 12px 10px;
     border-radius: 14px;
-    
     text-align: center;
-    
     cursor: pointer;
-    
     position: relative;
+    
+    min-height: 92px;
     
     display: flex;
     flex-direction: column;
-    
-    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
     
     box-shadow: 0 2px 8px var(--shadow_cards);
     
     content-visibility: auto;
-    
-    contain-intrinsic-size: 120px;
+    contain-intrinsic-size: 92px;
+}
+
+.card * {
+    margin: 0;
+    line-height: 1.15;
+}
+
+.card span {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 4px 8px;
+    border-radius: 6px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    background: rgba(61, 90, 254, 0.02);
 }
 
 .card:hover strong.item+span {
     color: var(--hover_color_ID);
-    
     border-color: #FFFFFF;
-    
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-    
     background: var(--fundo_hover_ID);
 }
 
-.card span { font-size: 0.7rem; color: var(--text-dim); font-weight: 800; background: rgba(255,255,255,0.03); padding: 4px 8px; border-radius: 6px; width: fit-content; margin: 0 auto; }
-.card:hover { border-color: var(--primary); background: rgba(61, 90, 254, 0.02); }
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        padding-bottom: 105px;
+    }
+    
+    .main-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+    
+    .card {
+        min-height: 92px;
+        padding: 10px 6px;
+        gap: 4px;
+        border-radius: 12px;
+        contain-intrinsic-size: 92px;
+    }
+}
 
+@media (min-width: 700px) {
+    .main-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 180px));
+        justify-content: center;
+    }
+}
 .delete-fav { position: absolute; top: 10px; right: 10px; color: var(--danger); font-size: 1rem; padding: 5px; opacity: 0.5; z-index: 10; border: none; background: transparent; cursor: pointer; }
 .delete-fav:hover { opacity: 1; }
 
