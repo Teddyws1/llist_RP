@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     versao: "4.6.1",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "30/05/2026 •00:00h",
+    ultimaAtualizacao: "30/05/2026 •19:14h",
     //atualiza data de atualização 
     proximaAtualizacao: "",
 
