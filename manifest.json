@@ -1,0 +1,15 @@
+{
+  "name": "llest_RP",
+  "short_name": "llest_RP",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0F111A",
+  "theme_color": "#6200ee",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/sfSqXB5Q/Logo-llist-RP.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
