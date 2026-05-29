@@ -199,9 +199,9 @@ document.addEventListener("DOMContentLoaded", () => {
     versao: "4.6.1",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "30/05/2026 •19:14h",
+    ultimaAtualizacao: "29/05/2026 •19:14h",
     //atualiza data de atualização 
-    proximaAtualizacao: "",
+    proximaAtualizacao: "30/05/2026",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
     desenvolvedor: "Teddy Machado",
