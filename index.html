@@ -1,317 +1,277 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Manutenção • llist_RP</title>
+    <title>llist Rp</title>
 
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <meta 
+        name="description" 
+        content="Explore a melhor lista RP com servidores atualizados, interface moderna e navegação rápida para encontrar comunidades Roleplay."
+    >
 
-  <style>
-    :root{
-      --bg:#0F111A;
-      --text:#FFFFFF;
-      --text-dim:#C9D4E5;
-      --card:#0B0D1A;
-      --border:#2861AB45;
-      --primary:#00ABFF;
-      --accent:#0074FF;
-      --warning:#FFB020;
-      --shadow:#00000080;
-    }
+    <style>
+        body {
+            margin: 0;
+            background: #0b0f18;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      -webkit-tap-highlight-color:transparent;
-      user-select:none;
-    }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 
-    html,
-    body{
-      width:100%;
-      min-height:100%;
-      overflow-x:hidden;
-    }
+    <!---código icones--->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!---fim código icone--->
 
-    body{
-      min-height:100vh;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Arial, Helvetica, sans-serif;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    .maintenance-page{
-      position:relative;
-      width:100%;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:22px;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at top, rgba(0,171,255,.14), transparent 35%),
-        linear-gradient(180deg,#0F111A 0%,#090B14 100%);
-    }
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" 
+        rel="stylesheet"
+    >
 
-    .maintenance-page::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:url("logo.png");
-      background-repeat:no-repeat;
-      background-position:center;
-      background-size:min(70vw, 720px);
-      opacity:.07;
-      pointer-events:none;
-      z-index:0;
-    }
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
 
-    .maintenance-card{
-      position:relative;
-      z-index:1;
-      width:100%;
-      max-width:560px;
-      padding:36px 26px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      text-align:center;
-      background:rgba(11,13,26,.94);
-      border:1px solid var(--border);
-      border-radius:26px;
-      box-shadow:0 24px 60px var(--shadow);
-      backdrop-filter:blur(8px);
-    }
+    <link rel="stylesheet" href="roots.css?v=01">
+    <link rel="stylesheet" href="style.css?v=01">
+    <link rel="stylesheet" href="atualizacao.css?v=01">
 
-    .maintenance-icon{
-      width:86px;
-      height:86px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:18px;
-      background:linear-gradient(135deg,var(--accent),var(--primary));
-      color:#FFFFFF;
-      border-radius:24px;
-      box-shadow:0 0 34px rgba(0,171,255,.24);
-    }
+    <link 
+        rel="icon" 
+        href="https://i.postimg.cc/d3qL35q7/file-00000000e86c720ea49bac52225a1d33.png" 
+        type="image/png"
+    >
 
-    .maintenance-icon ion-icon{
-      font-size:46px;
-    }
-
-    .maintenance-badge{
-      margin-bottom:16px;
-      padding:8px 16px;
-      background:rgba(0,171,255,.12);
-      color:var(--primary);
-      border:1px solid rgba(0,171,255,.28);
-      border-radius:999px;
-      font-size:12px;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.6px;
-    }
-
-    h1{
-      margin-bottom:14px;
-      font-size:32px;
-      line-height:1.15;
-      font-weight:800;
-    }
-
-    .maintenance-text{
-      color:var(--text-dim);
-      font-size:15px;
-      line-height:1.7;
-    }
-
-    .maintenance-info{
-      width:100%;
-      margin-top:24px;
-      padding:14px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      background:rgba(255,255,255,.035);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:16px;
-      color:#DCE8F7;
-      font-size:14px;
-      line-height:1.5;
-    }
-
-    .maintenance-info ion-icon{
-      color:var(--warning);
-      font-size:22px;
-      flex:0 0 auto;
-    }
-
-    .loading-bar{
-      position:relative;
-      width:100%;
-      height:8px;
-      margin-top:20px;
-      background:rgba(255,255,255,.08);
-      border-radius:999px;
-      overflow:hidden;
-    }
-
-    .loading-progress{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border-radius:999px;
-      background:linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--accent) 35%,
-        var(--primary) 50%,
-        var(--accent) 65%,
-        transparent 100%
-      );
-      transform:translate3d(-100%,0,0);
-      animation:loadingSmooth 1.6s linear infinite;
-      will-change:transform;
-    }
-
-    .maintenance-footer{
-      margin-top:26px;
-      font-size:24px;
-      font-weight:900;
-      letter-spacing:1px;
-      background:linear-gradient(135deg,#0074FF,#00ABFF);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-    }
-
-    @keyframes loadingSmooth{
-      from{
-        transform:translate3d(-100%,0,0);
-      }
-
-      to{
-        transform:translate3d(100%,0,0);
-      }
-    }
-
-    @media(max-width:480px){
-      .maintenance-page{
-        padding:16px;
-      }
-
-      .maintenance-page::before{
-        background-size:120vw;
-        opacity:.05;
-      }
-
-      .maintenance-card{
-        padding:28px 18px;
-        border-radius:22px;
-      }
-
-      .maintenance-icon{
-        width:74px;
-        height:74px;
-        border-radius:20px;
-      }
-
-      .maintenance-icon ion-icon{
-        font-size:40px;
-      }
-
-      h1{
-        font-size:25px;
-      }
-
-      .maintenance-text{
-        font-size:14px;
-      }
-
-      .maintenance-info{
-        align-items:flex-start;
-        text-align:left;
-        font-size:13px;
-      }
-    }
-
-    @media(min-width:900px){
-      .maintenance-card{
-        max-width:620px;
-        padding:42px 36px;
-      }
-
-      h1{
-        font-size:38px;
-      }
-
-      .maintenance-text{
-        font-size:16px;
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce){
-      .loading-progress{
-        animation:none;
-        transform:none;
-        background:linear-gradient(90deg,var(--accent),var(--primary));
-      }
-    }
-  </style>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6200ee">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 
 <body>
 
-  <main class="maintenance-page">
-    <section class="maintenance-card">
+<header>
+    <button type="button" class="icon-btn" aria-label="Abrir menu lateral" id="menuBtn" onclick="event.stopPropagation(); toggleSidebar();">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
 
-      <div class="maintenance-icon">
-        <ion-icon name="construct-outline"></ion-icon>
-      </div>
+    <div class="search-wrapper">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <label for="searchInput" class="sr-only">Buscar comando</label>
+        <input type="text" id="searchInput" placeholder="Buscar comando..." aria-label="Buscar comando">
+        <button type="button" class="clear-search" id="clearBtn" aria-label="Limpar busca" onclick="clearSearch()">
+            <i class="fas fa-times-circle" aria-hidden="true"></i>
+        </button>
+    </div>
 
-      <span class="maintenance-badge">
-        Sistema em manutenção
-      </span>
+  <div class="sort-wrapper">
 
-      <h1>Estamos aplicando melhorias</h1>
+    <i class="fas fa-filter sort-icon"></i>
 
-      <p class="maintenance-text">
-        O sistema está temporariamente fora do ar para atualização.
-        Alguns serviços poderão ficar indisponíveis por alguns minutos.
-      </p>
+    <select
+        id="sortOption"
+        class="sort-select"
+        aria-label="Ordenar itens"
+        onchange="renderItems()"
+    >
 
-      <div class="maintenance-info">
-        <ion-icon name="time-outline"></ion-icon>
+        <option value="recent">
+            Mais recentes
+        </option>
+
+        <option value="alpha-asc">
+            A → Z
+        </option>
+
+        <option value="alpha-desc">
+            Z → A
+        </option>
+
+        <option value="id-asc">
+            ID menor
+        </option>
+
+        <option value="id-desc">
+            ID maior
+        </option>
+    </select>
+
+</div>
+</header>
+
+<span id="totalContador" aria-live="polite">0</span>
+
+<aside id="sidebar" class="sidebar" aria-label="Menu lateral">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+<div class="rp-badge">
+
+    <h3 class="rp-title">
+
         <span>
-          A atualização está em andamento. Agradecemos sua compreensão enquanto realizamos melhorias no sistema.
+
+            llist_RP
+
+            <img
+                src="https://i.postimg.cc/d3qL35q7/file-00000000e86c720ea49bac52225a1d33.png"
+                alt="Logo llist_RP"
+                class="rp-logo">
+
         </span>
-      </div>
 
-      <div class="loading-bar">
-        <div class="loading-progress"></div>
-      </div>
+    </h3>
 
-      <p class="maintenance-footer">llist_RP</p>
+</div>
 
-    </section>
-  </main>
+        <button type="button" class="icon-btn" aria-label="Fechar aba lateral" onclick="toggleSidebar()">
+            &times;
+        </button>
+    </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.addEventListener("contextmenu", event => {
-        event.preventDefault();
-      });
-    });
-  </script>
+    <p class="aaviso">
+        OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
+    </p>
+
+    <button type="button" onclick="openUpdateModal()" aria-label="Ver atualizações do sistema">
+        Ver Atualizações
+    </button>
+
+    <br>
+
+    <a href="informação.html" style="text-decoration:none;" aria-label="Abrir página sobre o sistema">
+        <button type="button" class="sobre-sistema-btn" aria-label="Abrir página sobre o sistema">
+            <span style="display:flex; align-items:center;">
+                <i class="fas fa-desktop" aria-hidden="true"></i>
+                SOBRE O SISTEMA
+            </span>
+
+            <span class="seta" aria-hidden="true"><ion-icon name="chevron-forward-outline"></ion-icon></span>
+        </button>
+    </a>
+
+    <br>
+
+    <div class="theme-box">
+        <div class="theme-left">
+            <div class="theme-icon">
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </div>
+
+            <span>Modo escuro</span>
+        </div>
+
+        <label class="switch" aria-label="Alternar modo escuro">
+            <input type="checkbox" checked onclick="toggleTheme()" aria-label="Alternar modo escuro">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <hr class="linha-grudada">
+
+    <footer class="rodape">
+        &copy; Desenvolvido por Teddy Machado 2026
+    </footer>
+
+</aside>
+
+<nav class="nav-tabs" aria-label="Navegação principal">
+    <button class="tab-btn active" id="tabAll" type="button" aria-label="Mostrar todos" onclick="switchTab('all')">
+        <i class="fas fa-home" aria-hidden="true"></i>
+    </button>
+
+    <button class="tab-btn" id="tabFav" type="button" aria-label="Mostrar favoritos" onclick="switchTab('fav')">
+        <i class="fas fa-bookmark" aria-hidden="true"></i>
+    </button>
+
+    <button class="tab-btn auto-modal-btn" type="button" aria-label="Abrir modal automático" onclick="toggleAutoModal()">
+        <i class="fas fa-window-maximize" aria-hidden="true"></i>
+    </button>
+
+    <button id="clearAllBtn" class="clear-all-btn" type="button" aria-label="Limpar favoritos" onclick="clearAllFavorites()">
+        <i class="fas fa-trash-alt" aria-hidden="true"></i>
+    </button>
+</nav>
+
+<main class="container">
+    <div id="gridItems" class="main-grid" role="list" aria-label="Lista de comandos"></div>
+</main>
+
+<div id="itemModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+        <h2 id="modalTitle" style="margin-bottom:5px;">Comando</h2>
+
+        <span id="modalID" style="color:var(--accent); font-weight:900; margin-bottom:15px;">#</span>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-fav" id="favBtn" aria-label="Adicionar aos favoritos">
+                Favoritar
+            </button>
+
+            <button type="button" class="btn btn-copy" aria-label="Copiar comando" onclick="copyCommand()">
+                <i class="fas fa-copy" aria-hidden="true"></i>
+                Copiar
+            </button>
+
+            <button type="button" class="btn btn-close" aria-label="Fechar modal" onclick="closeModal('itemModal')">
+                Fechar
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="textModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="textModalTitle">
+    <div class="modal-card">
+        <h2 id="textModalTitle" style="color:var(--primary);">
+            Título
+        </h2>
+
+        <div class="modal-body-scroll">
+            <p id="textModalBody" style="color:var(--text-dim); line-height:1.6; font-size:0.95rem; white-space:pre-line;"></p>
+        </div>
+
+        <button type="button" class="btn btn-close" aria-label="Fechar mensagem" onclick="closeModal('textModal')" style="width:100%">
+            Entendido
+        </button>
+    </div>
+</div>
+
+<script src="atualizacao.js?v=01" defer></script>
+<script src="bancodedado.js?v=01" defer></script>
+<script src="script.js?v=01" defer></script>
+<script src="anticopia.js?v=01" defer></script>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => {
+                    console.log('SW registrado');
+                    reg.update();
+                })
+                .catch(err => {
+                    console.log('Erro SW:', err);
+                });
+        });
+    }
+</script>
 
 </body>
 </html>
