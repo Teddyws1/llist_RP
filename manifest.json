@@ -3,7 +3,7 @@
   "short_name": "llest_RP",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#0F111A",
+  "background_color": "#060008",
   "theme_color": "#6200ee",
   "icons": [
     {
