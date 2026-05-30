@@ -1,4 +1,4 @@
-const CACHE_NAME = "llist-rp-002";
+const CACHE_NAME = "llist-rp-0027";
 
 self.addEventListener("install", event => {
   console.log("Service Worker instalado");
