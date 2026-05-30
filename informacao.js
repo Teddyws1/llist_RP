@@ -11,7 +11,7 @@
     // ALTERE APENAS ESTAS DUAS DATAS
     ultimaAtualizacao: "30/05/2026 •10:15h",
     //atualiza data de atualização 
-    proximaAtualizacao: "",
+    proximaAtualizacao: "31/05/2026",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
     desenvolvedor: "Teddy Machado",
