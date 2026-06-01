@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Manutenção • llist_RP</title>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <style>
+    :root{
+      --bg:#0F111A;
+      --text:#FFFFFF;
+      --text-dim:#C9D4E5;
+      --card:#0B0D1A;
+      --border:#2861AB45;
+      --primary:#00ABFF;
+      --accent:#0074FF;
+      --warning:#FFB020;
+      --shadow:#00000080;
+      --loading-duration:1.6s;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
+    }
+
+    html,
+    body{
+      width:100%;
+      min-height:100%;
+      overflow-x:hidden;
+    }
+
+    body{
+      min-height:100vh;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    .maintenance-page{
+      position:relative;
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top, rgba(0,171,255,.14), transparent 35%),
+        linear-gradient(180deg,#0F111A 0%,#090B14 100%);
+    }
+
+    .maintenance-page::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url("logo.png");
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:min(70vw, 720px);
+      opacity:.07;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .maintenance-card{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:560px;
+      padding:36px 26px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      background:rgba(11,13,26,.94);
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:0 24px 60px var(--shadow);
+      backdrop-filter:blur(8px);
+    }
+
+    .maintenance-icon{
+      width:86px;
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:18px;
+      background:linear-gradient(135deg,var(--accent),var(--primary));
+      color:#FFFFFF;
+      border-radius:24px;
+      box-shadow:0 0 34px rgba(0,171,255,.24);
+    }
+
+    .maintenance-icon ion-icon{
+      font-size:46px;
+    }
+
+    .maintenance-badge{
+      margin-bottom:16px;
+      padding:8px 16px;
+      background:rgba(0,171,255,.12);
+      color:var(--primary);
+      border:1px solid rgba(0,171,255,.28);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+    }
+
+    h1{
+      margin-bottom:14px;
+      font-size:32px;
+      line-height:1.15;
+      font-weight:800;
+    }
+
+    .maintenance-text{
+      color:var(--text-dim);
+      font-size:15px;
+      line-height:1.7;
+    }
+
+    .maintenance-info{
+      width:100%;
+      margin-top:24px;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:16px;
+      color:#DCE8F7;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .maintenance-info ion-icon{
+      color:var(--warning);
+      font-size:22px;
+      flex:0 0 auto;
+    }
+
+    .loading-bar{
+      position:relative;
+      width:100%;
+      height:8px;
+      margin-top:20px;
+      background:rgba(255,255,255,.08);
+      border-radius:999px;
+      overflow:hidden;
+      transform:translateZ(0);
+      backface-visibility:hidden;
+      contain:paint;
+    }
+
+    .loading-progress{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--accent) 35%,
+        var(--primary) 50%,
+        var(--accent) 65%,
+        transparent 100%
+      );
+      transform:translate3d(-100%,0,0);
+      animation:loadingSmooth var(--loading-duration) linear infinite;
+      will-change:transform;
+      backface-visibility:hidden;
+    }
+
+    .loading-bar.is-running .loading-progress{
+      animation-name:loadingSmooth;
+      animation-duration:var(--loading-duration);
+      animation-timing-function:linear;
+      animation-iteration-count:infinite;
+      animation-play-state:running;
+    }
+
+    .maintenance-footer{
+      margin-top:26px;
+      font-size:24px;
+      font-weight:900;
+      letter-spacing:1px;
+      background:linear-gradient(135deg,#0074FF,#00ABFF);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    @keyframes loadingSmooth{
+      from{
+        transform:translate3d(-100%,0,0);
+      }
+
+      to{
+        transform:translate3d(100%,0,0);
+      }
+    }
+
+    @media(max-width:480px){
+      .maintenance-page{
+        padding:16px;
+      }
+
+      .maintenance-page::before{
+        background-size:120vw;
+        opacity:.05;
+      }
+
+      .maintenance-card{
+        padding:28px 18px;
+        border-radius:22px;
+      }
+
+      .maintenance-icon{
+        width:74px;
+        height:74px;
+        border-radius:20px;
+      }
+
+      .maintenance-icon ion-icon{
+        font-size:40px;
+      }
+
+      h1{
+        font-size:25px;
+      }
+
+      .maintenance-text{
+        font-size:14px;
+      }
+
+      .maintenance-info{
+        align-items:flex-start;
+        text-align:left;
+        font-size:13px;
+      }
+    }
+
+    @media(min-width:900px){
+      .maintenance-card{
+        max-width:620px;
+        padding:42px 36px;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      .maintenance-text{
+        font-size:16px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .loading-progress{
+        animation:loadingSmooth var(--loading-duration) linear infinite;
+        transform:translate3d(-100%,0,0);
+        background:linear-gradient(
+          90deg,
+          transparent 0%,
+          var(--accent) 35%,
+          var(--primary) 50%,
+          var(--accent) 65%,
+          transparent 100%
+        );
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="maintenance-page">
+    <section class="maintenance-card">
+
+      <div class="maintenance-icon">
+        <ion-icon name="construct-outline"></ion-icon>
+      </div>
+
+      <span class="maintenance-badge">
+        Sistema em manutenção
+      </span>
+
+      <h1>Estamos aplicando melhorias</h1>
+
+      <p class="maintenance-text">
+        O sistema está temporariamente fora do ar para atualização.
+        Alguns serviços poderão ficar indisponíveis por alguns minutos.
+      </p>
+
+      <div class="maintenance-info">
+        <ion-icon name="time-outline"></ion-icon>
+        <span>
+          A atualização está em andamento. Agradecemos sua compreensão enquanto realizamos melhorias no sistema.
+        </span>
+      </div>
+
+      <div class="loading-bar" id="loadingBar">
+        <div class="loading-progress" id="loadingProgress"></div>
+      </div>
+
+      <p class="maintenance-footer">llist_RP</p>
+
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.addEventListener("contextmenu", event => {
+        event.preventDefault();
+      });
+
+      const loadingBar = document.getElementById("loadingBar");
+      const loadingProgress = document.getElementById("loadingProgress");
+
+      function manterAnimacaoDaBarra() {
+        if (!loadingBar || !loadingProgress) {
+          return;
+        }
+
+        loadingBar.classList.add("is-running");
+
+        loadingProgress.style.animation = "none";
+        loadingProgress.offsetHeight;
+        loadingProgress.style.animation = "";
+
+        requestAnimationFrame(() => {
+          loadingProgress.style.animationPlayState = "running";
+        });
+      }
+
+      manterAnimacaoDaBarra();
+
+      window.addEventListener("pageshow", manterAnimacaoDaBarra);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+          manterAnimacaoDaBarra();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
