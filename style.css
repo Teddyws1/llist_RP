@@ -1755,3 +1755,313 @@ body.light-theme{
     flex-shrink: 0;
     color: var(--icone_notification);
 }
+/* ============================================================
+   RESPONSIVO FOCADO • CARDS / DIVS / TÍTULOS / MODAIS
+   Adicionado no final sem remover linhas prontas.
+   Objetivo: títulos se adaptarem em telas pequenas, médias e grandes,
+   mantendo a base dos cards/divs estável e responsiva.
+   ============================================================ */
+
+:root{
+    --card-min-mobile-xs: minmax(0, 1fr);
+    --card-min-mobile: minmax(0, 1fr);
+    --card-min-tablet: minmax(150px, 1fr);
+    --card-min-desktop: minmax(155px, 1fr);
+}
+
+/* Base segura para qualquer div/card não estourar a tela */
+.container,
+.main-grid,
+.main-grid > div,
+.card,
+.modal-card,
+.custom-modal-box,
+.custom-alert-card,
+.un-modal-card,
+.theme-box,
+.aaviso,
+.btn-group,
+.nav-tabs,
+header{
+    max-width:100%;
+    min-width:0;
+}
+
+/* Grid dos cards: responsivo sem largura fixa */
+.main-grid{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(145px, 1fr));
+    align-items:stretch;
+}
+
+/* Base dos cards/divs */
+.card{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    height:auto;
+    min-height:clamp(88px, 18vw, 118px);
+    padding:clamp(10px, 2.5vw, 16px) clamp(8px, 2vw, 14px) clamp(38px, 7vw, 46px);
+    border-radius:clamp(12px, 2.8vw, 18px);
+    overflow:hidden;
+}
+
+/* Título principal dentro dos cards */
+.item,
+.card strong.item,
+.card .item,
+.card strong,
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card p{
+    max-width:100%;
+    min-width:0;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    hyphens:auto;
+}
+
+.item,
+.card strong.item{
+    display:block;
+    width:100%;
+    font-size:clamp(.78rem, 3.4vw, 1.08rem);
+    line-height:1.12;
+    text-wrap:balance;
+    white-space:normal;
+    overflow:hidden;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
+
+/* ID/legenda do card */
+.card span,
+.card strong.item + span{
+    max-width:calc(100% - 16px);
+    font-size:clamp(.66rem, 2.5vw, .82rem);
+    padding:2px clamp(6px, 1.8vw, 10px);
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.card::after{
+    bottom:clamp(19px, 5vw, 23px);
+}
+
+/* Badge novo acompanhando o tamanho da tela */
+.badge-novo{
+    max-width:calc(100% - 12px);
+    font-size:clamp(.48rem, 2.2vw, .72rem);
+    padding:2px clamp(4px, 1.5vw, 7px);
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* Modais responsivos */
+.modal-overlay,
+.custom-modal-overlay,
+.custom-alert-overlay,
+.un-modal-overlay{
+    padding:clamp(10px, 4vw, 22px);
+}
+
+.modal-card,
+.custom-modal-box,
+.custom-alert-card,
+.un-modal-card{
+    width:min(100%, 420px);
+    max-height:calc(100dvh - 24px);
+    overflow:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.modal-card{
+    padding:clamp(18px, 5vw, 30px);
+}
+
+.custom-modal-box{
+    padding:clamp(18px, 5vw, 25px);
+}
+
+.custom-modal-title,
+.custom-alert-title,
+.modal-card h1,
+.modal-card h2,
+.modal-card h3,
+.custom-modal-box h1,
+.custom-modal-box h2,
+.custom-modal-box h3,
+.un-modal-card h1,
+.un-modal-card h2,
+.un-modal-card h3{
+    max-width:100%;
+    font-size:clamp(1rem, 4.2vw, 1.35rem);
+    line-height:1.15;
+    overflow-wrap:anywhere;
+    text-wrap:balance;
+}
+
+.custom-modal-text,
+.custom-alert-text,
+.modal-card p,
+.un-modal-card p{
+    max-width:100%;
+    font-size:clamp(.88rem, 3.4vw, 1rem);
+    line-height:1.45;
+    overflow-wrap:anywhere;
+}
+
+.btn-group,
+.custom-modal-buttons{
+    width:100%;
+    min-width:0;
+}
+
+.btn,
+#favBtn,
+.custom-modal-buttons button,
+.custom-alert-btn{
+    min-width:0;
+    max-width:100%;
+    font-size:clamp(.86rem, 3.2vw, 1rem);
+    overflow-wrap:anywhere;
+}
+
+/* TELA MUITO PEQUENA: celular estreito */
+@media (max-width:360px){
+    .container{
+        padding-left:10px;
+        padding-right:10px;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:9px;
+    }
+
+    .card{
+        min-height:84px;
+        padding:9px 6px 36px;
+        border-radius:12px;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:clamp(.68rem, 3.8vw, .82rem);
+        -webkit-line-clamp:2;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:8px;
+        font-size:.64rem;
+        max-width:calc(100% - 10px);
+    }
+
+    .badge-novo{
+        top:4px;
+        right:4px;
+        font-size:.48rem;
+    }
+
+    .modal-card,
+    .custom-modal-box,
+    .custom-alert-card,
+    .un-modal-card{
+        width:100%;
+        max-width:100%;
+        border-radius:16px;
+    }
+
+    .btn-group{
+        grid-template-columns:1fr;
+    }
+
+    .btn-close{
+        grid-column:auto;
+    }
+}
+
+/* TELA PEQUENA: celulares comuns */
+@media (min-width:361px) and (max-width:480px){
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:11px;
+    }
+
+    .card{
+        min-height:90px;
+        padding:10px 8px 38px;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:clamp(.76rem, 3.6vw, .94rem);
+        -webkit-line-clamp:2;
+    }
+}
+
+/* TELA MÉDIA: celulares grandes e tablets pequenos */
+@media (min-width:481px) and (max-width:768px){
+    .main-grid{
+        grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+        gap:14px;
+    }
+
+    .card{
+        min-height:100px;
+        padding:12px 10px 42px;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:clamp(.9rem, 2.4vw, 1.05rem);
+        -webkit-line-clamp:2;
+    }
+}
+
+/* TELA GRANDE: desktop */
+@media (min-width:769px){
+    .main-grid{
+        grid-template-columns:repeat(auto-fit, minmax(155px, 1fr));
+        gap:clamp(14px, 1.4vw, 20px);
+    }
+
+    .card{
+        min-height:clamp(98px, 8vw, 124px);
+        padding:clamp(12px, 1vw, 17px) clamp(10px, 1vw, 16px) clamp(42px, 3vw, 48px);
+    }
+
+    .item,
+    .card strong.item{
+        font-size:clamp(.92rem, .95vw, 1.08rem);
+        -webkit-line-clamp:2;
+    }
+
+    .modal-card,
+    .custom-modal-box,
+    .custom-alert-card,
+    .un-modal-card{
+        width:min(100%, 430px);
+    }
+}
+
+/* TELA EXTRA GRANDE */
+@media (min-width:1200px){
+    .main-grid{
+        grid-template-columns:repeat(auto-fit, minmax(165px, 1fr));
+    }
+
+    .card{
+        min-height:clamp(105px, 7vw, 132px);
+    }
+
+    .item,
+    .card strong.item{
+        font-size:clamp(1rem, .8vw, 1.12rem);
+    }
+}
