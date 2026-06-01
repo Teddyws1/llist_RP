@@ -1913,3 +1913,72 @@ body.light-theme{
         }
     }
 }
+
+
+/* ============================================================
+   PATCH ALTURA DOS CARDS • TABLET E PC
+   Mantém todo CSS original e apenas sobrescreve.
+   ============================================================ */
+
+/* TABLETS */
+@media (min-width:601px) and (max-width:768px){
+
+    .card{
+        min-height:75px !important;
+        contain-intrinsic-size:75px !important;
+        padding:8px 8px 30px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:.88rem !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:6px !important;
+        font-size:.72rem !important;
+    }
+
+    .card::after{
+        bottom:16px !important;
+    }
+}
+
+/* NOTEBOOKS E PCS */
+@media (min-width:769px) and (max-width:1199px){
+
+    .card{
+        min-height:80px !important;
+        contain-intrinsic-size:80px !important;
+        padding:8px 8px 30px !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:6px !important;
+    }
+
+    .card::after{
+        bottom:16px !important;
+    }
+}
+
+/* MONITORES GRANDES */
+@media (min-width:1200px){
+
+    .card{
+        min-height:85px !important;
+        contain-intrinsic-size:85px !important;
+        padding:8px 8px 30px !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:6px !important;
+    }
+
+    .card::after{
+        bottom:16px !important;
+    }
+}
