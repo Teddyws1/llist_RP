@@ -2,6 +2,5 @@ const listText = `abanar, abdominal, abracar 1/2, abracointura 1/2, ajoelhar, al
 
 /* COMANDOS QUE VÃO RECEBER O BADGE "NOVO" */
 const comandosNovos = [
-    "garagem",
-  
+    "garagem","casalm 1/7" 
 ];

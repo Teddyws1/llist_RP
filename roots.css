@@ -3,27 +3,47 @@
    TEMA ESCURO (PADRÃO)
    ============================================================ */
 :root{
-    /* BASE */
-    --bg:#0F111A;
-    --text:#FFFFFF;
-    --text-dim:#FFFFFF;
+    /*body*/
+    --body_fundo:#0F111A;
+    --text_body:#DFDFDF;
     --color-dim:#FFFFFF;
     --border_padrao:#2861AB21;
+    
+    /* •06 header */
+    --fundo_header:#0F111A;
 
-    /* HEADER */
-    --glass:#0F111A;
-
-    /* NAVEGAÇÃO */
+    /*•01 navegação*/
     --nav_fundo:#0F111A;
     --shadow_nav:#0000006B;
-
-    /* SEARCH */
+    --icones_nav:#FFFFFF;
+    --icone_hover_nav:#0074FF;
+    --border_nav:#fff;
+    --icone_clean:#FFFFFF;
+    --border-color_favori_nav:#FFFFFF;
+    --hover_clean:#E21919;
+    --border_clean:#FF000094;
+    
+    /*config RX BOTÕES*/
+    --radius-md_nav:10px;
+    --padding_nav:10px 25px;
+  
+ /*•05 barra de pesquisa= escuro*/
     --fundo_search:#0F111A;
     --ponteiro_search:#FFFFFF;
     --icone_lupa_search:#FFFFFF;
-    --botao_x_search:#FFFFFF;
-
-    /* SIDEBAR */
+    --botao_x_search:#B4B4B4BF;
+    --hover_color_x:#E21919C9;
+    --border_search:#0B1D3A;
+     /*==================*/ 
+       
+     /*•12 notification de cópia*/
+     --fundo_notification:#0F111A; 
+     --color_notification:#FFFFFF;
+    --shadow_notification:#141622C2;
+     --icone_notification:#23B107;
+  
+     /*==================*/ 
+    /*•04 sidebar= escuro */
     --fundo_aba:#0B0D1A;
     --fundo_fecha_aba:#0b1327;
     --hover_btn:#0D163C;
@@ -32,56 +52,54 @@
     --shadow_sidebar:#000000;
     --shadow_hover:#00000040;
 
-    /* SOBRE SISTEMA */
+    /*•03 sobre sistema= escuro */
     --fundo_botao_sobre:#070d1c;
     --color_sobre:#FFFFFF;
     --icone_sobre:#0074FF;
     --icone_flecha:#0074FF;
     --border_:#0074FF;
 
-    /* TEMA SWITCH */
+    /*•02 botao de tema= escuro*/
     --fundo_tema:#070d1c;
     --color_tema:#FFFFFF;
     --icone_tema:#0b1327;
-    --icone_lua_tema:#FFFFFF;
-    --slider_tema:#1478ff;
+    --icone_lua_tema:#FFF100;
+    --slider_tema:#2861AB21;
     --before_tema:#FFFFFF;
     --checked_tema:#7D7D7DE0;
     --shadow_tema:#000000D9;
+    --text_rodape:#B9B9B969;
 
-    /* AVISO */
+    /* •09 aviso do cache */
     --danger:#FF0000;
     --color_aviso:#FFFFFF;
     /* botão de sim*/
     --color_aviso_sim:#FFFFFF;
     
-    
-    /* CARDS */
+    /* •07 modals= escuro */
     --fundo_cards:#0B0D1A;
-    --shadow_cards:#0000002E;
-    --text_titulo_cards:#E7E7E7;
+    --shadow_cards:#4545451A;
+    --modal_principal:#0B0D1A;
+    --overlay_modal_principal:#000000DE;
+    --fundo_remover:#FF0000;
+    --color_remover:#fff;
+    --icone_color_remover:#FFFFFF;
+    --fundo_favoritar:#1478FF;
+    --color_favoritar:#FFFFFF;
+    --color_copiar:#FFFFFF;
+    --fundo_copiar:#23B107;
+    --color_cancelar:#FFFFFF;
 
-    /* IDS */
-    --color_ID:#C8C8C8;
-    --fundo_ID:#0B0D1A;
-    --hover_color_ID:#FFFFFF;
-    --fundo_hover_ID:#0F111A;
 
-    /* 23do = badge novo */
+
+    /*•11 IDS= escuro*/
+    --fundo_id:#0B1D3A;
+    --color_id:#DDEBFF;
+
+    /*•10 badge novo */
     --color_badge:#FFFFFF;
     --fundo_badge:#0074FF;
     --ion-icon_color:#FFFFFF;
-
-    /* MODAIS */
-    --modalfundo:#000000B3;
-    --fundo_modais:#0B0D1A;
-    --modal-card:#0B0D1A;
-    --un-border:#2861AB21;
-    --un-text:#FFFFFF;
-    --un-accent:#C0F71382;
-
-  /* === [02fj modal padrão] === */
-    --fundo_close_modal:#00ABFF;
     
    /*==================*/ 
     /* MODAL HISTÓRICO */
@@ -94,16 +112,20 @@
     --color_cancelar_his:#FFFFFF;
     --fundo_limpar_his:#1B7F21;
     --color_limpar_his:#FFFFFF;
-
-    /* BOTÕES */
-    --primary:#00ABFF;
-    --accent:#00ABFF;
+     
+      /*•01=2 AT= escuro*/
+    --fundo_alerta_at:#0F111A;
+    --color_alert_tex:#7F7F7FE8;
+     --color_ok_alert:#FFFFFF;
+     --fundo_ok_alert:#151722;
+   /*==================*/ 
+    
+    
     --success:#23B107;
     --btnbtnfav:#FFFFFF;
-    --colorbtn:#FFFFFF;
+    --colorbtn:#000000;
     --border-btn-fav:#FFFFFF;
     --border-btn-footer:#FFFFFF;
-    --accentAV:#FFFFFF;
     --text-dim-texbot:linear-gradient(to right,#00ABFF,#00ABFF);
 
     /* BOTÃO ATUALIZAÇÕES */
@@ -116,97 +138,110 @@
 
     /* CONTADOR */
     --fundo_contagens:#2861AB21;
-    --cortextocontagen:#FFFFFF;
-
-    /* COMPONENTES */
-    --surface:var(--fundo_cards);
-
-    /* LAYOUT */
-    --radius-md:10px;
+    --cortextocontagen:#FFFFFFC2;
+      --total:#BFBFBF;
 }
 
 /* ============================================================
    TEMA CLARO
    ============================================================ */
 .light-theme{
-    /* BASE */
-    --bg:#f4f4f9;
-    --text:#121214;
-    --text-dim:#555555;
+    
+    --body_fundo:#f4f4f9;
+    --text_body:#121214;
     --color-dim:#000000;
     --border_padrao:#9C9C9C78;
 
-    /* HEADER */
-    --glass:#FFFFFF;
+    /* •06 header */
+    --fundo_header:#FFFFFF;
 
-    /* NAVEGAÇÃO */
+   /* •01 navegação*/
     --nav_fundo:#FFFFFF;
     --shadow_nav:#0000005E;
+    --icones_nav:#1478ff;
+    --icone_hover_nav:#000000;
+    --border_nav:#000000;
+    --icone_clean:#1478ff;
+    --border-color_favori_nav:#000000;
+    --hover_clean:#E21919;
+    --border_clean:#FF000094;
+    
+     /*•12 notification de cópia*/
+    --fundo_notification:#FFFFFF;
+     --color_notification:#000000;
+     --shadow_notification:#FFFFFFC2;
+     --icone_notification:#23B107;
 
-    /* SEARCH */
+     /*==================*/
+    
+    /*config RX BOTÕES*/
+    --radius-md_nav:10px;
+    --padding_nav:10px 25px;
+    
+/* •05 barra de pesquisa=claro */
     --fundo_search:#FFFFFF;
     --ponteiro_search:#000000;
     --icone_lupa_search:#000000;
     --botao_x_search:#000000;
+    --hover_color_x:#E21919;
+    --border_search:#000000;
 
-    /* SIDEBAR */
+    /*•04 sidebar= claro*/
     --fundo_aba:#FFFFFF;
     --fundo_fecha_aba:#FFFFFF;
     --hover_btn:#FFFFFF;
     --hover_btn_:var(--hover_btn);
-    --color_icone_fecha:#000000;
+    --color_icone_fecha:#1478ff;
     --shadow_sidebar:#000000A8;
     --shadow_hover:#00000024;
 
-    /* SOBRE SISTEMA */
+    /*•03 sobre sistema= claro*/
     --fundo_botao_sobre:#FFFFFF;
     --color_sobre:#000000;
     --icone_sobre:#000000;
     --icone_flecha:#000000;
     --border_:#000000;
 
-    /* TEMA SWITCH */
+    /*•02 botao de tema= claro*/
     --fundo_tema:#FFFFFF;
     --color_tema:#000000;
-    --icone_tema:#FFFFFF;
-    --icone_lua_tema:#000000;
-    --slider_tema:#1478ff;
-    --before_tema:#FFFFFF;
+    --icone_tema:#1478ff;
+    --icone_lua_tema:#FFFFFF;
+    --before_tema:#1478FF;
     --checked_tema:#7D7D7D52;
     --shadow_tema:#00000033;
+    --text_rodape:#0000008F;
 
     /* AVISO */
     --danger:#FF0000;
 
-    /* CARDS */
+    /* •07 modals= claro */
     --fundo_cards:#FFFFFF;
     --shadow_cards:#E3E3E3C4;
-    --text_titulo_cards:#000000;
+    --modal_principal:#FFFFFF;
+    --overlay_modal_principal:#000000D1;
+    --fundo_remover:#FF0000;
+    --color_remover:#FFFFFF;
+    --icone_color_remover:#FFFFFF;
+    --fundo_favoritar:#1478FF;
+    --color_favoritar:#FFFFFF;
+    --color_copiar:#FFFFFF;
+    --fundo_copiar:#23B107;
+    --color_cancelar:#000000;
+   
 
-    /* IDS */
-    --color_ID:#000000;
-    --fundo_ID:#FFFFFF;
-    --hover_color_ID:#FFFFFF;
-    --fundo_hover_ID:#0F111A;
+    /* •11 IDS= claro */
+    --fundo_id:#2861AB;
+    --color_id:#FFFFFFDE;
+  
 
-    /*  23do badge novo */
+    /*•10 badge novo */
     --color_badge:#000000;
     --fundo_badge:#FFFFFF;
     --ion-icon_color:#000000;
 
-    /* MODAIS */
-    --modalfundo:#000000D1;
-    --fundo_modais:#FFFFFF;
-    --modal-card:#FFFFFF;
-    --un-border:#0000001F;
-    --un-text:#000000;
-    --un-accent:#A4D20E;
-    
-   /* ===[02fjmodal padrão]=== */
-    --fundo_close_modal:#CDCDCD;
-
    /*==================*/ 
-    /* MODAL HISTÓRICO */
+    /* •08 modal de excluir favoritos */
     --overlay_historico:#000000D1;
     --fundo_modal_his:#0F111A;
     --color_h2_his:#ff9800;
@@ -216,16 +251,18 @@
     --color_cancelar_his:#FFFFFF;
     --fundo_limpar_his:#1B7F21;
     --color_limpar_his:#FFFFFF;
-
+    
+        /*•01=2 AT= claro*/
+    --fundo_alerta_at:#FFFFFF;
+    --color_alert_tex:#7F7F7FE8;
+      --fundo_ok_alert:#151722;
+    --color_ok_alert:#FFFFFF;
+   /*==================*/ 
     /* BOTÕES */
-    --primary:#000000;
-    --accent:#000000;
-    --success:#23B107;
     --btnbtnfav:#FFFFFF;
     --colorbtn:#FFFFFF;
     --border-btn-fav:#000000;
     --border-btn-footer:#000000;
-    --accentAV:#000000;
     --text-dim-texbot:linear-gradient(to right,#000000,#000000);
 
     /* BOTÃO ATUALIZAÇÕES */
@@ -233,16 +270,10 @@
     --openUpdateModalcolor:#000000;
     --sobradoopenmodal:#B4B4B4;
 
-    /* FAVORITOS */
-    --ion-icon-favorito:#000000;
-
     /* CONTADOR */
-    --fundo_contagens:#3F516921;
-    --cortextocontagen:#000000;
+    --fundo_contagens:#1478FF42;
+    --cortextocontagen:#1B7CFFDE;
+    --total:#1478ff;
 
-    /* COMPONENTES */
-    --surface:var(--fundo_cards);
-
-    /* LAYOUT */
-    --radius-md:10px;
+    
 }

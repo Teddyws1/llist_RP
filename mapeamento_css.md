@@ -1,28 +1,29 @@
 •maps
 ====================================
-• 12t = botao claro/escuro
+•01 botões de navegação 1=1home/favorito •01=2 AT/ •01=3 limpezatudo
 ====================================
-• 13fw = so dentro sidebar   
+•02 botão de tema claro/escuro 
 ===================================
-• 14fp = botão de sobre sistema 
+•03 sobre sistema 
 ====================================
-• 2jw  = modal de limpa histórico   
+•04 sidebar  •04=1linha/•04=2rodape •04=3 botão abri/fecha aba lateral 
 ====================================
-• 3le = divs e IDS
+•05 barra de pesquisa •05=1search
 ====================================
-• 4qp = barra de search
+•06 header
 ====================================
-• 9gk = barra de navegação
+•07 modals
 ====================================
-• 21pw = cards principal 
+•08 modal de excluir /favoritar 
+•08=1 favoritar
 ====================================
-• 22jj = contagens divs
+•09 aviso do cache
 ====================================
-• 21gj = header
+•10 badge novo
 ====================================
-• 23do = badge novo
+•11 IDS
 ====================================
-• 02fj = modal padrão 
+•12 notification de cópia 
 ====================================
 •
 ====================================

@@ -1,3 +1,14 @@
+/* ============================================================
+   INÍCIO • SCRIPT OTIMIZADO
+   Mantém as linhas originais e acrescenta melhorias de:
+   - acessibilidade
+   - desempenho
+   - clique mais instantâneo
+   - teclado
+   - modais
+   - cards e botões
+   ============================================================ */
+
 const animations = [...new Set(listText.split(',')
     .map(item => item.trim())
     .filter(item => item !== ''))]
@@ -12,6 +23,142 @@ let autoOpenModal = JSON.parse(localStorage.getItem('autoOpenModal')) ?? true;
 
 let searchTimer;
 let clearSearchTimer;
+
+/* ============================================================
+   INÍCIO • HELPERS MODERNOS DE PERFORMANCE E ACESSIBILIDADE
+   ============================================================ */
+
+const TeddyPerf = {
+    canIdle: 'requestIdleCallback' in window,
+    reduceMotion: window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+
+    raf(fn) {
+        return requestAnimationFrame(fn);
+    },
+
+    idle(fn) {
+        if (this.canIdle) {
+            return requestIdleCallback(fn, { timeout: 300 });
+        }
+
+        return setTimeout(fn, 1);
+    },
+
+    debounce(fn, delay = 80) {
+        let timer;
+
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn.apply(this, args), delay);
+        };
+    },
+
+    setPressed(el, ativo) {
+        if (!el) return;
+        el.classList.toggle('is-pressed', ativo);
+    }
+};
+
+const TeddyA11y = {
+    selectors: 'button, .btn, .icon-btn, .tab-btn, .clear-all-btn, .clear-search, .card, [role="button"]',
+
+    improveButton(el) {
+        if (!el) return;
+
+        if (!el.hasAttribute('type') && el.tagName === 'BUTTON') {
+            el.setAttribute('type', 'button');
+        }
+
+        if (!el.hasAttribute('tabindex')) {
+            el.setAttribute('tabindex', '0');
+        }
+
+        if (!el.hasAttribute('aria-label')) {
+            const label = (el.innerText || el.textContent || el.title || 'Botão').trim();
+            el.setAttribute('aria-label', label || 'Botão');
+        }
+
+        el.style.touchAction = 'manipulation';
+    },
+
+    improveCard(card) {
+        if (!card) return;
+
+        card.setAttribute('role', 'button');
+
+        if (!card.hasAttribute('tabindex')) {
+            card.setAttribute('tabindex', '0');
+        }
+
+        const titulo = card.querySelector('.item')?.textContent?.trim();
+        const id = card.querySelector('span')?.textContent?.trim();
+
+        if (titulo && !card.hasAttribute('aria-label')) {
+            card.setAttribute('aria-label', `Abrir ${titulo}${id ? ' ' + id : ''}`);
+        }
+
+        card.style.touchAction = 'manipulation';
+    },
+
+    improveModal(modal) {
+        if (!modal) return;
+
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+
+        if (!modal.hasAttribute('tabindex')) {
+            modal.setAttribute('tabindex', '-1');
+        }
+    },
+
+    apply(root = document) {
+        root.querySelectorAll(this.selectors).forEach(el => {
+            if (el.classList.contains('card')) {
+                this.improveCard(el);
+            } else {
+                this.improveButton(el);
+            }
+        });
+
+        root.querySelectorAll('.modal-overlay, .custom-modal-overlay, .custom-alert-overlay, .un-modal-overlay')
+            .forEach(modal => this.improveModal(modal));
+    }
+};
+
+function atualizarAcessibilidade() {
+    TeddyPerf.idle(() => {
+        TeddyA11y.apply();
+    });
+}
+
+function abrirRapido(elemento) {
+    if (!elemento) return;
+
+    elemento.style.display = 'flex';
+    elemento.classList.add('active');
+    elemento.setAttribute('aria-hidden', 'false');
+
+    TeddyA11y.improveModal(elemento);
+
+    TeddyPerf.raf(() => {
+        const foco = elemento.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (foco) foco.focus({ preventScroll: true });
+    });
+}
+
+function fecharRapido(elemento) {
+    if (!elemento) return;
+
+    elemento.classList.remove('active');
+    elemento.style.display = 'none';
+    elemento.setAttribute('aria-hidden', 'true');
+}
+
+/* ============================================================
+   FIM • HELPERS MODERNOS DE PERFORMANCE E ACESSIBILIDADE
+   ============================================================ */
+
 
 /* FECHA TECLADO MOBILE */
 function fecharTecladoMobile() {
@@ -128,11 +275,11 @@ function renderItems() {
     }
 
     grid.innerHTML = data.map(item => `
-        <div class="card" onclick="openModal(${item.id})">
-            ${verificarNovo(item.name) ? `<div class="badge-novo"><ion-icon name="sparkles-outline"></ion-icon></div>` : ""}
+        <div class="card" data-id="${item.id}" role="button" tabindex="0" aria-label="Abrir ${item.name} id ${item.id}" onclick="openModal(${item.id})">
+            ${verificarNovo(item.name) ? `<div class="badge-novo">novo<ion-icon name="sparkles-outline"></ion-icon></div>` : ""}
 
             <strong class="item">${item.name}</strong>
-            <span>id: ${item.id}</span>
+            <span>№ ${item.id}</span>
         </div>
     `).join('');
 }
@@ -161,6 +308,7 @@ function configurarBusca() {
 
         if (valorDigitado === "") {
             renderItems();
+            atualizarAcessibilidade();
             return;
         }
 
@@ -174,7 +322,7 @@ function configurarBusca() {
                     abrirModalAutomaticoMobile(itemEncontrado.id);
                 }
             }
-        }, 200);
+        }, 80);
 
         clearSearchTimer = setTimeout(() => {
             searchInput.value = "";
@@ -198,9 +346,9 @@ function toggleAutoModal() {
             </div>
 
             <div style="display:flex; gap:10px; margin-top:15px;">
-                <button class="custom-alert-btn" style="background:var(--success);color: var(--color_aviso_sim); flex:1;" onclick="executarTrocaModal()">Sim</button>
+                <button type="button" class="custom-alert-btn" aria-label="Confirmar alteração do modal automático" style="background:var(--success);color: var(--color_aviso_sim); flex:1;" onclick="executarTrocaModal()">Sim</button>
                 <button class="custom-alert-btn" style="background:var(--danger); flex:1;
-                color: var( --color_aviso);" onclick="document.getElementById('confirmAutoModal').remove()">Não</button>
+                color: var( --color_aviso);" aria-label="Cancelar alteração do modal automático" onclick="document.getElementById('confirmAutoModal').remove()">Não</button>
             </div>
         </div>
     `;
@@ -226,7 +374,7 @@ function executarTrocaModal() {
                 <span class="custom-alert-text">Abertura automática:<br><b>${autoOpenModal ? 'ATIVADA' : 'DESATIVADA'}</b></span>
             </div>
 
-            <button class="custom-alert-btn" onclick="document.getElementById('alertAutoModal').remove()">OK</button>
+            <button type="button" class="custom-alert-btn" aria-label="Fechar aviso" onclick="document.getElementById('alertAutoModal').remove()">OK</button>
         </div>
     `;
 
@@ -237,7 +385,7 @@ function clearAllFavorites() {
     const modal = document.getElementById('confirmModal');
 
     if (modal) {
-        modal.style.display = 'flex';
+        abrirRapido(modal);
         bloquearScroll(true);
     } else {
         if (confirm("Deseja limpar todos os favoritos?")) {
@@ -264,7 +412,7 @@ function removeFavorite(id) {
         favorites = favorites.filter(f => f.id !== id);
         localStorage.setItem('teddyFavs', JSON.stringify(favorites));
         renderItems();
-    }, 300);
+    }, 120);
 }
 
 function openTextModal(title, body) {
@@ -278,7 +426,7 @@ function openTextModal(title, body) {
 
     titleEl.innerText = title;
     bodyEl.innerText = body;
-    modal.style.display = 'flex';
+    abrirRapido(modal);
     bloquearScroll(true);
 }
 
@@ -286,7 +434,7 @@ function closeModal(id) {
     const modal = document.getElementById(id);
 
     if (modal) {
-        modal.style.display = 'none';
+        fecharRapido(modal);
     }
 
     bloquearScroll(false);
@@ -332,7 +480,7 @@ function openModal(id) {
 
     modalTitle.innerText = currentItem.name;
     modalID.innerText = `ID: ${currentItem.id}`;
-    itemModal.style.display = 'flex';
+    abrirRapido(itemModal);
 
     bloquearScroll(true);
     updateFavBtn();
@@ -340,18 +488,17 @@ function openModal(id) {
 
 function updateFavBtn() {
     const btn = document.getElementById('favBtn');
-
+    
     if (!btn || !currentItem) return;
-
+    
     const isFav = favorites.find(f => f.id === currentItem.id);
-
-    btn.innerHTML = isFav
-        ? '<i class="fas fa-star-half-alt"></i> Remover'
-        : '<i class="fas fa-star"></i> Favoritar';
-
-    btn.style.background = isFav ? "var(--danger)" : "var(--primary)";
+    
+    btn.innerHTML = isFav ?
+        '<i class="fas fa-star-half-alt"></i> Remover' :
+        '<i class="fas fa-star"></i> Favoritar';
+    
+    btn.classList.toggle('favorited', !!isFav);
 }
-
 const favBtn = document.getElementById('favBtn');
 
 if (favBtn) {
@@ -390,8 +537,8 @@ function criarModalConfirmacao() {
                 </p>
 
                 <div class="custom-modal-buttons">
-                    <button class="btn-modal-cancel" onclick="closeModal('confirmModal')">Cancelar</button>
-                    <button class="btn-modal-confirm" onclick="executeClearAll()">Sim, limpar</button>
+                    <button type="button" class="btn-modal-cancel" aria-label="Cancelar limpeza dos favoritos" onclick="closeModal('confirmModal')">Cancelar</button>
+                    <button type="button" class="btn-modal-confirm" aria-label="Confirmar limpeza de todos os favoritos" onclick="executeClearAll()">Sim, limpar</button>
                 </div>
             </div>
         </div>
@@ -412,17 +559,55 @@ function switchTab(tab) {
     renderItems();
 }
 
+function showNotification(text) {
+    const notification = document.createElement('div');
+    
+    notification.className = 'notification';
+    notification.innerHTML = `
+        <ion-icon name="notifications-outline"></ion-icon>
+        <span>${text}</span>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    setTimeout(() => {
+        notification.classList.remove('show');
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 2000);
+}
+
 function copyCommand() {
     if (!currentItem) return;
-
-    navigator.clipboard.writeText(`e ${currentItem.name}`);
-
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(`e ${currentItem.name}`);
+    } else {
+        const temp = document.createElement('textarea');
+        temp.value = `e ${currentItem.name}`;
+        temp.setAttribute('readonly', '');
+        temp.style.position = 'fixed';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        temp.remove();
+    }
+    
     const btn = document.querySelector('.btn-copy');
-
+    
     if (!btn) return;
-
+    
     btn.innerHTML = '<i class="fas fa-check"></i> Pronto!';
-
+    
+    showNotification('Comando copiado com sucesso!');
+    
     setTimeout(() => {
         btn.innerHTML = '<i class="fas fa-copy"></i> Copiar';
     }, 1000);
@@ -488,12 +673,12 @@ function iniciarModalAtualizacaoExtra() {
 
     const open = () => {
         fecharTecladoMobile();
-        overlay.style.display = 'flex';
+        abrirRapido(overlay);
         bloquearScroll(true);
     };
 
     const close = () => {
-        overlay.style.display = 'none';
+        fecharRapido(overlay);
         bloquearScroll(false);
     };
 
@@ -537,7 +722,150 @@ document.addEventListener('DOMContentLoaded', () => {
     iniciarModalAtualizacaoExtra();
     iniciarToggleExtra();
     renderItems();
+    atualizarAcessibilidade();
     registrarServiceWorker();
 });
 
 
+
+/* ============================================================
+   INÍCIO • CAMADA EXTRA SEM REMOVER LINHAS ORIGINAIS
+   Esta parte reforça clique instantâneo, teclado, aria e desempenho.
+   ============================================================ */
+
+document.addEventListener('pointerdown', (e) => {
+    const alvo = e.target.closest(TeddyA11y.selectors);
+    if (!alvo) return;
+
+    TeddyPerf.setPressed(alvo, true);
+}, { passive: true });
+
+document.addEventListener('pointerup', (e) => {
+    const alvo = e.target.closest(TeddyA11y.selectors);
+    if (!alvo) return;
+
+    TeddyPerf.setPressed(alvo, false);
+}, { passive: true });
+
+document.addEventListener('pointercancel', (e) => {
+    const alvo = e.target.closest(TeddyA11y.selectors);
+    if (!alvo) return;
+
+    TeddyPerf.setPressed(alvo, false);
+}, { passive: true });
+
+document.addEventListener('keydown', (e) => {
+    const alvo = document.activeElement;
+
+    if (!alvo) return;
+
+    const ehAcionavel =
+        alvo.matches &&
+        alvo.matches('.card, .btn, .icon-btn, .tab-btn, .clear-all-btn, .clear-search, [role="button"]');
+
+    if (ehAcionavel && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        alvo.click();
+    }
+
+    if (e.key === 'Escape') {
+        const modalAberto = document.querySelector(
+            '.modal-overlay[style*="flex"], .custom-modal-overlay[style*="flex"], .custom-alert-overlay[style*="flex"], .un-modal-overlay[style*="flex"], .modal-overlay.active, .custom-modal-overlay.active, .custom-alert-overlay.active, .un-modal-overlay.active'
+        );
+
+        if (modalAberto && modalAberto.id) {
+            closeModal(modalAberto.id);
+        } else if (modalAberto) {
+            fecharRapido(modalAberto);
+            bloquearScroll(false);
+        }
+
+        const sidebar = document.getElementById('sidebar');
+
+        if (sidebar && sidebar.classList.contains('active')) {
+            toggleSidebar();
+        }
+    }
+});
+
+document.addEventListener('click', (e) => {
+    const alvo = e.target.closest(TeddyA11y.selectors);
+    if (!alvo) return;
+
+    TeddyA11y.improveButton(alvo);
+
+    if (alvo.classList.contains('card')) {
+        TeddyA11y.improveCard(alvo);
+    }
+}, { passive: true });
+
+const teddyObserver = new MutationObserver((mutations) => {
+    let precisaAtualizar = false;
+
+    for (const mutation of mutations) {
+        if (mutation.addedNodes && mutation.addedNodes.length) {
+            precisaAtualizar = true;
+            break;
+        }
+    }
+
+    if (precisaAtualizar) {
+        atualizarAcessibilidade();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    atualizarAcessibilidade();
+
+    teddyObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    if (TeddyPerf.reduceMotion) {
+        document.documentElement.classList.add('reduce-motion');
+    }
+});
+
+/* Render otimizado com preservação da função original */
+const renderItemsOriginal = renderItems;
+
+renderItems = function renderItemsOtimizado() {
+    renderItemsOriginal();
+
+    TeddyPerf.raf(() => {
+        atualizarAcessibilidade();
+    });
+};
+
+/* Estado visual e ARIA das abas */
+const switchTabOriginal = switchTab;
+
+switchTab = function switchTabAcessivel(tab) {
+    switchTabOriginal(tab);
+
+    const tabAll = document.getElementById('tabAll');
+    const tabFav = document.getElementById('tabFav');
+
+    if (tabAll) {
+        tabAll.setAttribute('aria-selected', tab === 'all' ? 'true' : 'false');
+        tabAll.setAttribute('role', 'tab');
+    }
+
+    if (tabFav) {
+        tabFav.setAttribute('aria-selected', tab === 'fav' ? 'true' : 'false');
+        tabFav.setAttribute('role', 'tab');
+    }
+};
+
+/* Bloqueio de scroll com ARIA */
+const bloquearScrollOriginal = bloquearScroll;
+
+bloquearScroll = function bloquearScrollAcessivel(ativo) {
+    bloquearScrollOriginal(ativo);
+    document.body.setAttribute('aria-busy', ativo ? 'true' : 'false');
+};
+
+/* ============================================================
+   FIM • CAMADA EXTRA SEM REMOVER LINHAS ORIGINAIS
+   ============================================================ */
