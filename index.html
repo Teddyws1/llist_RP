@@ -1,574 +1,364 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <!-- ============================================================
-         INÍCIO 01 • CHARSET / VIEWPORT / COMPATIBILIDADE
-         ============================================================ -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+  <title>Manutenção • llist_RP</title>
 
-    <!-- ============================================================
-         INÍCIO 02 • SEO / TÍTULO / DESCRIÇÃO
-         ============================================================ -->
-    <title>llist Rp</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <meta
-        name="description"
-        content="Explore a melhor lista RP com servidores atualizados, interface moderna e navegação rápida para encontrar comunidades Roleplay."
-    >
+  <style>
+    :root{
+      --bg:#0F111A;
+      --text:#FFFFFF;
+      --text-dim:#C9D4E5;
+      --card:#0B0D1A;
+      --border:#2861AB45;
+      --primary:#00ABFF;
+      --accent:#0074FF;
+      --warning:#FFB020;
+      --shadow:#00000080;
+      --loading-duration:1.6s;
+    }
 
-    <meta name="format-detection" content="telephone=no">
-    
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+      user-select:none;
+    }
 
+    html,
+    body{
+      width:100%;
+      min-height:100%;
+      overflow-x:hidden;
+    }
 
-    <!-- ============================================================
-         INÍCIO 03 • PWA / TEMA / APP MOBILE
-         ============================================================ -->
-    <meta name="theme-color" content="#6200ee">
-    <meta name="color-scheme" content="dark light">
+    body{
+      min-height:100vh;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Arial, Helvetica, sans-serif;
+    }
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="llist RP">
+    .maintenance-page{
+      position:relative;
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at top, rgba(0,171,255,.14), transparent 35%),
+        linear-gradient(180deg,#0F111A 0%,#090B14 100%);
+    }
 
-    <link rel="manifest" href="manifest.json">
+    .maintenance-page::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:url("logo.png");
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:min(70vw, 720px);
+      opacity:.07;
+      pointer-events:none;
+      z-index:0;
+    }
 
-    <link
-        rel="icon"
-        href="https://i.postimg.cc/d3qL35q7/file-00000000e86c720ea49bac52225a1d33.png"
-        type="image/png"
-    >
-    
+    .maintenance-card{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:560px;
+      padding:36px 26px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      background:rgba(11,13,26,.94);
+      border:1px solid var(--border);
+      border-radius:26px;
+      box-shadow:0 24px 60px var(--shadow);
+      backdrop-filter:blur(8px);
+    }
 
+    .maintenance-icon{
+      width:86px;
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:18px;
+      background:linear-gradient(135deg,var(--accent),var(--primary));
+      color:#FFFFFF;
+      border-radius:24px;
+      box-shadow:0 0 34px rgba(0,171,255,.24);
+    }
 
-    <!-- ============================================================
-         INÍCIO 04 • PRECONNECT / DNS-PREFETCH / PERFORMANCE
-         ============================================================ -->
-    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
-    <link rel="dns-prefetch" href="https://i.postimg.cc">
+    .maintenance-icon ion-icon{
+      font-size:46px;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .maintenance-badge{
+      margin-bottom:16px;
+      padding:8px 16px;
+      background:rgba(0,171,255,.12);
+      color:var(--primary);
+      border:1px solid rgba(0,171,255,.28);
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.6px;
+    }
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    h1{
+      margin-bottom:14px;
+      font-size:32px;
+      line-height:1.15;
+      font-weight:800;
+    }
 
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="dns-prefetch" href="https://unpkg.com">
-    
+    .maintenance-text{
+      color:var(--text-dim);
+      font-size:15px;
+      line-height:1.7;
+    }
 
+    .maintenance-info{
+      width:100%;
+      margin-top:24px;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:16px;
+      color:#DCE8F7;
+      font-size:14px;
+      line-height:1.5;
+    }
 
-    <!-- ============================================================
-         INÍCIO 05 • CSS CRÍTICO INLINE
-         Mantém estabilidade visual inicial e melhora carregamento.
-         ============================================================ -->
+    .maintenance-info ion-icon{
+      color:var(--warning);
+      font-size:22px;
+      flex:0 0 auto;
+    }
 
+    .loading-bar{
+      position:relative;
+      width:100%;
+      height:8px;
+      margin-top:20px;
+      background:rgba(255,255,255,.08);
+      border-radius:999px;
+      overflow:hidden;
+      transform:translateZ(0);
+      backface-visibility:hidden;
+      contain:paint;
+    }
 
+    .loading-progress{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border-radius:999px;
+      background:linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--accent) 35%,
+        var(--primary) 50%,
+        var(--accent) 65%,
+        transparent 100%
+      );
+      transform:translate3d(-100%,0,0);
+      animation:loadingSmooth var(--loading-duration) linear infinite;
+      will-change:transform;
+      backface-visibility:hidden;
+    }
 
-    <!-- ============================================================
-         INÍCIO 06 • FONTES
-         ============================================================ -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
-        rel="stylesheet"
-    >
-    
+    .loading-bar.is-running .loading-progress{
+      animation-name:loadingSmooth;
+      animation-duration:var(--loading-duration);
+      animation-timing-function:linear;
+      animation-iteration-count:infinite;
+      animation-play-state:running;
+    }
 
+    .maintenance-footer{
+      margin-top:26px;
+      font-size:24px;
+      font-weight:900;
+      letter-spacing:1px;
+      background:linear-gradient(135deg,#0074FF,#00ABFF);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
 
-    <!-- ============================================================
-         INÍCIO 07 • CSS PRINCIPAL DO PROJETO
-         ============================================================ -->
-    <link rel="stylesheet" href="roots.css?v=03">
-    <link rel="stylesheet" href="style.css?v=03">
-    <link rel="stylesheet" href="atualizacao.css?v=03">
-    
+    @keyframes loadingSmooth{
+      from{
+        transform:translate3d(-100%,0,0);
+      }
 
+      to{
+        transform:translate3d(100%,0,0);
+      }
+    }
 
-    <!-- ============================================================
-         INÍCIO 08 • BIBLIOTECAS DE ÍCONES
-         ============================================================ -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        referrerpolicy="no-referrer"
-    >
+    @media(max-width:480px){
+      .maintenance-page{
+        padding:16px;
+      }
 
-    <script
-        type="module"
-        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-        defer
-    ></script>
+      .maintenance-page::before{
+        background-size:120vw;
+        opacity:.05;
+      }
 
-    <script
-        nomodule
-        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-        defer
-    ></script>
-    
+      .maintenance-card{
+        padding:28px 18px;
+        border-radius:22px;
+      }
+
+      .maintenance-icon{
+        width:74px;
+        height:74px;
+        border-radius:20px;
+      }
+
+      .maintenance-icon ion-icon{
+        font-size:40px;
+      }
+
+      h1{
+        font-size:25px;
+      }
+
+      .maintenance-text{
+        font-size:14px;
+      }
+
+      .maintenance-info{
+        align-items:flex-start;
+        text-align:left;
+        font-size:13px;
+      }
+    }
+
+    @media(min-width:900px){
+      .maintenance-card{
+        max-width:620px;
+        padding:42px 36px;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      .maintenance-text{
+        font-size:16px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .loading-progress{
+        animation:loadingSmooth var(--loading-duration) linear infinite;
+        transform:translate3d(-100%,0,0);
+        background:linear-gradient(
+          90deg,
+          transparent 0%,
+          var(--accent) 35%,
+          var(--primary) 50%,
+          var(--accent) 65%,
+          transparent 100%
+        );
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- ============================================================
-         INÍCIO 10 • HEADER / MENU / BUSCA / ORDENAÇÃO
-         ============================================================ -->
-    <header role="banner" aria-label="Cabeçalho principal">
-        <button
-            type="button"
-            class="icon-btn"
-            id="menuBtn"
-            aria-label="Abrir menu lateral"
-            aria-controls="sidebar"
-            aria-expanded="false"
-            onclick="event.stopPropagation(); toggleSidebar();"
-        >
-            <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
+  <main class="maintenance-page">
+    <section class="maintenance-card">
 
-        <form
-            class="search-wrapper"
-            role="search"
-            aria-label="Buscar comandos"
-            onsubmit="event.preventDefault();"
-        >
-            <i class="fas fa-search" aria-hidden="true"></i>
+      <div class="maintenance-icon">
+        <ion-icon name="construct-outline"></ion-icon>
+      </div>
 
-            <label for="searchInput" class="sr-only">
-                Buscar comando
-            </label>
+      <span class="maintenance-badge">
+        Sistema em manutenção
+      </span>
 
-            <input
-                type="search"
-                id="searchInput"
-                name="q"
-                placeholder="Buscar comando..."
-                aria-label="Buscar comando"
-                autocomplete="off"
-                autocapitalize="none"
-                autocorrect="off"
-                spellcheck="false"
-                enterkeyhint="search"
-                inputmode="search"
-            >
+      <h1>Estamos aplicando melhorias</h1>
 
-            <button
-                type="button"
-                class="clear-search"
-                id="clearBtn"
-                aria-label="Limpar busca"
-                onclick="clearSearch()"
-            >
-                <i class="fas fa-times-circle" aria-hidden="true"></i>
-            </button>
-        </form>
+      <p class="maintenance-text">
+        O sistema está temporariamente fora do ar para atualização.
+        Alguns serviços poderão ficar indisponíveis por alguns minutos.
+      </p>
 
-        <div class="sort-wrapper">
-            <i class="fas fa-filter sort-icon" aria-hidden="true"></i>
+      <div class="maintenance-info">
+        <ion-icon name="time-outline"></ion-icon>
+        <span>
+          A atualização está em andamento. Agradecemos sua compreensão enquanto realizamos melhorias no sistema.
+        </span>
+      </div>
 
-            <label for="sortOption" class="sr-only">
-                Ordenar itens
-            </label>
+      <div class="loading-bar" id="loadingBar">
+        <div class="loading-progress" id="loadingProgress"></div>
+      </div>
 
-            <select
-                id="sortOption"
-                class="sort-select"
-                aria-label="Ordenar itens"
-                onchange="renderItems()"
-            >
-                <option value="recent">Mais recentes</option>
-                <option value="alpha-asc">A → Z</option>
-                <option value="alpha-desc">Z → A</option>
-                <option value="id-asc">ID menor</option>
-                <option value="id-desc">ID maior</option>
-            </select>
-        </div>
-    </header>
-    
+      <p class="maintenance-footer">llist_RP</p>
 
+    </section>
+  </main>
 
-    <!-- ============================================================
-         INÍCIO 11 • CONTADOR TOTAL
-         ============================================================ -->
-    <span id="totalContador" aria-live="polite" aria-atomic="true">
-        0
-    </span>
-    
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.addEventListener("contextmenu", event => {
+        event.preventDefault();
+      });
 
+      const loadingBar = document.getElementById("loadingBar");
+      const loadingProgress = document.getElementById("loadingProgress");
 
-    <!-- ============================================================
-         INÍCIO 12 • SIDEBAR / MENU LATERAL
-         ============================================================ -->
-    <aside id="sidebar" class="sidebar" aria-label="Menu lateral">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
-            <div class="rp-badge">
-                <h3 class="rp-title">
-                    <span>
-                        llist_RP
-
-                        <img
-                            src="https://i.postimg.cc/d3qL35q7/file-00000000e86c720ea49bac52225a1d33.png"
-                            alt="Logo llist_RP"
-                            class="rp-logo"
-                            width="44"
-                            height="44"
-                            loading="eager"
-                            decoding="async"
-                            fetchpriority="high"
-                        >
-                    </span>
-                </h3>
-            </div>
-
-            <button
-                type="button"
-                class="icon-btn"
-                aria-label="Fechar menu lateral"
-                aria-controls="sidebar"
-                onclick="toggleSidebar()"
-            >
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-
-        <p class="aaviso" role="note">
-            OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
-        </p>
-
-        <button
-            type="button"
-            onclick="openUpdateModal()"
-            aria-label="Ver atualizações do sistema"
-        >
-            Ver Atualizações
-        </button>
-
-        <br>
-
-        <a
-            href="informação.html"
-            style="text-decoration:none;"
-            aria-label="Abrir página sobre o sistema"
-        >
-            <button
-                type="button"
-                class="sobre-sistema-btn"
-                aria-label="Abrir página sobre o sistema"
-            >
-                <span style="display:flex; align-items:center;">
-                    <i class="fas fa-desktop" aria-hidden="true"></i>
-                    SOBRE O SISTEMA
-                </span>
-
-                <span class="seta" aria-hidden="true">
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                </span>
-            </button>
-        </a>
-
-        <br>
-
-        <div class="theme-box" role="group" aria-label="Configuração de tema">
-            <div class="theme-left">
-                <div class="theme-icon" aria-hidden="true">
-                    <i class="fas fa-moon"></i>
-                </div>
-
-                <span id="themeLabel">
-                    Modo escuro
-                </span>
-            </div>
-
-            <label class="switch" for="themeToggle">
-                <span class="sr-only">
-                    Alternar entre tema escuro e tema claro
-                </span>
-
-                <input
-                    id="themeToggle"
-                    type="checkbox"
-                    checked
-                    onclick="toggleTheme()"
-                    aria-labelledby="themeLabel"
-                >
-
-                <span class="slider" aria-hidden="true"></span>
-            </label>
-        </div>
-
-        <hr class="linha-grudada">
-
-        <footer class="rodape">
-            &copy; Desenvolvido por Teddy Machado 2026
-        </footer>
-    </aside>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 13 • NAVEGAÇÃO INFERIOR
-         ============================================================ -->
-    <nav class="nav-tabs" aria-label="Navegação principal">
-        <button
-            class="tab-btn active"
-            id="tabAll"
-            type="button"
-            aria-label="Mostrar todos os comandos"
-            aria-pressed="true"
-            onclick="switchTab('all')"
-        >
-            <i class="fas fa-home" aria-hidden="true"></i>
-        </button>
-
-        <button
-            class="tab-btn"
-            id="tabFav"
-            type="button"
-            aria-label="Mostrar favoritos"
-            aria-pressed="false"
-            onclick="switchTab('fav')"
-        >
-            <i class="fas fa-bookmark" aria-hidden="true"></i>
-        </button>
-
-        <button
-            class="tab-btn auto-modal-btn"
-            type="button"
-            aria-label="Configurar abertura automática do modal"
-            onclick="toggleAutoModal()"
-        >
-            <i class="fas fa-window-maximize" aria-hidden="true"></i>
-        </button>
-
-        <button
-            id="clearAllBtn"
-            class="clear-all-btn"
-            type="button"
-            aria-label="Limpar todos os favoritos"
-            onclick="clearAllFavorites()"
-        >
-            <i class="fas fa-trash-alt" aria-hidden="true"></i>
-        </button>
-    </nav>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 14 • CONTEÚDO PRINCIPAL / LISTA
-         ============================================================ -->
-    <main id="conteudoPrincipal" class="container" tabindex="-1">
-        <h1 class="sr-only">
-            Lista de comandos RP
-        </h1>
-
-        <section aria-labelledby="listaComandosTitulo">
-            <h2 id="listaComandosTitulo" class="sr-only">
-                Comandos disponíveis
-            </h2>
-
-            <div
-                id="gridItems"
-                class="main-grid"
-                role="list"
-                aria-label="Lista de comandos"
-                aria-live="polite"
-                aria-busy="false"
-            ></div>
-        </section>
-    </main>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 15 • MODAL DO COMANDO
-         ============================================================ -->
-    <div
-        id="itemModal"
-        class="modal-overlay"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modalTitle"
-        aria-describedby="modalID"
-        style="display:none;"
-    >
-        <div class="modal-card" role="document">
-            <h2 id="modalTitle" style="margin-bottom:5px;">
-                Comando
-            </h2>
-
-            <span id="modalID" style="color:var(--accent); font-weight:900; margin-bottom:15px;">
-                #
-            </span>
-
-            <div class="btn-group">
-                <button
-                    type="button"
-                    class="btn btn-fav"
-                    id="favBtn"
-                    aria-label="Adicionar comando aos favoritos"
-                >
-                    Favoritar
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-copy"
-                    aria-label="Copiar comando"
-                    onclick="copyCommand()"
-                >
-                    <i class="fas fa-copy" aria-hidden="true"></i>
-                    Copiar
-                </button>
-
-                <button
-                    type="button"
-                    class="btn btn-close"
-                    aria-label="Fechar modal"
-                    onclick="closeModal('itemModal')"
-                >
-                    Fechar
-                </button>
-            </div>
-        </div>
-    </div>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 16 • MODAL DE TEXTO / INFORMAÇÃO
-         ============================================================ -->
-    <div
-        id="textModal"
-        class="modal-overlay"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="textModalTitle"
-        aria-describedby="textModalBody"
-        style="display:none;"
-    >
-        <div class="modal-card" role="document">
-            <h2 id="textModalTitle" style="color:var(--primary);">
-                Título
-            </h2>
-
-            <div class="modal-body-scroll">
-                <p
-                    id="textModalBody"
-                    style="color:var(--text-dim); line-height:1.6; font-size:0.95rem; white-space:pre-line;"
-                ></p>
-            </div>
-
-            <button
-                type="button"
-                class="btn btn-close"
-                aria-label="Fechar mensagem"
-                onclick="closeModal('textModal')"
-                style="width:100%"
-            >
-                Entendido
-            </button>
-        </div>
-    </div>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 17 • SCRIPTS DO PROJETO
-         Ordem organizada para dados carregarem antes da interface.
-         ============================================================ -->
-    <script src="bancodedado.js?v=03" defer></script>
-    <script src="script.js?v=03" defer></script>
-    <script src="atualizacao.js?v=03" defer></script>
-    <script src="anticopia.js?v=03" defer></script>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 18 • ACESSIBILIDADE DINÂMICA
-         Mantém seu JS original e só sincroniza ARIA/teclado.
-         ============================================================ -->
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const menuBtn = document.getElementById('menuBtn');
-            const sidebar = document.getElementById('sidebar');
-            const tabAll = document.getElementById('tabAll');
-            const tabFav = document.getElementById('tabFav');
-
-            const syncMenuState = () => {
-                if (!menuBtn || !sidebar) return;
-
-                menuBtn.setAttribute(
-                    'aria-expanded',
-                    sidebar.classList.contains('active') ? 'true' : 'false'
-                );
-            };
-
-            document.addEventListener('click', () => {
-                requestAnimationFrame(syncMenuState);
-            }, { passive:true });
-
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'Escape') {
-                    const itemModal = document.getElementById('itemModal');
-                    const textModal = document.getElementById('textModal');
-
-                    if (itemModal && itemModal.style.display !== 'none') {
-                        closeModal('itemModal');
-                    }
-
-                    if (textModal && textModal.style.display !== 'none') {
-                        closeModal('textModal');
-                    }
-
-                    if (sidebar && sidebar.classList.contains('active')) {
-                        toggleSidebar();
-                    }
-                }
-            });
-
-            const originalSwitchTab = window.switchTab;
-
-            if (typeof originalSwitchTab === 'function') {
-                window.switchTab = function(tab){
-                    originalSwitchTab(tab);
-
-                    if (tabAll) {
-                        tabAll.setAttribute('aria-pressed', tab === 'all' ? 'true' : 'false');
-                    }
-
-                    if (tabFav) {
-                        tabFav.setAttribute('aria-pressed', tab === 'fav' ? 'true' : 'false');
-                    }
-                };
-            }
-
-            syncMenuState();
-        });
-    </script>
-    
-
-
-    <!-- ============================================================
-         INÍCIO 19 • SERVICE WORKER
-         ============================================================ -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => {
-                        console.log('SW registrado');
-                        reg.update();
-                    })
-                    .catch(err => {
-                        console.log('Erro SW:', err);
-                    });
-            });
+      function manterAnimacaoDaBarra() {
+        if (!loadingBar || !loadingProgress) {
+          return;
         }
-    </script>
-    
-</body>
 
+        loadingBar.classList.add("is-running");
+
+        loadingProgress.style.animation = "none";
+        loadingProgress.offsetHeight;
+        loadingProgress.style.animation = "";
+
+        requestAnimationFrame(() => {
+          loadingProgress.style.animationPlayState = "running";
+        });
+      }
+
+      manterAnimacaoDaBarra();
+
+      window.addEventListener("pageshow", manterAnimacaoDaBarra);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+          manterAnimacaoDaBarra();
+        }
+      });
+    });
+  </script>
+
+</body>
 </html>
