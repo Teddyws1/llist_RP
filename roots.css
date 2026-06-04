@@ -140,7 +140,25 @@
     --fundo_contagens:#2861AB21;
     --cortextocontagen:#FFFFFFC2;
       --total:#BFBFBF;
+      
+      /*•13 aba de histórico*/
+      --fundo_hist:#2861AB21;
+      --border_hist:#FFFFFFC2;
+      --color__icone_hist:#BFBFBF;
+      --hover_color_x_hist:#E21919;
+       --fundo_list_hist:#0F111A;
+       --fundo_item_hist:#181D32;
+     --hover_item_hist:#1478FF47;
+     --border_color_item:#FFFFFF;
+     --color_item_hist:#fff;
+    --color_item_x_hist:#FFFFFF;
+    --fundo_footer_hist:#0F111A;
+    --fundo_botao_limpa:#2861AB21;
+    --color_botao_limpa:#FFFFFF;
+    
 }
+
+
 
 /* ============================================================
    TEMA CLARO
@@ -276,4 +294,21 @@
     --total:#1478ff;
 
     
+    
+    /*•13 aba de histórico*/
+   --border_hist:#9C9C9C78;
+   --color__icone_hist:#FFFFFF;
+   --fundo_hist:#1478ff;
+   --hover_hist:#000000;
+   --icone_x_hist:#000000;
+   --hover_color_x_hist:#E21919;
+   --fundo_list_hist:#F1F1F1;
+   --fundo_item_hist:#FFFFFF;
+   --hover_item_hist:#1478FF47;
+   --border_color_item:#000000;
+   --color_item_hist:#000000;
+   --color_item_x_hist:#000000;
+   --fundo_footer_hist:#FFFFFF;
+   --fundo_botao_limpa:#1B7F21;
+   --color_botao_limpa:#FFFFFF;
 }

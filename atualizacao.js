@@ -6,23 +6,7 @@ function openUpdateModal() {
     if (document.getElementById('updateModal')) return;
 
     const updates = [
-    "novo sistema de compartilhamento integrado",
-    "novo modal de compartilhamento na aba 'Sobre o Sistema'",
-    "3 novas categorias de ordens",
-    "novo sistema de badges para comandos recentes",
-    "aprimoramento da pesquisa por palavras-chave",
-    "sistema AT automático otimizado",
-    "fechamento automático do teclado em dispositivos móveis ao abrir modais",
-    "nova interface da aba 'Sobre o Sistema'",
-    "nova seção do desenvolvedor",
-    "melhorias visuais em todo o sistema v2.1",
-    "ajustes de responsividade para diferentes tamanhos de tela",
-    "refatoração e organização dos estilos CSS v2.0",
-    "otimização do código JavaScript v1.0",
-    "melhorias internas de desempenho e manutenção",
-    "correções de bugs visuais v2.0",
-    "novos comandos adicionados","sistema de status de atualização na aba de sobre sistema",
-        "contagem regressiva da data de atualização"
+        " Aprimoramento da funcionalidade da barra de pesquisa","Implementação de uma nova aba de histórico de pesquisas na barra de pesquisa"
     ];
 
     const limite = 3;
