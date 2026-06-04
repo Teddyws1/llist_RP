@@ -27,4 +27,6 @@ Ao copiar o comando **deitar**, o sistema copia automaticamente:
 
 //////////informação//////////
 
+(100% feito em IA MAIS USANDO A CRIATIVIDADE. 😀😀)
+
 instagram: teddy_machado007
