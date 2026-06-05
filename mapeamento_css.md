@@ -65,7 +65,7 @@ Parte 5/5 — Eventos finais
 
 ==========[verão do cachê]==========
 
-• v=05
+• v=06
 
 ========[fimverão do cachê]=========
 

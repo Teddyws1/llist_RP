@@ -2052,6 +2052,7 @@ body.light-theme{
         border-color .18s ease,
         background .18s ease,
         color .18s ease;
+      
 }
 
 .teddy-history-btn i,
@@ -2384,3 +2385,1379 @@ body.light-theme{
     }
 }
 
+
+/* ============================================================
+   PATCH FINAL RESPONSIVO COMPLETO • RELÓGIO / HISTÓRICO / TELAS
+   Adicionado sem remover nenhuma linha pronta do CSS original.
+   Ajusta layout para telas muito pequenas, pequenas, médias,
+   grandes, tablets, notebooks e desktops.
+   ============================================================ */
+
+:root{
+    --teddy-header-h:75px;
+    --teddy-nav-h:70px;
+    --teddy-safe-top:env(safe-area-inset-top, 0px);
+    --teddy-safe-bottom:env(safe-area-inset-bottom, 0px);
+    --teddy-content-max:1480px;
+}
+
+html{
+    -webkit-text-size-adjust:100%;
+    text-size-adjust:100%;
+}
+
+body{
+    min-width:280px;
+    overflow-x:hidden !important;
+}
+
+.container,
+.main-grid,
+.card,
+header,
+.nav-tabs,
+.modal-card,
+.custom-modal-box,
+.custom-alert-card,
+.un-modal-card,
+.teddy-history-panel{
+    max-width:100%;
+}
+
+img,
+svg,
+video,
+canvas{
+    max-width:100%;
+    height:auto;
+}
+
+/* Botões com área confortável para toque em todos os celulares */
+button,
+.icon-btn,
+.tab-btn,
+.clear-all-btn,
+.sort-wrapper,
+.teddy-history-btn,
+.teddy-history-close,
+.teddy-history-delete,
+.teddy-history-clear{
+    touch-action:manipulation;
+}
+
+/* Relógio / botão flutuante do histórico igual ao print, sem cortar em telas pequenas */
+.teddy-history-btn{
+    right:max(12px, env(safe-area-inset-right, 0px));
+    bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 12px);
+    width:auto;
+    max-width:calc(100vw - 24px);
+    min-width:44px;
+    min-height:44px;
+    aspect-ratio:auto;
+}
+
+.teddy-history-btn:has(span:empty),
+.teddy-history-btn:has(.text:empty),
+.teddy-history-btn:has(.label:empty){
+    width:44px;
+    padding:0;
+    border-radius:50%;
+}
+
+.teddy-history-btn i,
+.teddy-history-btn ion-icon,
+.teddy-history-btn svg{
+    font-size:clamp(1.35rem, 6vw, 2.08rem);
+}
+
+/* Evita que o contador fique por cima do relógio/botão histórico */
+#totalContador{
+    max-width:calc(100vw - 28px);
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* Cards sempre adaptáveis, mantendo duas colunas no celular como no print */
+.main-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    justify-content:center;
+}
+
+.card{
+    min-width:0;
+    transform:translateZ(0);
+}
+
+.item,
+.card strong.item{
+    font-size:clamp(.82rem, 3.65vw, 1rem);
+    line-height:1.15;
+    max-width:100%;
+    white-space:normal;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow-wrap:anywhere;
+}
+
+.card span,
+.card strong.item + span{
+    max-width:calc(100% - 12px);
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* ============================================================
+   TELAS EXTRA PEQUENAS • 280px até 319px
+   ============================================================ */
+@media (max-width:319px){
+    :root{
+        --teddy-header-h:58px;
+        --teddy-nav-h:58px;
+    }
+
+    header{
+        height:58px !important;
+        padding:0 6px !important;
+        gap:5px !important;
+    }
+
+    .rp-title img{
+        width:32px !important;
+        height:32px !important;
+        border-radius:9px !important;
+    }
+
+    .icon-btn,
+    .sort-wrapper{
+        width:36px !important;
+        height:36px !important;
+        flex:0 0 36px !important;
+        border-radius:10px !important;
+        font-size:20px !important;
+    }
+
+    .search-wrapper{
+        margin:0 4px !important;
+    }
+
+    .search-wrapper input{
+        height:36px !important;
+        padding:8px 34px 8px 34px !important;
+        font-size:.82rem !important;
+        border-radius:11px !important;
+    }
+
+    .search-wrapper i.fa-search{
+        left:12px !important;
+        font-size:.85rem !important;
+    }
+
+    .clear-search{
+        width:28px !important;
+        height:28px !important;
+        right:5px !important;
+    }
+
+    .container{
+        padding:8px !important;
+        padding-bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 28px) !important;
+    }
+
+    .main-grid{
+        gap:7px !important;
+    }
+
+    .card{
+        min-height:76px !important;
+        padding:7px 5px 27px !important;
+        border-radius:11px !important;
+        contain-intrinsic-size:76px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:.74rem !important;
+        -webkit-line-clamp:2 !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:5px !important;
+        padding:1px 6px !important;
+        font-size:.62rem !important;
+    }
+
+    .card::after{
+        bottom:15px !important;
+    }
+
+    .badge-novo{
+        top:3px !important;
+        right:3px !important;
+        padding:1px 4px !important;
+        font-size:.46rem !important;
+    }
+
+    .nav-tabs{
+        height:58px !important;
+        padding:6px max(6px, env(safe-area-inset-left, 0px)) calc(6px + var(--teddy-safe-bottom)) max(6px, env(safe-area-inset-right, 0px)) !important;
+        gap:5px !important;
+    }
+
+    .tab-btn,
+    .clear-all-btn,
+    button[onclick="toggleAutoModal()"]{
+        min-height:38px !important;
+        padding:7px 10px !important;
+        border-radius:11px !important;
+        font-size:.74rem !important;
+    }
+
+    .tab-btn i,
+    .clear-all-btn i,
+    .tab-btn ion-icon,
+    .clear-all-btn ion-icon{
+        font-size:1rem !important;
+    }
+
+    .teddy-history-btn{
+        right:max(8px, env(safe-area-inset-right, 0px)) !important;
+        bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 8px) !important;
+        width:40px !important;
+        height:40px !important;
+        min-width:40px !important;
+        min-height:40px !important;
+        padding:0 !important;
+        border-radius:50% !important;
+    }
+
+    .teddy-history-btn span,
+    .teddy-history-btn .text,
+    .teddy-history-btn .label{
+        display:none !important;
+    }
+
+    .teddy-history-panel{
+        width:min(92vw, 260px) !important;
+        max-width:260px !important;
+    }
+}
+
+/* ============================================================
+   CELULARES PEQUENOS • 320px até 374px
+   ============================================================ */
+@media (min-width:320px) and (max-width:374px){
+    :root{
+        --teddy-header-h:64px;
+        --teddy-nav-h:64px;
+    }
+
+    header{
+        height:64px !important;
+        padding:0 8px !important;
+        gap:7px !important;
+    }
+
+    .icon-btn,
+    .sort-wrapper{
+        width:40px !important;
+        height:40px !important;
+        flex:0 0 40px !important;
+    }
+
+    .search-wrapper{
+        margin:0 6px !important;
+    }
+
+    .search-wrapper input{
+        height:40px !important;
+        padding:9px 36px 9px 36px !important;
+        font-size:.86rem !important;
+    }
+
+    .container{
+        padding:10px !important;
+        padding-bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 34px) !important;
+    }
+
+    .main-grid{
+        gap:8px !important;
+    }
+
+    .card{
+        min-height:80px !important;
+        padding:8px 6px 29px !important;
+        border-radius:12px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:.79rem !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:5px !important;
+        font-size:.66rem !important;
+    }
+
+    .card::after{
+        bottom:15px !important;
+    }
+
+    .nav-tabs{
+        height:64px !important;
+        padding-bottom:calc(7px + var(--teddy-safe-bottom)) !important;
+    }
+
+    .teddy-history-btn{
+        right:max(10px, env(safe-area-inset-right, 0px)) !important;
+        bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 10px) !important;
+        width:42px !important;
+        height:42px !important;
+        min-width:42px !important;
+        min-height:42px !important;
+        padding:0 !important;
+        border-radius:50% !important;
+    }
+
+    .teddy-history-btn span,
+    .teddy-history-btn .text,
+    .teddy-history-btn .label{
+        display:none !important;
+    }
+}
+
+/* ============================================================
+   CELULAR PADRÃO • 375px até 430px, inclui 375x812 do print
+   ============================================================ */
+@media (min-width:375px) and (max-width:430px){
+    :root{
+        --teddy-header-h:68px;
+        --teddy-nav-h:70px;
+    }
+
+    header{
+        height:68px !important;
+        padding:0 10px !important;
+        gap:8px !important;
+    }
+
+    .container{
+        padding:12px !important;
+        padding-bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 36px) !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        gap:10px !important;
+    }
+
+    .card{
+        min-height:88px !important;
+        padding:9px 7px 31px !important;
+        border-radius:14px !important;
+        contain-intrinsic-size:88px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:.88rem !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        bottom:6px !important;
+        font-size:.72rem !important;
+    }
+
+    .card::after{
+        bottom:16px !important;
+    }
+
+    .nav-tabs{
+        height:70px !important;
+        padding-bottom:calc(8px + var(--teddy-safe-bottom)) !important;
+    }
+
+    .teddy-history-btn{
+        right:max(12px, env(safe-area-inset-right, 0px)) !important;
+        bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 10px) !important;
+        width:44px !important;
+        height:44px !important;
+        min-width:44px !important;
+        min-height:44px !important;
+        padding:0 !important;
+        border-radius:50% !important;
+    }
+
+    .teddy-history-btn span,
+    .teddy-history-btn .text,
+    .teddy-history-btn .label{
+        display:none !important;
+    }
+}
+
+/* ============================================================
+   CELULARES GRANDES • 431px até 600px
+   ============================================================ */
+@media (min-width:431px) and (max-width:600px){
+    :root{
+        --teddy-header-h:72px;
+        --teddy-nav-h:72px;
+    }
+
+    header{
+        height:72px !important;
+        padding:0 14px !important;
+    }
+
+    .container{
+        padding:15px !important;
+        padding-bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 38px) !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        gap:12px !important;
+    }
+
+    .card{
+        min-height:94px !important;
+        padding:10px 8px 33px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:.94rem !important;
+    }
+
+    .teddy-history-btn{
+        bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 12px) !important;
+        width:46px !important;
+        height:46px !important;
+        min-width:46px !important;
+        min-height:46px !important;
+        padding:0 !important;
+        border-radius:50% !important;
+    }
+
+    .teddy-history-btn span,
+    .teddy-history-btn .text,
+    .teddy-history-btn .label{
+        display:none !important;
+    }
+}
+
+/* ============================================================
+   TABLETS • 601px até 900px
+   ============================================================ */
+@media (min-width:601px) and (max-width:900px){
+    :root{
+        --teddy-header-h:74px;
+        --teddy-nav-h:72px;
+    }
+
+    .container{
+        padding:18px !important;
+        padding-bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 38px) !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(150px, 170px)) !important;
+        justify-content:center !important;
+        gap:14px !important;
+    }
+
+    .card{
+        max-width:170px !important;
+        min-height:82px !important;
+        padding:8px 8px 30px !important;
+    }
+
+    .teddy-history-btn{
+        right:18px !important;
+        bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 14px) !important;
+    }
+
+    .teddy-history-panel{
+        width:min(62vw, 340px) !important;
+    }
+}
+
+/* ============================================================
+   NOTEBOOKS / DESKTOP MÉDIO • 901px até 1199px
+   ============================================================ */
+@media (min-width:901px) and (max-width:1199px){
+    :root{
+        --teddy-header-h:72px;
+        --teddy-nav-h:58px;
+    }
+
+    body{
+        padding-top:calc(var(--teddy-safe-top) + var(--teddy-header-h) + var(--teddy-nav-h)) !important;
+    }
+
+    .container{
+        padding:26px 22px 38px !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(155px, 178px)) !important;
+        justify-content:center !important;
+        gap:16px !important;
+    }
+
+    .card{
+        max-width:178px !important;
+        min-height:80px !important;
+        padding:8px 8px 30px !important;
+    }
+
+    .teddy-history-btn{
+        right:22px !important;
+        bottom:22px !important;
+    }
+}
+
+/* ============================================================
+   DESKTOP GRANDE • 1200px até 1599px
+   ============================================================ */
+@media (min-width:1200px) and (max-width:1599px){
+    .container{
+        padding:28px 28px 42px !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(165px, 185px)) !important;
+        justify-content:center !important;
+        gap:18px !important;
+        max-width:1480px !important;
+    }
+
+    .card{
+        max-width:185px !important;
+        min-height:85px !important;
+        padding:8px 8px 30px !important;
+    }
+
+    .teddy-history-btn{
+        right:28px !important;
+        bottom:28px !important;
+    }
+}
+
+/* ============================================================
+   MONITORES EXTRA GRANDES • 1600px+
+   ============================================================ */
+@media (min-width:1600px){
+    :root{
+        --teddy-content-max:1680px;
+    }
+
+    .container{
+        padding:32px 34px 48px !important;
+    }
+
+    .main-grid{
+        max-width:var(--teddy-content-max) !important;
+        grid-template-columns:repeat(auto-fill, minmax(175px, 195px)) !important;
+        justify-content:center !important;
+        gap:20px !important;
+    }
+
+    .card{
+        max-width:195px !important;
+        min-height:90px !important;
+        padding:9px 10px 32px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:1.02rem !important;
+    }
+
+    .teddy-history-btn{
+        right:34px !important;
+        bottom:34px !important;
+    }
+}
+
+/* ============================================================
+   ALTURA BAIXA / TECLADO / NAVEGADOR MOBILE
+   ============================================================ */
+@media (max-height:680px) and (max-width:600px){
+    header{
+        height:60px !important;
+    }
+
+    .container{
+        padding-top:8px !important;
+    }
+
+    .card{
+        min-height:76px !important;
+        padding-top:7px !important;
+        padding-bottom:27px !important;
+    }
+
+    .nav-tabs{
+        height:60px !important;
+    }
+
+    .teddy-history-btn{
+        bottom:calc(60px + var(--teddy-safe-bottom) + 8px) !important;
+    }
+}
+
+/* ============================================================
+   ORIENTAÇÃO PAISAGEM EM CELULAR
+   ============================================================ */
+@media (orientation:landscape) and (max-height:520px){
+    header{
+        height:56px !important;
+    }
+
+    .container{
+        padding:10px 12px calc(58px + var(--teddy-safe-bottom) + 18px) !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)) !important;
+        gap:10px !important;
+    }
+
+    .card{
+        min-height:70px !important;
+        padding:7px 7px 25px !important;
+    }
+
+    .nav-tabs{
+        height:58px !important;
+    }
+
+    .teddy-history-btn{
+        width:40px !important;
+        height:40px !important;
+        min-width:40px !important;
+        min-height:40px !important;
+        bottom:calc(58px + var(--teddy-safe-bottom) + 8px) !important;
+        padding:0 !important;
+        border-radius:50% !important;
+    }
+
+    .teddy-history-btn span,
+    .teddy-history-btn .text,
+    .teddy-history-btn .label{
+        display:none !important;
+    }
+}
+
+/* ============================================================
+   SUPORTE PARA APARELHOS COM NOTCH / BARRA INFERIOR
+   ============================================================ */
+@supports (padding:max(0px)){
+    header{
+        padding-left:max(10px, env(safe-area-inset-left, 0px));
+        padding-right:max(10px, env(safe-area-inset-right, 0px));
+    }
+
+    .nav-tabs{
+        padding-left:max(8px, env(safe-area-inset-left, 0px));
+        padding-right:max(8px, env(safe-area-inset-right, 0px));
+    }
+}
+
+/* ============================================================
+   FIM DO PATCH FINAL RESPONSIVO COMPLETO
+   ============================================================ */
+
+/* ============================================================
+   PATCH FINAL EXTRA • RESPONSIVIDADE GLOBAL DE TODOS ELEMENTOS
+   Adicionado sem remover nenhuma linha do CSS original.
+   Cobre telas muito pequenas, pequenas, médias, tablets,
+   notebooks, desktops e monitores grandes.
+   ============================================================ */
+
+:root{
+    --teddy-safe-top: env(safe-area-inset-top, 0px);
+    --teddy-safe-right: env(safe-area-inset-right, 0px);
+    --teddy-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --teddy-safe-left: env(safe-area-inset-left, 0px);
+    --teddy-header-h: clamp(60px, 9vh, 75px);
+    --teddy-nav-h: clamp(58px, 8vh, 70px);
+    --teddy-page-pad: clamp(10px, 3.5vw, 28px);
+    --teddy-card-gap: clamp(8px, 2.8vw, 18px);
+    --teddy-card-min-h: clamp(76px, 13vw, 115px);
+    --teddy-radius: clamp(10px, 2.5vw, 18px);
+    --teddy-icon-btn: clamp(38px, 11vw, 48px);
+    --teddy-font-xs: clamp(.68rem, 2.6vw, .82rem);
+    --teddy-font-sm: clamp(.78rem, 3vw, .95rem);
+    --teddy-font-md: clamp(.88rem, 3.5vw, 1rem);
+}
+
+html{
+    text-size-adjust:100%;
+    -webkit-text-size-adjust:100%;
+}
+
+body{
+    min-width:280px;
+    overflow-x:hidden !important;
+}
+
+img,
+svg,
+video,
+canvas{
+    max-width:100%;
+    height:auto;
+}
+
+button,
+a,
+input,
+select,
+textarea{
+    max-width:100%;
+}
+
+header{
+    min-width:0;
+    height:var(--teddy-header-h) !important;
+    padding-left:calc(var(--teddy-page-pad) + var(--teddy-safe-left)) !important;
+    padding-right:calc(var(--teddy-page-pad) + var(--teddy-safe-right)) !important;
+    gap:clamp(6px, 2vw, 12px) !important;
+}
+
+.rp-badge,
+.rp-title,
+.rp-title span,
+.theme-left,
+.theme-box,
+.teddy-history-title,
+.custom-modal-buttons,
+.btn-group{
+    min-width:0;
+}
+
+.rp-title{
+    font-size:clamp(0px, 4.8vw, 22px) !important;
+    white-space:nowrap;
+}
+
+.rp-title img{
+    width:clamp(34px, 10vw, 44px) !important;
+    height:clamp(34px, 10vw, 44px) !important;
+}
+
+.icon-btn,
+.sort-wrapper{
+    width:var(--teddy-icon-btn) !important;
+    height:var(--teddy-icon-btn) !important;
+    min-width:var(--teddy-icon-btn) !important;
+    flex:0 0 var(--teddy-icon-btn) !important;
+    border-radius:clamp(10px, 3vw, 14px) !important;
+}
+
+.icon-btn{
+    font-size:clamp(20px, 6vw, 28px) !important;
+}
+
+.search-wrapper{
+    flex:1 1 auto !important;
+    min-width:0 !important;
+    max-width:min(760px, 100%) !important;
+    margin-left:clamp(4px, 2vw, 18px) !important;
+    margin-right:clamp(4px, 2vw, 18px) !important;
+}
+
+.search-wrapper input{
+    height:clamp(40px, 10.5vw, 48px) !important;
+    padding-left:clamp(36px, 10vw, 45px) !important;
+    padding-right:clamp(38px, 11vw, 54px) !important;
+    border-radius:clamp(11px, 3vw, 14px) !important;
+    font-size:var(--teddy-font-md) !important;
+}
+
+.search-wrapper input::placeholder{
+    font-size:clamp(11px, 3.2vw, 14px) !important;
+}
+
+.clear-search{
+    width:clamp(28px, 8vw, 32px) !important;
+    height:clamp(28px, 8vw, 32px) !important;
+    right:clamp(6px, 2vw, 10px) !important;
+}
+
+.sidebar{
+    width:min(300px, 86vw) !important;
+    left:min(-320px, -90vw) !important;
+    padding:clamp(16px, 5vw, 25px) !important;
+    padding-bottom:calc(20px + var(--teddy-safe-bottom)) !important;
+}
+
+.sidebar.active{
+    left:0 !important;
+}
+
+.theme-box{
+    height:auto !important;
+    min-height:clamp(58px, 17vw, 72px) !important;
+    padding:clamp(10px, 3vw, 14px) !important;
+    gap:10px !important;
+}
+
+.theme-left{
+    gap:clamp(8px, 3vw, 14px) !important;
+}
+
+.theme-left span{
+    font-size:clamp(14px, 4vw, 18px) !important;
+}
+
+.theme-icon{
+    width:clamp(38px, 12vw, 46px) !important;
+    height:clamp(38px, 12vw, 46px) !important;
+}
+
+.switch{
+    width:clamp(48px, 14vw, 54px) !important;
+    height:clamp(27px, 8vw, 30px) !important;
+    flex-shrink:0;
+}
+
+.sobre-sistema-btn,
+button[onclick="openUpdateModal()"],
+button[onclick="toggleAutoModal()"]{
+    min-height:clamp(40px, 11vw, 48px) !important;
+    padding:clamp(9px, 3vw, 14px) clamp(10px, 4vw, 18px) !important;
+    font-size:var(--teddy-font-sm) !important;
+    overflow-wrap:anywhere;
+}
+
+.aaviso{
+    grid-template-columns:auto minmax(0,1fr) !important;
+    gap:clamp(10px, 3vw, 16px) !important;
+    padding:clamp(12px, 3.5vw, 18px) !important;
+    font-size:var(--teddy-font-sm) !important;
+}
+
+.container{
+    width:100% !important;
+    max-width:100% !important;
+    padding:var(--teddy-page-pad) !important;
+    padding-bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 28px) !important;
+}
+
+.main-grid{
+    width:100% !important;
+    display:grid !important;
+    grid-template-columns:repeat(auto-fit, minmax(min(100%, 140px), 1fr)) !important;
+    gap:var(--teddy-card-gap) !important;
+    align-items:stretch !important;
+}
+
+.card{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    min-height:var(--teddy-card-min-h) !important;
+    padding:clamp(8px, 2.8vw, 13px) clamp(6px, 2.4vw, 12px) clamp(30px, 8vw, 45px) !important;
+    border-radius:var(--teddy-radius) !important;
+    contain-intrinsic-size:var(--teddy-card-min-h) !important;
+}
+
+.item,
+.card strong.item{
+    font-size:clamp(.78rem, 3.5vw, 1rem) !important;
+    line-height:1.12 !important;
+    white-space:normal !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    display:-webkit-box !important;
+    -webkit-line-clamp:2 !important;
+    -webkit-box-orient:vertical !important;
+    overflow-wrap:anywhere !important;
+}
+
+.card span,
+.card strong.item + span{
+    max-width:calc(100% - 12px) !important;
+    bottom:clamp(5px, 1.8vw, 10px) !important;
+    padding:1px clamp(6px, 2vw, 8px) !important;
+    font-size:clamp(.62rem, 2.8vw, .80rem) !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+}
+
+.card::after{
+    bottom:clamp(15px, 4vw, 20px) !important;
+}
+
+.badge-novo{
+    max-width:calc(100% - 12px) !important;
+    top:clamp(4px, 1.8vw, 6px) !important;
+    right:clamp(4px, 2vw, 8px) !important;
+    padding:2px clamp(4px, 1.8vw, 6px) !important;
+    font-size:clamp(.48rem, 2.2vw, .72rem) !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+}
+
+.nav-tabs{
+    height:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom)) !important;
+    padding:clamp(6px, 2vw, 10px) calc(clamp(8px, 3vw, 18px) + var(--teddy-safe-right)) calc(clamp(6px, 2vw, 10px) + var(--teddy-safe-bottom)) calc(clamp(8px, 3vw, 18px) + var(--teddy-safe-left)) !important;
+    gap:clamp(6px, 2.2vw, 14px) !important;
+}
+
+.tab-btn,
+.clear-all-btn,
+.sort-select{
+    min-height:clamp(40px, 11vw, 48px) !important;
+    border-radius:clamp(10px, 3vw, 14px) !important;
+}
+
+.tab-btn,
+.clear-all-btn{
+    padding:clamp(8px, 2.5vw, 12px) clamp(10px, 4vw, 20px) !important;
+    gap:clamp(6px, 2vw, 10px) !important;
+    font-size:var(--teddy-font-sm) !important;
+    min-width:clamp(44px, 14vw, 86px) !important;
+}
+
+.tab-btn i,
+.clear-all-btn i,
+.tab-btn ion-icon,
+.clear-all-btn ion-icon,
+.sort-icon{
+    font-size:clamp(1rem, 5vw, 1.25rem) !important;
+}
+
+#totalContador{
+    min-width:clamp(54px, 18vw, 86px) !important;
+    height:clamp(26px, 8vw, 30px) !important;
+    padding:0 clamp(8px, 3vw, 12px) !important;
+    font-size:clamp(.70rem, 2.7vw, .82rem) !important;
+}
+
+.modal-overlay,
+.custom-modal-overlay,
+.custom-alert-overlay,
+.un-modal-overlay{
+    padding:calc(clamp(12px, 4vw, 20px) + var(--teddy-safe-top)) calc(clamp(12px, 4vw, 20px) + var(--teddy-safe-right)) calc(clamp(12px, 4vw, 20px) + var(--teddy-safe-bottom)) calc(clamp(12px, 4vw, 20px) + var(--teddy-safe-left)) !important;
+}
+
+.modal-card,
+.custom-modal-box,
+.custom-alert-card,
+.un-modal-card{
+    width:min(100%, 420px) !important;
+    max-height:calc(100dvh - 24px - var(--teddy-safe-top) - var(--teddy-safe-bottom)) !important;
+    border-radius:clamp(14px, 4vw, 20px) !important;
+}
+
+.modal-card{
+    padding:clamp(18px, 5vw, 30px) !important;
+}
+
+.custom-modal-box,
+.custom-alert-content{
+    padding:clamp(18px, 5vw, 25px) !important;
+}
+
+.custom-modal-buttons,
+.btn-group{
+    gap:clamp(8px, 3vw, 12px) !important;
+}
+
+.btn,
+#favBtn,
+.custom-modal-buttons button,
+.custom-alert-btn{
+    min-height:clamp(44px, 12vw, 56px) !important;
+    padding:clamp(10px, 3.5vw, 14px) !important;
+    font-size:var(--teddy-font-sm) !important;
+}
+
+.notification{
+    top:calc(14px + var(--teddy-safe-top)) !important;
+    right:min(-320px, -92vw) !important;
+    max-width:calc(100vw - 24px - var(--teddy-safe-left) - var(--teddy-safe-right)) !important;
+    padding:clamp(10px, 3vw, 12px) clamp(12px, 4vw, 18px) !important;
+    font-size:var(--teddy-font-sm) !important;
+}
+
+.notification.show{
+    right:calc(12px + var(--teddy-safe-right)) !important;
+}
+
+.teddy-history-btn{
+    right:calc(14px + var(--teddy-safe-right)) !important;
+    bottom:calc(var(--teddy-nav-h) + var(--teddy-safe-bottom) + 16px) !important;
+    min-height:clamp(40px, 11vw, 44px) !important;
+    padding:clamp(9px, 3vw, 11px) clamp(12px, 4vw, 15px) !important;
+    font-size:var(--teddy-font-sm) !important;
+}
+
+.teddy-history-panel{
+    width:min(86vw, 340px) !important;
+    max-width:min(86vw, 340px) !important;
+    padding-top:var(--teddy-safe-top) !important;
+}
+
+.teddy-history-header{
+    min-height:clamp(62px, 17vw, 72px) !important;
+    padding:clamp(12px, 4vw, 16px) !important;
+}
+
+.teddy-history-list{
+    padding:clamp(8px, 3vw, 12px) !important;
+}
+
+.teddy-history-item{
+    min-height:clamp(46px, 13vw, 50px) !important;
+    padding:clamp(8px, 3vw, 10px) !important;
+}
+
+.teddy-history-term{
+    font-size:var(--teddy-font-sm) !important;
+}
+
+.teddy-history-footer{
+    padding:clamp(10px, 3vw, 12px) !important;
+    padding-bottom:calc(clamp(10px, 3vw, 12px) + var(--teddy-safe-bottom)) !important;
+}
+
+/* TELAS MUITO PEQUENAS: 280px até 339px */
+@media (max-width:339px){
+    :root{
+        --teddy-header-h:58px;
+        --teddy-nav-h:56px;
+        --teddy-page-pad:8px;
+        --teddy-card-gap:7px;
+        --teddy-card-min-h:74px;
+        --teddy-icon-btn:36px;
+    }
+
+    header{
+        gap:5px !important;
+    }
+
+    .rp-title span{
+        gap:4px !important;
+    }
+
+    .rp-title img{
+        width:30px !important;
+        height:30px !important;
+        border-radius:9px !important;
+    }
+
+    .search-wrapper{
+        margin-left:3px !important;
+        margin-right:3px !important;
+    }
+
+    .search-wrapper input{
+        height:38px !important;
+        padding-left:32px !important;
+        padding-right:32px !important;
+        font-size:.82rem !important;
+    }
+
+    .search-wrapper i.fa-search{
+        left:10px !important;
+        font-size:.9rem !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .card{
+        padding:7px 5px 27px !important;
+        border-radius:10px !important;
+    }
+
+    .item,
+    .card strong.item{
+        font-size:.76rem !important;
+        -webkit-line-clamp:2 !important;
+    }
+
+    .card span,
+    .card strong.item + span{
+        font-size:.58rem !important;
+        bottom:4px !important;
+    }
+
+    .card::after{
+        bottom:13px !important;
+    }
+
+    .tab-btn,
+    .clear-all-btn{
+        min-width:38px !important;
+        padding:7px 8px !important;
+    }
+
+    .tab-btn span,
+    .clear-all-btn span,
+    .tab-btn .text,
+    .clear-all-btn .text{
+        display:none !important;
+    }
+
+    #totalContador::before{
+        display:none !important;
+    }
+
+    .modal-card,
+    .custom-modal-box,
+    .custom-alert-card,
+    .un-modal-card{
+        width:100% !important;
+    }
+
+    .btn-group,
+    .custom-modal-buttons{
+        grid-template-columns:1fr !important;
+        flex-direction:column !important;
+    }
+
+    .btn-close{
+        grid-column:auto !important;
+    }
+
+    .teddy-history-panel{
+        width:min(90vw, 300px) !important;
+        max-width:min(90vw, 300px) !important;
+    }
+
+    .teddy-history-btn span,
+    .teddy-history-btn .text,
+    .teddy-history-btn .label{
+        display:none !important;
+    }
+
+    .teddy-history-btn{
+        width:40px !important;
+        height:40px !important;
+        padding:0 !important;
+        border-radius:50% !important;
+    }
+}
+
+/* CELULARES PEQUENOS: 340px até 380px */
+@media (min-width:340px) and (max-width:380px){
+    :root{
+        --teddy-header-h:64px;
+        --teddy-nav-h:58px;
+        --teddy-page-pad:10px;
+        --teddy-card-gap:9px;
+        --teddy-card-min-h:82px;
+        --teddy-icon-btn:40px;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .tab-btn,
+    .clear-all-btn{
+        min-width:42px !important;
+        padding:8px 10px !important;
+    }
+}
+
+/* CELULARES PADRÃO/MÉDIOS: 381px até 600px */
+@media (min-width:381px) and (max-width:600px){
+    :root{
+        --teddy-header-h:70px;
+        --teddy-nav-h:64px;
+        --teddy-page-pad:14px;
+        --teddy-card-gap:12px;
+        --teddy-card-min-h:92px;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* TABLETS: 601px até 768px */
+@media (min-width:601px) and (max-width:768px){
+    :root{
+        --teddy-header-h:72px;
+        --teddy-nav-h:66px;
+        --teddy-page-pad:18px;
+        --teddy-card-gap:14px;
+        --teddy-card-min-h:88px;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(150px, 175px)) !important;
+        justify-content:center !important;
+    }
+
+    .card{
+        max-width:175px !important;
+        justify-self:center !important;
+    }
+}
+
+/* NOTEBOOKS E PCS: 769px até 1199px */
+@media (min-width:769px) and (max-width:1199px){
+    :root{
+        --teddy-header-h:72px;
+        --teddy-nav-h:58px;
+        --teddy-page-pad:24px;
+        --teddy-card-gap:16px;
+        --teddy-card-min-h:82px;
+    }
+
+    body{
+        padding-top:calc(var(--teddy-safe-top) + var(--teddy-header-h) + var(--teddy-nav-h)) !important;
+    }
+
+    .nav-tabs{
+        position:fixed !important;
+        top:calc(var(--teddy-safe-top) + var(--teddy-header-h)) !important;
+        bottom:auto !important;
+        border-top:0 !important;
+        border-bottom:1px solid var(--border_padrao) !important;
+        justify-content:center !important;
+    }
+
+    .container{
+        padding-top:28px !important;
+        padding-bottom:36px !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(155px, 180px)) !important;
+        justify-content:center !important;
+        max-width:1180px !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
+
+    .card{
+        max-width:180px !important;
+        justify-self:center !important;
+    }
+
+    #totalContador{
+        top:calc(var(--teddy-safe-top) + var(--teddy-header-h) + var(--teddy-nav-h) + 8px) !important;
+    }
+}
+
+/* DESKTOP GRANDE: 1200px até 1599px */
+@media (min-width:1200px) and (max-width:1599px){
+    :root{
+        --teddy-header-h:72px;
+        --teddy-nav-h:58px;
+        --teddy-page-pad:28px;
+        --teddy-card-gap:18px;
+        --teddy-card-min-h:86px;
+    }
+
+    body{
+        padding-top:calc(var(--teddy-safe-top) + var(--teddy-header-h) + var(--teddy-nav-h)) !important;
+    }
+
+    .nav-tabs{
+        position:fixed !important;
+        top:calc(var(--teddy-safe-top) + var(--teddy-header-h)) !important;
+        bottom:auto !important;
+        justify-content:center !important;
+    }
+
+    .container{
+        padding-top:32px !important;
+        padding-bottom:40px !important;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(160px, 185px)) !important;
+        justify-content:center !important;
+        max-width:1480px !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
+
+    .card{
+        max-width:185px !important;
+        justify-self:center !important;
+    }
+}
+
+/* MONITORES MUITO GRANDES: 1600px+ */
+@media (min-width:1600px){
+    :root{
+        --teddy-card-gap:20px;
+        --teddy-card-min-h:90px;
+    }
+
+    .main-grid{
+        grid-template-columns:repeat(auto-fill, minmax(170px, 195px)) !important;
+        justify-content:center !important;
+        max-width:1680px !important;
+    }
+
+    .card{
+        max-width:195px !important;
+    }
+}
+
+/* ALTURA BAIXA: celulares deitados e telas pequenas na vertical */
+@media (max-height:520px){
+    :root{
+        --teddy-header-h:54px;
+        --teddy-nav-h:52px;
+    }
+
+    header{
+        height:54px !important;
+    }
+
+    .icon-btn,
+    .sort-wrapper{
+        --teddy-icon-btn:38px;
+    }
+
+    .search-wrapper input{
+        height:38px !important;
+    }
+
+    .nav-tabs{
+        height:calc(52px + var(--teddy-safe-bottom)) !important;
+    }
+
+    .modal-card,
+    .custom-modal-box,
+    .custom-alert-card,
+    .un-modal-card{
+        max-height:calc(100dvh - 16px) !important;
+        overflow-y:auto !important;
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+    }
+}
+
+/* ============================================================
+   FIM DO PATCH FINAL EXTRA • RESPONSIVIDADE GLOBAL
+   ============================================================ */
