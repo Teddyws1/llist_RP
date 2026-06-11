@@ -6,7 +6,7 @@
 const CONFIG_PROTECAO = {
   //copiar texto
     bloquearCliqueDireito: false,
-    bloquearTeclado: true,
+    bloquearTeclado: false,
     //seleção com dedo✓
     bloquearSelecao: false,
 };
