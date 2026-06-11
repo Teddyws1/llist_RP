@@ -680,7 +680,6 @@ header{
 
 .card{
     position:relative;
-
     width:100%;
     min-height:92px;
 
@@ -1579,11 +1578,7 @@ body.light-theme{
 }
 
 
-/* ============================================================
-   CORREÇÕES/APRIMORAMENTOS FINAIS • SEM REMOVER LINHAS ORIGINAIS
-   Ajustes adicionados no final para corrigir bugs e sobrescrever
-   regras antigas sem apagar seu CSS pronto.
-   ============================================================ */
+/* ==================== INÍCIO: OVERLAY E ALERTA PERSONALIZADO ==================== */
 
 /* Corrige alerta automático abrindo corretamente por JS */
 .custom-alert-overlay {
@@ -1592,35 +1587,31 @@ body.light-theme{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
     padding: 20px;
-    background: var(--modalfundo);
+    background: var(--overlay_modal_principal)!important; /* ou transparente */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     overflow: hidden;
     z-index: 10000;
 }
 
-/* Card do alerta igual ao print */
+
 .custom-alert-card {
     width: 100%;
     max-width: 340px;
     padding: 0;
-    background: var(--fundo_modais);
-    border: 1px solid var(--border_padrao);
+    background: var(--modal_principal);
+    border: 1px solid (--border_padrao);
     border-radius: 20px;
-    overflow: hidden;
+    overflow: none;
     text-align: center;
 }
 
-/* Conteúdo superior do alerta */
 .custom-alert-content {
     padding: 24px 20px;
     background: var(--fundo_alerta_at);
-    text-align: center;
 }
 
-/* Texto do alerta */
 .custom-alert-title {
     display: block;
     margin-bottom: 6px;
@@ -1636,7 +1627,6 @@ body.light-theme{
     line-height: 1.4;
 }
 
-/* Corrige o bug border:20px e remove espaços indesejados dos botões */
 .custom-alert-btn {
     width: 100%;
     min-height: 48px;
@@ -1652,16 +1642,16 @@ body.light-theme{
     cursor: pointer;
 }
 
-/* Pega o container inline criado no JS: display:flex; gap:10px; margin-top:15px */
 .custom-alert-card > div[style*="display:flex"],
-.custom-alert-card > div[style*="display: flex"] {
+.custom-alert-card > div[style*="display: flex"],
+.custom-alert-card > div[style*="gap:10px"],
+.custom-alert-card > div[style*="gap: 10px"] {
     display: flex !important;
     gap: 2px !important;
     margin-top: 0 !important;
     background: var(--border_padrao);
 }
 
-/* Faz Sim e Não ficarem iguais ao print */
 .custom-alert-card > div[style*="display:flex"] .custom-alert-btn,
 .custom-alert-card > div[style*="display: flex"] .custom-alert-btn {
     flex: 1;
@@ -1672,13 +1662,6 @@ body.light-theme{
     border-radius: 0;
 }
 
-/* Remove espaço branco/linha grande entre os botões */
-.custom-alert-card > div[style*="gap:10px"],
-.custom-alert-card > div[style*="gap: 10px"] {
-    gap: 2px !important;
-}
-
-/* Arredondamento inferior dos botões */
 .custom-alert-card > div[style*="display:flex"] .custom-alert-btn:first-child,
 .custom-alert-card > div[style*="display: flex"] .custom-alert-btn:first-child {
     border-bottom-left-radius: 20px;
@@ -1689,10 +1672,12 @@ body.light-theme{
     border-bottom-right-radius: 20px;
 }
 
-/* Mantém botão pressionado suave */
 .custom-alert-btn:active {
     transform: scale(.98);
 }
+
+/* ==================== FIM: OVERLAY E ALERTA PERSONALIZADO ==================== */
+
 
 /* Corrige favoritos: classe usada pelo JS sugerido */
 #favBtn.favorited {
@@ -2385,5 +2370,26 @@ body.light-theme{
     .teddy-history-delete{
         transition: none !important;
     }
+}
+
+/* Container dos botões */
+.custom-alert-container {
+    display: flex;
+}
+
+.custom-alert-btn {
+    flex: 1;
+}
+
+/* Botão "Sim" */
+.btn-sim {
+    background: var(--success);
+    color: var(--color_aviso_sim);
+}
+
+/* Botão "Não" */
+.btn-nao {
+    background: var(--danger);
+    color: var(--color_aviso);
 }
 

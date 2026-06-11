@@ -6,7 +6,8 @@ function openUpdateModal() {
     if (document.getElementById('updateModal')) return;
 
     const updates = [
-        " Aprimoramento da funcionalidade da barra de pesquisa","Implementação de uma nova aba de histórico de pesquisas na barra de pesquisa","melhoria visual"
+        "otimização interno",
+        "pequena ajuste no visual"
     ];
 
     const limite = 3;

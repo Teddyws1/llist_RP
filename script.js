@@ -389,11 +389,11 @@ function toggleAutoModal() {
                 <span class="custom-alert-text">Quer mesmo <b>${acao}</b> o modal de resultado automático?</span>
             </div>
 
-            <div style="display:flex; gap:10px; margin-top:15px;">
-                <button type="button" class="custom-alert-btn" aria-label="Confirmar alteração do modal automático" style="background:var(--success);color: var(--color_aviso_sim); flex:1;" onclick="executarTrocaModal()">Sim</button>
-                <button class="custom-alert-btn" style="background:var(--danger); flex:1;
-                color: var( --color_aviso);" aria-label="Cancelar alteração do modal automático" onclick="document.getElementById('confirmAutoModal').remove()">Não</button>
-            </div>
+       <div class="custom-alert-container">
+    <button type="button" class="custom-alert-btn btn-sim" aria-label="Confirmar alteração do modal automático" onclick="executarTrocaModal()">Sim</button>
+    <button type="button" class="custom-alert-btn btn-nao" aria-label="Cancelar alteração do modal automático" onclick="document.getElementById('confirmAutoModal').remove()">Não</button>
+</div>
+
         </div>
     `;
 
