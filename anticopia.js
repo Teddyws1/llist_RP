@@ -5,8 +5,8 @@
    ========================= */
 const CONFIG_PROTECAO = {
   //copiar texto
-    bloquearCliqueDireito: false,
-    bloquearTeclado: false,
+    bloquearCliqueDireito: true,
+    bloquearTeclado: true,
     //seleção com dedo✓
-    bloquearSelecao: false,
+    bloquearSelecao: true,
 };
