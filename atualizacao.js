@@ -7,7 +7,8 @@ function openUpdateModal() {
 
     const updates = [
         "otimização interno",
-        "pequena ajuste no visual"
+        "pequena ajuste no visual",
+        "um comando novo"
     ];
 
     const limite = 3;
