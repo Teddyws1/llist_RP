@@ -6,12 +6,12 @@
 
   const systemInfo = {
     nome: "Ilist_RP Beta",
-    versao: "4.6.7",
+    versao: "4.6.8",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "05/06/2026 •18:20",
+    ultimaAtualizacao: "17/06/2026 •20:56",
     //atualiza data de atualização 
-    proximaAtualizacao: "18/06/2026",
+    proximaAtualizacao: "",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
     
