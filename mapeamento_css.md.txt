@@ -66,7 +66,7 @@ Parte 5/5 — Eventos finais
 ==========[verão do cachê]==========
 versão
 
-• v=08
+• v=09
 
 pasta 
 
@@ -75,3 +75,23 @@ pasta
 ========[fimverão do cachê]=========
 
 
+
+
+
+=====[botão de comandos do servido]=====
+
+
+<button  
+            type="button"  
+            class="sobre-sistema-btn"  
+            aria-label="ir para aba de comandos do servidor"  
+        >  
+            <span style="display:flex; align-items:center;">  
+                <i class="fas fa-desktop" aria-hidden="true"></i>  
+                comandos do servidor   
+            </span>  
+
+            <span class="seta" aria-hidden="true">  
+                <ion-icon name="chevron-forward-outline"></ion-icon>  
+            </span>  
+        </button>

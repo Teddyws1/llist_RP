@@ -17,6 +17,8 @@ O **llist_RP** ajuda jogadores de GTA V RP a encontrar comandos de animações d
 - Modal automático de resultado
 - Área de atualizações
 - Interface simples e rápida
+- e outros tipos de sistemas
+- e sistema específicos
 
 ## 🚀 Exemplo
 
