@@ -11,7 +11,7 @@
     // ALTERE APENAS ESTAS DUAS DATAS
     ultimaAtualizacao: "17/06/2026 •20:56",
     //atualiza data de atualização 
-    proximaAtualizacao: "",
+    proximaAtualizacao: "23/06/2026",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
     
