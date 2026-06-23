@@ -1,0 +1,110 @@
+/*34 remover depois de colocar aba */
+
+.mensagem {
+    position: fixed;
+    top: 120px;
+    right: 15px;
+
+    width: 320px;
+    padding: 14px 18px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(5, 11, 31, .98),
+        rgba(10, 25, 60, .98)
+    );
+
+    border: 1px solid rgba(0, 212, 255, .35);
+    border-left: 4px solid #00D4FF;
+
+    border-radius: 14px;
+
+    color: #F8FAFC;
+    font-size: 14px;
+    line-height: 1.5;
+
+    box-shadow:
+        0 0 10px rgba(0, 212, 255, .15),
+        0 0 25px rgba(13, 110, 253, .20);
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateX(100px);
+    transition: .35s ease;
+
+    z-index: 99999;
+}
+
+.mensagem.ativa {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+
+    animation: glowBlue 2s infinite;
+}
+
+@keyframes glowBlue {
+    0% {
+        box-shadow:
+            0 0 10px rgba(0, 212, 255, .15),
+            0 0 25px rgba(13, 110, 253, .20);
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px rgba(0, 212, 255, .45),
+            0 0 40px rgba(13, 110, 253, .35);
+    }
+
+    100% {
+        box-shadow:
+            0 0 10px rgba(0, 212, 255, .15),
+            0 0 25px rgba(13, 110, 253, .20);
+    }
+}
+
+.btn-conteudo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.contador {
+    margin-top: 10px;
+    padding-top: 8px;
+
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    
+    color: #00d4ff;
+    font-size: 13px;
+    font-weight: 700;
+    
+    text-align: center;
+}
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.alert-icon {
+    font-size: 20px;
+    color: #00D4FF;
+    
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, .5));
+    
+    animation: alertaPulse 2s infinite;
+}
+
+@keyframes alertaPulse {
+    50% {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 12px rgba(0, 212, 255, .8));
+    }
+}

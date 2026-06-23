@@ -6,9 +6,8 @@ function openUpdateModal() {
     if (document.getElementById('updateModal')) return;
 
     const updates = [
-        "otimização interno",
-        "pequena ajuste no visual",
-        "um comando novo"
+    "melhoria no visual",
+    "e organização interno"
     ];
 
     const limite = 3;

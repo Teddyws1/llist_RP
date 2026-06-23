@@ -1,14 +1,3 @@
-/* ============================================================
-   INÍCIO • SCRIPT OTIMIZADO
-   Mantém as linhas originais e acrescenta melhorias de:
-   - acessibilidade
-   - desempenho
-   - clique mais instantâneo
-   - teclado
-   - modais
-   - cards e botões
-   ============================================================ */
-
 const animations = [...new Set(listText.split(',')
     .map(item => item.trim())
     .filter(item => item !== ''))]
@@ -1396,4 +1385,6 @@ document.addEventListener('click', (e) => {
 
 /* ============================================================
    FIM • APRIMORAMENTO: HISTÓRICO AO CLICAR NO CARD/DIV
-   ============================================================ */
+   ===================================
+   ========================= */
+
