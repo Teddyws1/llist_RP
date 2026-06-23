@@ -9,7 +9,7 @@
     versao: "4.7.8",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "17/06/2026 •20:56",
+    ultimaAtualizacao: "23/06/2026 •18:24",
     //atualiza data de atualização 
     proximaAtualizacao: "",
 
