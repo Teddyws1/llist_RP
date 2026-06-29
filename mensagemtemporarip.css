@@ -38,6 +38,15 @@
     z-index: 99999;
 }
 
+.disponivel {
+    display: block;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-bottom: 2px solid #0095FF;
+    padding-bottom: 3px;
+}
+
 .mensagem.ativa {
     opacity: 1;
     visibility: visible;

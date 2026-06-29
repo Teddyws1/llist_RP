@@ -105,7 +105,8 @@ header{
 }
 
 .search-wrapper input:focus{
-    border-color: var(--border_search);
+    border-color: var(--border_search)
+    ;
 
 }
 
@@ -798,12 +799,11 @@ header{
     position:absolute;
     top:6px;
     right:8px;
-
     display:flex;
     align-items:center;
     justify-content:center;
     gap:4px;
-    padding:2px 6px;
+    padding:2px ;
     border:0;
     border-radius:999px;
     box-shadow:none;
@@ -815,13 +815,14 @@ header{
     pointer-events:none;
     user-select:none;
     white-space:nowrap;
-    z-index:25;
+    z-index:999;
+    transform:rotate(22deg);
 }
 
 .badge-novo ion-icon,
 .badge-novo i{
     color: var(--ion-icon_color);
-    font-size:14px;
+    font-size:18px;
     margin-right:2px;
 }
 
@@ -2065,6 +2066,66 @@ body.light-theme{
 }
 
 /* ============================================================
+    botão de apaga histórico 
+   ============================================================ */
+.teddy-history-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    border: 1px solid #ff5e5e;
+    color: #ff5e5e;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    
+    /* Animação de entrada suave */
+    animation: fadeInScale 0.5s ease-out;
+}
+
+.teddy-history-clear:hover {
+    background: #ff5e5e;
+    color: #ffffff;
+    /* Efeito de pulso no hover */
+    animation: pulse 1s infinite;
+}
+
+.trash-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Animação de entrada */
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Animação de pulsar no hover */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Animação de shake na lixeira */
+.teddy-history-clear:hover .trash-icon {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-20deg); }
+    50% { transform: rotate(20deg); }
+    75% { transform: rotate(-20deg); }
+}
+
+
+/* ============================================================
    FUNDO ESCURO AO ABRIR A ABA
    ============================================================ */
 
@@ -2393,15 +2454,21 @@ body.light-theme{
     color: var(--color_aviso);
 }
 
-/*icone do botão comendo do servidor*/
+/* ============================================================
+   •14 botão comendo do servidor
+   ============================================================ */
 
 .btn-conteudo ion-icon {
      font-size:28px;
-    color: var(--icone_sobre);
+    color: var(--icone_botao_comando);
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .btn-conteudo:hover ion-icon {
     transform: rotate(10deg) scale(1.1);
-    color: #fff;
+    color: var(--hover_botao_comando) ;
 }
+
+/* ============================================================
+ fim do css
+   ============================================================ */

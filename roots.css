@@ -33,7 +33,7 @@
     --icone_lupa_search:#FFFFFF;
     --botao_x_search:#B4B4B4BF;
     --hover_color_x:#E21919C9;
-    --border_search:#0B1D3A;
+    --border_search:#FFFFFFBA;
      /*==================*/ 
        
      /*•12 notification de cópia*/
@@ -99,7 +99,7 @@
     /*•10 badge novo */
     --color_badge:#FFFFFF;
     --fundo_badge:#0074FF;
-    --ion-icon_color:#FFFFFF;
+    --ion-icon_color:#FFFFFFBD;
     
    /*==================*/ 
     /* MODAL HISTÓRICO */
@@ -156,6 +156,10 @@
     --fundo_botao_limpa:#2861AB21;
     --color_botao_limpa:#FFFFFF;
     
+    /*•14 botão comendo do servidor escuro*/
+    --icone_botao_comando:#1478FF;
+    --hover_botao_comando:#fff;
+    
 }
 
 
@@ -202,7 +206,7 @@
     --icone_lupa_search:#000000;
     --botao_x_search:#000000;
     --hover_color_x:#E21919;
-    --border_search:#000000;
+    --border_search:#1478ff;
 
     /*•04 sidebar= claro*/
     --fundo_aba:#FFFFFF;
@@ -256,7 +260,7 @@
     /*•10 badge novo */
     --color_badge:#000000;
     --fundo_badge:#FFFFFF;
-    --ion-icon_color:#000000;
+    --ion-icon_color:#0074FF;
 
    /*==================*/ 
     /* •08 modal de excluir favoritos */
@@ -297,8 +301,8 @@
     
     /*•13 aba de histórico*/
    --border_hist:#9C9C9C78;
-   --color__icone_hist:#FFFFFF;
-   --fundo_hist:#1478ff;
+   --color__icone_hist:#1B7CFFDE;
+   --fundo_hist:#1478FF42;
    --hover_hist:#000000;
    --icone_x_hist:#000000;
    --hover_color_x_hist:#E21919;
@@ -311,4 +315,8 @@
    --fundo_footer_hist:#FFFFFF;
    --fundo_botao_limpa:#1B7F21;
    --color_botao_limpa:#FFFFFF;
+   
+     /*•14 botão comendo do servidor claro*/
+     --icone_botao_comando:#1478FF;
+  --hover_botao_comando:#000000;
 }

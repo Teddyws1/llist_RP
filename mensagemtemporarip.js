@@ -26,6 +26,8 @@ function mostrarMensagem() {
 
        <div class="texto">
     o botão de <strong>Comandos do Servidor</strong> está em fase de desenvolvimento.
+    <br>
+    <strong class="disponivel">função disponível futuramente.</strong>
 </div>
 
         <div class="contador">

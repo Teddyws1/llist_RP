@@ -27,7 +27,7 @@
 ====================================
 •13 aba de histórico 
 ====================================
-•
+•14 botão comendo do servidor
 ====================================
 •
 ====================================
@@ -45,6 +45,18 @@
 ====================================
 •
 ====================================
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -66,32 +78,12 @@ Parte 5/5 — Eventos finais
 ==========[verão do cachê]==========
 versão
 
-• v=09
+• v=10
 
-pasta 
+==========[url da capa do site]========
+
+https://i.postimg.cc/wTWdx9vF/Picsart-26-06-28-22-56-46-942.jpg
+
+==========[nome da pasta]========== 
 
 • GTA V RP = V
-
-========[fimverão do cachê]=========
-
-
-
-
-
-=====[botão de comandos do servido]=====
-
-
-<button  
-            type="button"  
-            class="sobre-sistema-btn"  
-            aria-label="ir para aba de comandos do servidor"  
-        >  
-            <span style="display:flex; align-items:center;">  
-                <i class="fas fa-desktop" aria-hidden="true"></i>  
-                comandos do servidor   
-            </span>  
-
-            <span class="seta" aria-hidden="true">  
-                <ion-icon name="chevron-forward-outline"></ion-icon>  
-            </span>  
-        </button>

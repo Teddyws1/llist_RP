@@ -310,7 +310,7 @@ function renderItems() {
 
     grid.innerHTML = data.map(item => `
         <div class="card" data-id="${item.id}" role="button" tabindex="0" aria-label="Abrir ${item.name} id ${item.id}" onclick="openModal(${item.id})">
-            ${verificarNovo(item.name) ? `<div class="badge-novo">novo<ion-icon name="sparkles-outline"></ion-icon></div>` : ""}
+            ${verificarNovo(item.name) ? `<div class="badge-novo"><ion-icon name="sparkles-outline"></ion-icon></div>` : ""}
 
             <strong class="item">${item.name}</strong>
             <span>№ ${item.id}</span>
@@ -524,6 +524,37 @@ function updateFavBtn() {
     
     btn.classList.toggle('favorited', !!isFav);
 }
+
+function copyCommand() {
+    if (!currentItem) return;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(`e ${currentItem.name}`);
+    } else {
+        const temp = document.createElement('textarea');
+        temp.value = `e ${currentItem.name}`;
+        temp.setAttribute('readonly', '');
+        temp.style.position = 'fixed';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        temp.remove();
+    }
+    //copiar
+    const btn = document.querySelector('.btn-copy');
+    
+    if (!btn) return;
+    
+    btn.innerHTML = '<i class="fas fa-check"></i>Pronto!';
+    
+    showNotification('Comando copiado com sucesso!');
+    
+    setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+    }, 1000);
+}
+
 const favBtn = document.getElementById('favBtn');
 
 if (favBtn) {
@@ -606,36 +637,6 @@ function showNotification(text) {
             notification.remove();
         }, 300);
     }, 2000);
-}
-
-function copyCommand() {
-    if (!currentItem) return;
-    
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(`e ${currentItem.name}`);
-    } else {
-        const temp = document.createElement('textarea');
-        temp.value = `e ${currentItem.name}`;
-        temp.setAttribute('readonly', '');
-        temp.style.position = 'fixed';
-        temp.style.opacity = '0';
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand('copy');
-        temp.remove();
-    }
-    
-    const btn = document.querySelector('.btn-copy');
-    
-    if (!btn) return;
-    
-    btn.innerHTML = '<i class="fas fa-check"></i> Pronto!';
-    
-    showNotification('Comando copiado com sucesso!');
-    
-    setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-copy"></i> Copiar';
-    }, 1000);
 }
 
 function toggleTheme() {
@@ -1081,7 +1082,11 @@ const TeddySearchHistory = {
                 <div class="${c.list}"></div>
 
                 <div class="${c.footer}">
-                    <button type="button" class="${c.clear}" aria-label="Limpar todo o histórico">Limpar histórico</button>
+  <button type="button" class="teddy-history-clear" aria-label="Limpar todo o histórico">
+    <ion-icon name="trash-outline" class="trash-icon"></ion-icon>
+    Limpar histórico
+</button>
+
                 </div>
             `;
             document.body.appendChild(panel);
@@ -1384,7 +1389,14 @@ document.addEventListener('click', (e) => {
 })();
 
 /* ============================================================
-   FIM • APRIMORAMENTO: HISTÓRICO AO CLICAR NO CARD/DIV
+novo sistema aqui 
    ===================================
    ========================= */
 
+
+
+
+/* ============================================================
+   FIM 
+   ===================================
+   ========================= */

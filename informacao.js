@@ -6,12 +6,12 @@
 
   const systemInfo = {
     nome: "Ilist_RP Beta",
-    versao: "4.7.8",
+    versao: "4.7.9",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "23/06/2026 •18:24",
+    ultimaAtualizacao: "17/06/2026 •20:56",
     //atualiza data de atualização 
-    proximaAtualizacao: "29/06/2026",
+    proximaAtualizacao: "",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
     
@@ -107,7 +107,7 @@
 
       if (diasRestantes === 0) {  
         return {  
-          nome: "Atualizando hoje",  
+          nome: "atualização para hoje",  
           classe: "status-warning",  
           texto: "A atualização está prevista para hoje",  
           detalhes: "O sistema pode receber novidades a qualquer momento. Durante atualizações ou manutenções, alguns serviços poderão ficar temporariamente indisponíveis por alguns minutos."  

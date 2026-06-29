@@ -7,7 +7,7 @@ function openUpdateModal() {
 
     const updates = [
     "melhoria no visual",
-    "e organização interno"
+    "comando novo",
     ];
 
     const limite = 3;
