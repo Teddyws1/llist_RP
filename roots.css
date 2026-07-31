@@ -31,7 +31,7 @@
     --fundo_search:#0F111A;
     --ponteiro_search:#FFFFFF;
     --icone_lupa_search:#FFFFFF;
-    --botao_x_search:#B4B4B4BF;
+    --botao_x_search:#B4B4B4EB;
     --hover_color_x:#E21919C9;
     --border_search:#FFFFFFBA;
      /*==================*/ 
@@ -63,39 +63,53 @@
     --fundo_tema:#070d1c;
     --color_tema:#FFFFFF;
     --icone_tema:#0b1327;
-    --icone_lua_tema:#FFF100;
+    --icone_lua_tema:#E8E2C8;
     --slider_tema:#2861AB21;
     --before_tema:#FFFFFF;
     --checked_tema:#7D7D7DE0;
     --shadow_tema:#000000D9;
     --text_rodape:#B9B9B969;
-
-    /* •09 aviso do cache */
+    
+    /*•09 aviso do cache escuro*/
+    --text_vermais_aberto:#FFB300;
+    --text_vermais_fechado:#FFFFFF;
+    --icone_ver_mais_olho_aberto:#1478FF;
+    --icone_ver_mais_olho_fechado:#FFFFFF;
+    --color_vermais_normal:#1478FF;
+    --icone_aviso:#FF9200;
+    --color_icone_aviso_olho_aberto:#FFB300;
     --danger:#FF0000;
-    --color_aviso:#FFFFFF;
-    /* botão de sim*/
-    --color_aviso_sim:#FFFFFF;
+    
     
     /* •07 modals= escuro */
     --fundo_cards:#0B0D1A;
-    --shadow_cards:#4545451A;
+    --shadow_cards:#000000;
     --modal_principal:#0B0D1A;
     --overlay_modal_principal:#000000DE;
     --fundo_remover:#FF0000;
     --color_remover:#fff;
     --icone_color_remover:#FFFFFF;
     --fundo_favoritar:#1478FF;
+    --fundo_favoritar_filter:#fff;
     --color_favoritar:#FFFFFF;
     --color_copiar:#FFFFFF;
+    --fundo_copiar_filter:#FFFFFF;
+    --border_botao_favoritar:#FFFFFF;
     --fundo_copiar:#23B107;
+    --border_botao_copiar:#FFFFFF;
+    --fundo_botao_fecha:#11121C7A;
+    --border_botao_fechar:#fff;
     --color_cancelar:#FFFFFF;
-
-
+    --accent-color:#3b82f6;
+    
+    /*•15 descrição dos cards*/
+    --descricao_cards:#777;
+    
 
     /*•11 IDS= escuro*/
     --fundo_id:#0B1D3A;
     --color_id:#FFFFFFBD;
-
+    
     /*•10 badge novo */
     --color_badge:#FFFFFF;
     --fundo_badge:#0074FF;
@@ -118,13 +132,21 @@
     --color_alert_tex:#7F7F7FE8;
      --color_ok_alert:#FFFFFF;
      --fundo_ok_alert:#151722;
+     --botao_NAO_AT:#FF0000;
+    --color_aviso:#FFFFFF;
+    --color_aviso_sim:#FFFFFF;
    /*==================*/ 
+   
+   
+   /*•13=botão histórico*/
+   --cclean_hover_historico:#FF0000;
+   --color_cclean_historico:#FFFFFF;
+   /*================*/
     
-    
+    /*botao de copiar*/
     --success:#23B107;
     --btnbtnfav:#FFFFFF;
     --colorbtn:#000000;
-    --border-btn-fav:#FFFFFF;
     --border-btn-footer:#FFFFFF;
     --text-dim-texbot:linear-gradient(to right,#00ABFF,#00ABFF);
 
@@ -155,12 +177,35 @@
     --fundo_footer_hist:#0F111A;
     --fundo_botao_limpa:#2861AB21;
     --color_botao_limpa:#FFFFFF;
-    
-    /*•14 botão comendo do servidor escuro*/
-    --icone_botao_comando:#1478FF;
-    --hover_botao_comando:#fff;
-    
+  
+     /*•14 explorar*/
+    --fundo_overlay_exeplorar:#0000008C;
+     --nav_fundo_container:#0B0D1A;
+     --nav_shadow:#000000;
+     --header_nav_fundo:#0F111A;
+     --color_modal_naav:#FFFFFF;
+     --fundo_logo_nav:#00ABFF;
+     --botao_X_nav_fundo:#FFFFFF2B;
+     --color_x_nav:#00ABFF;
+     --fundo_hover_x_nav:#00ABFF;
+     --color_hover_x_nav:#000000;
+     
+            
+             /*items*/
+     --color_item_nav:#fff;
+     --fundo_item_nav:#FFFFFF2B;
+     --fundo_item_hover_nav:#FCFCFCA6;
+     --border_hover_item_nav:#C1C1C1;
+     --item_info_nav:#FFFFFFBA;
+     --hover_info_nav_small:#FFFFFFDE;
+     --scrollbar_nav:#0D57BB;
+     /*paginas */
+     --icone_nav_pagina:#00ABFF;
+     --icone_pagin_filter:#00000099;
+     --icone_pagina-policia:#4185E1;
+  
 }
+
 
 
 
@@ -220,26 +265,24 @@
     /*•03 sobre sistema= claro*/
     --fundo_botao_sobre:#FFFFFF;
     --color_sobre:#000000;
-    --icone_sobre:#000000;
-    --icone_flecha:#000000;
+    --icone_sobre:#1478FF;
+    --icone_flecha:#1478FF;
     --border_:#000000;
 
     /*•02 botao de tema= claro*/
     --fundo_tema:#FFFFFF;
     --color_tema:#000000;
-    --icone_tema:#1478ff;
-    --icone_lua_tema:#FFFFFF;
+    --icone_tema:#006DFF3B;
+    --icone_lua_tema:#1478FF;
     --before_tema:#1478FF;
     --checked_tema:#7D7D7D52;
-    --shadow_tema:#00000033;
+    --shadow_tema:#000000;
     --text_rodape:#0000008F;
 
-    /* AVISO */
-    --danger:#FF0000;
 
     /* •07 modals= claro */
     --fundo_cards:#FFFFFF;
-    --shadow_cards:#E3E3E3C4;
+    --shadow_cards:#000000;
     --modal_principal:#FFFFFF;
     --overlay_modal_principal:#000000D1;
     --fundo_remover:#FF0000;
@@ -247,15 +290,24 @@
     --icone_color_remover:#FFFFFF;
     --fundo_favoritar:#1478FF;
     --color_favoritar:#FFFFFF;
+    --fundo_favoritar_filter:#000000;
+    --border_botao_favoritar:#000000;
     --color_copiar:#FFFFFF;
+    --fundo_copiar_filter:#000000;
     --fundo_copiar:#23B107;
-    --color_cancelar:#000000;
+    --border_botao_copiar:#000000;
+    --color_cancelar:#FFFFFF;
+    --border_botao_fechar:#000000;
+    --fundo_botao_fecha:#1478FF;
+    --accent-color:#000000;
    
+    /*•15 descrição dos cards*/
+   --descricao_cards:#2861AB;
+
 
     /* •11 IDS= claro */
     --fundo_id:#2861AB;
     --color_id:#FFFFFFDE;
-  
 
     /*•10 badge novo */
     --color_badge:#000000;
@@ -274,16 +326,38 @@
     --fundo_limpar_his:#1B7F21;
     --color_limpar_his:#FFFFFF;
     
+    /*•13=botão histórico*/
+       --cclean_hover_historico:#FF0000;
+       --color_cclean_historico:#fff;
+       /*================*/
+     
+     /*•09 aviso do cache claro*/
+    --color_texto_aviso_chache:#1B7CFFDE;
+    --text_vermais_aberto:#ff9800;
+    --fundo_aviso_cache:#1B7CFF2E;
+     --icone_ver_mais_olho_aberto:#1478ff;
+     --text_vermais_fechado:#000000;
+     --icone_ver_mais_olho_fechado:#1B7CFFDE;
+     --icone_aviso:#ff9800;
+     --color_vermais_normal:#000000;
+     --color_icone_aviso_olho_aberto:#ff9800;
+     --danger:#FF0000;
+    
+    
         /*•01=2 AT= claro*/
     --fundo_alerta_at:#FFFFFF;
     --color_alert_tex:#7F7F7FE8;
-      --fundo_ok_alert:#151722;
+    --fundo_ok_alert:#151722;
     --color_ok_alert:#FFFFFF;
+        /* •09 aviso AT */
+    --botao_NAO_AT:#FF0000;
+    --color_aviso:#FFFFFF;
+    /* botão de sim*/
+    --color_aviso_sim:#FFFFFF;
    /*==================*/ 
     /* BOTÕES */
     --btnbtnfav:#FFFFFF;
     --colorbtn:#FFFFFF;
-    --border-btn-fav:#000000;
     --border-btn-footer:#000000;
     --text-dim-texbot:linear-gradient(to right,#000000,#000000);
 
@@ -316,7 +390,26 @@
    --fundo_botao_limpa:#1B7F21;
    --color_botao_limpa:#FFFFFF;
    
-     /*•14 botão comendo do servidor claro*/
-     --icone_botao_comando:#1478FF;
-  --hover_botao_comando:#000000;
+      
+      /*•14 explorar*/
+      --fundo_overlay_exeplorar:#000000B5;
+      --nav_fundo_container:#FFFFFF;
+      --nav_shadow:#FFFFFF;
+      --header_nav_fundo:#E9E9E9D6;
+      --color_modal_naav:#000000;
+      --fundo_logo_nav:#FFFFFF;
+      --botao_X_nav_fundo:#FFFFFF;
+      --color_x_nav:#000000;
+      --fundo_hover_x_nav:#000000;
+      --color_hover_x_nav:#fff;
+        /*items*/
+  --color_item_nav:#000000;
+  --fundo_item_nav:#E9E9E9D6;
+  --fundo_item_hover_nav:#F3F3F342;
+  --border_hover_item_nav:#00000033;
+  --item_info_nav:#000000A6;
+  --hover_info_nav_small:#000000;
+  --icone_nav_pagina:#000000;
+  --icone_pagina-policia:#000000;
+  --scrollbar_nav:#1B7CFFDE;
 }

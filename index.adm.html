@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- ============================================================
+         INÍCIO 01 • CHARSET / VIEWPORT / COMPATIBILIDADE
+         ============================================================ -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+
+
+    <!--============================================================
+         INÍCIO 02 • SEO / TÍTULO / DESCRIÇÃO
+         ============================================================ -->
+    <title>llist Rp</title>
+
+    <meta
+        name="description"
+        content="Explore a melhor lista RP com servidores atualizados, interface moderna e navegação rápida para encontrar comunidades Roleplay."
+    >
+
+    <meta name="format-detection" content="telephone=no">
+    
+
+
+    <!-- ============================================================
+         INÍCIO 03 • PWA / TEMA / APP MOBILE
+         ============================================================ -->
+    <meta name="theme-color" content="#6200ee">
+    <meta name="color-scheme" content="dark light">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="llist_Roleplay">
+
+
+    <!-- ============================================================
+         INÍCIO 04 • PRECONNECT / DNS-PREFETCH / PERFORMANCE
+         ============================================================ -->
+    <link rel="preconnect" href="https://i.postimg.cc" crossorigin>
+    <link rel="dns-prefetch" href="https://i.postimg.cc">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    
+
+
+    <!-- ============================================================
+         INÍCIO 05 • CSS CRÍTICO INLINE
+         Mantém estabilidade visual inicial e melhora carregamento.
+         ============================================================ -->
+
+
+
+    <!-- ============================================================
+         INÍCIO 06 • FONTES
+         ============================================================ -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+        rel="stylesheet"
+    >
+    
+
+
+    <!-- ============================================================
+         INÍCIO 07 • CSS PRINCIPAL DO PROJETO
+         ============================================================ -->
+   <link rel="stylesheet" href="roots.css?v=12">
+
+        <link rel="stylesheet" href="style.css?">
+
+    <!-- ============================================================
+         INÍCIO 08 • BIBLIOTECAS DE ÍCONES
+         ============================================================ -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        referrerpolicy="no-referrer"
+    >
+
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        defer
+    ></script>
+
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        defer
+    ></script>
+    
+</head>
+
+<body>
+
+    <!-- ============================================================
+         INÍCIO 10 • HEADER / MENU / BUSCA / ORDENAÇÃO
+         ============================================================ -->
+    <header role="banner" aria-label="Cabeçalho principal">
+        <button
+            type="button"
+            class="icon-btn"
+            id="menuBtn"
+            aria-label="Abrir menu lateral"
+            aria-controls="sidebar"
+            aria-expanded="false"
+            onclick="event.stopPropagation(); toggleSidebar();"
+        >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <form
+            class="search-wrapper"
+            role="search"
+            aria-label="Buscar comandos"
+            onsubmit="event.preventDefault();"
+        >
+            <i class="fas fa-search" aria-hidden="true"></i>
+
+            <label for="searchInput" class="sr-only">
+                Buscar comando
+            </label>
+
+            <input
+                type="search"
+                id="searchInput"
+                name="q"
+                placeholder="Buscar comando..."
+                aria-label="Buscar comando"
+                autocomplete="off"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
+                enterkeyhint="search"
+                inputmode="search"
+            >
+
+            <button
+                type="button"
+                class="clear-search"
+                id="clearBtn"
+                aria-label="Limpar busca"
+                onclick="clearSearch()"
+            >
+                <ion-icon name="backspace-outline"></ion-icon>
+
+            </button>
+        </form>
+
+        <div class="sort-wrapper">
+            <i class="fas fa-filter sort-icon" aria-hidden="true"></i>
+
+            <label for="sortOption" class="sr-only">
+                Ordenar itens
+            </label>
+
+            <select
+                id="sortOption"
+                class="sort-select"
+                aria-label="Ordenar itens"
+                onchange="renderItems()"
+            >
+                <option value="recent">Mais recentes</option>
+                <option value="alpha-asc">A → Z</option>
+                <option value="alpha-desc">Z → A</option>
+                <option value="id-asc">ID menor</option>
+                <option value="id-desc">ID maior</option>
+            </select>
+        </div>
+    </header>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 11 • CONTADOR TOTAL
+         ============================================================ -->
+    <span id="totalContador" aria-live="polite" aria-atomic="true">
+        0
+    </span>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 12 • SIDEBAR / MENU LATERAL
+         ============================================================ -->
+ <aside id="sidebar" class="sidebar" aria-label="Menu lateral">
+
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+
+        <div class="rp-badge">
+            <h3 class="rp-title">
+                <span>comando do ADM</span>
+            </h3>
+        </div>
+
+        <button
+            type="button"
+            class="icon-btn"
+            aria-label="Fechar menu lateral"
+            aria-controls="sidebar"
+            onclick="toggleSidebar()"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+    </div>
+
+
+    <p class="aaviso" role="note">
+        OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
+    </p>
+
+
+<a
+    href="index.html"
+    class="sobre-sistema-btn"
+    aria-label="Voltar para página principal"
+>
+    <span class="btn-conteudo">
+        <i class="fas fa-house" aria-hidden="true"></i>
+        <span>Página inicial</span>
+    </span>
+
+    <span class="seta" aria-hidden="true">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+    </span>
+</a>
+
+
+    <br>
+
+
+    <div class="theme-box" role="group" aria-label="Configuração de tema">
+
+        <div class="theme-left">
+
+            <div class="theme-icon" aria-hidden="true">
+                <i class="fas fa-moon"></i>
+            </div>
+
+            <span id="themeLabel">
+                Modo escuro
+            </span>
+
+        </div>
+
+
+        <label class="switch" for="themeToggle">
+
+            <span class="sr-only">
+                Alternar entre tema escuro e tema claro
+            </span>
+
+            <input
+                id="themeToggle"
+                type="checkbox"
+                checked
+                onclick="toggleTheme()"
+                aria-labelledby="themeLabel"
+            >
+
+            <span class="slider" aria-hidden="true"></span>
+
+        </label>
+
+    </div>
+
+
+    <hr class="linha-grudada">
+
+
+    <footer class="rodape">
+        &copy; Desenvolvido por Teddy Machado 2026
+    </footer>
+
+
+</aside>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 13 • NAVEGAÇÃO INFERIOR
+         ============================================================ -->
+    <nav class="nav-tabs" aria-label="Navegação principal">
+        <button
+            class="tab-btn active"
+            id="tabAll"
+            type="button"
+            aria-label="Mostrar todos os comandos"
+            aria-pressed="true"
+            onclick="switchTab('all')"
+        >
+            <i class="fas fa-home" aria-hidden="true"></i>
+        </button>
+
+        <button
+            class="tab-btn"
+            id="tabFav"
+            type="button"
+            aria-label="Mostrar favoritos"
+            aria-pressed="false"
+            onclick="switchTab('fav')"
+        >
+            <i class="fas fa-bookmark" aria-hidden="true"></i>
+        </button>
+
+        <button
+            class="tab-btn auto-modal-btn"
+            type="button"
+            aria-label="Configurar abertura automática do modal"
+            onclick="toggleAutoModal()"
+        >
+            <i class="fas fa-window-maximize" aria-hidden="true"></i>
+        </button>
+
+        <button
+            id="clearAllBtn"
+            class="clear-all-btn"
+            type="button"
+            aria-label="Limpar todos os favoritos"
+            onclick="clearAllFavorites()"
+        >
+            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+        </button>
+    </nav>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 14 • CONTEÚDO PRINCIPAL / LISTA
+         ============================================================ -->
+    <main id="conteudoPrincipal" class="container" tabindex="-1">
+        <h1 class="sr-only">
+            Lista de comandos RP
+        </h1>
+
+        <section aria-labelledby="listaComandosTitulo">
+            <h2 id="listaComandosTitulo" class="sr-only">
+                Comandos disponíveis
+            </h2>
+
+            <div
+                id="gridItems"
+                class="main-grid"
+                role="list"
+                aria-label="Lista de comandos"
+                aria-live="polite"
+                aria-busy="false"
+            ></div>
+        </section>
+    </main>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 15 • MODAL DO COMANDO
+         ============================================================ -->
+    <div
+        id="itemModal"
+        class="modal-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalID"
+        style="display:none;"
+    >
+        <div class="modal-card" role="document">
+            <h2 id="modalTitle" style="margin-bottom:5px;">
+                Comando
+            </h2>
+
+            <span id="modalID" style="color:var(--accent); font-weight:900; margin-bottom:15px;">
+                #
+            </span>
+
+            <div class="btn-group">
+                <button
+                    type="button"
+                    class="btn btn-fav"
+                    id="favBtn"
+                    aria-label="Adicionar comando aos favoritos"
+                >
+                    Favoritar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-copy"
+                    aria-label="Copiar comando"
+                    onclick="copyCommand()"
+                >
+                    <i class="fas fa-copy" aria-hidden="true"></i>
+                    Copiar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-close"
+                    aria-label="Fechar modal"
+                    onclick="closeModal('itemModal')"
+                >
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 16 • MODAL DE TEXTO / INFORMAÇÃO
+         ============================================================ -->
+    <div
+        id="textModal"
+        class="modal-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="textModalTitle"
+        aria-describedby="textModalBody"
+        style="display:none;"
+    >
+        <div class="modal-card" role="document">
+            <h2 id="textModalTitle" style="color:var(--primary);">
+                Título
+            </h2>
+
+            <div class="modal-body-scroll">
+                <p
+                    id="textModalBody"
+                    style="color:var(--text-dim); line-height:1.6; font-size:0.95rem; white-space:pre-line;"
+                ></p>
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-close"
+                aria-label="Fechar mensagem"
+                onclick="closeModal('textModal')"
+                style="width:100%"
+            >
+                Entendido
+            </button>
+        </div>
+    </div>
+    
+
+
+    <!-- ============================================================
+         INÍCIO 17 • SCRIPTS DO PROJETO
+         Ordem organizada para dados carregarem antes da interface.
+         ============================================================ -->
+    <script src="bancodedado_adm.js?v=12" defer></script>
+    <script src="script.js?v=12" defer></script>
+    <script src="anticopia.js?v=12" defer></script>
+    
+    
+</body>
+
+</html>

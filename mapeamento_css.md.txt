@@ -4,6 +4,7 @@
 ====================================
 •02 botão de tema claro/escuro 
 ===================================
+•03 botao geral "sistem, explorar, atualização"
 •03 sobre sistema 
 ====================================
 •04 sidebar  •04=1linha/•04=2rodape •04=3 botão abri/fecha aba lateral 
@@ -14,8 +15,8 @@
 ====================================
 •07 modals
 ====================================
-•08 modal de excluir /favoritar 
-•08=1 favoritar
+•08 modal de excluir / 
+•08=1favoritar/•09=copiar
 ====================================
 •09 aviso do cache
 ====================================
@@ -25,11 +26,12 @@
 ====================================
 •12 notification de cópia 
 ====================================
-•13 aba de histórico 
+•13 aba de histórico /
+•13=botão histórico
 ====================================
-•14 botão comendo do servidor
+•14 explorar 
 ====================================
-•
+•15 descrição dos cards
 ====================================
 •
 ====================================
@@ -78,12 +80,13 @@ Parte 5/5 — Eventos finais
 ==========[verão do cachê]==========
 versão
 
-• v=10
-
+• v=12
+já colocando 
 ==========[url da capa do site]========
 
-https://i.postimg.cc/wTWdx9vF/Picsart-26-06-28-22-56-46-942.jpg
+https://i.postimg.cc/d3qL35q7/Logo-llist-RP.png
 
 ==========[nome da pasta]========== 
 
-• GTA V RP = V
+• GTA V RP = V25
+coloca v25 antes de exportar 

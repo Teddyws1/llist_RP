@@ -6,14 +6,15 @@
 
   const systemInfo = {
     nome: "Ilist_RP Beta",
-    versao: "4.7.9",
+    versao: "4.8.0",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "29/06/2026 •11:54",
+    ultimaAtualizacao: "31/07/2026 •20:56",
     //atualiza data de atualização 
-    proximaAtualizacao: "31/07/2026",
+    proximaAtualizacao: "",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
+    
     
     desenvolvedor: "Teddy Machado",
     tecnologias: "HTML5, CSS3, JavaScript e Ionicons",
@@ -147,15 +148,15 @@
 
   const tabs = [
     {
-      small: "aba: 01",
+      small: "box: 01",
       title: "Informações"
     },
     {
-      small: "aba: 02",
+      small: "box: 02",
       title: "Sistemas"
     },
     {
-      small: "aba: 03",
+      small: "box: 03",
       title: "Desenvolvedor"
     }
   ];
@@ -245,69 +246,107 @@
           <div id="details"></div>
         </section>
 
-        <section class="page">
-          <h3 class="section-title">
-            <ion-icon name="construct-outline"></ion-icon>
-            Sistemas do site
-          </h3>
+<!-- ==========================================================
+     SEÇÃO • SISTEMAS DO SITE
+========================================================== -->
+<section class="page">
 
-          <p class="about-text">
-Aqui estão os principais sistemas disponíveis
-no Ilist_RP para melhorar a navegação,
-busca e uso dos comandos.
-          </p>
+  <!-- Título da seção -->
+  <h3 class="section-title">
+    <ion-icon name="construct-outline"></ion-icon>
+    Sistemas do Site
+  </h3>
 
-          <div class="system-list">
-            <div class="system-card">
-              <ion-icon name="search-outline"></ion-icon>
-              <div>
-                <strong>Busca por ID ou nome</strong>
-                <p>Permite encontrar comandos rapidamente digitando o ID ou o nome da animação.</p>
-              </div>
-            </div>
+  <!-- Descrição -->
+  <p class="about-text">
+    Conheça os principais sistemas disponíveis no <strong>Ilist_RP</strong>,
+    desenvolvidos para tornar a navegação mais rápida, organizada e prática
+    durante a consulta dos comandos.
+  </p>
 
-            <div class="system-card">
-              <ion-icon name="flash-outline"></ion-icon>
-              <div>
-                <strong>Sistema AT automático</strong>
-                <p>Quando ativado, abre automaticamente o modal do comando encontrado na pesquisa.</p>
-                <p>Sistema que fecha o teclado dos celulares automaticamente ao ativar o AT.</p>
-              </div>
-            </div>
+  <!-- Lista de sistemas -->
+  <div class="system-list">
 
-            <div class="system-card">
-              <ion-icon name="copy-outline"></ion-icon>
-              <div>
-                <strong>Copiar comando</strong>
-                <p>Copia o comando pronto para usar no RP, facilitando o uso dentro do jogo.</p>
-              </div>
-            </div>
+    <!-- Busca -->
+    <div class="system-card">
+      <ion-icon name="search-outline"></ion-icon>
+      <div>
+        <strong>Busca por ID ou Nome</strong>
+        <p>Encontre qualquer comando em segundos pesquisando pelo ID ou pelo nome.</p>
+      </div>
+    </div>
 
-            <div class="system-card">
-              <ion-icon name="bookmark-outline"></ion-icon>
-              <div>
-                <strong>Favoritos</strong>
-                <p>Permite salvar comandos favoritos no navegador para acessar mais rápido.</p>
-              </div>
-            </div>
+    <!-- Sistema AT -->
+    <div class="system-card">
+      <ion-icon name="flash-outline"></ion-icon>
+      <div>
+        <strong>Sistema AT Automático</strong>
+        <p>Abre automaticamente o modal do comando encontrado durante a pesquisa.</p>
+        <p>Também fecha o teclado automaticamente em dispositivos móveis para uma navegação mais rápida.</p>
+      </div>
+    </div>
 
-            <div class="system-card">
-              <ion-icon name="contrast-outline"></ion-icon>
-              <div>
-                <strong>Tema claro e escuro</strong>
-                <p>Alterna o visual do site para melhorar o conforto durante o uso.</p>
-              </div>
-            </div>
+    <!-- Copiar comando -->
+    <div class="system-card">
+      <ion-icon name="copy-outline"></ion-icon>
+      <div>
+        <strong>Copiar Comando</strong>
+        <p>Copie qualquer comando com apenas um toque e utilize diretamente no servidor.</p>
+      </div>
+    </div>
 
-            <div class="system-card">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-              <div>
-                <strong>Compatível com mobile</strong>
-                <p>Interface adaptada para celular, tablet, computador e telas maiores.</p>
-              </div>
-            </div>
-          </div>
-        </section>
+    <!-- Favoritos -->
+    <div class="system-card">
+      <ion-icon name="bookmark-outline"></ion-icon>
+      <div>
+        <strong>Favoritos</strong>
+        <p>Salve seus comandos preferidos para acessá-los rapidamente sempre que precisar.</p>
+      </div>
+    </div>
+
+    <!-- Tema -->
+    <div class="system-card">
+      <ion-icon name="contrast-outline"></ion-icon>
+      <div>
+        <strong>Tema Claro e Escuro</strong>
+        <p>Escolha entre os modos claro e escuro para maior conforto visual.</p>
+      </div>
+    </div>
+
+<!-- Card: Descrição dos comandos -->
+<div class="system-card">
+  <ion-icon name="document-text-outline"></ion-icon>
+  <div>
+    <strong>Descrição em todos os comandos</strong>
+    <p>Agora todos os comandos possuem uma descrição curta para facilitar a identificação e o entendimento de sua função.</p>
+  </div>
+</div>
+
+    <!-- Biblioteca -->
+    <div class="system-card">
+      <ion-icon name="terminal-outline"></ion-icon>
+      <div>
+        <strong>Mais de 354 Comandos disponíveis</strong>
+        <p>Biblioteca completa com mais de 354 comandos organizados por categorias e descrições.</p>
+      </div>
+    </div>
+
+<!-- Card: Responsividade -->
+<div class="system-card">
+  <div class="device-badge">
+    <ion-icon name="phone-portrait-outline"></ion-icon>
+    <ion-icon name="tablet-portrait-outline"></ion-icon>
+    <ion-icon name="desktop-outline"></ion-icon>
+  </div>
+
+  <div>
+    <strong>Compatível com todos os dispositivos</strong>
+    <p>Desenvolvido para funcionar perfeitamente em celulares, tablets e computadores.</p>
+  </div>
+</div>
+
+  </div>
+</section>
 
         <section class="page">
           <h3 class="section-title">
@@ -386,6 +425,13 @@ ${systemInfo.tecnologias}
         </div>
       </div>
     </main>
+<button id="prevPageBtn" class="page-arrow left" aria-label="Página anterior">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+</button>
+
+<button id="nextPageBtn" class="page-arrow right" aria-label="Próxima página">
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+</button>
   `;
 
   /* =========================================================
@@ -470,9 +516,7 @@ ${systemInfo.tecnologias}
       page.classList.toggle("active", pageIndex === index);
     });
 
-    dots.forEach((dot, dotIndex) => {
-      dot.classList.toggle("active", dotIndex === index);
-    });
+    
 
     tabSmall.textContent = tabs[index].small;
     tabTitle.textContent = tabs[index].title;
@@ -489,27 +533,17 @@ ${systemInfo.tecnologias}
      INÍCIO 10 • SLIDE TOUCH MOBILE
      ========================================================= */
 
-  document.addEventListener("touchstart", event => {
-    startX = event.touches[0].clientX;
-  }, { passive: true });
+const prevPageBtn = document.getElementById("prevPageBtn");
+const nextPageBtn = document.getElementById("nextPageBtn");
+const pageIndicator = document.getElementById("pageIndicator");
 
-  document.addEventListener("touchend", event => {
-    if (shareModal.classList.contains("active")) {
-      return;
-    }
+prevPageBtn.addEventListener("click", () => {
+  showPage(currentPage - 1);
+});
 
-    const endX = event.changedTouches[0].clientX;
-    const diff = startX - endX;
-    const minSwipeDistance = 50;
-
-    if (diff > minSwipeDistance) {
-      showPage(currentPage + 1);
-    }
-
-    if (diff < -minSwipeDistance) {
-      showPage(currentPage - 1);
-    }
-  }, { passive: true });
+nextPageBtn.addEventListener("click", () => {
+  showPage(currentPage + 1);
+});
 
   /* =========================================================
      FIM 10 • SLIDE TOUCH MOBILE
@@ -563,7 +597,9 @@ ${systemInfo.tecnologias}
 
   function openShareModal() {
     const url = encodeURIComponent(systemInfo.urlSistema);
-    const text = encodeURIComponent(`Conheça o ${systemInfo.nome}`);
+const text = encodeURIComponent(
+  `Convido você a conhecer o ${systemInfo.nome}. Acesse o link :`
+);
 
     shareWhatsapp.href = `https://api.whatsapp.com/send?text=${text}%20${url}`;
     shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
@@ -818,9 +854,6 @@ document.addEventListener("DOMContentLoaded", () => {
     lastTouchEnd = now;
   }, { passive:false });
 
-  /* =========================================================
-     FIM 00.1 • PROTEÇÃO DA INTERFACE
-     ========================================================= */
 
 
   /* =========================================================
@@ -840,7 +873,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
-
-/* =========================================================
-   FIM 00 • INICIALIZAÇÃO DO ARQUIVO
-   ========================================================= */

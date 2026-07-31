@@ -1,13 +1,13 @@
 {
-  "name": "list_Roleplay",
-  "short_name": "list_Roleplay",
+  "name": "llist_Roleplay",
+  "short_name": "llist_Roleplay",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#6200ee",
   "icons": [
     {
-      "src": "https://i.postimg.cc/wTWdx9vF/Picsart-26-06-28-22-56-46-942.jpg",
+      "src": "https://i.postimg.cc/d3qL35q7/Logo-llist-RP.png",
       "sizes": "512x512",
       "type": "image/png"
     }

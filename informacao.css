@@ -458,35 +458,6 @@ main{
    Classes usadas no JS: .dots, .dot, .active
    ========================================================= */
 
-.dots{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-
-  margin-top:24px;
-}
-
-.dot{
-  width:9px;
-  height:9px;
-
-  background:rgba(255,255,255,.24);
-
-  border-radius:50%;
-
-  transition:
-    width .22s ease,
-    background-color .22s ease;
-}
-
-.dot.active{
-  width:30px;
-
-  background:#0B7CFF;
-
-  border-radius:20px;
-}
 
 /* =========================================================
    FIM 11 • INDICADORES DE PÁGINA
@@ -938,4 +909,63 @@ body.modal-open{
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .4px;
+}
+/*botão de scroll*/
+.page-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-90%);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 45px;
+  height: 45px;
+  
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  
+  color: #5EA2FF;
+  cursor: pointer;
+  z-index: 999;
+  transition: .18s ease;
+}
+
+.page-arrow.left {
+  left: -9px;
+}
+
+.page-arrow.right {
+  right: -9px;
+}
+
+.page-arrow ion-icon {
+  font-size: 42px;
+  filter: drop-shadow(0 2px 8px rgba(94, 162, 255, .35));
+}
+
+.page-arrow:active {
+  transform: translateY(-50%) scale(.88);
+  color: #7CB8FF;
+}
+
+.page-arrow:disabled {
+  opacity: .3;
+  pointer-events: none;
+}.device-badge {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.device-badge ion-icon {
+  color: #7CB8FF;
+  font-size: 18px;
 }

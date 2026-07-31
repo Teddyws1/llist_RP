@@ -24,9 +24,7 @@ O **llist_RP** ajuda jogadores de GTA V RP a encontrar comandos de animações d
 
 Ao copiar o comando **deitar**, o sistema copia automaticamente:
 
-```txt
-/e deitar
+*/e deitar*
 
-//////////informação//////////
-
+////////// rede social //////////
 instagram: teddy_machado007

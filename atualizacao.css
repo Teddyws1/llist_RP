@@ -1,62 +1,71 @@
 /* =========================================================
-   [INÍCIO] - ESTILO DO MODAL DE ATUALIZAÇÃO
+   [INÍCIO] - MODAL DE ATUALIZAÇÕES
    ========================================================= */
 
+/* =========================
+   VARIÁVEIS (TEMA ESCURO)
+   ========================= */
 :root{
-    /* Cores Principais */
-    --update-title-color:#0074FFA3;
-    --update-text-color:#FFFFFF;
-    --update-list-icon:#28A745;
-
-    /* Botões */
-    --btn-ok-bg:#0074FFA3;
-    --btn-ok-text:#FFFFFF;
-    --btn-ver-bg:#1478FF;
-    --btn-ver-text:#FFFFFF;
-    --hover_mais:#FFFFFF;
-
     /* Estrutura */
+    --overlay-bg:rgba(0,0,0,.68);
     --card-bg:#1A1D29;
-    --overlay-bg:#000000AD;
     --border-color:rgba(255,255,255,.10);
-    --scrollbar-color:#0500FF;
-
-    /* Extras */
-    --update-shadow:0 10px 30px rgba(0,0,0,.35);
     --update-radius:20px;
-    --update-hover-bg:#FFFFFF1A;
-    --update-hover-text:#FFFFFF;
-}
+    --update-shadow:0 12px 35px rgba(0,0,0,.35);
 
-/* =========================================================
-   TEMA CLARO
-   ========================================================= */
+    /* Textos */
+    --update-title-color:#4DA3FF;
+    --update-text-color:#FFFFFF;
+    --update-version-color:#A3CFFF;
 
-body.light-theme{
-    /* Cores Principais */
-    --update-title-color:#1478FF;
-    --update-text-color:#1F2937;
-    --update-list-icon:#16A34A;
+    /* Ícones */
+    --update-icon-color:#4DA3FF;
+    --update-list-icon:#22C55E;
 
     /* Botões */
     --btn-ok-bg:#1478FF;
     --btn-ok-text:#FFFFFF;
     --btn-ver-bg:#1478FF;
     --btn-ver-text:#FFFFFF;
-    --hover_mais:#EAF3FF;
 
-    /* Estrutura */
-    --card-bg:#FFFFFF;
-    --overlay-bg:rgba(0,0,0,.45);
-    --border-color:rgba(0,0,0,.12);
+    --update-hover-bg:rgba(255,255,255,.08);
+    --update-hover-text:#FFFFFF;
+
+    /* Scroll */
     --scrollbar-color:#1478FF;
-
-    /* Extras */
-    --update-shadow:0 10px 30px rgba(0,0,0,.10);
-    --update-radius:20px;
-    --update-hover-bg:#DCEBFF;
-    --update-hover-text:#1478FF;
 }
+
+/* =========================
+   VARIÁVEIS (TEMA CLARO)
+   ========================= */
+
+body.light-theme{
+    --overlay-bg:rgba(0,0,0,.45);
+    --card-bg:#FFFFFF;
+    --border-color:rgba(0,0,0,.10);
+    --update-shadow:0 10px 25px rgba(0,0,0,.12);
+
+    --update-title-color:#1478FF;
+    --update-text-color:#1F2937;
+    --update-version-color:#4B5563;
+
+    --update-icon-color:#1478FF;
+    --update-list-icon:#16A34A;
+
+    --btn-ok-bg:#1478FF;
+    --btn-ok-text:#FFFFFF;
+    --btn-ver-bg:#1478FF;
+    --btn-ver-text:#FFFFFF;
+
+    --update-hover-bg:#EAF3FF;
+    --update-hover-text:#1478FF;
+
+    --scrollbar-color:#1478FF;
+}
+
+/* =========================
+   OVERLAY
+   ========================= */
 
 .custom-alert-overlay{
     position:fixed;
@@ -64,75 +73,133 @@ body.light-theme{
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:20px;
     background:var(--overlay-bg);
     backdrop-filter:blur(6px);
     z-index:10000;
 }
 
+/* =========================
+   CARD
+   ========================= */
+
 .update-card{
-    width:90%;
-    max-width:380px;
-    padding:25px;
+    width:100%;
+    max-width:390px;
+    padding:24px;
     background:var(--card-bg);
     border:1px solid var(--border-color);
     border-radius:var(--update-radius);
     box-shadow:var(--update-shadow);
-    animation:slideUp .3s ease-out;
+    animation:slideUp .25s ease;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+
+.update-header{
+    margin-bottom:20px;
 }
 
 .update-title{
     display:block;
-    margin-bottom:20px;
-    color:var(--update-title-color);
-    font-size:1.5rem;
+    font-size:1.45rem;
     font-weight:800;
+    color:var(--update-title-color);
     text-transform:uppercase;
 }
 
+.update-version{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--update-version-color);
+}
+
+.update-version ion-icon{
+    font-size:1.05rem;
+    color:var(--update-icon-color);
+}
+
+.update-version::after{
+    content:"";
+    width:8px;
+    height:8px;
+    margin-left:auto;
+    border-radius:50%;
+    background:#22C55E;
+    box-shadow:0 0 8px #22C55E;
+}
+
+/* =========================
+   LISTA
+   ========================= */
+
 .update-list{
     list-style:none;
-    padding:0;
     margin:0 0 20px;
-    max-height:240px;
+    padding:0;
+    max-height:250px;
     overflow-y:auto;
 }
 
 .update-list::-webkit-scrollbar{
-    width:6px;
+    width:5px;
 }
 
 .update-list::-webkit-scrollbar-thumb{
     background:var(--scrollbar-color);
-    border-radius:10px;
+    border-radius:20px;
 }
 
-.update-list li{
+.item-lista{
     display:flex;
     align-items:center;
     gap:12px;
-    padding:15px 0;
-    border-bottom:1px solid var(--border-color);
+    padding:12px 0;
     color:var(--update-text-color);
-    font-size:1rem;
+    font-size:.95rem;
+    border-bottom:1px solid var(--border-color);
 }
 
-.update-list li i{
+.item-lista:last-child{
+    border-bottom:none;
+}
+
+.item-lista ion-icon:first-child{
+    flex-shrink:0;
+    font-size:1.25rem;
     color:var(--update-list-icon);
 }
 
+.item-lista.escondido{
+    display:none;
+}
+
+/* =========================
+   BOTÃO VER MAIS
+   ========================= */
+
 .update-btn-ver-mais{
+    width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:4px;
-    margin-bottom:20px;
-    padding:8px 20px;
+    gap:8px;
+    margin-bottom:15px;
+    padding:12px;
     background:var(--btn-ver-bg);
     color:var(--btn-ver-text);
-    border:1px solid var(--border-color);
-    border-radius:25px;
-    font-size:.9rem;
+    border:none;
+    border-radius:12px;
+    font:inherit;
+    font-weight:600;
     cursor:pointer;
+    transition:.25s;
 }
 
 .update-btn-ver-mais:hover{
@@ -140,37 +207,91 @@ body.light-theme{
     color:var(--update-hover-text);
 }
 
+.update-btn-ver-mais ion-icon{
+    font-size:1.15rem;
+}
+
+/* =========================
+   BOTÃO OK
+   ========================= */
+
+.update-btn-ok{
+    width:100%;
+    padding:14px;
+    background:var(--btn-ok-bg);
+    color:var(--btn-ok-text);
+    border:none;
+    border-radius:12px;
+    font:inherit;
+    font-size:.95rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.update-btn-ok:hover{
+    filter:brightness(1.08);
+}
+
+/* =========================
+   UTILIDADES
+   ========================= */
+
 .modal-aberto{
     overflow:hidden;
     height:100vh;
 }
 
-.update-btn-ok{
-    width:100%;
-    padding:15px;
-    background:var(--btn-ok-bg);
-    color:var(--btn-ok-text);
-    border:none;
-    border-radius:12px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.item-lista.escondido{
-    display:none;
-}
+/* =========================
+   ANIMAÇÃO
+   ========================= */
 
 @keyframes slideUp{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(18px) scale(.98);
     }
     to{
         opacity:1;
-        transform:translateY(0);
+        transform:translateY(0) scale(1);
     }
+}
+/* Ícones da lista */
+.item-lista ion-icon{
+    flex-shrink:0;
+    font-size:1.25rem;
+}
+
+/* Interface renovada */
+.item-lista:nth-child(1) ion-icon{
+    color:#3B82F6; /* Azul */
+}
+
+/* Documentação / descrição */
+.item-lista:nth-child(2) ion-icon{
+    color:#8B5CF6; /* Roxo */
+}
+
+/* Correções e manutenção */
+.item-lista:nth-child(3) ion-icon{
+    color:#F59E0B; /* Laranja */
+}
+
+/* Novos comandos */
+.item-lista:nth-child(4) ion-icon{
+    color:#22C55E; /* Verde */
+}
+
+/* Melhorias de desempenho */
+.item-lista:nth-child(5) ion-icon{
+    color:#06B6D4; /* Ciano */
+}
+
+/* Novas categorias */
+.item-lista:nth-child(6) ion-icon{
+    color:#EC4899; /* Rosa */
 }
 
 /* =========================================================
-   [FIM] - ESTILO DO MODAL DE ATUALIZAÇÃO
+   [FIM] - MODAL DE ATUALIZAÇÕES
    ========================================================= */

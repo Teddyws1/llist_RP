@@ -6,6 +6,7 @@
     -webkit-tap-highlight-color:transparent;
 }
 
+
 html{
     width:100%;
     min-height:100%;
@@ -92,13 +93,6 @@ header{
     font-weight:500;
 
     outline:none;
-
-    transition:
-        border-color .18s ease,
-        box-shadow .18s ease,
-        background-color .18s ease,
-        color .18s ease;
-
     -webkit-appearance:none;
     appearance:none;
     -webkit-tap-highlight-color:transparent;
@@ -225,11 +219,6 @@ header{
     font-weight:500;
 
     cursor:pointer;
-
-    transition:
-        background-color .15s ease,
-        border-color .15s ease,
-        transform .12s ease;
 }
 
 .icon-btn:hover{
@@ -270,51 +259,175 @@ header{
 }
 /*============[fim]============*/
 
-/* ============================================================
-   •03 sobre sistema 
-   ============================================================ */
+/* =========================================================
+ •03 botao geral "sistem, explorar, atualização"
+   ========================================================= */
 
-.sobre-sistema-btn{
+.btn-menu{
     width:100%;
+    min-height:54px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     padding:12px 18px;
+
     background:var(--fundo_botao_sobre);
     color:var(--color_sobre);
 
-    border:1.5px solid var(--border_padrao);
-    border-radius:10px;
+    border:1px solid var(--border_padrao);
+    border-radius:12px;
 
-    font-family:inherit;
-    font-size:.9rem;
+    font:inherit;
+    font-size:.95rem;
     font-weight:600;
+    line-height:1;
+
+    text-decoration:none;
 
     cursor:pointer;
+    user-select:none;
+    overflow:hidden;
 }
 
-.sobre-sistema-btn i,
-.sobre-sistema-btn ion-icon{
-    color:var(--icone_sobre);
-    font-size:18px;
-    margin-right:10px;
+/* ---------------------------------------------------------
+   CONTEÚDO
+--------------------------------------------------------- */
+
+.btn-c{
+    flex:1;
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+    min-width:0;
 }
 
-.sobre-sistema-btn .seta{
-    color:var(--icone_flecha);
+/* ---------------------------------------------------------
+   ÍCONE
+--------------------------------------------------------- */
+
+.btn-i{
+    width:38px;
+    height:38px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:1rem;
-    font-weight:bold;
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+
+    color:var(--icone_sobre);
+
+    transition:
+        transform .25s ease,
+        background-color .25s ease,
+        border-color .25s ease,
+        color .25s ease;
 }
 
-.sobre-sistema-btn:hover{
+.btn-i ion-icon{
+    font-size:1.3rem;
+}
+
+/* ---------------------------------------------------------
+   TEXTO
+--------------------------------------------------------- */
+
+.btn-t {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    font-size: .88rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-transform: uppercase;
+    letter-spacing: .15px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------------------------------------------------------
+   SETA
+--------------------------------------------------------- */
+
+.btn-a{
+    width:28px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    color:var(--icone_flecha);
+    transition:
+        transform .25s ease,
+        color .25s ease;
+}
+
+.btn-a ion-icon{
+    font-size:1.2rem;
+}
+
+/* ---------------------------------------------------------
+   HOVER
+--------------------------------------------------------- */
+
+.btn-menu:hover{
+    background:var(--fundo_botao_hover,var(--fundo_botao_sobre));
     border-color:var(--border_);
+    transform:translateY(-2px);
 }
 
+.btn-menu:hover .btn-i{
+    transform:scale(1.08);
+}
+
+.btn-menu:hover .btn-a{
+    transform:translateX(5px);
+}
+
+/* ---------------------------------------------------------
+   ACTIVE
+--------------------------------------------------------- */
+
+.btn-menu:active{
+    transform:scale(.98);
+}
+
+/* ---------------------------------------------------------
+   FOCUS
+--------------------------------------------------------- */
+
+.btn-menu:focus-visible{
+    outline:2px solid var(--color_sobre);
+    outline-offset:3px;
+}
+
+/* ---------------------------------------------------------
+   DESABILITADO
+--------------------------------------------------------- */
+
+.btn-menu:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
+
+/* =========================================================
+   [FIM] - BOTÕES DO MENU
+   ========================================================= */
 
 /* ============================================================
    •02 botao de tema
@@ -413,55 +526,211 @@ header{
    •09 aviso do cache
    ============================================================ */
 
-.aaviso{
-    position:relative;
+/* ==========================
+   SISTEMA DE AVISO
+========================== */
+
+.aviso-box{
 
     width:100%;
-    max-width:100%;
 
+}
+
+.avisoTextoBtn {
+    color: var(--text_vermais_fechado);
+    font-weight: 700;
+    transition: color .3s ease;
+}
+
+
+/* quando aviso estiver aberto */
+
+.aviso-toggle.active .avisoTextoBtn {
+    color: var(--text_vermais_aberto);
+}
+
+/* ==========================
+   TEXTO DO AVISO
+========================== */
+
+.aaviso{
+    position:relative;
     display:grid;
     grid-template-columns:auto 1fr;
-    align-items:center;
     gap:16px;
-
-    margin:1rem 0;
     padding:14px 18px;
-    color:var(--text_body);
-
     border:1px solid var(--border_padrao);
-    border-radius:10px;
-
-    overflow:hidden;
-    overflow-wrap:anywhere;
+    border-radius:12px;
     line-height:1.6;
+    
+    /* fechado */
+    max-height:0;
+    opacity:0;
+    padding-top:0;
+    padding-bottom:0;
+    margin:0;
+    overflow:hidden;
+    transition:
+    max-height .35s ease,
+    opacity .3s ease,
+    padding .35s ease,
+    margin .35s ease;
 }
+
+/* ==========================
+   AVISO ABERTO
+========================== */
+
+.aaviso.expandir{
+    color: var(--color_texto_aviso_chache);
+    max-height:130px;
+    background: var(--fundo_aviso_cache);
+    opacity:1;
+    
+    padding:14px 18px;
+    margin:1rem 0 8px;
+    overflow-y:auto;
+    font-weight:700;
+}
+
+
+/* ==========================
+   MARCADOR DO AVISO
+========================== */
 
 .aaviso::before{
     content:"";
-
     width:8px;
-    height:8px;
-
-    display:inline-block;
-
+   height:8px;
+    margin-top:8px;
     background:var(--danger);
     border-radius:50%;
-
-    box-shadow:0 0 8px var(--danger);
+    box-shadow:
+    0 0 8px var(--danger);
 }
-
+/* barra lateral */
 .aaviso::after{
     content:"";
-
     position:absolute;
     left:0;
-    top:0;
+   top:0;
     bottom:0;
+    width:4px;
+    background:
+    linear-gradient(
+       to bottom,
+        transparent
 
-    width:3px;
+    );
 
-    background:linear-gradient(to bottom, var(--danger), transparent);
 }
+
+
+
+/* ==========================
+   BOTÃO DO AVISO
+========================== */
+.aviso-toggle{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 14px;
+    background:transparent;
+    color: var(--color_vermais_normal);
+    border:1px solid var(--border_padrao);
+    border-radius:10px;
+    cursor:pointer;
+    font-size:.95rem;
+    font-weight:600;
+    transition:
+    background-color .25s ease,
+    border-color .25s ease,
+    transform .15s ease;
+}
+
+/* clicar */
+.aviso-toggle:active{
+  transform:scale(.97);
+  
+}
+
+.aviso-icon{
+    flex:0 0 auto;
+    width:24px;
+    height:24px;
+    color: var(--icone_aviso);
+    transition:transform .3s ease,color .3s ease;
+}
+
+.aviso-toggle.active .aviso-icon{
+    color:var(--icone_aviso_ativo);
+    transform:scale(1.15) rotate(5deg);
+    color: var(--color_icone_aviso_olho_aberto);
+}
+
+.aviso-toggle:hover .aviso-icon{
+    transform:scale(1.1);
+    
+}
+
+#avisoIcon{
+    animation:avisoAnimacao .3s ease;
+}
+
+@keyframes avisoAnimacao{
+    from{
+        opacity:.3;
+        transform:scale(.7) rotate(-15deg);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0deg);
+    }
+}
+
+/* ==========================
+   ÍCONE OLHO
+========================== */
+
+
+.aviso-arrow{
+    flex:0 0 auto;
+    width:25px;
+    height:25px;
+    color: var(--icone_ver_mais_olho_aberto);
+    transition:
+    transform .3s ease,
+    color .3s ease;
+
+}
+
+
+
+/* olho quando aberto */
+.aviso-toggle.active .aviso-arrow{
+color: var(--icone_ver_mais_olho_fechado);
+transform:scale(1.15);
+}
+/* animação troca do olho */
+#avisoOlho{
+    animation:
+    olhoAnimacao .25s ease;
+}
+
+@keyframes olhoAnimacao{
+   
+    from{
+        opacity:.3;
+        transform:scale(.7);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
 /*============[fim]============*/
 /* ============================================================
     •01 NAVEGAÇÃO E BOTÕES - SISTEMA COMPLETO
@@ -656,65 +925,79 @@ header{
 /* ============================================================
    INÍCIO 11 • CONTAINER / GRID / CARDS
    ============================================================ */
+/* ============================================================
+   ESTILOS APRIMORADOS • CONTAINER / GRID / CARDS
+   ============================================================ */
 
-.container{
-    width:100%;
-    flex:1;
-
-    padding:20px;
-    padding-bottom:105px;
+.container {
+    width: 100%;
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 105px;
 }
 
-.main-grid{
-    width:100%;
-
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:15px;
-
-    align-content:start;
+/* Grid Padrão (2 colunas) */
+.main-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Simplificado */
+    gap: 16px;
+    align-content: start;
 }
 
-.main-grid > div{
-    margin:0;
+/* Novo estilo: Coluna Única (Cards de largura total) */
+.main-grid-full {
+    grid-template-columns: 1fr;
 }
 
-.card{
-    position:relative;
-    width:100%;
-    min-height:92px;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:5px;
-
-    padding:12px 10px;
-
-    background:var(--fundo_cards);
-    color:var(--text_body);
-
-    border:1px solid var(--border_padrao);
-    border-radius:14px;
-
-    text-align:center;
-
-    box-shadow:0 2px 8px var(--shadow_cards);
-
-    cursor:pointer;
-
-    overflow:hidden;
-
-    content-visibility:auto;
-    contain-intrinsic-size:92px;
+.card {
+    position: relative;
+    width: 100%;
+    min-height: 92px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    padding: 16px;
+    
+    background: var(--fundo_cards);
+    color: var(--text_body);
+    border: 1px solid var(--border_padrao);
+    border-radius: 16px; /* Levemente mais arredondado */
+    
+    box-shadow: 0 4px 12px var(--shadow_cards);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+    
+    /* Performance */
+    content-visibility: auto;
+    contain-intrinsic-size: 92px;
 }
 
-.card *{
-    margin:0;
-    line-height:1.15;
+/* Efeito Hover moderno */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow_cards);
+    border-color: var(--accent-color);
 }
 
+.card * {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.descricao {
+    font-size: 13px;
+    color: var(--descricao_cards);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 /* ============================================================
     •11 IDS
    ============================================================ */
@@ -915,6 +1198,7 @@ header{
     align-items: center;
     justify-content: center;
     gap: 8px;
+    filter: drop-shadow(0 2px 0 var(--fundo_favoritar_filter) );
     background: var(--fundo_favoritar);
     color: var(--color_favoritar);
     border: none;
@@ -979,7 +1263,6 @@ header{
 
 .custom-modal-buttons button{
     flex:1;
-
     min-height:48px;
 
     padding:10px;
@@ -1076,14 +1359,11 @@ header{
     align-items:center;
     justify-content:center;
     gap:10px;
-    
     color: var(--color_favoritar);
-
-    border:2px solid rgba(255,255,255,.85);
-    border-radius:18px;
-
+    border:1px solid var(--border_botao_favoritar) ;
+    border-radius: 30px;
     font-size:1rem;
-    font-weight:700;
+    font-weight:500;
 }
 
 .btn{
@@ -1093,16 +1373,16 @@ header{
     justify-content:center;
     gap:8px;
     padding:14px;
-
-    border:1px solid var(--border-btn-fav);
-    border-radius:14px;
-
-    font-weight:700;
+    border:1px solid var(--border_botao_copiar);
+    border-radius:30px;
+    font-weight:500;
 
     cursor:pointer;
 }
 
+/*•09=copiar*/
 .btn-copy{
+ filter: drop-shadow(0 2px 0 var(--fundo_copiar_filter));  
     background: var(--fundo_copiar);
     color: var(--color_copiar);
 }
@@ -1110,80 +1390,11 @@ header{
 .btn-close{
     grid-column:span 2;
     margin-top:5px;
-    background: none;
+    background: var(--fundo_botao_fecha);
     color: var(--color_cancelar);
-    
+   border:1px solid var(--border_botao_fechar);
+
 }
-
-/* ============================================================
-   INÍCIO 18 • BOTÃO ATUALIZAÇÕES / AUTO MODAL
-   ============================================================ */
-
-button[onclick="openUpdateModal()"]{
-    width:100%;
-    min-height:40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-
-    padding:8px 12px;
-
-    background:var(--openUpdateModal);
-    color:var(--openUpdateModalcolor);
-
-    border:1px solid var(--border-btn-footer);
-    border-radius:8px;
-
-    font-size:.85rem;
-    font-weight:800;
-    letter-spacing:1px;
-    line-height:1.1;
-    text-align:center;
-    text-transform:uppercase;
-    white-space:normal;
-
-    cursor:pointer;
-
-    box-shadow:0 2px 8px var(--sobradoopenmodal);
-}
-
-button[onclick="openUpdateModal()"]::before{
-    content:"🚀";
-    font-size:1.1rem;
-}
-
-button[onclick="openUpdateModal()"]:hover{
-    filter:brightness(1.08);
-}
-
-button[onclick="toggleAutoModal()"]{
-    min-height:44px;
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    width:auto;
-    margin:5px;
-    padding:10px 18px;
-    background: var(--nav_fundo);
-    color:var(--color_body);
-    border:1px solid var(--border_padrao);
-    border-radius: var(--radius-md_nav);
-
-    font-size:.85rem;
-    font-weight:600;
-
-    white-space:nowrap;
-    cursor:pointer;
-}
-
-button[onclick="toggleAutoModal()"]:hover{
-    background:var(--glass);
-    border-color:var(--accent);
-}
-
 /* ============================================================
    INÍCIO 19 • CONTADOR
    ============================================================ */
@@ -1200,10 +1411,8 @@ button[onclick="toggleAutoModal()"]:hover{
     padding:0 12px;
     background:var(--fundo_contagens);
     color:var(--cortextocontagen);
-
     border:1px solid var(--border_padrao);
     border-radius:999px;
-
     font-size:.82rem;
     font-weight:800;
     line-height:1;
@@ -1589,7 +1798,7 @@ body.light-theme{
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background: var(--overlay_modal_principal)!important; /* ou transparente */
+    background: var(--overlay_modal_principal)!important; 
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     overflow: hidden;
@@ -2006,11 +2215,10 @@ body.light-theme{
 .teddy-history-btn{
     position: fixed;
     right: 11px;
-    width: 60px;  
-    height: 60px; 
+    width: 50px;  
+    height: 50px; 
     bottom: 79px;
     z-index: 999;
-
     min-height: 44px;
     padding: 11px 15px;
 
@@ -2018,10 +2226,7 @@ body.light-theme{
     align-items: center;
     justify-content: center;
     gap: 8px;
-
-    border: 1px solid var(--border_hist);
     border-radius: 999px;
-
     background: var(--fundo_hist) ;
     color: var(--color_botao_hist);
 
@@ -2066,16 +2271,15 @@ body.light-theme{
 }
 
 /* ============================================================
-    botão de apaga histórico 
+    •13=botão histórico 
    ============================================================ */
 .teddy-history-clear {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: transparent;
-    border: 1px solid #ff5e5e;
-    color: #ff5e5e;
+    background: none;
+    border: 1px solid var(--border_padrao) ;
     padding: 10px 16px;
     border-radius: 8px;
     font-weight: 600;
@@ -2088,8 +2292,8 @@ body.light-theme{
 }
 
 .teddy-history-clear:hover {
-    background: #ff5e5e;
-    color: #ffffff;
+    background: var(--cclean_hover_historico);
+    color: var(--color_cclean_historico);
     /* Efeito de pulso no hover */
     animation: pulse 1s infinite;
 }
@@ -2167,6 +2371,7 @@ body.light-theme{
     will-change: transform;
 }
 
+
 .teddy-history-panel.active{
     transform: translateX(0);
 }
@@ -2184,6 +2389,7 @@ body.light-theme{
     gap: 12px;
     background: var(--fundo_header);
     border-bottom: 1px solid var(--border_padrao);
+    
 }
 
 .teddy-history-title{
@@ -2218,6 +2424,7 @@ body.light-theme{
         background .18s ease,
         color .18s ease,
         opacity .18s ease;
+        
 }
 
 .teddy-history-close{
@@ -2263,6 +2470,7 @@ body.light-theme{
 
 .teddy-history-list::-webkit-scrollbar{
     width: 7px;
+    
 }
 
 .teddy-history-list::-webkit-scrollbar-track{
@@ -2450,25 +2658,443 @@ body.light-theme{
 
 /* Botão "Não" */
 .btn-nao {
-    background: var(--danger);
+    background: var(--botao_NAO_AT
+    );
     color: var(--color_aviso);
 }
 
-/* ============================================================
-   •14 botão comendo do servidor
-   ============================================================ */
 
-.btn-conteudo ion-icon {
-     font-size:28px;
-    color: var(--icone_botao_comando);
-    transition: transform 0.2s ease, color 0.2s ease;
+/* =====================================================
+   •14 explorar
+===================================================== */
+
+.nav-modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: var(--fundo_overlay_exeplorar);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .25s;
+    z-index: 99998;
 }
 
-.btn-conteudo:hover ion-icon {
-    transform: rotate(10deg) scale(1.1);
-    color: var(--hover_botao_comando) ;
+.nav-modal-overlay.ativo {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
 
-/* ============================================================
- fim do css
+/* =====================================================
+   NAV MODAL
+===================================================== */
+
+.nav-modal-container {
+    position: fixed;
+    
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%, -50%) scale(.92);
+    
+    width: min(92vw, 430px);
+    max-height: 80vh;
+    
+    display: none;
+    flex-direction: column;
+    
+    overflow: hidden;
+    
+    background: var(--nav_fundo_container);
+    
+    border: 1px solid var(--border_padrao);
+    border-radius: 22px;
+    
+    box-shadow:
+        0 25px 60px var(--nav_shadow);
+    
+    opacity: 0;
+    
+    transition: .25s;
+    
+    z-index: 99999;
+}
+
+.nav-modal-container.ativo {
+    display: flex;
+    opacity: 1;
+    
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.nav-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    
+    padding: 18px;
+    
+    background: linear-gradient(135deg , var(--header_nav_fundo) );
+    
+    color: var(--color_modal_naav);
+}
+
+.nav-modal-logo {
+    width: 56px;
+    height: 56px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border-radius: 16px;
+    
+    background: var(--fundo_logo_nav);
+    
+    font-size: 30px;
+}
+
+.nav-modal-texto {
+    flex: 1;
+}
+
+.nav-modal-texto h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.nav-modal-texto p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    opacity: .9;
+}
+
+.nav-modal-close {
+    width: 42px;
+    height: 42px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    border: none;
+    border-radius: 50%;
+    
+    background: var(--botao_X_nav_fundo);
+    
+    color: var(--color_x_nav);
+    
+    cursor: pointer;
+    
+    transition: .25s;
+}
+
+.nav-modal-close:hover {
+    background:  var(--fundo_hover_x_nav);
+    color: var(--color_hover_x_nav);
+    transform: rotate(90deg);
+
+}
+
+/* =====================================================
+   LISTA
+===================================================== */
+
+.nav-modal-content {
+    padding: 15px;
+    
+    overflow-y: auto;
+    max-height: 420px;
+}
+/* =====================================================
+   listas de nomes de cada páginas 
+===================================================== */
+
+.nav-modal-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding: 15px;
+    text-decoration: none;
+    color: var(--color_item_nav);
+    background: var(--fundo_item_nav);
+    border: 1px solid transparent;
+    border-radius: 16px;
+    transition: .25s;
+}
+
+.nav-modal-item:hover {
+    background: var(--fundo_item_hover_nav);
+    border-color: var(--border_hover_item_nav);
+    
+    transform: translateX(5px);
+}
+
+.nav-modal-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-modal-item-info strong {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.nav-modal-item-info small {
+    margin-top: 3px;
+    
+    font-size: 12px;
+    
+    color: var(--item_info_nav);
+}
+
+.nav-modal-item:hover small {
+    color: var(--hover_info_nav_small);
+}
+
+.nav-modal-item ion-icon {
+    font-size: 22px;
+    
+    flex-shrink: 0;
+    
+    transition: .25s;
+}
+
+.nav-modal-item:hover ion-icon {
+    transform: translateX(5px);
+}
+
+.pagina1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.pagina1 ion-icon {
+    font-size: 22px;
+    color: var(--icone_nav_pagina);
+
+}
+.pagina-policia {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.pagina-policia ion-icon {
+    font-size: 22px;
+    color: var(--icone_pagina-policia);
+}
+
+
+
+/* =====================================================
+   SCROLL
+===================================================== */
+
+.nav-modal-content::-webkit-scrollbar {
+    width: 7px;
+}
+
+.nav-modal-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.nav-modal-content::-webkit-scrollbar-thumb {
+    background: var(--scrollbar_nav);
+    border-radius: 20px;
+}
+
+.nav-modal-content::-webkit-scrollbar-thumb:hover {
+    background: #25EB3E;
+}
+
+.nav-modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: #555 transparent;
+}
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media(max-width:600px) {
+    
+    .nav-modal-container {
+        width: 95vw;
+        border-radius: 18px;
+    }
+    
+    .nav-modal-header {
+        padding: 16px;
+    }
+    
+    .nav-modal-logo {
+        width: 48px;
+        height: 48px;
+        font-size: 26px;
+    }
+    
+    .nav-modal-texto h2 {
+        font-size: 17px;
+    }
+    
+    .nav-modal-item {
+        padding: 13px;
+    }
+    
+}
+/* =========================================================
+   BOTÃO VOLTAR - 
+========================================================= */
+
+.sobre-sistema-btn {
+    width: 100%;
+    min-height: 54px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    padding: 12px 18px;
+    
+    background: var(--fundo_botao_sobre);
+    color: var(--color_sobre);
+    
+    border: 1px solid var(--border_padrao);
+    border-radius: 12px;
+    
+    font: inherit;
+    font-size: .95rem;
+    font-weight: 600;
+    
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+}
+
+/* Conteúdo */
+
+.btn-conteudo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    
+    min-width: 0;
+    flex: 1;
+}
+
+
+/* Ícone */
+
+.btn-conteudo i {
+    width: 38px;
+    height: 38px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-shrink: 0;
+    
+    border-radius: 50%;
+    
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .10);
+    
+    color: var(--icone_sobre);
+    
+    font-size: 1.15rem;
+}
+
+
+/* Texto */
+
+.btn-conteudo span {
+    flex: 1;
+    
+    color: inherit;
+    
+    font-size: .88rem;
+    font-weight: 700;
+    
+    text-transform: uppercase;
+    letter-spacing: .2px;
+    
+    text-align: center;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Seta */
+
+.seta {
+    width: 28px;
+    height: 28px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex-shrink: 0;
+    
+    color: var(--icone_flecha);
+}
+
+
+.seta ion-icon {
+    font-size: 1.25rem;
+}
+
+
+/* Hover simples (sem movimento) */
+
+.sobre-sistema-btn:hover {
+    background: var(--fundo_botao_hover, var(--fundo_botao_sobre));
+    border-color: var(--border_padrao);
+}
+
+
+/* Clique */
+
+.sobre-sistema-btn:active {
+    opacity: .85;
+}
+
+
+/* Foco */
+
+.sobre-sistema-btn:focus-visible {
+    outline: 2px solid var(--color_sobre);
+    outline-offset: 3px;
+}
+
+
+/* Desativado */
+
+.sobre-sistema-btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+.sobre-sistema-btn {
+    text-decoration: none;
+    color: none;
+}
+   /* ============================================================
+    fim do css
    ============================================================ */
