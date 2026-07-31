@@ -6,7 +6,7 @@ function openUpdateModal() {
     
     const updates = [
         '<ion-icon name="color-palette-outline"></ion-icon> Visual da interface renovado',
-        '<ion-icon name="document-text-outline"></ion-icon> Descrição adicionada a todos os os cards',
+        '<ion-icon name="document-text-outline"></ion-icon> Descrição adicionada a todos os cards',
         '<ion-icon name="construct-outline"></ion-icon> Ajustes internos e correções',
         '<ion-icon name="add-circle-outline"></ion-icon> Mais de 50 novos comandos',
         '<ion-icon name="flash-outline"></ion-icon> Melhorias no sistema',
