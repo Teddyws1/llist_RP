@@ -779,8 +779,28 @@ document.addEventListener('DOMContentLoaded', () => {
     registrarServiceWorker();
 });
 
+///sistema de fecha simdebar
+/* ==========================================================================
+   FECHAR SIDEBAR AO CLICAR FORA
+   ========================================================================== */
+document.addEventListener('click', (e) => {
+    const sidebar = document.getElementById('sidebar');
+    const btnMenu = document.querySelector(
+        '.menu-btn, .btn-menu, #menuBtn, #openSidebar, [data-sidebar-toggle]'
+    );
 
+    if (!sidebar || !sidebar.classList.contains('active')) return;
 
+    // Se clicou dentro da sidebar, não faz nada
+    if (sidebar.contains(e.target)) return;
+
+    // Se clicou no botão que abre a sidebar, não fecha
+    if (btnMenu && btnMenu.contains(e.target)) return;
+
+    // Fecha a sidebar
+    toggleSidebar();
+}, { passive: true });
+///fim de sistema de fecha sidebar ao clica fora
 
 /* CLEAN MANUAL • qualquer botão de limpar pesquisa também fecha o teclado */
 document.addEventListener('click', (e) => {
