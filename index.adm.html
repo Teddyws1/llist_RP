@@ -162,18 +162,19 @@
                 Ordenar itens
             </label>
 
-            <select
-                id="sortOption"
-                class="sort-select"
-                aria-label="Ordenar itens"
-                onchange="renderItems()"
-            >
-                <option value="recent">Mais recentes</option>
-                <option value="alpha-asc">A → Z</option>
-                <option value="alpha-desc">Z → A</option>
-                <option value="id-asc">ID menor</option>
-                <option value="id-desc">ID maior</option>
-            </select>
+               <select
+    id="sortOption"
+    class="sort-select"
+    aria-label="Ordenar itens"
+    onchange="renderItems()"
+>
+    <option value="recent">Mais recentes</option>
+    <option value="novos">Novos</option>
+    <option value="alpha-asc">A → Z</option>
+    <option value="alpha-desc">Z → A</option>
+    <option value="id-asc">ID menor</option>
+    <option value="id-desc">ID maior</option>
+</select>
         </div>
     </header>
     
@@ -196,9 +197,13 @@
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
 
         <div class="rp-badge">
-            <h3 class="rp-title">
-                <span>comando do ADM</span>
-            </h3>
+<h3 class="rp-title">
+    <span>
+comando do ADM
+        <br>
+        <small>Central de Comandos RP</small>
+    </span>
+</h3>
         </div>
 
         <button
@@ -212,13 +217,6 @@
         </button>
 
     </div>
-
-
-    <p class="aaviso" role="note">
-        OBS: FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ
-    </p>
-
-
 <a
     href="index.html"
     class="sobre-sistema-btn"

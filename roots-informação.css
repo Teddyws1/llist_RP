@@ -1,0 +1,97 @@
+/* =========================================================
+   INÍCIO • PALETA DE CORES / VARIÁVEIS CSS
+   ========================================================= */
+
+:root {
+  /* Cores de Fundo / Superfícies Primárias */
+  --bg-body: #020817;
+  --bg-main-grad-top: rgba(11, 124, 255, 0.16);
+  --bg-main-grad-start: #071936;
+  --bg-main-grad-end: #020817;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-card-border: rgba(255, 255, 255, 0.06);
+  --bg-card-border-alt: rgba(255, 255, 255, 0.07);
+
+  /* Elementos de Interface / Botões Neutros */
+  --bg-btn-back: #0C234A;
+  --bg-btn-back-hover: #123062;
+  --bg-tag-blue: rgba(11, 124, 255, 0.14);
+  --border-tag-blue: rgba(88, 169, 255, 0.25);
+  --bg-detail-icon: rgba(11, 124, 255, 0.12);
+
+  /* Cores Principais de Texto */
+  --text-white: #FFFFFF;
+  --text-blue-light: #58A9FF;
+  --text-blue-subtle: #8DBFFF;
+  --text-gray-light: #C7D5EA;
+  --text-gray-muted: #B8C8DE;
+  --text-gray-body: #D2DCEF;
+  --text-gray-desc: #C6D4E7;
+  --text-blue-bright: #7CB8FF;
+  --text-blue-arrow: #5EA2FF;
+
+  /* Gradiente do Ícone Principal */
+  --grad-icon-start: #168BFF;
+  --grad-icon-end: #0057FF;
+  --shadow-icon: rgba(0, 119, 255, 0.35);
+
+  /* Botões Sociais / Ações */
+  --grad-insta-1: #FF0080;
+  --grad-insta-2: #FF4D4D;
+  --grad-insta-3: #FF9900;
+  --bg-github: #111111;
+  --grad-share-start: #2563EB;
+  --grad-share-end: #7C3AED;
+
+  /* Indicadores e Modais */
+  --dot-inactive: rgba(255, 255, 255, 0.2);
+  --modal-backdrop: rgba(0, 0, 0, 0.65);
+  --modal-bg: #0C234A;
+  --modal-border: rgba(255, 255, 255, 0.08);
+  --modal-shadow: rgba(0, 0, 0, 0.45);
+  --modal-btn-close-bg: rgba(255, 255, 255, 0.05);
+
+  /* Alerta / Toast */
+  --alert-bg: #0C234A;
+  --alert-border: rgba(255, 255, 255, 0.12);
+  --alert-shadow: rgba(0, 0, 0, 0.35);
+  --alert-icon-success: #22C55E;
+
+  /* Status e Badges */
+  --status-success-bg: rgba(34, 197, 94, 0.15);
+  --status-success-text: #22C55E;
+  --status-success-border: rgba(34, 197, 94, 0.25);
+
+  --status-warning-bg: rgba(245, 158, 11, 0.15);
+  --status-warning-text: #F59E0B;
+  --status-warning-border: rgba(245, 158, 11, 0.25);
+
+  --status-info-bg: rgba(59, 130, 246, 0.15);
+  --status-info-text: #3B82F6;
+  --status-info-border: rgba(59, 130, 246, 0.25);
+
+  --status-purple-bg: rgba(168, 85, 247, 0.15);
+  --status-purple-text: #A855F7;
+  --status-purple-border: rgba(168, 85, 247, 0.25);
+
+  /* Caixa Especial de Aviso (Status Warning) */
+  --warning-card-bg: rgba(245, 158, 11, 0.08);
+  --warning-card-border: rgba(245, 158, 11, 0.22);
+  --warning-card-accent: #F59E0B;
+  --warning-card-shadow: rgba(0, 0, 0, 0.18);
+  --warning-card-title: #FBBF24;
+  --warning-card-text: #E8F0FB;
+  --warning-details-bg: rgba(2, 8, 23, 0.35);
+  --warning-details-border: rgba(245, 158, 11, 0.16);
+  --warning-details-text: #DCE8F7;
+
+  /* Botão Ver Mais */
+  --btn-ver-mais-bg: rgba(88, 169, 255, 0.08);
+  --btn-ver-mais-border: rgba(88, 169, 255, 0.22);
+  --btn-ver-mais-hover-bg: rgba(88, 169, 255, 0.14);
+  --btn-ver-mais-hover-border: rgba(88, 169, 255, 0.4);
+  --btn-ver-mais-active-start: #168BFF;
+  --btn-ver-mais-active-end: #2563EB;
+  --btn-ver-mais-shadow: rgba(22, 139, 255, 0.28);
+  --shadow-arrow: rgba(94, 162, 255, 0.35);
+}

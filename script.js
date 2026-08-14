@@ -265,26 +265,75 @@ function renderItems() {
         }
     }
     
-    switch (sort) {
-        case 'alpha':
-        case 'alpha-asc':
-            data.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
-            break;
-            
-        case 'alpha-desc':
-            data.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true }));
-            break;
-            
-        case 'id-asc':
-            data.sort((a, b) => a.id - b.id);
-            break;
-            
-        case 'id-desc':
-        case 'recent':
-        default:
-            data.sort((a, b) => b.id - a.id);
-            break;
-    }
+  /* ================================================================
+   SISTEMA DE ORDENAÇÃO
+   ================================================================ */
+
+   switch (sort) {
+
+    case 'alpha':
+    case 'alpha-asc':
+
+        data.sort((a, b) =>
+            a.name.localeCompare(
+                b.name,
+                undefined,
+                { numeric: true }
+            )
+        );
+
+        break;
+
+
+    case 'alpha-desc':
+
+        data.sort((a, b) =>
+            b.name.localeCompare(
+                a.name,
+                undefined,
+                { numeric: true }
+            )
+        );
+
+        break;
+
+
+    case 'id-asc':
+
+        data.sort((a, b) =>
+            a.id - b.id
+        );
+
+        break;
+
+
+    case 'id-desc':
+    case 'recent':
+    default:
+
+        data.sort((a, b) =>
+            b.id - a.id
+        );
+
+        break;
+
+
+    /* ============================================================
+       NOVOS
+       ============================================================ */
+
+    case 'novos':
+
+        data = data.filter(item =>
+            comandosNovos.includes(item.name)
+        );
+
+        data.sort((a, b) =>
+            b.id - a.id
+        );
+
+        break;
+}
     
     if (contador) {
         contador.innerText = data.length;
@@ -779,28 +828,8 @@ document.addEventListener('DOMContentLoaded', () => {
     registrarServiceWorker();
 });
 
-///sistema de fecha simdebar
-/* ==========================================================================
-   FECHAR SIDEBAR AO CLICAR FORA
-   ========================================================================== */
-document.addEventListener('click', (e) => {
-    const sidebar = document.getElementById('sidebar');
-    const btnMenu = document.querySelector(
-        '.menu-btn, .btn-menu, #menuBtn, #openSidebar, [data-sidebar-toggle]'
-    );
 
-    if (!sidebar || !sidebar.classList.contains('active')) return;
 
-    // Se clicou dentro da sidebar, não faz nada
-    if (sidebar.contains(e.target)) return;
-
-    // Se clicou no botão que abre a sidebar, não fecha
-    if (btnMenu && btnMenu.contains(e.target)) return;
-
-    // Fecha a sidebar
-    toggleSidebar();
-}, { passive: true });
-///fim de sistema de fecha sidebar ao clica fora
 
 /* CLEAN MANUAL • qualquer botão de limpar pesquisa também fecha o teclado */
 document.addEventListener('click', (e) => {
@@ -867,6 +896,26 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+/* ==========================================================================
+   FECHAR SIDEBAR AO CLICAR FORA
+   ========================================================================== */
+document.addEventListener('click', (e) => {
+    const sidebar = document.getElementById('sidebar');
+    const btnMenu = document.querySelector(
+        '.menu-btn, .btn-menu, #menuBtn, #openSidebar, [data-sidebar-toggle]'
+    );
+    
+    if (!sidebar || !sidebar.classList.contains('active')) return;
+    
+    // Se clicou dentro da sidebar, não faz nada
+    if (sidebar.contains(e.target)) return;
+    
+    // Se clicou no botão que abre a sidebar, não fecha
+    if (btnMenu && btnMenu.contains(e.target)) return;
+    
+    // Fecha a sidebar
+    toggleSidebar();
+}, { passive: true });
 
 document.addEventListener('click', (e) => {
     const alvo = e.target.closest(TeddyA11y.selectors);
@@ -1521,89 +1570,7 @@ document.querySelectorAll(".nav-modal-item").forEach(function(item) {
     });
     
 });
-/* ============================================================
-    sistema de ver mais aviso
-   ============================================================ */
-const avisoTexto = document.getElementById("avisoTexto");
-const avisoBtn = document.getElementById("avisoBtn");
-const avisoTextoBtn = document.getElementById("avisoTextoBtn");
-const avisoOlho = document.getElementById("avisoOlho");
 
-
-function verificarAviso() {
-    
-    if (!avisoTexto) return;
-    
-    
-    if (avisoTexto.textContent.trim().length > 50) {
-        
-        avisoBtn.style.display = "flex";
-        
-    } else {
-        
-        avisoBtn.style.display = "none";
-        
-    }
-    
-}
-
-
-
-function toggleAviso() {
-    
-    
-    if (!avisoTexto) return;
-    
-    
-    const aberto = avisoTexto.classList.toggle("expandir");
-    
-    
-    avisoBtn.classList.toggle("active", aberto);
-    
-    
-    
-    if (aberto) {
-        
-        
-        avisoTextoBtn.textContent = "Fechar aviso";
-        
-        
-        avisoOlho.setAttribute(
-            "name",
-            "eye-outline"
-        );
-        
-        
-    } else {
-        
-        
-        avisoTextoBtn.textContent = "Ver aviso";
-        
-        
-        avisoOlho.setAttribute(
-            "name",
-            "eye-off-outline"
-        );
-        
-        
-    }
-    
-    
-    // anima troca do olho
-    
-    avisoOlho.classList.remove("trocar");
-    
-    
-    void avisoOlho.offsetWidth;
-    
-    
-    avisoOlho.classList.add("trocar");
-    
-}
-
-
-
-verificarAviso();
 /* ============================================================
     fim do js
    ============================================================ */

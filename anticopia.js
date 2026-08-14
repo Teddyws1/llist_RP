@@ -4,9 +4,9 @@
    falso:false : verdadeiro: true 
    ========================= */
 const CONFIG_PROTECAO = {
-  //copiar texto
-    bloquearCliqueDireito: true,
     bloquearTeclado: true,
     //seleção com dedo✓
     bloquearSelecao: true,
+      //copiar texto
+  bloquearCliqueDireito: true,
 };

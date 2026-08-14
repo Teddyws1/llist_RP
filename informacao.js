@@ -6,12 +6,12 @@
 
   const systemInfo = {
     nome: "Ilist_RP Beta",
-    versao: "4.8.0",
+    versao: "4.9.0",
 
     // ALTERE APENAS ESTAS DUAS DATAS
-    ultimaAtualizacao: "31/07/2026 •h 19:13",
+    ultimaAtualizacao: "14/08/2026 •20:56",
     //atualiza data de atualização 
-    proximaAtualizacao: "14/08/2026",
+    proximaAtualizacao: "",
 
     plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
     
@@ -158,6 +158,367 @@
     {
       small: "box: 03",
       title: "Desenvolvedor"
+    },
+    {
+      small: "box: 04",
+      title: "Avisos"
+    }
+  ];
+
+  /* =========================================================
+     FIM 04 • ABAS DO SISTEMA
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 05 • DETALHES DA PRIMEIRA ABA
+     ========================================================= */
+
+  const detailsData = [
+    {
+      icon: "reload-outline",
+      label: "Última atualização",
+      value: formatarDataBR(systemInfo.ultimaAtualizacao)
+    },
+    {
+      icon: "rocket-outline",
+      label: "Próxima atualização",
+      value: formatarDataBR(systemInfo.proximaAtualizacao)
+    },
+    {
+      icon: "desktop-outline",
+      label: "Plataformas",
+      value: systemInfo.plataforma
+    },
+    {
+      icon: "person-outline",
+      label: "Desenvolvedor",
+      value: systemInfo.desenvolvedor
+    }
+  ];
+
+  /* =========================================================
+     FIM 05 • DETALHES DA PRIMEIRA ABA
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 06 • RENDERIZAÇÃO DO HTML PRINCIPAL
+     ========================================================= */
+
+  /* =========================================================
+   INÍCIO 00 • INICIALIZAÇÃO DO ARQUIVO
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================================================
+     INÍCIO 00.1 • PROTEÇÃO DA INTERFACE
+     Bloqueia copiar, selecionar, botão direito, arrastar e zoom
+     ========================================================= */
+
+  const metaViewport = document.querySelector("meta[name='viewport']") || document.createElement("meta");
+
+  metaViewport.name = "viewport";
+  metaViewport.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+
+  if (!document.querySelector("meta[name='viewport']")) {
+    document.head.appendChild(metaViewport);
+  }
+
+  const isEditableElement = element => {
+    return (
+      element &&
+      (
+        element.tagName === "INPUT" ||
+        element.tagName === "TEXTAREA" ||
+        element.isContentEditable
+      )
+    );
+  };
+
+  document.addEventListener("contextmenu", event => {
+    event.preventDefault();
+  });
+
+  document.addEventListener("selectstart", event => {
+    if (!isEditableElement(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("dragstart", event => {
+    event.preventDefault();
+  });
+
+  document.addEventListener("copy", event => {
+    if (!event.target.closest("#copyUrlBtn")) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("cut", event => {
+    if (!isEditableElement(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("paste", event => {
+    if (!isEditableElement(event.target)) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    const tecla = event.key.toLowerCase();
+
+    if (
+      event.ctrlKey &&
+      (
+        tecla === "c" ||
+        tecla === "x" ||
+        tecla === "a" ||
+        tecla === "s" ||
+        tecla === "u" ||
+        tecla === "p" ||
+        tecla === "+" ||
+        tecla === "-" ||
+        tecla === "=" ||
+        tecla === "0"
+      )
+    ) {
+      event.preventDefault();
+    }
+
+    if (
+      event.key === "F12" ||
+      (
+        event.ctrlKey &&
+        event.shiftKey &&
+        (
+          tecla === "i" ||
+          tecla === "j" ||
+          tecla === "c"
+        )
+      )
+    ) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("wheel", event => {
+    if (event.ctrlKey) {
+      event.preventDefault();
+    }
+  }, { passive:false });
+
+  document.addEventListener("gesturestart", event => {
+    event.preventDefault();
+  });
+
+  document.addEventListener("gesturechange", event => {
+    event.preventDefault();
+  });
+
+  document.addEventListener("gestureend", event => {
+    event.preventDefault();
+  });
+
+  document.addEventListener("touchmove", event => {
+    if (event.touches.length > 1) {
+      event.preventDefault();
+    }
+  }, { passive:false });
+
+  let lastTouchEnd = 0;
+
+  document.addEventListener("touchend", event => {
+    const now = Date.now();
+
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+
+    lastTouchEnd = now;
+  }, { passive:false });
+
+  /* =========================================================
+     INÍCIO 01 • VERIFICAÇÃO INICIAL
+     ========================================================= */
+
+  const app = document.getElementById("app");
+
+  if (!app) {
+    alert("Erro: não existe uma div com id app no HTML.");
+    return;
+  }
+
+  /* =========================================================
+     FIM 01 • VERIFICAÇÃO INICIAL
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 02 • DADOS DO SISTEMA
+     ========================================================= */
+
+  const systemInfo = {
+    nome: "Ilist_RP Beta",
+    versao: "4.9.0",
+
+    // ALTERE APENAS ESTAS DUAS DATAS
+    ultimaAtualizacao: "31/07/2026 •20:56",
+    //atualiza data de atualização 
+    proximaAtualizacao: "",
+
+    plataforma: "Android • iPhone • Windows • macOS • Linux • Web",
+    
+    desenvolvedor: "Teddy Machado",
+    tecnologias: "HTML5, CSS3, JavaScript e Ionicons",
+
+    instagram: "https://www.instagram.com/teddy_machado007?igsh=MmtjdTF4ZGlqdjVl",
+    github: "https://github.com/Teddyws1",
+    urlSistema: "https://teddyws1.github.io/llist_RP/"
+  };
+
+  /* =========================================================
+     FIM 02 • DADOS DO SISTEMA
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 03 • STATUS AUTOMÁTICO
+     ========================================================= */
+
+  function normalizarData(valor) {
+    if (!valor || typeof valor !== "string") return null;
+
+    const texto = valor.trim();
+
+    if (
+      texto === "" ||
+      texto.toLowerCase() === "em breve" ||
+      texto.toLowerCase() === "em definição"
+    ) {
+      return null;
+    }
+
+    if (/^\d{4}-\d{2}-\d{2}$/.test(texto)) {
+      const dataISO = new Date(`${texto}T00:00:00`);
+      return Number.isNaN(dataISO.getTime()) ? null : dataISO;
+    }
+
+    if (/^\d{2}\/\d{2}\/\d{4}$/.test(texto)) {
+      const [dia, mes, ano] = texto.split("/");
+      const dataBR = new Date(`${ano}-${mes}-${dia}T00:00:00`);
+      return Number.isNaN(dataBR.getTime()) ? null : dataBR;
+    }
+
+    return null;
+  }
+
+  function formatarDataBR(valor) {
+    const data = normalizarData(valor);
+
+    if (!data) {
+      return valor || "Sem previsão";
+    }
+
+    return data.toLocaleDateString("pt-BR");
+  }
+
+  function calcularDiasRestantes(dataDestino) {
+    if (!dataDestino) return null;
+
+    const hoje = new Date();
+
+    hoje.setHours(0, 0, 0, 0);
+    dataDestino.setHours(0, 0, 0, 0);
+
+    const diferencaMs = dataDestino.getTime() - hoje.getTime();
+
+    return Math.ceil(diferencaMs / 86400000);
+  }
+
+  function obterStatusAutomatico() {
+    const dataProxima = normalizarData(systemInfo.proximaAtualizacao);
+    const diasRestantes = calcularDiasRestantes(dataProxima);
+
+    if (diasRestantes !== null) {
+      if (diasRestantes > 1) {
+        return {
+          nome: "Nova versão chegando",
+          classe: "status-purple",
+          texto: `Faltam ${diasRestantes} dias para a próxima atualização`,
+          detalhes: `Próxima atualização prevista: ${formatarDataBR(systemInfo.proximaAtualizacao)}`
+        };
+      }
+
+      if (diasRestantes === 1) {
+        return {
+          nome: "Nova versão chegando",
+          classe: "status-purple",
+          texto: "Falta 1 dia para a próxima atualização",
+          detalhes: `Próxima atualização prevista: ${formatarDataBR(systemInfo.proximaAtualizacao)}`
+        };
+      }
+
+      if (diasRestantes === 0) {  
+        return {  
+          nome: "atualização para hoje",  
+          classe: "status-warning",  
+          texto: "A atualização está prevista para hoje",  
+          detalhes: "O sistema pode receber novidades a qualquer momento. Durante atualizações ou manutenções, alguns serviços poderão ficar temporariamente indisponíveis por alguns minutos."  
+        };  
+      }
+
+      const diasAtrasado = Math.abs(diasRestantes);
+
+      return {
+        nome: "Atualização: Em revisão",
+        classe: "status-warning",
+        texto: diasAtrasado === 1
+          ? "A atualização atrasou há 1 dia"
+          : `A atualização passou do prazo há ${diasAtrasado} dias`,
+        detalhes: `Data prevista era: ${formatarDataBR(systemInfo.proximaAtualizacao)}`
+      };
+    }
+
+    return {
+      nome: "Estável",
+      classe: "status-info",
+      texto: "Nenhuma atualização prevista no momento.",
+      detalhes: "Próxima atualização: Sem previsão"
+    };
+  }
+
+  const statusSistema = obterStatusAutomatico();
+
+  /* =========================================================
+     FIM 03 • STATUS AUTOMÁTICO
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 04 • ABAS DO SISTEMA
+     ========================================================= */
+
+  const tabs = [
+    {
+      small: "box: 01",
+      title: "Informações"
+    },
+    {
+      small: "box: 02",
+      title: "Sistemas"
+    },
+    {
+      small: "box: 03",
+      title: "Desenvolvedor"
+    },
+    {
+      small: "box: 04",
+      title: "Avisos"
     }
   ];
 
@@ -276,6 +637,16 @@
       </div>
     </div>
 
+<!-- Sistema Novo -->
+<div class="system-card">
+  <ion-icon name="sparkles-outline"></ion-icon>
+  <div>
+    <strong>Sistema de Comandos Novos</strong>
+    <p>Ao digitar <strong>"novo"</strong> na barra de pesquisa, o sistema exibe apenas os comandos marcados como novos.</p>
+    <p>Ideal para localizar rapidamente as últimas adições sem precisar navegar por toda a lista.</p>
+  </div>
+</div>
+
     <!-- Sistema AT -->
     <div class="system-card">
       <ion-icon name="flash-outline"></ion-icon>
@@ -383,10 +754,43 @@ ${systemInfo.tecnologias}
             </button>
           </div>
         </section>
+
+<!-- ==========================================================
+     SEÇÃO • AVISOS IMPORTANTES DO SISTEMA
+========================================================== -->
+        <section class="page">
+          <h3 class="section-title">
+            <ion-icon name="warning-outline"></ion-icon>
+            Avisos Importantes
+          </h3>
+
+          <p class="about-text">
+            Fique atento aos avisos do sistema sobre armazenamento e atualizações.
+          </p>
+
+          <div class="system-list">
+            <div class="system-card">
+              <ion-icon name="trash-outline"></ion-icon>
+              <div>
+                <strong>Aviso sobre Favoritos</strong>
+                <p><strong>OBS:</strong> FAVORITOS DESAPARECE DEPOIS QUE LIMPA O CACHÊ E REINICIA O NAVEGADOR.</p>
+              </div>
+            </div>
+
+            <div class="system-card">
+              <ion-icon name="notifications-outline"></ion-icon>
+              <div>
+                <strong>Avisos Gerais</strong>
+                <p>Outros avisos importantes do sistema aparecem aqui.</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       <div class="dots">
         <div class="dot active"></div>
+        <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
       </div>
@@ -425,6 +829,7 @@ ${systemInfo.tecnologias}
         </div>
       </div>
     </main>
+
 <button id="prevPageBtn" class="page-arrow left" aria-label="Página anterior">
     <ion-icon name="chevron-back-outline"></ion-icon>
 </button>
@@ -438,6 +843,414 @@ ${systemInfo.tecnologias}
      FIM 06 • RENDERIZAÇÃO DO HTML PRINCIPAL
      ========================================================= */
 
+/* =========================================================
+   SISTEMA • VER MAIS AUTOMÁTICO
+   Apenas 1 botão por card
+   ========================================================= */
+
+function initVerMaisSystemCards() {
+  
+  const LIMITE = 50;
+  
+  document.querySelectorAll(".system-card").forEach(card => {
+    
+    const conteudo = card.querySelector("div");
+    if (!conteudo) return;
+    
+    const paragrafos = [...conteudo.querySelectorAll("p")];
+    if (!paragrafos.length) return;
+    
+    const textoOriginal = paragrafos.map(p => p.innerHTML);
+    
+    const textoCompleto = paragrafos
+      .map(p => p.textContent.trim())
+      .join(" ");
+    
+    if (textoCompleto.length <= LIMITE) return;
+    
+    paragrafos.forEach((p, i) => {
+      if (i === 0) {
+        p.dataset.original = p.innerHTML;
+        p.textContent = textoCompleto.slice(0, LIMITE) + "...";
+      } else {
+        p.style.display = "none";
+      }
+    });
+    
+    const botao = document.createElement("button");
+    botao.className = "ver-mais-btn";
+    botao.textContent = "Ver mais";
+    
+    conteudo.appendChild(botao);
+    
+    let aberto = false;
+    
+    botao.addEventListener("click", () => {
+      
+      aberto = !aberto;
+      
+      if (aberto) {
+        
+        paragrafos.forEach((p, i) => {
+          p.style.display = "block";
+          p.innerHTML = textoOriginal[i];
+        });
+        
+        botao.textContent = "Ver menos";
+        
+      } else {
+        
+        paragrafos.forEach((p, i) => {
+          
+          if (i === 0) {
+            p.textContent = textoCompleto.slice(0, LIMITE) + "...";
+            p.style.display = "block";
+          } else {
+            p.style.display = "none";
+          }
+          
+        });
+        
+        botao.textContent = "Ver mais";
+      }
+      
+    });
+    
+  });
+  
+}
+
+initVerMaisSystemCards();
+
+  /* =========================================================
+     INÍCIO 07 • SELETORES PRINCIPAIS
+     ========================================================= */
+
+  const details = document.getElementById("details");
+  const pages = document.querySelectorAll(".page");
+  const dots = document.querySelectorAll(".dot");
+
+  const tabSmall = document.getElementById("tabSmall");
+  const tabTitle = document.getElementById("tabTitle");
+
+  const shareModal = document.getElementById("shareModal");
+  const openShareBtn = document.getElementById("openShareBtn");
+  const closeShareBtn = document.getElementById("closeShareBtn");
+  const copyUrlBtn = document.getElementById("copyUrlBtn");
+
+  const shareWhatsapp = document.getElementById("shareWhatsapp");
+  const shareFacebook = document.getElementById("shareFacebook");
+  const shareTelegram = document.getElementById("shareTelegram");
+
+  /* =========================================================
+     FIM 07 • SELETORES PRINCIPAIS
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 08 • RENDERIZA DETALHES DINÂMICOS
+     ========================================================= */
+
+  detailsData.forEach((item, index) => {
+    const row = document.createElement("div");
+
+    row.className = "detail-row";
+
+    row.style.borderBottom =
+      index === detailsData.length - 1
+        ? "none"
+        : "1px solid rgba(255,255,255,.06)";
+
+    row.innerHTML = `
+      <div class="detail-icon">
+        <ion-icon name="${item.icon}"></ion-icon>
+      </div>
+
+      <div class="detail-label">
+        ${item.label}
+      </div>
+
+      <div class="detail-value">
+        ${item.value}
+      </div>
+    `;
+
+    details.appendChild(row);
+  });
+
+  /* =========================================================
+     FIM 08 • RENDERIZA DETALHES DINÂMICOS
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 09 • CONTROLE DAS PÁGINAS
+     ========================================================= */
+
+  let currentPage = 0;
+
+  function showPage(index) {
+    if (index < 0 || index >= pages.length) {
+      return;
+    }
+
+    pages.forEach((page, pageIndex) => {
+      page.classList.toggle("active", pageIndex === index);
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.classList.toggle("active", dotIndex === index);
+    });
+
+    tabSmall.textContent = tabs[index].small;
+    tabTitle.textContent = tabs[index].title;
+
+    currentPage = index;
+  }
+
+  /* =========================================================
+     FIM 09 • CONTROLE DAS PÁGINAS
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 10 • NAVEGAÇÃO ENTRE PÁGINAS
+     ========================================================= */
+
+  const prevPageBtn = document.getElementById("prevPageBtn");
+  const nextPageBtn = document.getElementById("nextPageBtn");
+
+  prevPageBtn.addEventListener("click", () => {
+    showPage(currentPage - 1);
+  });
+
+  nextPageBtn.addEventListener("click", () => {
+    showPage(currentPage + 1);
+  });
+
+  /* =========================================================
+     FIM 10 • NAVEGAÇÃO ENTRE PÁGINAS
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 11 • ALERTA CUSTOMIZADO
+     ========================================================= */
+
+  function showCopyAlert() {
+    const oldAlert = document.getElementById("copyAlert");
+
+    if (oldAlert) {
+      oldAlert.remove();
+    }
+
+    const alertBox = document.createElement("div");
+
+    alertBox.id = "copyAlert";
+    alertBox.className = "copy-alert";
+
+    alertBox.innerHTML = `
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      <span>URL copiada com sucesso!</span>
+    `;
+
+    document.body.appendChild(alertBox);
+
+    requestAnimationFrame(() => {
+      alertBox.classList.add("show");
+    });
+
+    setTimeout(() => {
+      alertBox.classList.remove("show");
+
+      setTimeout(() => {
+        alertBox.remove();
+      }, 250);
+    }, 2200);
+  }
+
+  /* =========================================================
+     FIM 11 • ALERTA CUSTOMIZADO
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 12 • MODAL DE COMPARTILHAMENTO
+     ========================================================= */
+
+  function openShareModal() {
+    const url = encodeURIComponent(systemInfo.urlSistema);
+    const text = encodeURIComponent(
+      `Convido você a conhecer o ${systemInfo.nome}. Acesse o link :`
+    );
+
+    shareWhatsapp.href = `https://api.whatsapp.com/send?text=${text}%20${url}`;
+    shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    shareTelegram.href = `https://t.me/share/url?url=${url}&text=${text}`;
+  
+    shareModal.classList.add("active");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeShareModal() {
+    shareModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+  }
+
+  /* =========================================================
+     FIM 12 • MODAL DE COMPARTILHAMENTO
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 13 • COPIAR URL DO SISTEMA
+     ========================================================= */
+
+  function copyUrlFallback() {
+    const input = document.createElement("input");
+
+    input.value = systemInfo.urlSistema;
+    input.setAttribute("readonly", "");
+
+    document.body.appendChild(input);
+
+    input.select();
+    input.setSelectionRange(0, input.value.length);
+
+    document.execCommand("copy");
+
+    document.body.removeChild(input);
+
+    showCopyAlert();
+  }
+
+  function copySystemUrl() {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(systemInfo.urlSistema)
+        .then(showCopyAlert)
+        .catch(copyUrlFallback);
+
+      return;
+    }
+
+    copyUrlFallback();
+  }
+
+  /* =========================================================
+     FIM 13 • COPIAR URL DO SISTEMA
+     ========================================================= */
+
+
+  /* =========================================================
+     INÍCIO 14 • EVENTOS
+     ========================================================= */
+
+  openShareBtn.addEventListener("click", openShareModal);
+  closeShareBtn.addEventListener("click", closeShareModal);
+  copyUrlBtn.addEventListener("click", copySystemUrl);
+
+  shareModal.addEventListener("click", event => {
+    if (event.target === shareModal) {
+      closeShareModal();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && shareModal.classList.contains("active")) {
+      closeShareModal();
+    }
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      showPage(index);
+    });
+  });
+
+});
+
+
+  /* =========================================================
+     FIM 06 • RENDERIZAÇÃO DO HTML PRINCIPAL
+     ========================================================= */
+/* =========================================================
+   SISTEMA • VER MAIS AUTOMÁTICO
+   Apenas 1 botão por card
+   ========================================================= */
+
+function initVerMaisSystemCards() {
+  
+  const LIMITE = 50;
+  
+  document.querySelectorAll(".system-card").forEach(card => {
+    
+    const conteudo = card.querySelector("div");
+    if (!conteudo) return;
+    
+    const paragrafos = [...conteudo.querySelectorAll("p")];
+    if (!paragrafos.length) return;
+    
+    const textoOriginal = paragrafos.map(p => p.innerHTML);
+    
+    const textoCompleto = paragrafos
+      .map(p => p.textContent.trim())
+      .join(" ");
+    
+    if (textoCompleto.length <= LIMITE) return;
+    
+    paragrafos.forEach((p, i) => {
+      if (i === 0) {
+        p.dataset.original = p.innerHTML;
+        p.textContent = textoCompleto.slice(0, LIMITE) + "...";
+      } else {
+        p.style.display = "none";
+      }
+    });
+    
+    const botao = document.createElement("button");
+    botao.className = "ver-mais-btn";
+    botao.textContent = "Ver mais";
+    
+    conteudo.appendChild(botao);
+    
+    let aberto = false;
+    
+    botao.addEventListener("click", () => {
+      
+      aberto = !aberto;
+      
+      if (aberto) {
+        
+        paragrafos.forEach((p, i) => {
+          p.style.display = "block";
+          p.innerHTML = textoOriginal[i];
+        });
+        
+        botao.textContent = "Ver menos";
+        
+      } else {
+        
+        paragrafos.forEach((p, i) => {
+          
+          if (i === 0) {
+            p.textContent = textoCompleto.slice(0, LIMITE) + "...";
+            p.style.display = "block";
+          } else {
+            p.style.display = "none";
+          }
+          
+        });
+        
+        botao.textContent = "Ver mais";
+      }
+      
+    });
+    
+  });
+  
+}
+
+initVerMaisSystemCards();
 
   /* =========================================================
      INÍCIO 07 • SELETORES PRINCIPAIS

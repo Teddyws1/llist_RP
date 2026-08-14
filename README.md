@@ -1,4 +1,4 @@
-# llist_Roleplay
+# llist_RP
 
 Site criado para facilitar a busca de comandos de animações do GTA V RP.
 
@@ -6,7 +6,7 @@ Site criado para facilitar a busca de comandos de animações do GTA V RP.
 
 ## 📌 Sobre o projeto
 
-O **llist_Roleplay** ajuda jogadores de GTA V RP a encontrar comandos de animações de forma rápida e prática.
+O **llist_RP** ajuda jogadores de GTA V RP a encontrar comandos de animações de forma rápida e prática.
 
 ## ⚙️ Funcionalidades
 

@@ -8,10 +8,10 @@
     --text_body:#DFDFDF;
     --color-dim:#FFFFFF;
     --border_padrao:#9393934D;
-    
+    --shadow_padrao:#0074FF2B;
     /* •06 header */
     --fundo_header:#0F111A;
-
+    
     /*•01 navegação*/
     --nav_fundo:#0F111A;
     --shadow_nav:#0000006B;
@@ -45,6 +45,8 @@
      /*==================*/ 
     /*•04 sidebar= escuro */
     --fundo_aba:#0B0D1A;
+    --rp-logo-text:#FFFFFF;
+    --fundo_img_hover:#0D163C57;
     --fundo_fecha_aba:#0b1327;
     --hover_btn:#0D163C;
     --hover_btn_:var(--hover_btn);
@@ -67,18 +69,7 @@
     --slider_tema:#2861AB21;
     --before_tema:#FFFFFF;
     --checked_tema:#7D7D7DE0;
-    --shadow_tema:#000000D9;
     --text_rodape:#B9B9B969;
-    
-    /*•09 aviso do cache escuro*/
-    --text_vermais_aberto:#FFB300;
-    --text_vermais_fechado:#FFFFFF;
-    --icone_ver_mais_olho_aberto:#1478FF;
-    --icone_ver_mais_olho_fechado:#FFFFFF;
-    --color_vermais_normal:#1478FF;
-    --icone_aviso:#FF9200;
-    --color_icone_aviso_olho_aberto:#FFB300;
-    --danger:#FF0000;
     
     
     /* •07 modals= escuro */
@@ -179,14 +170,14 @@
     --color_botao_limpa:#FFFFFF;
   
      /*•14 explorar*/
-    --fundo_overlay_exeplorar:#0000008C;
+    --fundo_overlay_exeplorar:#00000045;
      --nav_fundo_container:#0B0D1A;
      --nav_shadow:#000000;
      --header_nav_fundo:#0F111A;
-     --color_modal_naav:#FFFFFF;
+      --logo-modal:#FFFFFF;
      --fundo_logo_nav:#00ABFF;
      --botao_X_nav_fundo:#FFFFFF2B;
-     --color_x_nav:#00ABFF;
+     --color_x_nav:#FFFFFF;
      --fundo_hover_x_nav:#00ABFF;
      --color_hover_x_nav:#000000;
      
@@ -213,11 +204,11 @@
    TEMA CLARO
    ============================================================ */
 .light-theme{
-    
     --body_fundo:#f4f4f9;
     --text_body:#121214;
     --color-dim:#000000;
     --border_padrao:#9C9C9C78;
+    --shadow_padrao:#000000D9;
 
     /* •06 header */
     --fundo_header:#FFFFFF;
@@ -255,6 +246,8 @@
 
     /*•04 sidebar= claro*/
     --fundo_aba:#FFFFFF;
+    --rp-logo-text:#0074FF;
+    --fundo_img_hover:#0074FF57;
     --fundo_fecha_aba:#FFFFFF;
     --hover_btn:#FFFFFF;
     --hover_btn_:var(--hover_btn);
@@ -276,7 +269,6 @@
     --icone_lua_tema:#1478FF;
     --before_tema:#1478FF;
     --checked_tema:#7D7D7D52;
-    --shadow_tema:#000000;
     --text_rodape:#0000008F;
 
 
@@ -330,19 +322,6 @@
        --cclean_hover_historico:#FF0000;
        --color_cclean_historico:#fff;
        /*================*/
-     
-     /*•09 aviso do cache claro*/
-    --color_texto_aviso_chache:#1B7CFFDE;
-    --text_vermais_aberto:#ff9800;
-    --fundo_aviso_cache:#1B7CFF2E;
-     --icone_ver_mais_olho_aberto:#1478ff;
-     --text_vermais_fechado:#000000;
-     --icone_ver_mais_olho_fechado:#1B7CFFDE;
-     --icone_aviso:#ff9800;
-     --color_vermais_normal:#000000;
-     --color_icone_aviso_olho_aberto:#ff9800;
-     --danger:#FF0000;
-    
     
         /*•01=2 AT= claro*/
     --fundo_alerta_at:#FFFFFF;
@@ -371,8 +350,6 @@
     --cortextocontagen:#1B7CFFDE;
     --total:#1478ff;
 
-    
-    
     /*•13 aba de histórico*/
    --border_hist:#9C9C9C78;
    --color__icone_hist:#1B7CFFDE;
@@ -392,24 +369,25 @@
    
       
       /*•14 explorar*/
-      --fundo_overlay_exeplorar:#000000B5;
+      --fundo_overlay_exeplorar:#1B7CFF12;
       --nav_fundo_container:#FFFFFF;
       --nav_shadow:#FFFFFF;
       --header_nav_fundo:#E9E9E9D6;
-      --color_modal_naav:#000000;
-      --fundo_logo_nav:#FFFFFF;
-      --botao_X_nav_fundo:#FFFFFF;
-      --color_x_nav:#000000;
-      --fundo_hover_x_nav:#000000;
-      --color_hover_x_nav:#fff;
-        /*items*/
+      --color_modal_naav:#1B7CFFDE;
+      --logo-modal:#FFFFFF;
+      --fundo_logo_nav:#1B7CFFDE;
+      --botao_X_nav_fundo:#1B7CFFDE;
+      --color_x_nav:#FFFFFF;
+      --fundo_hover_x_nav:#FFFFFF;
+      --color_hover_x_nav:#1B7CFFDE;
+      /*items*/
   --color_item_nav:#000000;
   --fundo_item_nav:#E9E9E9D6;
   --fundo_item_hover_nav:#F3F3F342;
   --border_hover_item_nav:#00000033;
   --item_info_nav:#000000A6;
-  --hover_info_nav_small:#000000;
-  --icone_nav_pagina:#000000;
-  --icone_pagina-policia:#000000;
+  --hover_info_nav_small:#1B7CFFDE;
+  --icone_nav_pagina:#1B7CFFDE;
+  --icone_pagina-policia:#1B7CFFDE;
   --scrollbar_nav:#1B7CFFDE;
 }

@@ -18,8 +18,6 @@
 •08 modal de excluir / 
 •08=1favoritar/•09=copiar
 ====================================
-•09 aviso do cache
-====================================
 •10 badge novo
 ====================================
 •11 IDS
@@ -33,9 +31,9 @@
 ====================================
 •15 descrição dos cards
 ====================================
-•
+•16 titulos llist_Roleplay
 ====================================
-•
+
 ====================================
 •
 ====================================
@@ -80,7 +78,7 @@ Parte 5/5 — Eventos finais
 ==========[verão do cachê]==========
 versão
 
-• v=12
+• v=14
 já colocando 
 ==========[url da capa do site]========
 
@@ -88,5 +86,5 @@ https://i.postimg.cc/d3qL35q7/Logo-llist-RP.png
 
 ==========[nome da pasta]========== 
 
-• GTA V RP = V25
-coloca v25 antes de exportar 
+• GTA V RP = V26
+coloca v26 antes de exportar 

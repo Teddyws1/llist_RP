@@ -4,15 +4,6 @@
 function openUpdateModal() {
     if (document.getElementById("updateModal")) return;
     
-    const updates = [
-        '<ion-icon name="color-palette-outline"></ion-icon> Visual da interface renovado',
-        '<ion-icon name="document-text-outline"></ion-icon> Descrição adicionada a todos os cards',
-        '<ion-icon name="construct-outline"></ion-icon> Ajustes internos e correções',
-        '<ion-icon name="add-circle-outline"></ion-icon> Mais de 50 novos comandos',
-        '<ion-icon name="flash-outline"></ion-icon> Melhorias no sistema',
-        '<ion-icon name="folder-open-outline"></ion-icon> Duas novas abas por categorias'
-    ];
-    
     const limite = 3;
     
     const upModal = document.createElement("div");
@@ -38,7 +29,7 @@ function openUpdateModal() {
 
                 <div class="update-version">
                     <ion-icon name="git-branch-outline"></ion-icon>
-                    <span>Versão 4.8.0 Beta</span>
+                    <span>Versão 4.9.0 Beta</span>
                 </div>
             </div>
 

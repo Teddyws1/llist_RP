@@ -1,8 +1,3 @@
-/* =========================================================
-   INÍCIO 01 • RESET GLOBAL
-   Usado pela página inteira criada pelo informacao.js
-   ========================================================= */
-
 *{
   margin:0;
   padding:0;
@@ -19,8 +14,8 @@ body{
 
 body{
   min-height:100vh;
-  background:#020817;
-  color:#FFFFFF;
+  background:var(--bg-body);
+  color:var(--text-white);
   font-family:Arial, Helvetica, sans-serif;
   overflow-x:hidden;
 }
@@ -41,10 +36,11 @@ main{
   min-height:100vh;
   margin:0 auto;
   padding:20px;
+  position:relative;
 
   background:
-    radial-gradient(circle at top right, rgba(11,124,255,.16), transparent 30%),
-    linear-gradient(180deg,#071936,#020817);
+    radial-gradient(circle at top right, var(--bg-main-grad-top), transparent 30%),
+    linear-gradient(180deg, var(--bg-main-grad-start), var(--bg-main-grad-end));
 }
 
 /* =========================================================
@@ -74,13 +70,18 @@ main{
   justify-content:center;
   flex:0 0 auto;
 
-  background:#0C234A;
-  color:#58A9FF;
+  background:var(--bg-btn-back);
+  color:var(--text-blue-light);
 
   border:none;
   border-radius:16px;
 
   cursor:pointer;
+  transition:.2s ease;
+}
+
+.back-btn:hover{
+  background:var(--bg-btn-back-hover);
 }
 
 .back-btn ion-icon{
@@ -94,7 +95,7 @@ main{
 }
 
 .header-text span{
-  color:#8DBFFF;
+  color:var(--text-blue-subtle);
   font-size:13px;
 }
 
@@ -118,9 +119,9 @@ main{
   margin-bottom:22px;
   padding:16px;
 
-  background:rgba(255,255,255,.04);
+  background:var(--bg-card);
 
-  border:1px solid rgba(255,255,255,.06);
+  border:1px solid var(--bg-card-border);
   border-radius:22px;
 }
 
@@ -132,10 +133,10 @@ main{
   margin-bottom:12px;
   padding:6px 14px;
 
-  background:rgba(11,124,255,.14);
-  color:#58A9FF;
+  background:var(--bg-tag-blue);
+  color:var(--text-blue-light);
 
-  border:1px solid rgba(88,169,255,.25);
+  border:1px solid var(--border-tag-blue);
   border-radius:50px;
 
   font-size:12px;
@@ -167,9 +168,9 @@ main{
   min-height:520px;
   padding:24px;
 
-  background:rgba(255,255,255,.04);
+  background:var(--bg-card);
 
-  border:1px solid rgba(255,255,255,.07);
+  border:1px solid var(--bg-card-border-alt);
   border-radius:28px;
 }
 
@@ -198,15 +199,15 @@ main{
 
   margin:0 auto 20px;
 
-  background:linear-gradient(135deg,#168BFF,#0057FF);
+  background:linear-gradient(135deg, var(--grad-icon-start), var(--grad-icon-end));
 
   border-radius:26px;
 
-  box-shadow:0 0 35px rgba(0,119,255,.35);
+  box-shadow:0 0 35px var(--shadow-icon);
 }
 
 .main-icon ion-icon{
-  color:#FFFFFF;
+  color:var(--text-white);
   font-size:48px;
 }
 
@@ -227,13 +228,13 @@ main{
 
   margin-bottom:26px;
 
-  color:#C7D5EA;
+  color:var(--text-gray-light);
 }
 
 .version-box strong{
   padding:7px 16px;
 
-  background:#0B7CFF;
+  background:var(--grad-icon-end);
 
   border-radius:14px;
 
@@ -253,7 +254,7 @@ main{
 #details{
   overflow:hidden;
 
-  border:1px solid rgba(255,255,255,.06);
+  border:1px solid var(--bg-card-border);
   border-radius:22px;
 }
 
@@ -275,8 +276,8 @@ main{
   align-items:center;
   justify-content:center;
 
-  background:rgba(11,124,255,.12);
-  color:#58A9FF;
+  background:var(--bg-detail-icon);
+  color:var(--text-blue-light);
 
   border-radius:18px;
 }
@@ -291,7 +292,7 @@ main{
 }
 
 .detail-value{
-  color:#B8C8DE;
+  color:var(--text-gray-muted);
 
   font-size:15px;
   line-height:1.5;
@@ -319,13 +320,13 @@ main{
 }
 
 .section-title ion-icon{
-  color:#58A9FF;
+  color:var(--text-blue-light);
   font-size:30px;
   flex:0 0 auto;
 }
 
 .about-text{
-  color:#D2DCEF;
+  color:var(--text-gray-body);
 
   font-size:16px;
   line-height:1.8;
@@ -340,7 +341,7 @@ main{
 
 /* =========================================================
    INÍCIO 09 • ABA SISTEMAS
-   Classes usadas no JS: .system-list, .system-card
+   Classes usadas no JS: .system-list, .system-card, .device-badge
    ========================================================= */
 
 .system-list{
@@ -358,15 +359,15 @@ main{
 
   padding:16px;
 
-  background:rgba(255,255,255,.04);
-  color:#FFFFFF;
+  background:var(--bg-card);
+  color:var(--text-white);
 
-  border:1px solid rgba(255,255,255,.07);
+  border:1px solid var(--bg-card-border-alt);
   border-radius:18px;
 }
 
 .system-card ion-icon{
-  color:#58A9FF;
+  color:var(--text-blue-light);
   font-size:26px;
   flex:0 0 auto;
 }
@@ -376,17 +377,32 @@ main{
 
   margin-bottom:5px;
 
-  color:#FFFFFF;
+  color:var(--text-white);
 
   font-size:16px;
   font-weight:800;
 }
 
 .system-card p{
-  color:#C6D4E7;
+  color:var(--text-gray-desc);
 
   font-size:14px;
   line-height:1.55;
+}
+
+.device-badge {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.device-badge ion-icon {
+  color: var(--text-blue-bright);
+  font-size: 18px;
 }
 
 /* =========================================================
@@ -421,25 +437,26 @@ main{
   border-radius:18px;
   outline:none;
 
-  color:#FFFFFF;
+  color:var(--text-white);
   text-decoration:none;
 
   font-size:15px;
   font-weight:700;
 
   cursor:pointer;
+  transition:.2s ease;
 }
 
 .instagram-btn a{
-  background:linear-gradient(135deg,#FF0080,#FF4D4D,#FF9900);
+  background:linear-gradient(135deg, var(--grad-insta-1), var(--grad-insta-2), var(--grad-insta-3));
 }
 
 .github-btn a{
-  background:#111111;
+  background:var(--bg-github);
 }
 
 .share-system-btn button{
-  background:linear-gradient(135deg,#2563EB,#7C3AED);
+  background:linear-gradient(135deg, var(--grad-share-start), var(--grad-share-end));
 }
 
 .instagram-btn ion-icon,
@@ -454,13 +471,41 @@ main{
 
 
 /* =========================================================
-   INÍCIO 11 • INDICADORES DE PÁGINA
+   INÍCIO 11 • INDICADORES DE PÁGINA (DOTS)
    Classes usadas no JS: .dots, .dot, .active
    ========================================================= */
 
+.dots{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  margin-top:24px;
+}
+
+.dot{
+  width:10px;
+  height:10px;
+
+  background:var(--dot-inactive);
+
+  border-radius:50%;
+
+  cursor:pointer;
+  transition:all .22s ease;
+}
+
+.dot.active{
+  width:26px;
+
+  background:var(--text-blue-light);
+
+  border-radius:12px;
+}
 
 /* =========================================================
-   FIM 11 • INDICADORES DE PÁGINA
+   FIM 11 • INDICADORES DE PÁGINA (DOTS)
    ========================================================= */
 
 
@@ -479,7 +524,7 @@ main{
 
   padding:20px;
 
-  background:rgba(0,0,0,.65);
+  background:var(--modal-backdrop);
 
   z-index:9999;
 }
@@ -497,13 +542,13 @@ main{
 
   padding:24px;
 
-  background:#0C234A;
-  color:#FFFFFF;
+  background:var(--modal-bg);
+  color:var(--text-white);
 
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid var(--modal-border);
   border-radius:26px;
 
-  box-shadow:0 20px 60px rgba(0,0,0,.45);
+  box-shadow:0 20px 60px var(--modal-shadow);
 
   animation:modalUp .22s ease;
 }
@@ -534,8 +579,8 @@ main{
   align-items:center;
   justify-content:center;
 
-  background:rgba(255,255,255,.05);
-  color:#FFFFFF;
+  background:var(--modal-btn-close-bg);
+  color:var(--text-white);
 
   border:none;
   border-radius:50%;
@@ -562,8 +607,8 @@ main{
 
   padding:14px 16px;
 
-  background:#2563EB;
-  color:#FFFFFF;
+  background:var(--grad-share-start);
+  color:var(--text-white);
 
   border:none;
   border-radius:16px;
@@ -608,13 +653,13 @@ main{
 
   padding:14px 18px;
 
-  background:#0C234A;
-  color:#FFFFFF;
+  background:var(--alert-bg);
+  color:var(--text-white);
 
-  border:1px solid rgba(255,255,255,.12);
+  border:1px solid var(--alert-border);
   border-radius:16px;
 
-  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  box-shadow:0 12px 30px var(--alert-shadow);
 
   font-size:14px;
   font-weight:700;
@@ -635,7 +680,7 @@ main{
 }
 
 .copy-alert ion-icon{
-  color:#22C55E;
+  color:var(--alert-icon-success);
   font-size:22px;
 }
 
@@ -780,6 +825,8 @@ body.modal-open{
 /* =========================================================
    FIM 17 • ACESSIBILIDADE / DESEMPENHO
    ========================================================= */
+
+
 /* =========================================================
    INÍCIO 18 • STATUS DO SISTEMA
    ========================================================= */
@@ -793,9 +840,9 @@ body.modal-open{
   margin:0 0 24px;
   padding:14px;
 
-  background:rgba(255,255,255,.04);
+  background:var(--bg-card);
 
-  border:1px solid rgba(255,255,255,.07);
+  border:1px solid var(--bg-card-border-alt);
   border-radius:18px;
 }
 
@@ -809,40 +856,41 @@ body.modal-open{
 }
 
 .status-success{
-  background:rgba(34,197,94,.15);
-  color:#22C55E;
-  border:1px solid rgba(34,197,94,.25);
+  background:var(--status-success-bg);
+  color:var(--status-success-text);
+  border:1px solid var(--status-success-border);
 }
 
 .status-warning{
-  background:rgba(245,158,11,.15);
-  color:#F59E0B;
-  border:1px solid rgba(245,158,11,.25);
+  background:var(--status-warning-bg);
+  color:var(--status-warning-text);
+  border:1px solid var(--status-warning-border);
 }
 
 .status-info{
-  background:rgba(59,130,246,.15);
-  color:#3B82F6;
-  border:1px solid rgba(59,130,246,.25);
+  background:var(--status-info-bg);
+  color:var(--status-info-text);
+  border:1px solid var(--status-info-border);
 }
 
 .status-purple{
-  background:rgba(168,85,247,.15);
-  color:#A855F7;
-  border:1px solid rgba(168,85,247,.25);
+  background:var(--status-purple-bg);
+  color:var(--status-purple-text);
+  border:1px solid var(--status-purple-border);
 }
 
 .system-status p{
-  color:#C6D4E7;
+  color:var(--text-gray-desc);
   font-size:14px;
 }
 
 /* =========================================================
    FIM 18 • STATUS DO SISTEMA
    ========================================================= */
-   
-   /* =========================================================
-   STATUS • ATUALIZANDO HOJE
+
+
+/* =========================================================
+   INÍCIO 19 • STATUS ESPECIAL (ATUALIZANDO HOJE)
    ========================================================= */
 
 .status-warning {
@@ -851,13 +899,13 @@ body.modal-open{
   margin: 0 0 24px;
   padding: 18px 20px;
   
-  background: rgba(245, 158, 11, .08);
+  background: var(--warning-card-bg);
   
-  border: 1px solid rgba(245, 158, 11, .22);
-  border-left: 4px solid #F59E0B;
+  border: 1px solid var(--warning-card-border);
+  border-left: 4px solid var(--warning-card-accent);
   border-radius: 18px;
   
-  box-shadow: 0 12px 30px rgba(0, 0, 0, .18);
+  box-shadow: 0 12px 30px var(--warning-card-shadow);
 }
 
 .status-warning strong {
@@ -865,7 +913,7 @@ body.modal-open{
   
   margin-bottom: 8px;
   
-  color: #FBBF24;
+  color: var(--warning-card-title);
   
   font-size: 15px;
   font-weight: 800;
@@ -873,7 +921,7 @@ body.modal-open{
 }
 
 .status-warning p {
-  color: #E8F0FB;
+  color: var(--warning-card-text);
   
   font-size: 14px;
   line-height: 1.65;
@@ -884,12 +932,12 @@ body.modal-open{
   margin-top: 12px;
   padding: 12px 14px;
   
-  background: rgba(2, 8, 23, .35);
+  background: var(--warning-details-bg);
   
-  border: 1px solid rgba(245, 158, 11, .16);
+  border: 1px solid var(--warning-details-border);
   border-radius: 14px;
   
-  color: #DCE8F7;
+  color: var(--warning-details-text);
   
   font-size: 13px;
   line-height: 1.65;
@@ -903,14 +951,23 @@ body.modal-open{
   
   margin-bottom: 6px;
   
-  color: #FBBF24;
+  color: var(--warning-card-title);
   
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .4px;
 }
-/*botão de scroll*/
+
+/* =========================================================
+   FIM 19 • STATUS ESPECIAL
+   ========================================================= */
+
+
+/* =========================================================
+   INÍCIO 20 • BOTÕES NAVEGAÇÃO LATERAL (PAGE ARROWS)
+   ========================================================= */
+
 .page-arrow {
   position: fixed;
   top: 50%;
@@ -928,7 +985,7 @@ body.modal-open{
   outline: none;
   padding: 0;
   
-  color: #5EA2FF;
+  color: var(--text-blue-arrow);
   cursor: pointer;
   z-index: 999;
   transition: .18s ease;
@@ -944,28 +1001,91 @@ body.modal-open{
 
 .page-arrow ion-icon {
   font-size: 42px;
-  filter: drop-shadow(0 2px 8px rgba(94, 162, 255, .35));
+  filter: drop-shadow(0 2px 8px var(--shadow-arrow));
 }
 
 .page-arrow:active {
   transform: translateY(-50%) scale(.88);
-  color: #7CB8FF;
+  color: var(--text-blue-bright);
 }
 
 .page-arrow:disabled {
   opacity: .3;
   pointer-events: none;
-}.device-badge {
-  width: 50px;
-  height: 50px;
+}
+
+/* =========================================================
+   FIM 20 • BOTÕES NAVEGAÇÃO LATERAL
+   ========================================================= */
+
+
+/* =========================================================
+   INÍCIO 21 • BOTÃO VER MAIS / VER MENOS
+   ========================================================= */
+
+.ver-mais-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  flex-shrink: 0;
+  
+  margin: 12px 0 0 auto;
+  padding: 7px 14px;
+  
+  min-width: 95px;
+  height: 34px;
+  
+  background: var(--btn-ver-mais-bg);
+  color: var(--text-blue-arrow);
+  
+  border: 1px solid var(--btn-ver-mais-border);
+  border-radius: 999px;
+  
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  
+  cursor: pointer;
+  transition: all .25s ease;
 }
 
-.device-badge ion-icon {
-  color: #7CB8FF;
-  font-size: 18px;
+.ver-mais-btn:hover {
+  background: var(--btn-ver-mais-hover-bg);
+  border-color: var(--btn-ver-mais-hover-border);
+  color: var(--text-blue-bright);
 }
+
+.ver-mais-btn:active {
+  transform: scale(.96);
+}
+
+.ver-mais-btn.aberto {
+  background: linear-gradient(135deg, var(--btn-ver-mais-active-start), var(--btn-ver-mais-active-end));
+  color: var(--text-white);
+  border-color: transparent;
+  
+  box-shadow: 0 6px 18px var(--btn-ver-mais-shadow);
+}
+
+.ver-mais-btn::after {
+  content: "›";
+  margin-left: 6px;
+  font-size: 16px;
+  transition: .25s;
+}
+
+.ver-mais-btn.aberto::after {
+  transform: rotate(90deg);
+}
+
+@media(max-width:700px) {
+  .ver-mais-btn {
+    min-width: 90px;
+    height: 32px;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* =========================================================
+   FIM 21 • BOTÃO VER MAIS / VER MENOS
+   ========================================================= */
