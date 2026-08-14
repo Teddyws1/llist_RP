@@ -781,7 +781,7 @@ ${systemInfo.tecnologias}
               <ion-icon name="notifications-outline"></ion-icon>
               <div>
                 <strong>Avisos Gerais</strong>
-                <p>Outros avisos importantes do sistema aparecem aqui.</p>
+                <p>A próxima atualização será lançada amanhã, trazendo correções de bugs e alguns pequenos ajustes e melhorias nos elementos do sistema.</p>
               </div>
             </div>
           </div>
