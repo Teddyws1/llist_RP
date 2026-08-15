@@ -781,7 +781,7 @@ ${systemInfo.tecnologias}
               <ion-icon name="notifications-outline"></ion-icon>
               <div>
                 <strong>Avisos Gerais</strong>
-                <p>A próxima atualização será lançada no dia 15/08/2026, trazendo correções de bugs e alguns pequenos ajustes e melhorias nos elementos do sistema.</p>
+                <p> nenhuma mensagem</p>
               </div>
             </div>
           </div>
