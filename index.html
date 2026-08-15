@@ -122,28 +122,33 @@
             </button>
         </form>
 
-        <div class="sort-wrapper">
-            <i class="fas fa-filter sort-icon" aria-hidden="true"></i>
+   <div class="sort-wrapper">
 
-            <label for="sortOption" class="sr-only">
-                Ordenar itens
-            </label>
+    <label for="sortOption" class="sr-only">
+        Ordenar itens
+    </label>
 
-   <select
-    id="sortOption"
-    class="sort-select"
-    aria-label="Ordenar itens"
-    onchange="renderItems()"
->
-    <option value="recent">Mais recentes</option>
-    <option value="novos">Novos</option>
-    <option value="alpha-asc">A → Z</option>
-    <option value="alpha-desc">Z → A</option>
-    <option value="id-asc">ID menor</option>
-    <option value="id-desc">ID maior</option>
-</select>
-            
-            </div>
+    <select
+        id="sortOption"
+        class="sort-select"
+        aria-label="Ordenar itens"
+        onchange="renderItems()"
+    >
+        <option value="recent">Mais recentes</option>
+        <option value="novos">Novos</option>
+        <option value="alpha-asc">A → Z</option>
+        <option value="alpha-desc">Z → A</option>
+        <option value="id-asc">ID menor</option>
+        <option value="id-desc">ID maior</option>
+    </select>
+
+    <ion-icon
+        name="filter-outline"
+        class="sort-icon"
+        aria-hidden="true"
+    ></ion-icon>
+
+</div>
     </header>
 
                 
@@ -227,8 +232,8 @@
                 <ion-icon name="chevron-forward-outline"></ion-icon>
             </span>
         </a>
-        <br>
 
+<br>
         <!-- Explorar -->
         <button
             type="button"
@@ -548,6 +553,5 @@ Desenvolvido por Teddy Machado ™ • 2026
     <script src="acessibilidade.js?v=14" defer></script>
     <script src="instalar_web.js?v=14" defer></script>
     <script src="updates.js?v=14" defer></script>
-    
 </body>
 </html>
