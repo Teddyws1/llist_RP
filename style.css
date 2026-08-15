@@ -707,19 +707,7 @@ header{
     border-color: var(--border-color_favori_nav);
 }
 
-.sort-select:hover + .sort-icon {
-    color: var(--icone_hover_nav);
-    transform: rotate(-10deg) scale(1.15);
-}
 
-.sort-select:active {
-    transform: scale(0.92);
-    filter: brightness(0.9);
-}
-/*============[fim]============*/
-/* ============================================================
-   INÍCIO 11 • CONTAINER / GRID / CARDS
-   ============================================================ */
 /* ============================================================
    ESTILOS APRIMORADOS • CONTAINER / GRID / CARDS
    ============================================================ */
